@@ -6,8 +6,6 @@ validators:
       description: units in cells per gram
       display_name: AODC
       example: 200456.8368
-    static_mappings:
-      ENIGMA: AODC
     validators:
       type: number
       gte: 0.0
@@ -18,8 +16,6 @@ validators:
       description: units in ft above mean sea level (ft AMSL)
       display_name: Average Water Level
       example: 1006.01
-    static_mappings:
-      ENIGMA: Average Water Level
     validators:
       units: ft
       type: number
@@ -29,8 +25,6 @@ validators:
       description: units in milligrams per gram
       display_name: Biomass Carbon
       example: 0.98
-    static_mappings:
-      ENIGMA: Biomass Carbon
     validators:
       type: number
       gte: 0.0
@@ -41,8 +35,6 @@ validators:
       description: units in cells per gram
       display_name: BONCAT Activity
       example: 1.27E+06
-    static_mappings:
-      ENIGMA: BONCAT Activity
     validators:
       type: number
       gte: 0.0
@@ -53,8 +45,6 @@ validators:
       description: boring depth in ft below groud surface (ft BGS)
       display_name: Boring depth
       example: 50.25
-    static_mappings:
-      ENIGMA: Boring depth
     validators:
       type: number
       gte: 0.0
@@ -65,8 +55,6 @@ validators:
       description: boring diameter in inches
       display_name: Boring Diameter
       example: 8
-    static_mappings:
-      ENIGMA: Boring Diameter
     validators:
       type: number
       gte: 0.0
@@ -77,8 +65,6 @@ validators:
       description: conductivity in millisiemens per centimeter
       display_name: Conductivity
       example: 802.65
-    static_mappings:
-      ENIGMA: Conductivity
     validators:
       type: number
       units: mS/cm
@@ -89,8 +75,6 @@ validators:
       description: units in nanograms
       display_name: DNA Picogreen Total
       example: 228.6658163
-    static_mappings:
-      ENIGMA: DNA Picogreen Total
     validators:
       type: number
       units: ng
@@ -100,8 +84,6 @@ validators:
       description: drive casing end depth in ft below ground surface (ft BGS)
       display_name: Drive Casing End Depth
       example: 27
-    static_mappings:
-      ENIGMA: Drive Casing End Depth
     validators:
       units: ft
       type: number
@@ -111,8 +93,6 @@ validators:
       description: drive casing inner diameter in inches
       display_name: Drive Casing ID
       example: 2.625
-    static_mappings:
-      ENIGMA: Drive Casing ID
     validators:
       type: number
       gte: 0.0
@@ -123,8 +103,6 @@ validators:
       description: drive casing outer diameter in inches
       display_name: Drive Casing OD
       example: 3.25
-    static_mappings:
-      ENIGMA: Drive Casing OD
     validators:
       type: number
       gte: 0.0
@@ -135,8 +113,6 @@ validators:
       description: units in ft below ground surface (ft BGS)
       display_name: Drive Casing Start Depth
       example: 10
-    static_mappings:
-      ENIGMA: Drive Casing Start Depth
     validators:
       units: ft
       type: number
@@ -149,8 +125,6 @@ validators:
       description: Filter pore size in microns
       display_name: Filter
       example: 2; 10
-    static_mappings:
-      ENIGMA: Filter
     validators:
       type: number
       gte: 0.0
@@ -161,8 +135,6 @@ validators:
       description: ground elevation in ft above mean sea level (ft AMSL)
       display_name: Ground Elevation
       example: 1004.62
-    static_mappings:
-      ENIGMA: Ground Elevation
     validators:
       units: ft
       type: number
@@ -175,8 +147,6 @@ validators:
       description: Lower seal end depth in ft below ground surface (ft BGS)
       display_name: Lower Seal End Depth
       example: 22.1
-    static_mappings:
-      ENIGMA: Lower Seal End Depth
     validators:
       units: ft
       type: number
@@ -186,8 +156,6 @@ validators:
       description: Lower seal start depth in ft below ground surface (ft BGS)
       display_name: Lower Seal Start Depth
       example: 20.25
-    static_mappings:
-      ENIGMA: Lower Seal Start Depth
     validators:
       units: ft
       type: number
@@ -197,8 +165,6 @@ validators:
       description: Maximum water level in ft above mean sea level (ft AMSL)
       display_name: Max Water Level
       example: 1008.41
-    static_mappings:
-      ENIGMA: Max Water Level
     validators:
       units: ft
       type: number
@@ -208,8 +174,6 @@ validators:
       description: Minimum water level in ft above mean sea level (ft AMSL)
       display_name: Min Water Level
       example: 1002.99
-    static_mappings:
-      ENIGMA: Min Water Level
     validators:
       units: ft
       type: number
@@ -219,8 +183,6 @@ validators:
       description: percent moisture
       display_name: Moisture
       example: 11.26
-    static_mappings:
-      ENIGMA: Moisture
     validators:
       type: number
       gte: 0.0
@@ -232,8 +194,6 @@ validators:
       description: Open casing depth in ft below ground surface (ft BGS)
       display_name: Open Casing Depth
       example: 92
-    static_mappings:
-      ENIGMA: Open Casing Depth
     validators:
       units: ft
       type: number
@@ -243,8 +203,6 @@ validators:
       description: open casing inner diameter in inches (in)
       display_name: Open Casing ID
       example: 6.12
-    static_mappings:
-      ENIGMA: Open Casing ID
     validators:
       type: number
       gte: 0.0
@@ -255,8 +213,6 @@ validators:
       description: open casing outer diameter in inches (in)
       display_name: Open Casing OD
       example: 6.62
-    static_mappings:
-      ENIGMA: Open Casing OD
     validators:
       type: number
       gte: 0.0
@@ -267,8 +223,6 @@ validators:
       description: Open hole depth in ft below ground surface (ft BGS)
       display_name: Open Hole Depth
       example: 92
-    static_mappings:
-      ENIGMA: Open Hole Depth
     validators:
       units: ft
       type: number
@@ -278,8 +232,6 @@ validators:
       description: Open hole diameter in inches
       display_name: Open Hole Diameter
       example: 10
-    static_mappings:
-      ENIGMA: Open Hole Diameter
     validators:
       type: number
       gte: 0.0
@@ -290,8 +242,6 @@ validators:
       description: Open interval diameter in inches
       display_name: Open Interval Diameter
       example: 6
-    static_mappings:
-      ENIGMA: Open Interval Diameter
     validators:
       type: number
       gte: 0.0
@@ -302,8 +252,6 @@ validators:
       description: Open interval end depth in ft below ground surface (ft BGS)
       display_name: Open Interval End Depth
       example: 125
-    static_mappings:
-      ENIGMA: Open Interval End Depth
     validators:
       units: ft
       type: number
@@ -313,8 +261,6 @@ validators:
       description: Open interval start depth in ft below ground surface (ft BGS)
       display_name: Open Interval Start Depth
       example: 92
-    static_mappings:
-      ENIGMA: Open Interval Start Depth
     validators:
       units: ft
       type: number
@@ -324,8 +270,6 @@ validators:
       description: Organic carbon in milligrams per gram dry weight
       display_name: Organic Carbon
       example: 0.532
-    static_mappings:
-      ENIGMA: Organic Carbon
     validators:
       type: number
       gte: 0.0
@@ -336,8 +280,6 @@ validators:
       description: Packind depth end in ft below ground surface (ft BGS)
       display_name: Packing Depth End
       example: 17.5
-    static_mappings:
-      ENIGMA: Packing Depth End
     validators:
       units: ft
       type: number
@@ -347,8 +289,6 @@ validators:
       description: Packind depth start in ft below ground surface (ft BGS)
       display_name: Packing Depth Start
       example: 15.08
-    static_mappings:
-      ENIGMA: Packing Depth Start
     validators:
       units: ft
       type: number
@@ -360,8 +300,6 @@ validators:
       description: Pore water extraction in microliters
       display_name: Pore Water Extraction
       example: 200
-    static_mappings:
-      ENIGMA: Pore Water Extraction
     validators:
       type: number
       units: microliters
@@ -371,8 +309,6 @@ validators:
       description: Screen bottom elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Bottom Elevation
       example: 985.27
-    static_mappings:
-      ENIGMA: Screen Bottom Elevation
     validators:
       units: ft
       type: number
@@ -382,8 +318,6 @@ validators:
       description: Screen end depth in ft below ground surface (ft BGS)
       display_name: Screen End Depth
       example: 14.39
-    static_mappings:
-      ENIGMA: Screen End Depth
     validators:
       units: ft
       type: number
@@ -393,8 +327,6 @@ validators:
       description: Screen start depth in ft below ground surface (ft BGS)
       display_name: Screen Start Depth
       example: 14.14
-    static_mappings:
-      ENIGMA: Screen Start Depth
     validators:
       units: ft
       type: number
@@ -404,8 +336,6 @@ validators:
       description: Screen top elevation in ft above mean sea level (ft AMSL)
       display_name: Screen Top Elevation
       example: 985.52:was
-    static_mappings:
-      ENIGMA: Screen Top Elevation
     validators:
       units: ft
       type: number
@@ -415,8 +345,6 @@ validators:
       description: Screened interval in ft
       display_name: Screened Interval
       example: 0.25
-    static_mappings:
-      ENIGMA: Screened Interval
     validators:
       units: ft
       type: number
@@ -429,8 +357,6 @@ validators:
       description: Top of casing elevation in ft above mean sea level (ft AMSL)
       display_name: Top of Casing Elevation
       example: 1000.9076
-    static_mappings:
-      ENIGMA: Top of Casing Elevation
     validators:
       units: ft
       type: number
@@ -440,8 +366,6 @@ validators:
       description: Top of casing stickup in ft
       display_name: Top of Casing Stickup
       example: 1.84
-    static_mappings:
-      ENIGMA: Top of Casing Stickup
     validators:
       units: ft
       type: number
@@ -451,8 +375,6 @@ validators:
       description: Top of fresh bedrock in ft below ground surface (ft BGS)
       display_name: Top of Fresh Bedrock
       example: 6.4
-    static_mappings:
-      ENIGMA: Top of Fresh Bedrock
     validators:
       units: ft
       type: number
@@ -462,8 +384,6 @@ validators:
       description: Top of weathered bedrock in ft below ground surface (ft BGS)
       display_name: Top of Weathered Bedrock
       example: 8
-    static_mappings:
-      ENIGMA: Top of Weathered Bedrock
     validators:
       units: ft
       type: number
@@ -473,8 +393,6 @@ validators:
       description: Total carbon in milligrams per gram dry weight
       display_name: Total Carbon
       example: 0.3689
-    static_mappings:
-      ENIGMA: Total Carbon
     validators:
       type: number
       gte: 0.0
@@ -485,8 +403,6 @@ validators:
       description: Total nitrogen in milligrams per gram dry weight
       display_name: Total Nitrogen
       example: 0.0572
-    static_mappings:
-      ENIGMA: Total Nitrogen
     validators:
       type: number
       gte: 0.0
@@ -497,8 +413,6 @@ validators:
       description: Upper seal end depth in ft below ground surface (ft BGS)
       display_name: Upper Seal End Depth
       example: 12
-    static_mappings:
-      ENIGMA: Upper Seal End Depth
     validators:
       units: ft
       type: number
@@ -508,8 +422,6 @@ validators:
       description: Upper seal start depth in ft below ground surface (ft BGS)
       display_name: Upper Seal Start Depth
       example: 10
-    static_mappings:
-      ENIGMA: Upper Seal Start Depth
     validators:
       units: ft
       type: number
@@ -519,8 +431,6 @@ validators:
       description: Well casing depth in ft below ground surface (ft BGS)
       display_name: Well Casing Depth
       example: 45.25
-    static_mappings:
-      ENIGMA: Well Casing Depth
     validators:
       units: ft
       type: number
@@ -530,8 +440,6 @@ validators:
       description: Well casing inner diameter. units in inches
       display_name: Well Casing ID
       example: 3.975
-    static_mappings:
-      ENIGMA: Well Casing ID
     validators:
       type: number
       gte: 0.0
@@ -542,8 +450,6 @@ validators:
       description: Well casing outer diameter. units in inches
       display_name: Well Casing OD
       example: 4.5
-    static_mappings:
-      ENIGMA: Well Casing OD
     validators:
       type: number
       gte: 0.0

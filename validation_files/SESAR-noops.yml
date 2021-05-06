@@ -6,106 +6,78 @@ validators:
       description: Name of institution, museum, or repository where the sample is currently stored.
       display_name: Current archive
       example: Lamont Deep Sea Core Repository; Palisades, NY
-    static_mappings:
-      SESAR: Current archive
 
   archive_contact_current:
     key_metadata:
       description: Address and/or email of the person who should be contacted for information about or access to the sample.
       display_name: Current archive contact
       example: curator@ldeo.columbia.edu
-    static_mappings:
-      SESAR: Current archive contact
 
   archive_original:
     key_metadata:
       description: Name of institution, museum, or repository where the sample is originally stored.
       display_name: Original archive
       example: Lamont Deep Sea Core Repository; Palisades, NY
-    static_mappings:
-      SESAR: Original archive
 
   archive_contact_original:
     key_metadata:
       description: Address and/or email of the person who should be contacted for information about the sample's original archive.
       display_name: Original archive contact
       example: curator@ldeo.columbia.edu
-    static_mappings:
-      SESAR: Original archive contact
 
   collection_date:
     key_metadata:
       description: Date when the sample was collected.
       display_name: Collection date
       example: "2015-03-31"
-    static_mappings:
-      SESAR: Collection date
-      units: collection_date_precision
 
   collection_date_end:
     key_metadata:
       description: Date when the sample collection was finished (if a date range is provided).
       display_name: Collection date (end)
       example: "2015-03-31"
-    static_mappings:
-      SESAR: Collection date (end)\
-      units: collection_date_precision
 
   collection_date_precision:
     key_metadata:
       description: Precision to display the collection date and time.
       display_name: Collection date precision
       example: year; month; day; time
-    static_mappings:
-      SESAR: Collection date precision
 
   collection_method:
     key_metadata:
       description: Method by which a sample was collected
       display_name: Collection method
       example: Dredging; Manual
-    static_mappings:
-      SESAR: Collection method
 
   collection_method_description:
     key_metadata:
       description: Additional information about the collection method
       display_name: Collection method description
       example: Hand sample collected from the top part of a large boulder
-    static_mappings:
-      SESAR: Collection method description
 
   collection_time:
     key_metadata:
       description: Time when the sample was collected.
       display_name: Collection time
       example: 12:05:03Z
-    static_mappings:
-      SESAR: Collection time
 
   collection_time_end:
     key_metadata:
       description: End time when the sample was collected.
       display_name: Collection time (end)
       example: 13:05:01Z
-    static_mappings:
-      SESAR: Collection time (end)
 
   collector_chief_scientist:
     key_metadata:
       description: Name of the person who collected the sample. In case of larger field programs, name of chief scientist responsible for sample collection.
       display_name: Collector/Chief Scientist name
       example: Jane Smith
-    static_mappings:
-      SESAR: Collector/Chief Scientist name
 
   collector_chief_scientist_address:
     key_metadata:
       description: Institution, address, & email of the collector or chief scientist.
       display_name: Collector/Chief Scientist address
       example: Woods Hole Oceanographic Institution, Woods Hole, MA
-    static_mappings:
-       Collector/Chief Scientist address
 
   #country moved to core
   #county moved to core
@@ -115,24 +87,18 @@ validators:
       description: Unit in which the depth is provided
       display_name: Depth scale
       example: MBSF; cm
-    static_mappings:
-      SESAR: Depth scale
 
   field_name:
     key_metadata:
       description: Taxonomy (field name) Informal classification of sample.
       display_name: Field name (informal classification)
       example: basalt; amphibole; sea water
-    static_mappings:
-      SESAR: Field name (informal classification)
 
   field_program_cruise:
     key_metadata:
       description: Name or identifier of the field program (cruise or expedition), during which the sample was collected.
       display_name: Field program/cruise
       example: TN182
-    static_mappings:
-      SESAR: Field program/cruise
 
   #NOTE: Should this be a CV?
   geological_age:
@@ -140,96 +106,72 @@ validators:
       description: Age of a sample as described by the stratigraphic era, period, state, etc.
       display_name: Geological Age
       example: Cretaceous
-    static_mappings:
-      SESAR: Geological age
 
   geological_unit:
     key_metadata:
       description: A body of rock established as a distinct entity in the classification of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow
       display_name: Geological Unit
       example: Coconino Sandstone; Fig Tree Formation
-    static_mappings:
-      SESAR: Geological unit
 
   igsn:
     key_metadata:
       description: IGSN assigned by SESAR
       display_name: IGSN
       example: IEMEG0001
-    static_mappings:
-      SESAR: IGSN
 
   launch_id:
     key_metadata:
       description: Further identifying information about the launch
       display_name: Launch ID
       example: 3969; J2-434
-    static_mappings:
-      SESAR: Launch ID
 
   launch_platform_name:
     key_metadata:
       description: The name of the launch used to collect the sample.
       display_name: Launch platform name
       example: Alvin; Jason II
-    static_mappings:
-      SESAR: Launch platform name
 
   launch_type:
     key_metadata:
       description: The type of launch used to collect the sample. 
       display_name: Launch type
       example: HOV
-    static_mappings:
-      SESAR: Launch type
 
   physiographic_feature_name:
     key_metadata:
       description: Name of the physiographic feature that you entered
       display_name: Name of physiographic feature
       example: East Pacific Rise; Dead Sea
-    static_mappings:
-      SESAR: Name of physiographic feature
 
   parent_igsn:
     key_metadata:
       description: IGSN of Parent Sample
       display_name: Parent IGSN
       example: IEMEG0002
-    static_mappings:
-      SESAR: Parent IGSN
 
   physiographic_feature_primary:
     key_metadata:
       description: Type of physical feature that your sample was collected from (see suggested list)
       display_name: Primary physiographic feature
       example: volcano; mid-ocean ridge
-    static_mappings:
-      SESAR: Primary physiographic feature
 
   platform_name:
     key_metadata:
       description: Name of platform for the cruise.
       display_name: Platform name
       example: R/V Roger Revelle
-    static_mappings:
-      SESAR: Platform name
 
   platform_type:
     key_metadata:
       description: Type of platform for the cruise. 
       display_name: Platform type
       example: Ship
-    static_mappings:
-      SESAR: Platform type
 
   related_identifiers:
     key_metadata:
       description: IGSN of Related Samples
       display_name: Related Identifiers
       example: IEMEG0003
-    static_mappings:
-      SESAR: Related Identifiers
 
   #TODO: Need examples
   relation_type:
@@ -237,8 +179,6 @@ validators:
       description: Relation Type
       display_name: Relation Type
       example: TODO
-    static_mappings:
-      SESAR: Relation Type
 
   # Note: This coould be core
   release_date:
@@ -246,32 +186,24 @@ validators:
       description: Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).
       display_name: Release date
       example: "2018-03-15"
-    static_mappings:
-      SESAR: Release date
 
   size:
     key_metadata:
       description: Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge
       display_name: Size
       example: 2x4; 45
-    static_mappings:
-      SESAR: Size
 
   size_unit:
     key_metadata:
       description: Unit for the numerical value provided for 'size'.
       display_name: Size unit
       example: cm; kg
-    static_mappings:
-      SESAR: Size unit
 
   state_province:
     key_metadata:
       description: State or Province where the sample was collected
       display_name: State/Province
       example: Alaska
-    static_mappings:
-      SESAR: State/Province
 
   #NOTE: This could come from a CV
   vertical_datum:
@@ -279,13 +211,9 @@ validators:
       description: Vertical datum used to calculate the elevation
       display_name: Vertical Datum
       example: NAVD88; MSL
-    static_mappings:
-      SESAR: Vertical Datum
 
   zone:
     key_metadata:
       description: Zone for the geographic Cartesian coordinate "11R"
       display_name: Zone
       example: 11R
-    static_mappings:
-      SESAR: Zone

@@ -6,9 +6,6 @@ validators:
       description: Maximum geological age in years
       display_name: Age (max)
       example: 4.6
-    static_mappings:
-      SESAR: Age (max)
-      units: age_unit
     validators:
       type: number
       gte: 0.0
@@ -19,9 +16,6 @@ validators:
       description: minimum geological age in years
       display_name: Age (min)
       example: 4.2
-    static_mappings:
-      SESAR: Age (min)
-      units: age_unit
     validators:
       type: number
       gte: 0.0
@@ -33,17 +27,12 @@ validators:
       description: Taxonomy (formal classification) Formal categorization of sample.
       display_name: Classification
       example: Igneous>Plutonic>Felsic; Plagioclase
-    static_mappings:
-      SESAR: Classification
 
   depth_in_core_max:
     key_metadata:
       description: maximum depth in core in meters
       display_name: Depth in Core (max)
       example: 0.003
-    static_mappings:
-      SESAR:  Depth in Core (max)
-      units: depth_scale
     validators:
       type: number
       units: meters
@@ -54,9 +43,6 @@ validators:
       description: Minimum depth in core in meters
       display_name: Depth in Core (min)
       example: 0.001
-    static_mappings:
-      SESAR: Depth in Core (min)
-      units: depth_scale
     validators:
       type: number
       units: meters
@@ -67,8 +53,6 @@ validators:
       description: Easting in meters
       display_name: Easting
       example: 305294
-    static_mappings:
-      SESAR: Easting
     validators:
       type: number
       units: m
@@ -78,9 +62,6 @@ validators:
       description: Elevation end in meters
       display_name: Elevation end
       example: 673.5; -4520
-    static_mappings:
-      SESAR: Elevation end
-      units: elevation_unit
     validators:
       type: number
       units: m
@@ -91,9 +72,6 @@ validators:
       description: Elevation start in meters
       display_name: Elevation start
       example: 678.5; -4536
-    static_mappings:
-      SESAR: Elevation start
-      units: elevation_unit
     validators:
       type: number
       units: m
@@ -104,8 +82,6 @@ validators:
       description: Navigation type
       display_name: Navigation type
       example: GPS
-    static_mappings:
-      SESAR: Navigation type
     validators:
       type: enum
       allowed-values:
@@ -139,8 +115,6 @@ validators:
       description: Northing in meters
       display_name: Northing
       example: 4111279
-    static_mappings:
-      SESAR: Northing
     validators:
       type: number
       units: m
@@ -150,8 +124,6 @@ validators:
       description: Material that the sample consists of using SESAR vocabulary.
       display_name: Material (SESAR)
       example: Rock; Liquid>Aqueous
-    static_mappings:
-      SESAR: Material
     validators:
       type: enum
       allowed-values:
@@ -176,6 +148,4 @@ validators:
       description: More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.
       display_name: Sub-object type
       example: Thin section; Powder
-    static_mappings:
-      SESAR: Sub-object type
 
