@@ -15,6 +15,7 @@ with open(sys.argv[1]) as csvfile:
     spamreader = csv.DictReader(csvfile, delimiter='\t')
     ct = 0
     for row in spamreader:
+        col_name = row['Column name']
         new = {
               'category': row['Category'],
               'example': row['Example'].replace("\r\n", ' '),
@@ -26,14 +27,23 @@ with open(sys.argv[1]) as csvfile:
             new['required'] = True
         if row['Additional instructions'] != '':
             new['instructions'] = row['Additional instructions']
+        new['aliases']=[col_name.lower()]
+        if 'Aliases' in row and row['Aliases'] != '':
+            for alias in row['Aliases'].split(','):
+                new['aliases'].append(alias) 
+                new['aliases'].append(alias.lower()) 
         transform = row['Transformation']
         if transform not in valid_transforms:
             print("Transform %s not recognized" % (transform))
             failed = True
         if transform:
             new['transformations'] = [{'transform': transform}]
-            if row['Parameter']:
-                new['transformations'][0]['parameters'] = [row['Parameter']]
+            params = []
+            for param in ['Parameter', 'Parameter 2']:
+                if row[param]:
+                    params.append(row[param])
+            if len(params) > 0:
+                new['transformations'][0]['parameters'] = params
             if transform == "map":
                 kid = row['Parameter']
                 if row['Parameter'] not in validation['validators']:
@@ -48,7 +58,7 @@ with open(sys.argv[1]) as csvfile:
                     print("Missing %s" % (row['Parameter']))
                 if row['Parameter 2'] == "":
                     failed = True
-                    print("Missing field %s" % (row['Column name']))
+                    print("Missing field %s" % (col_name))
                 required_units.append(row['Parameter 2'])
             elif transform == "unit_measurement_fixed":
                 kid = row['Parameter']
@@ -57,10 +67,10 @@ with open(sys.argv[1]) as csvfile:
                     print("Missing %s" % (row['Parameter']))
                 if row['Parameter 2'] == "":
                     failed = True
-                    print("Missing unit %s" % (row['Column name']))
+                    print("Missing unit %s" % (col_name))
 #            if not failed:
 #                print(validation['validators'][kid]['key_metadata']['description'])
-        outdata[row['Column name']] = new
+        outdata[col_name] = new
         ct += 1
 
 # Verify that all refernced units exist

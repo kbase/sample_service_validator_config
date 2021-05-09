@@ -155,6 +155,14 @@ validators:
       display_name: Primary physiographic feature
       example: volcano; mid-ocean ridge
 
+  platform_description:
+    key_metadata:
+      description: Description of platform for the cruise.
+      display_name: Platform description
+      example: 
+    static_mappings:
+      SESAR: Platform description
+
   platform_name:
     key_metadata:
       description: Name of platform for the cruise.
@@ -217,3 +225,37 @@ validators:
       description: Zone for the geographic Cartesian coordinate "11R"
       display_name: Zone
       example: 11R
+
+  sample_type:
+    key_metadata:
+      description: Sample Type
+      display_name: Sample Type
+      example: Core, Core Section
+
+  registrant_current:
+    key_metadata:
+      description: Registrant of the sample in SESAR
+      display_name: Current Registrant Name
+      example: Jane Smith
+    aliases:
+    - Cur Registrant Name 
+
+  registrant_org:
+    key_metadata:
+      description: Registrant organization of the sample in SESAR
+      display_name: Organization Registrant Name
+      example: Jane Smith
+    aliases:
+    - Org Registrant Name
+
+  classification_comment:
+    key_metadata:
+      description: Classification Comment
+      display_name: Classification Comment
+      example:
+
+  is_archived:
+    key_metadata:
+      description: Is Archived 
+      display_name: Is Archived
+      example: Y;N

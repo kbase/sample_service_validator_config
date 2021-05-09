@@ -7,6 +7,7 @@ AODC (cells/g):
   transformations:
   - parameters:
     - enigma:aodc
+    - cells/g
     transform: unit_measurement_fixed
 Aquifer:
   category: well
@@ -37,6 +38,7 @@ Average Water Level (ft AMSL):
   transformations:
   - parameters:
     - enigma:average_water_level
+    - ft
     transform: unit_measurement_fixed
 BONCAT Activity (cell/g):
   category: measurement
@@ -47,6 +49,7 @@ BONCAT Activity (cell/g):
   transformations:
   - parameters:
     - enigma:boncat_activity
+    - cells/g
     transform: unit_measurement_fixed
 Biomass Carbon (mg/g):
   category: measurement
@@ -57,6 +60,7 @@ Biomass Carbon (mg/g):
   transformations:
   - parameters:
     - enigma:biomass_carbon
+    - mg/g
     transform: unit_measurement_fixed
 Boring (ft BGS):
   category: well
@@ -67,6 +71,7 @@ Boring (ft BGS):
   transformations:
   - parameters:
     - enigma:boring
+    - ft
     transform: unit_measurement_fixed
 Boring Diameter (in):
   category: well
@@ -77,6 +82,7 @@ Boring Diameter (in):
   transformations:
   - parameters:
     - enigma:boring_diameter
+    - in
     transform: unit_measurement_fixed
 Boring Refusal:
   category: well
@@ -117,6 +123,7 @@ Conductivity (mS/cm):
   transformations:
   - parameters:
     - enigma:conductivity
+    - ms/cm
     transform: unit_measurement_fixed
 DAPI Cell Count (cells/g):
   category: measurement
@@ -127,6 +134,7 @@ DAPI Cell Count (cells/g):
   transformations:
   - parameters:
     - enigma:dapi_cell_count
+    - cells/g
     transform: unit_measurement_fixed
 DNA Picogreen Total (ng):
   category: measurement
@@ -137,6 +145,7 @@ DNA Picogreen Total (ng):
   transformations:
   - parameters:
     - enigma:dna_picogreen_total
+    - ng
     transform: unit_measurement_fixed
 Date:
   category: collection
@@ -157,6 +166,7 @@ Depth (cm bgs):
   transformations:
   - parameters:
     - depth_bgs
+    - cm
     transform: unit_measurement_fixed
 Description:
   category: description
@@ -177,6 +187,7 @@ Drive Casing End Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:drive_casing_end_depth
+    - ft
     transform: unit_measurement_fixed
 Drive Casing ID (in):
   category: well
@@ -187,6 +198,7 @@ Drive Casing ID (in):
   transformations:
   - parameters:
     - enigma:drive_casing_id
+    - in
     transform: unit_measurement_fixed
 Drive Casing OD (in):
   category: well
@@ -197,6 +209,7 @@ Drive Casing OD (in):
   transformations:
   - parameters:
     - enigma:drive_casing_od
+    - in
     transform: unit_measurement_fixed
 Drive Casing Start Depth (ft BGS):
   category: well
@@ -207,6 +220,7 @@ Drive Casing Start Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:drive_casing_start_depth
+    - ft
     transform: unit_measurement_fixed
 Drive Casing Type:
   category: well
@@ -247,6 +261,7 @@ Filter (micron):
   transformations:
   - parameters:
     - enigma:filter
+    - micron
     transform: unit_measurement_fixed
 Fraction:
   category: measurement
@@ -297,6 +312,7 @@ Ground Elevation (ft AMSL):
   transformations:
   - parameters:
     - enigma:ground_elevation
+    - ft
     transform: unit_measurement_fixed
 Installation Method:
   category: well
@@ -328,6 +344,7 @@ Leucine Activity (ngC/day cell}:
   transformations:
   - parameters:
     - enigma:leucine_activity
+    - ngc/day
     transform: unit_measurement_fixed
 Longitude:
   category: geolocation
@@ -349,6 +366,7 @@ Lower Seal End Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:lower_seal_end_depth
+    - ft
     transform: unit_measurement_fixed
 Lower Seal Start Depth (ft BGS):
   category: well
@@ -359,6 +377,7 @@ Lower Seal Start Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:lower_seal_start_depth
+    - ft
     transform: unit_measurement_fixed
 Lower Seal Type (ft BGS):
   category: well
@@ -369,6 +388,7 @@ Lower Seal Type (ft BGS):
   transformations:
   - parameters:
     - enigma:lower_seal_type
+    - ft
     transform: unit_measurement_fixed
 Material:
   category: description
@@ -399,6 +419,7 @@ Max Water Level (ft AMSL):
   transformations:
   - parameters:
     - enigma:max_water_level
+    - ft
     transform: unit_measurement_fixed
 Method:
   category: measurement
@@ -419,6 +440,7 @@ Min Water Level (ft AMSL):
   transformations:
   - parameters:
     - enigma:min_water_level
+    - ft
     transform: unit_measurement_fixed
 Moisture (%):
   category: measurement
@@ -449,6 +471,7 @@ Open Casing Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:open_casing_depth
+    - ft
     transform: unit_measurement_fixed
 Open Casing ID (in):
   category: well
@@ -459,6 +482,7 @@ Open Casing ID (in):
   transformations:
   - parameters:
     - enigma:open_casing_id
+    - in
     transform: unit_measurement_fixed
 Open Casing OD (in):
   category: well
@@ -469,6 +493,7 @@ Open Casing OD (in):
   transformations:
   - parameters:
     - enigma:open_casing_od
+    - in
     transform: unit_measurement_fixed
 Open Casing Type:
   category: well
@@ -489,6 +514,7 @@ Open Hole Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:open_hole_depth
+    - ft
     transform: unit_measurement_fixed
 Open Hole Diameter (in):
   category: well
@@ -499,6 +525,7 @@ Open Hole Diameter (in):
   transformations:
   - parameters:
     - enigma:open_hole_diameter
+    - in
     transform: unit_measurement_fixed
 Open Interval Diameter (in):
   category: well
@@ -509,6 +536,7 @@ Open Interval Diameter (in):
   transformations:
   - parameters:
     - enigma:open_interval_diameter
+    - in
     transform: unit_measurement_fixed
 Open Interval End Depth (ft BGS):
   category: well
@@ -519,6 +547,7 @@ Open Interval End Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:open_interval_end_depth
+    - ft
     transform: unit_measurement_fixed
 Open Interval Start Depth (ft BGS):
   category: well
@@ -529,6 +558,7 @@ Open Interval Start Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:open_interval_start_depth
+    - ft
     transform: unit_measurement_fixed
 Organic Carbon (mg/g dry weight):
   category: measurement
@@ -539,6 +569,7 @@ Organic Carbon (mg/g dry weight):
   transformations:
   - parameters:
     - enigma:organic_carbon
+    - mg/g
     transform: unit_measurement_fixed
 Origination or Plug/Abandon:
   category: well
@@ -569,6 +600,7 @@ Packing Depth End (ft BGS):
   transformations:
   - parameters:
     - enigma:packing_depth_end
+    - ft
     transform: unit_measurement_fixed
 Packing Depth Start (ft BGS):
   category: well
@@ -579,6 +611,7 @@ Packing Depth Start (ft BGS):
   transformations:
   - parameters:
     - enigma:packing_depth_start
+    - ft
     transform: unit_measurement_fixed
 Packing Type:
   category: well
@@ -599,6 +632,7 @@ Pore Water Extraction (microliters):
   transformations:
   - parameters:
     - enigma:pore_water_extraction
+    - ml
     transform: unit_measurement_fixed
 Recovery Factor:
   category: measurement
@@ -659,6 +693,7 @@ Screen Bottom Elevation (ft AMSL):
   transformations:
   - parameters:
     - enigma:screen_bottom_elevation
+    - ft
     transform: unit_measurement_fixed
 Screen End Depth (ft BGS):
   category: well
@@ -669,6 +704,7 @@ Screen End Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:screen_end_depth
+    - ft
     transform: unit_measurement_fixed
 Screen Start Depth (ft BGS):
   category: well
@@ -679,6 +715,7 @@ Screen Start Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:screen_start_depth
+    - ft
     transform: unit_measurement_fixed
 Screen Top Elevation (ft AMSL):
   category: well
@@ -689,6 +726,7 @@ Screen Top Elevation (ft AMSL):
   transformations:
   - parameters:
     - enigma:screen_top_elevation
+    - ft
     transform: unit_measurement_fixed
 Screen Type:
   category: well
@@ -719,6 +757,7 @@ Screened Interval (ft):
   transformations:
   - parameters:
     - enigma:screened_interval
+    - ft
     transform: unit_measurement_fixed
 Temperature (Celsius):
   category: measurement
@@ -729,6 +768,7 @@ Temperature (Celsius):
   transformations:
   - parameters:
     - temperature
+    - celsius
     transform: unit_measurement_fixed
 Time Zone:
   category: collection
@@ -749,6 +789,7 @@ Top of Casing Elevation (ft AMSL):
   transformations:
   - parameters:
     - enigma:top_of_casing_elevation
+    - ft
     transform: unit_measurement_fixed
 Top of Casing Stickup (ft):
   category: well
@@ -759,6 +800,7 @@ Top of Casing Stickup (ft):
   transformations:
   - parameters:
     - enigma:top_of_casing_stickup
+    - ft
     transform: unit_measurement_fixed
 TopofFreshBedrock (ft BGS):
   category: well
@@ -769,6 +811,7 @@ TopofFreshBedrock (ft BGS):
   transformations:
   - parameters:
     - enigma:top_of_fresh_bedrock
+    - ft
     transform: unit_measurement_fixed
 TopofWeatheredBedrock (ft BGS):
   category: well
@@ -779,6 +822,7 @@ TopofWeatheredBedrock (ft BGS):
   transformations:
   - parameters:
     - enigma:top_of_weathered_bedrock
+    - ft
     transform: unit_measurement_fixed
 Total Carbon (mg/g dry weight):
   category: measurement
@@ -789,6 +833,7 @@ Total Carbon (mg/g dry weight):
   transformations:
   - parameters:
     - enigma:total_carbon
+    - mg/g
     transform: unit_measurement_fixed
 Total Nitrogen (mg/g dry weight):
   category: measurement
@@ -799,6 +844,7 @@ Total Nitrogen (mg/g dry weight):
   transformations:
   - parameters:
     - enigma:total_nitrogen
+    - mg/g
     transform: unit_measurement_fixed
 Treatment:
   category: measurement
@@ -829,6 +875,7 @@ Upper Seal End Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:upper_seal_end_depth
+    - ft
     transform: unit_measurement_fixed
 Upper Seal Start Depth (ft BGS):
   category: well
@@ -839,6 +886,7 @@ Upper Seal Start Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:upper_seal_start_depth
+    - ft
     transform: unit_measurement_fixed
 Upper Seal Type:
   category: well
@@ -859,6 +907,7 @@ Well Casing Depth (ft BGS):
   transformations:
   - parameters:
     - enigma:well_casing_depth
+    - ft
     transform: unit_measurement_fixed
 Well Casing ID (in):
   category: well
@@ -869,6 +918,7 @@ Well Casing ID (in):
   transformations:
   - parameters:
     - enigma:well_casing_id
+    - in
     transform: unit_measurement_fixed
 Well Casing OD (in):
   category: well
@@ -879,6 +929,7 @@ Well Casing OD (in):
   transformations:
   - parameters:
     - enigma:well_casing_od
+    - in
     transform: unit_measurement_fixed
 Well Casing Type:
   category: well
