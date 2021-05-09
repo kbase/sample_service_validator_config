@@ -30,24 +30,24 @@ def find_ontology_validator(data_field, key, ontology_validators):
                 })
     return ontology_validators
 
-def expand_macros(val, macros):
+def expand_validators(val, validators):
     if 'validators' not in val:
         val['validators'] = []
-    if 'units' in macros:
+    if 'units' in validators:
         v = {
             'callable_builder': 'units',
             'module': _BUILTIN,
             }
         v['parameters'] = {
                 'key': 'units',
-                'units': macros['units']
+                'units': validators['units']
                 }
         val['validators'].append(v)
-    if 'type' not in macros:
-        print("type required for macro")
-        print(macros)
+    if 'type' not in validators:
+        print("type required for validator")
+        print(validators)
         raise ValueError("Missing type")
-    typ = macros['type']
+    typ = validators['type']
     v = {
         'callable_builder': typ,
         'module': _BUILTIN,
@@ -55,25 +55,18 @@ def expand_macros(val, macros):
     if typ=='number':
         v['parameters'] = {'keys': 'value'}
         for p in ['gte', 'lte', 'gt', 'lt', 'required']:
-            if p in macros:
-                v['parameters'][p] = macros[p]
-    elif typ=='positive_number':
-        v['callable_builder'] = 'number'
-        v['parameters'] = {'keys': 'value'}
-        v['parameters']['gte'] = 0.0
-        for p in ['required']:
-            if p in macros:
-                v['parameters'][p] = macros[p]
+            if p in validators:
+                v['parameters'][p] = validators[p]
     elif typ=='enum':
-        v['parameters'] = {'allowed-values': macros['allowed-values']}
+        v['parameters'] = {'allowed-values': validators['allowed-values']}
     elif typ=='ontology':
         v['callable_builder'] = 'ontology_has_ancestor'
         v['parameters'] = {
-                'ontology': macros['ontology'],
-                'ancestor_term': macros['ancestor_term']
+                'ontology': validators['ontology'],
+                'ancestor_term': validators['ancestor_term']
                 }
     elif typ=='string':
-        v['parameters'] = {'max-len': macros['max-len']}
+        v['parameters'] = {'max-len': validators['max-len']}
     else:
         print("type not recongnized %s" % (typ))
         raise KeyError("type %s not recognized" % (typ))
@@ -92,9 +85,9 @@ def merge_to_existing_validators(val_type, val_data, key, val, data):
                 else:
                     val_data[key][data_field] = data[val_type][key][data_field]
     else:
-        if 'macros' in val:
-            macros = val.pop('macros')
-            expand_macros(val, macros)
+        if 'validators' in val:
+            validators = val.pop('validators')
+            expand_validators(val, validators)
         if 'validators' not in val:
             val['validators'] = deepcopy(_NOOP)
 

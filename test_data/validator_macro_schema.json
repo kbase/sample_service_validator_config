@@ -32,14 +32,13 @@
               ]
             }
           },
-          "macros": {
+          "validators": {
             "type": "object",
             "properties": {
               "type": {
                 "type": "string",
                 "enum": [
                   "number",
-                  "positive_number",
                   "string",
                   "enum",
                   "ontology"

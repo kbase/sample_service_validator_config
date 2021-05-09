@@ -6,24 +6,18 @@ validators:
       description: Aquifer
       display_name: Aquifer
       example: B; wB; U/wB; wB
-    static_mappings:
-      ENIGMA: Aquifer
 
   area_name:
     key_metadata:
       description: Area Name
       display_name: Area Name
       example: Area 2; Background A; Area 4
-    static_mappings:
-      ENIGMA: Area Name
 
   boring_refusal:
     key_metadata:
       description: Boring Refusal (Y/N)
       display_name: Boring Refusal
       example: Y; N
-    static_mappings:
-      ENIGMA: Boring Refusal
 
   #NOTE: We can map this and date into core
   collection_time:
@@ -31,24 +25,18 @@ validators:
       description: Collection Time
       display_name: Collection time
       example: 9:39:00 AM
-    static_mappings:
-      ENIGMA: Collection time
 
   condition:
     key_metadata:
       description: Condition
       display_name: Condition
       example: Open
-    static_mappings:
-      ENIGMA: Condition
 
   dapi_cell_count:
     key_metadata:
       description: DAPI cell count in cells per gram
       display_name: DAPI Cell Count
       example: 9.69E+06
-    static_mappings:
-      ENIGMA: DAPI Cell Count
 
   # enforce as some datetime
   #NOTE: Merge into core collection_time
@@ -57,8 +45,6 @@ validators:
       description: Date (YYYY-MM-DD)
       display_name: Date
       example: "2019-06-18"
-    static_mappings:
-      ENIGMA: Date
 
   #NOTE: Moved to core description
 
@@ -67,8 +53,6 @@ validators:
       description: Drive Casing Type
       display_name: Drive Casing Type
       example: GP DT-32
-    static_mappings:
-      ENIGMA: Drive Casing Type
 
   # NOTE: Move environment_package to core env_packcage
 
@@ -78,32 +62,24 @@ validators:
       description: Experiment Name
       display_name: Experiment Name
       example: 100 Well
-    static_mappings:
-      ENIGMA: Experiment Name
 
   fraction:
     key_metadata:
       description: Fraction
       display_name: Fraction
       example: Spin Down; Total Cells; .2um
-    static_mappings:
-      ENIGMA: Fraction
 
   fractures_cavities_waterbreaks:
     key_metadata:
       description: Fractures/Cavities/WaterBreaks
       display_name: Fractures/Cavities/WaterBreaks
       example: WB @ 14, 41
-    static_mappings:
-      ENIGMA: Fractures/Cavities/WaterBreaks
 
   functional_area:
     key_metadata:
       description: Functional Area
       display_name: Functional Area
       example: S-3 Site; New Hope Pond
-    static_mappings:
-      ENIGMA: Functional Area
 
   # ENVO "ENVO_00000191:solid astronomial body part" / geographical ontology
   geological_zone:
@@ -111,16 +87,12 @@ validators:
       description: Geological Zone
       display_name: Geological Zone
       example: Saturated; Vadose
-    static_mappings:
-      ENIGMA: Geological Zone
 
   installation_method:
     key_metadata:
       description: Method of installation
       display_name: Installation Method
       example: CORE; AUGER; MANUAL
-    static_mappings:
-      ENGIMA: Installation Method
 
   #NOTE: Make a number
   leucine_activity:
@@ -128,56 +100,42 @@ validators:
       description: units in ngC/day cell
       display_name: Leucine Activity (ngC/day cell)
       example: 0.000576856
-    static_mappings:
-      ENIGMA: Leucine Activity (ngC/day cell)
 
   lower_seal_type:
     key_metadata:
       description: Lower Seal Type (BENT; BENT-PEL)
       display_name: Lower Seal Type
       example: BENT-PEL; BENT
-    static_mappings:
-      ENIGMA: Lower Seal Type
 
   maturation_time:
     key_metadata:
       description: Maturation Time
       display_name: Maturation Time
       example: 24hr; 72hr
-    static_mappings:
-      ENIGMA: Maturation Time
 
   method:
     key_metadata:
       description: Method
       display_name: Method
       example: BONCAT; PMA; No PMA
-    static_mappings:
-      ENIGMA: Method
 
   open:
     key_metadata:
       description: Open (yes/no)
       display_name: Open
       example: yes; no
-    static_mappings:
-      ENIGMA: Open
 
   open_casing_type:
     key_metadata:
       description: Open Casing Type (SF25; STL)
       display_name: Open Casing Type
       example: SF25; STL
-    static_mappings:
-      ENIGMA: Open Casing Type
 
   origination_or_plug_abandon:
     key_metadata:
       description: Origination or Plug/Abandon (Date)
       display_name: Origination or Plug/Abandon
       example: 02/06/92
-    static_mappings:
-      ENIGMA: Origination or Plug/Abandon
 
   # Map other_name to core other_names
 
@@ -187,8 +145,6 @@ validators:
       description: Packing Type (e.g. SAND; SAND-2)
       display_name: Packing Type
       example: SAND; SAND-2
-    static_mappings:
-      ENIGMA: Packing Type
 
   # TODO: Switch to a number
   recovery_factor:
@@ -196,8 +152,6 @@ validators:
       description: Recovery Factor
       display_name: Recovery Factor
       example: 1.57
-    static_mappings:
-      ENIGMA: Recovery Factor
 
   # TODO: Switch to a number
   redox_potential:
@@ -205,32 +159,24 @@ validators:
       description: Redox Potential
       display_name: Redox Potential
       example: 421.5
-    static_mappings:
-      ENIGMA: Redox Potential
 
   replicate:
     key_metadata:
       description: Replicate
       display_name: Replicate
       example: A1; A2; B1; C
-    static_mappings:
-      ENIGMA: Replicate
 
   rock_formation:
     key_metadata:
       description: Rock Formation
       display_name: Rock Formation
       example: Conasauga/Maynardville Limestone; Conasauga/Nolichucky Shale
-    static_mappings:
-      ENIGMA: Rock Formation
 
   screen_type:
     key_metadata:
       description: Screen Type
       display_name: Screen Type
       example: PP/.02
-    static_mappings:
-      ENIGMA: Screen Type
 
   # Change to Boolean
   screened:
@@ -238,8 +184,6 @@ validators:
       description: Screened (yes/no)
       display_name: Screened
       example: yes; no
-    static_mappings:
-      ENIGMA: Screened
 
   #NOTE: Merge into core collection_time
   #Could use a CV
@@ -248,8 +192,6 @@ validators:
       description: Time Zone (relative to UTC)
       display_name: Time Zone
       example: UTC-4
-    static_mappings:
-      ENIGMA: Time Zone
 
   #NOTE: Make a CV
   treatment:
@@ -257,45 +199,33 @@ validators:
       description: Treatment
       display_name: Treatment
       example: HPG; No HPG
-    static_mappings:
-      ENIGMA: Treatment
 
   upper_seal_type:
     key_metadata:
       description: Upper Seal Type
       display_name: Upper Seal Type
       example: BENT; BENT-PEL
-    static_mappings:
-      ENIGMA: Upper Seal Type
 
   well_casing_type:
     key_metadata:
       description: Well Casing Type
       display_name: Well Casing Type
       example:  SP; MP 
-    static_mappings:
-      ENIGMA: Well Casing Type
 
   well_name:
     key_metadata:
       description: Well Name (ID)
       display_name: Well Name
       example: GW085; GW098
-    static_mappings:
-      ENIGMA: Well Name
  
   well_status:
     key_metadata:
       description: Status of Well
       display_name: Well Status
       example: Active; Inactive
-    static_mappings:
-      ENIGMA: Well Status
 
   well_type:
     key_metadata:
       description: Type of Welll (SP; MP)
       display_name: Type of Well
       example: SP; MP
-    static_mappings:
-      ENIGMA: Type of Well

@@ -4,9 +4,7 @@ validators:
       description: Biome from ENVO (child of ENVO:00000428)
       display_name: Biome
       example: FENVO:01001831
-    static_mappings:
-      ENIGMA: Biome
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:00000428
@@ -17,8 +15,6 @@ validators:
       description: City or Township where the sample was collected
       display_name: City/Township
       example: Palisades
-    static_mappings:
-      SESAR: City/Township
 
   # TODO: Add validation
   collection_time:
@@ -34,8 +30,6 @@ validators:
       description: Continent
       display_name: Continent
       example: North America
-    static_mappings:
-      ENIGMA: Continent
 
   # NOTE: Map to core location
   country:
@@ -43,40 +37,30 @@ validators:
       description: Country
       display_name: Country
       example: United States
-    static_mappings:
-      ENIGMA: Country
 
   county:
     key_metadata:
       description: County
       display_name: County
       example: United States
-    static_mappings:
-      ENIGMA: County
 
   locality:
     key_metadata:
       description: Name of the specific place where your sample was collected. This could be the name of a mine, a volcanic field, a vent field, or similar
       display_name: Locality
       example: Franklin Mine; Craters of the Moon National Park
-    static_mappings:
-      SESAR: Locality description
 
   locality_description:
     key_metadata:
       description: Additional information about the specific place where your sample was collected
       display_name: Locality description
       example: on private land
-    static_mappings:
-      SESAR: Locality description
 
   location_description:
     key_metadata:
       description: Free text description of the location
       display_name: Location description
       example: flank of volcanic cone
-    static_mappings:
-      SESAR: Location description
 
 
   #NOTE: ENIGMA convert from cm -> m
@@ -85,10 +69,7 @@ validators:
       description: depth in meters below ground surface (m BGS)
       display_name: Depth
       example: 5
-    static_mappings:
-      SESAR: Depth
-      ENIGMA: Depth
-    macros:
+    validators:
       units: m
       type: number
 
@@ -97,25 +78,18 @@ validators:
       description: Free text to describe features of a sample such as its components, texture, color, shape, etc.
       display_name: Description
       example: dredge with 50 pieces of basalt and mud
-    static_mappings:
-      SESAR: Description
-      ENIGMA: Description
 
   elevation:
     key_metadata:
       description: Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.
       display_name: Elevation
       example: 678.5; -4536
-    static_mappings:
-      SESAR: Elevation
 
   elevation_end:
     key_metadata:
       description: End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.
       display_name: Elevation End
       example: 673.5; -4520
-    static_mappings:
-      SESAR: Elevation end
 
   # NOTE: MiXS?
   # TODO: Make a CV
@@ -124,8 +98,6 @@ validators:
       description: Environmental Package (MIxS vocabulary)
       display_name: Environmental Package
       example: Water; Soil 
-    static_mappings:
-      ENIGMA: Env_package
 
   # ENVO_01000813
   feature:
@@ -133,9 +105,7 @@ validators:
       description: Feature from ENVO (child of ENVO:01000813)
       display_name: Feature
       example: ENVO:00000314
-    static_mappings:
-      ENIGMA: Feature
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:01000813
@@ -145,9 +115,7 @@ validators:
       description: Material from ENVO (child of ENVO:00010483)
       display_name: Material
       example: ENVO:01001614
-    static_mappings:
-      ENIGMA: Material
-    macros:
+    validators:
       type: ontology
       ontology: envo_ontology
       ancestor_term: ENVO:00010483
@@ -157,10 +125,7 @@ validators:
       description: Latitude of the location where the sample was collected in WGS 84 coordinate system. ('Start latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
       display_name: Latitude
       example: 5.89634
-    static_mappings:
-      SESAR: Latitude
-      units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -90.0
@@ -171,10 +136,7 @@ validators:
       description: End latitude of the location where the sample was collected in WGS 84 coordinate system. ('End latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.
       display_name: Latitude End
       example: 5.89634
-    static_mappings:
-      SESAR: Latitude (end)
-      units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -90.0
@@ -185,10 +147,7 @@ validators:
       description: Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.
       display_name: Longitude
       example: -103.785
-    static_mappings:
-      SESAR: Longitude
-      units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -180.0
@@ -199,10 +158,7 @@ validators:
       description: End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.
       display_name: Longitude End
       example: -103.285
-    static_mappings:
-      SESAR: Longitude (end)
-      units: str:degrees
-    macros:
+    validators:
       units: degrees
       type: number
       gte: -180.0
@@ -220,9 +176,7 @@ validators:
       description: name validator
       display_name: Sample Name
       example: SAM1234; IEMEG0001
-    static_mappings:
-      SESAR: Sample Name
-    macros:
+    validators:
       type: string
       max-len: 240
 
@@ -231,18 +185,13 @@ validators:
       description: Other name(s) used for the sample.
       display_name: Other name(s)
       example: TRPOW; T-PROW
-    static_mappings:
-      SESAR: Other name(s)
-      ENIGMA:
 
   ph:
     key_metadata:
       description: pH of sample
       display_name: pH
       example: 7.0
-    static_mappings:
-      SESAR: pH
-    macros:
+    validators:
       type: number
       gte: -10.0
       lte: 20.0
@@ -253,11 +202,7 @@ validators:
       description: Size in meters cubed
       display_name: Size
       example: 0.025
-    static_mappings:
-      SESAR: Size
-      ENIGMA: Size
-      units: size_unit
-    macros:
+    validators:
       units: m^3
       type: number
       required: true
@@ -268,8 +213,6 @@ validators:
       description: State or Province
       display_name: State/Province
       example: Alaska
-    static_mappings:
-      SESAR: State/Province
 
   study_doi:
     key_metadata:
@@ -289,9 +232,7 @@ validators:
       description: Temperature (Celsius)
       display_name: Temperature
       example: 22.1
-    static_mappings:
-      SESAR: Temperature
-    macros:
+    validators:
       units: celsius
       type: number
   
@@ -300,7 +241,7 @@ validators:
       description: Template Format
       display_name: Template
       example: SESAR; ENIGMA; KBASE
-    macros:
+    validators:
       type: enum
       allowed-values:
       - SESAR
