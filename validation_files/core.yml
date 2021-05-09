@@ -247,3 +247,21 @@ validators:
       - SESAR
       - ENIGMA
       - KBASE
+
+  comment:
+    key_metadata:
+      description: Free form Comment
+      display_name: Comment
+      example: TODO
+
+  purpose:
+    key_metadata:
+      description: Purpose of the Sample
+      display_name: Purpose
+      example: Biogeochemistry, geochemistry and microbiology
+
+  url:
+    key_metadata:
+      description: URL for Sample
+      display_name: URL
+      example: http://igsn.org/IEBWE0001
