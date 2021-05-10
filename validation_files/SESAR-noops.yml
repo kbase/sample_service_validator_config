@@ -159,7 +159,7 @@ validators:
     key_metadata:
       description: Description of platform for the cruise.
       display_name: Platform description
-      example: 
+      example: TODO
     static_mappings:
       SESAR: Platform description
 
@@ -252,7 +252,7 @@ validators:
     key_metadata:
       description: Classification Comment
       display_name: Classification Comment
-      example:
+      example: TODO
 
   is_archived:
     key_metadata:

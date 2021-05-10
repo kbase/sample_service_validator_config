@@ -2,6 +2,7 @@ key	type	description	display_name	function 1	sub key 1	params 1	function 2	sub k
 biome	validators	Biome from ENVO (child of ENVO:00000428)	Biome	ontology_has_ancestor		ancestor_term ENVO:00000428;ontology envo_ontology;									
 city_township	validators	City or Township where the sample was collected	City/Township	noop											
 collection_time	validators	Date amd time when the sample was collected in ISO 8601 format	Collection date	noop											
+comment	validators	Free form Comment	Comment	noop											
 continent	validators	Continent	Continent	noop											
 country	validators	Country	Country	noop											
 county	validators	County	County	noop											
@@ -117,6 +118,7 @@ ncbi:taxonomy_name	validators	NCBI Taxonomy Name	NCBI taxonomy name	noop
 nmdc:omics_type	validators	NMDC OMICS Type	NMDC OMICS type	noop											
 other_names	validators	Other name(s) used for the sample.	Other name(s)	noop											
 ph	validators	pH of sample	pH	units	units	units pH;	number	value	gte -10.0;lte 20.0;						
+purpose	validators	Purpose of the Sample	Purpose	noop											
 sample_template	validators	Template Format	Template	enum		allowed-values ['SESAR', 'ENIGMA', 'KBASE'];									
 sesar:age_max	validators	Maximum geological age in years	Age (max)	units	units	units years;	number	value	gte 0.0;						
 sesar:age_min	validators	minimum geological age in years	Age (min)	units	units	units years;	number	value	gte 0.0;						
@@ -125,6 +127,7 @@ sesar:archive_contact_original	validators	Address and/or email of the person who
 sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.	Current archive	noop											
 sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.	Original archive	noop											
 sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.	Classification	noop											
+sesar:classification_comment	validators	Classification Comment	Classification Comment	noop											
 sesar:collection_date	validators	Date when the sample was collected.	Collection date	noop											
 sesar:collection_date_end	validators	Date when the sample collection was finished (if a date range is provided).	Collection date (end)	noop											
 sesar:collection_date_precision	validators	Precision to display the collection date and time.	Collection date precision	noop											
@@ -145,6 +148,7 @@ sesar:field_program_cruise	validators	Name or identifier of the field program (c
 sesar:geological_age	validators	Age of a sample as described by the stratigraphic era, period, state, etc.	Geological Age	noop											
 sesar:geological_unit	validators	A body of rock established as a distinct entity in the classification of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow	Geological Unit	noop											
 sesar:igsn	validators	IGSN assigned by SESAR	IGSN	noop											
+sesar:is_archived	validators	Is Archived	Is Archived	noop											
 sesar:launch_id	validators	Further identifying information about the launch	Launch ID	noop											
 sesar:launch_platform_name	validators	The name of the launch used to collect the sample.	Launch platform name	noop											
 sesar:launch_type	validators	The type of launch used to collect the sample.	Launch type	noop											
@@ -154,11 +158,15 @@ sesar:northing	validators	Northing in meters	Northing	units	units	units m;	numbe
 sesar:parent_igsn	validators	IGSN of Parent Sample	Parent IGSN	noop											
 sesar:physiographic_feature_name	validators	Name of the physiographic feature that you entered	Name of physiographic feature	noop											
 sesar:physiographic_feature_primary	validators	Type of physical feature that your sample was collected from (see suggested list)	Primary physiographic feature	noop											
+sesar:platform_description	validators	Description of platform for the cruise.	Platform description	noop											
 sesar:platform_name	validators	Name of platform for the cruise.	Platform name	noop											
 sesar:platform_type	validators	Type of platform for the cruise.	Platform type	noop											
+sesar:registrant_current	validators	Registrant of the sample in SESAR	Current Registrant Name	noop											
+sesar:registrant_org	validators	Registrant organization of the sample in SESAR	Organization Registrant Name	noop											
 sesar:related_identifiers	validators	IGSN of Related Samples	Related Identifiers	noop											
 sesar:relation_type	validators	Relation Type	Relation Type	noop											
 sesar:release_date	validators	Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).	Release date	noop											
+sesar:sample_type	validators	Sample Type	Sample Type	noop											
 sesar:size	validators	Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge	Size	noop											
 sesar:size_unit	validators	Unit for the numerical value provided for 'size'.	Size unit	noop											
 sesar:state_province	validators	State or Province where the sample was collected	State/Province	noop											
@@ -170,3 +178,4 @@ state_province	validators	State or Province	State/Province	noop
 study_doi	validators	Study DOI	Study DOI	noop											
 study_principal_investigator	validators	Study Principal Investigator	Study Principal Investigator	noop											
 temperature	validators	Temperature (Celsius)	Temperature	units	units	units celsius;	number	value							
+url	validators	URL for Sample	URL	noop											
