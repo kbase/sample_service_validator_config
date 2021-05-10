@@ -5,6 +5,11 @@ TEMP_FILE_2=temp_file2.yml
 SAMPLE_SERVICE_SCHEMA = test_data/validator_schema.json
 MACRO_SCHEMA = test_data/validator_macro_schema.json
 
+all: update templates
+
+templates:
+	python3 ./gen_template_yaml.py sesar_template.yml sesar.tsv
+	python3 ./gen_template_yaml.py enigma_template.yml enigma.tsv
 test:
 	python3 -c "import yaml, sys; yaml.safe_load(sys.stdin)" < sample_uploader_mappings.yml
 	python3 scripts/validate_schemas.py $(SAMPLE_SERVICE_SCHEMA) $(VALIDATION_FILE)
