@@ -42,7 +42,7 @@ validators:
     key_metadata:
       description: County
       display_name: County
-      example: United States
+      example: Alameda
 
   locality:
     key_metadata:
