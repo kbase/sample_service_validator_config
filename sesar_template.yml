@@ -932,10 +932,5 @@ Columns:
       - sesar:zone
       transform: map
 ID: sesar:igsn
-Merge:
-  - parameters:
-    - Collection date
-    - Collection time
-    transform: merge_time
 Name: name
 Template: sesar
