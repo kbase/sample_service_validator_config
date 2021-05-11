@@ -1,181 +1,181 @@
 key	type	description	display_name	function 1	sub key 1	params 1	function 2	sub key 2	params 2	function 3	sub key 3	params 3	function 4	sub key 4	params 4
-biome	validators	Biome from ENVO (child of ENVO:00000428)	Biome	ontology_has_ancestor		ancestor_term ENVO:00000428;ontology envo_ontology;									
-city_township	validators	City or Township where the sample was collected	City/Township	noop											
-collection_time	validators	Date amd time when the sample was collected in ISO 8601 format	Collection date	noop											
-comment	validators	Free form Comment	Comment	noop											
-continent	validators	Continent	Continent	noop											
-country	validators	Country	Country	noop											
-county	validators	County	County	noop											
-depth_bgs	validators	depth in meters below ground surface (m BGS)	Depth	units	units	units m;	number	value							
-description	validators	Free text to describe features of a sample such as its components, texture, color, shape, etc.	Description	noop											
-elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.	Elevation	noop											
-elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.	Elevation End	noop											
-enigma:aodc	validators	units in cells per gram	AODC	units	units	units cells/g;	number	value	gte 0.0;						
-enigma:aquifer	validators	Aquifer	Aquifer	noop											
-enigma:area_name	validators	Area Name	Area Name	noop											
-enigma:average_water_level	validators	units in ft above mean sea level (ft AMSL)	Average Water Level	units	units	units ft;	number	value							
-enigma:biomass_carbon	validators	units in milligrams per gram	Biomass Carbon	units	units	units mg/g;	number	value	gte 0.0;						
-enigma:boncat_activity	validators	units in cells per gram	BONCAT Activity	units	units	units cells/g;	number	value	gte 0.0;						
-enigma:boring	validators	boring depth in ft below groud surface (ft BGS)	Boring depth	units	units	units ft;	number	value	gte 0.0;						
-enigma:boring_diameter	validators	boring diameter in inches	Boring Diameter	units	units	units in;	number	value	gte 0.0;						
-enigma:boring_refusal	validators	Boring Refusal (Y/N)	Boring Refusal	noop											
-enigma:collection_time	validators	Collection Time	Collection time	noop											
-enigma:condition	validators	Condition	Condition	noop											
-enigma:conductivity	validators	conductivity in millisiemens per centimeter	Conductivity	units	units	units mS/cm;	number	value							
-enigma:dapi_cell_count	validators	DAPI cell count in cells per gram	DAPI Cell Count	noop											
-enigma:date	validators	Date (YYYY-MM-DD)	Date	noop											
-enigma:dna_picogreen_total	validators	units in nanograms	DNA Picogreen Total	units	units	units ng;	number	value							
-enigma:drive_casing_end_depth	validators	drive casing end depth in ft below ground surface (ft BGS)	Drive Casing End Depth	units	units	units ft;	number	value							
-enigma:drive_casing_id	validators	drive casing inner diameter in inches	Drive Casing ID	units	units	units in;	number	value	gte 0.0;						
-enigma:drive_casing_od	validators	drive casing outer diameter in inches	Drive Casing OD	units	units	units in;	number	value	gte 0.0;						
-enigma:drive_casing_start_depth	validators	units in ft below ground surface (ft BGS)	Drive Casing Start Depth	units	units	units ft;	number	value							
-enigma:drive_casing_type	validators	Drive Casing Type	Drive Casing Type	noop											
-enigma:experiment_name	validators	Experiment Name	Experiment Name	noop											
-enigma:filter	validators	Filter pore size in microns	Filter	units	units	units microns;	number	value	gte 0.0;						
-enigma:fraction	validators	Fraction	Fraction	noop											
-enigma:fractures_cavities_waterbreaks	validators	Fractures/Cavities/WaterBreaks	Fractures/Cavities/WaterBreaks	noop											
-enigma:functional_area	validators	Functional Area	Functional Area	noop											
-enigma:geological_zone	validators	Geological Zone	Geological Zone	noop											
-enigma:ground_elevation	validators	ground elevation in ft above mean sea level (ft AMSL)	Ground Elevation	units	units	units ft;	number	value							
-enigma:installation_method	validators	Method of installation	Installation Method	noop											
-enigma:leucine_activity	validators	units in ngC/day cell	Leucine Activity (ngC/day cell)	noop											
-enigma:lower_seal_end_depth	validators	Lower seal end depth in ft below ground surface (ft BGS)	Lower Seal End Depth	units	units	units ft;	number	value							
-enigma:lower_seal_start_depth	validators	Lower seal start depth in ft below ground surface (ft BGS)	Lower Seal Start Depth	units	units	units ft;	number	value							
-enigma:lower_seal_type	validators	Lower Seal Type (BENT; BENT-PEL)	Lower Seal Type	noop											
-enigma:maturation_time	validators	Maturation Time	Maturation Time	noop											
-enigma:max_water_level	validators	Maximum water level in ft above mean sea level (ft AMSL)	Max Water Level	units	units	units ft;	number	value							
-enigma:method	validators	Method	Method	noop											
-enigma:min_water_level	validators	Minimum water level in ft above mean sea level (ft AMSL)	Min Water Level	units	units	units ft;	number	value							
-enigma:moisture	validators	percent moisture	Moisture	units	units	units percent;	number	value	gte 0.0;lte 100.0;						
-enigma:open	validators	Open (yes/no)	Open	noop											
-enigma:open_casing_depth	validators	Open casing depth in ft below ground surface (ft BGS)	Open Casing Depth	units	units	units ft;	number	value							
-enigma:open_casing_id	validators	open casing inner diameter in inches (in)	Open Casing ID	units	units	units in;	number	value	gte 0.0;						
-enigma:open_casing_od	validators	open casing outer diameter in inches (in)	Open Casing OD	units	units	units in;	number	value	gte 0.0;						
-enigma:open_casing_type	validators	Open Casing Type (SF25; STL)	Open Casing Type	noop											
-enigma:open_hole_depth	validators	Open hole depth in ft below ground surface (ft BGS)	Open Hole Depth	units	units	units ft;	number	value							
-enigma:open_hole_diameter	validators	Open hole diameter in inches	Open Hole Diameter	units	units	units in;	number	value	gte 0.0;						
-enigma:open_interval_diameter	validators	Open interval diameter in inches	Open Interval Diameter	units	units	units in;	number	value	gte 0.0;						
-enigma:open_interval_end_depth	validators	Open interval end depth in ft below ground surface (ft BGS)	Open Interval End Depth	units	units	units ft;	number	value							
-enigma:open_interval_start_depth	validators	Open interval start depth in ft below ground surface (ft BGS)	Open Interval Start Depth	units	units	units ft;	number	value							
-enigma:organic_carbon	validators	Organic carbon in milligrams per gram dry weight	Organic Carbon	units	units	units mg/g;	number	value	gte 0.0;						
-enigma:origination_or_plug_abandon	validators	Origination or Plug/Abandon (Date)	Origination or Plug/Abandon	noop											
-enigma:packing_depth_end	validators	Packind depth end in ft below ground surface (ft BGS)	Packing Depth End	units	units	units ft;	number	value							
-enigma:packing_depth_start	validators	Packind depth start in ft below ground surface (ft BGS)	Packing Depth Start	units	units	units ft;	number	value							
-enigma:packing_type	validators	Packing Type (e.g. SAND; SAND-2)	Packing Type	noop											
-enigma:pore_water_extraction	validators	Pore water extraction in microliters	Pore Water Extraction	units	units	units microliters;	number	value							
-enigma:recovery_factor	validators	Recovery Factor	Recovery Factor	noop											
-enigma:redox_potential	validators	Redox Potential	Redox Potential	noop											
-enigma:replicate	validators	Replicate	Replicate	noop											
-enigma:rock_formation	validators	Rock Formation	Rock Formation	noop											
-enigma:screen_bottom_elevation	validators	Screen bottom elevation in ft above mean sea level (ft AMSL)	Screen Bottom Elevation	units	units	units ft;	number	value							
-enigma:screen_end_depth	validators	Screen end depth in ft below ground surface (ft BGS)	Screen End Depth	units	units	units ft;	number	value							
-enigma:screen_start_depth	validators	Screen start depth in ft below ground surface (ft BGS)	Screen Start Depth	units	units	units ft;	number	value							
-enigma:screen_top_elevation	validators	Screen top elevation in ft above mean sea level (ft AMSL)	Screen Top Elevation	units	units	units ft;	number	value							
-enigma:screen_type	validators	Screen Type	Screen Type	noop											
-enigma:screened	validators	Screened (yes/no)	Screened	noop											
-enigma:screened_interval	validators	Screened interval in ft	Screened Interval	units	units	units ft;	number	value							
-enigma:time_zone	validators	Time Zone (relative to UTC)	Time Zone	noop											
-enigma:top_of_casing_elevation	validators	Top of casing elevation in ft above mean sea level (ft AMSL)	Top of Casing Elevation	units	units	units ft;	number	value							
-enigma:top_of_casing_stickup	validators	Top of casing stickup in ft	Top of Casing Stickup	units	units	units ft;	number	value							
-enigma:top_of_fresh_bedrock	validators	Top of fresh bedrock in ft below ground surface (ft BGS)	Top of Fresh Bedrock	units	units	units ft;	number	value							
-enigma:top_of_weathered_bedrock	validators	Top of weathered bedrock in ft below ground surface (ft BGS)	Top of Weathered Bedrock	units	units	units ft;	number	value							
-enigma:total_carbon	validators	Total carbon in milligrams per gram dry weight	Total Carbon	units	units	units mg/g;	number	value	gte 0.0;						
-enigma:total_nitrogen	validators	Total nitrogen in milligrams per gram dry weight	Total Nitrogen	units	units	units mg/g;	number	value	gte 0.0;						
-enigma:treatment	validators	Treatment	Treatment	noop											
-enigma:upper_seal_end_depth	validators	Upper seal end depth in ft below ground surface (ft BGS)	Upper Seal End Depth	units	units	units ft;	number	value							
-enigma:upper_seal_start_depth	validators	Upper seal start depth in ft below ground surface (ft BGS)	Upper Seal Start Depth	units	units	units ft;	number	value							
-enigma:upper_seal_type	validators	Upper Seal Type	Upper Seal Type	noop											
-enigma:well_casing_depth	validators	Well casing depth in ft below ground surface (ft BGS)	Well Casing Depth	units	units	units ft;	number	value							
-enigma:well_casing_id	validators	Well casing inner diameter. units in inches	Well Casing ID	units	units	units in;	number	value	gte 0.0;						
-enigma:well_casing_od	validators	Well casing outer diameter. units in inches	Well Casing OD	units	units	units in;	number	value	gte 0.0;						
-enigma:well_casing_type	validators	Well Casing Type	Well Casing Type	noop											
-enigma:well_name	validators	Well Name (ID)	Well Name	noop											
-enigma:well_status	validators	Status of Well	Well Status	noop											
-enigma:well_type	validators	Type of Welll (SP; MP)	Type of Well	noop											
-env_package	validators	Environmental Package (MIxS vocabulary)	Environmental Package	noop											
-feature	validators	Feature from ENVO (child of ENVO:01000813)	Feature	ontology_has_ancestor		ancestor_term ENVO:01000813;ontology envo_ontology;									
-gold:biosample_id	validators	GOLD biosample identifier	Ecosystem Type	noop											
-gold:community	validators	Community Sampled	Community	noop											
-gold:ecosystem	validators	Ecosystem (GOLD)	Ecosystem (GOLD)	noop											
-gold:ecosystem_category	validators	Ecosystem Category (GOLD)	Ecosystem Category	noop											
-gold:ecosystem_path_id	validators	Ecosystem Path ID (GOLD)	Ecosystem Path ID	noop											
-gold:ecosystem_subtype	validators	Ecosystem Subtype (GOLD)	Ecosystem Subtype	noop											
-gold:ecosystem_type	validators	Ecosystem Type (GOLD)	Ecosystem Type	noop											
-gold:habitat	validators	Sample Habitat (MIGS-6)	Habitat	noop											
-gold:specific_ecosystem	validators	Specific Ecosystem (GOLD)	Specific Ecosystem Term	noop											
-gold:study_id	validators	GOLD study identifier	GOLD study identifier	noop											
-latitude	validators	Latitude of the location where the sample was collected in WGS 84 coordinate system. ('Start latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.	Latitude	units	units	units degrees;	number	value	gte -90.0;lte 90.0;						
-latitude_end	validators	End latitude of the location where the sample was collected in WGS 84 coordinate system. ('End latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.	Latitude End	units	units	units degrees;	number	value	gte -90.0;lte 90.0;						
-locality	validators	Name of the specific place where your sample was collected. This could be the name of a mine, a volcanic field, a vent field, or similar	Locality	noop											
-locality_description	validators	Additional information about the specific place where your sample was collected	Locality description	noop											
-location_description	validators	Free text description of the location	Location description	noop											
-longitude	validators	Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.	Longitude	units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
-longitude_end	validators	End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.	Longitude End	units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
-material	validators	Material from ENVO (child of ENVO:00010483)	Material	ontology_has_ancestor		ancestor_term ENVO:00010483;ontology envo_ontology;									
-modification_date	validators	Modification date	Modification Date	noop											
-name	validators	name validator	Sample Name	string		max-len 240;									
-ncbi:taxonomy_name	validators	NCBI Taxonomy Name	NCBI taxonomy name	noop											
-nmdc:omics_type	validators	NMDC OMICS Type	NMDC OMICS type	noop											
-other_names	validators	Other name(s) used for the sample.	Other name(s)	noop											
-ph	validators	pH of sample	pH	units	units	units pH;	number	value	gte -10.0;lte 20.0;						
-purpose	validators	Purpose of the Sample	Purpose	noop											
-sample_template	validators	Template Format	Template	enum		allowed-values ['SESAR', 'ENIGMA', 'KBASE'];									
-sesar:age_max	validators	Maximum geological age in years	Age (max)	units	units	units years;	number	value	gte 0.0;						
-sesar:age_min	validators	minimum geological age in years	Age (min)	units	units	units years;	number	value	gte 0.0;						
-sesar:archive_contact_current	validators	Address and/or email of the person who should be contacted for information about or access to the sample.	Current archive contact	noop											
-sesar:archive_contact_original	validators	Address and/or email of the person who should be contacted for information about the sample's original archive.	Original archive contact	noop											
-sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.	Current archive	noop											
-sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.	Original archive	noop											
-sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.	Classification	noop											
-sesar:classification_comment	validators	Classification Comment	Classification Comment	noop											
-sesar:collection_date	validators	Date when the sample was collected.	Collection date	noop											
-sesar:collection_date_end	validators	Date when the sample collection was finished (if a date range is provided).	Collection date (end)	noop											
-sesar:collection_date_precision	validators	Precision to display the collection date and time.	Collection date precision	noop											
-sesar:collection_method	validators	Method by which a sample was collected	Collection method	noop											
-sesar:collection_method_description	validators	Additional information about the collection method	Collection method description	noop											
-sesar:collection_time	validators	Time when the sample was collected.	Collection time	noop											
-sesar:collection_time_end	validators	End time when the sample was collected.	Collection time (end)	noop											
-sesar:collector_chief_scientist	validators	Name of the person who collected the sample. In case of larger field programs, name of chief scientist responsible for sample collection.	Collector/Chief Scientist name	noop											
-sesar:collector_chief_scientist_address	validators	Institution, address, & email of the collector or chief scientist.	Collector/Chief Scientist address	noop											
-sesar:depth_in_core_max	validators	maximum depth in core in meters	Depth in Core (max)	units	units	units meters;	number	value	required True;						
-sesar:depth_in_core_min	validators	Minimum depth in core in meters	Depth in Core (min)	units	units	units meters;	number	value	required True;						
-sesar:depth_scale	validators	Unit in which the depth is provided	Depth scale	noop											
-sesar:easting	validators	Easting in meters	Easting	units	units	units m;	number	value							
-sesar:elevation_end	validators	Elevation end in meters	Elevation end	units	units	units m;	number	value	required True;						
-sesar:elevation_start	validators	Elevation start in meters	Elevation start	units	units	units m;	number	value	required True;						
-sesar:field_name	validators	Taxonomy (field name) Informal classification of sample.	Field name (informal classification)	noop											
-sesar:field_program_cruise	validators	Name or identifier of the field program (cruise or expedition), during which the sample was collected.	Field program/cruise	noop											
-sesar:geological_age	validators	Age of a sample as described by the stratigraphic era, period, state, etc.	Geological Age	noop											
-sesar:geological_unit	validators	A body of rock established as a distinct entity in the classification of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow	Geological Unit	noop											
-sesar:igsn	validators	IGSN assigned by SESAR	IGSN	noop											
-sesar:is_archived	validators	Is Archived	Is Archived	noop											
-sesar:launch_id	validators	Further identifying information about the launch	Launch ID	noop											
-sesar:launch_platform_name	validators	The name of the launch used to collect the sample.	Launch platform name	noop											
-sesar:launch_type	validators	The type of launch used to collect the sample.	Launch type	noop											
-sesar:material	validators	Material that the sample consists of using SESAR vocabulary.	Material (SESAR)	enum		allowed-values ['Biology', 'Gas', 'Ice', 'Liquid>aqueous', 'Liquid>organic', 'Mineral', 'NotApplicable', 'Other', 'Particulate', 'Rock', 'Sediment', 'Soil', 'Synthetic'];									
-sesar:navigation_type	validators	Navigation type	Navigation type	enum		allowed-values ['ACOUSTIC_RANGING/GPS', 'DGPS', 'DVL', 'DVL:Renav', 'DVL:Renav:Confirmed', 'DVL/LBL', 'DVL/LBL:Renav', 'DVL/LBL:Renav:Confirmed', 'DVL/LBL/INS', 'DVL/USBL', 'DVL/USBL:Renav', 'GLONASS', 'GPS', 'GPS:Assumed', 'GPS/WireOut', 'LAYBACK', 'LAYBACK/LBL', 'LBL', 'Locale', 'LORAN', 'NotApplicable', 'NotProvided', 'RTK GPS', 'USBL'];									
-sesar:northing	validators	Northing in meters	Northing	units	units	units m;	number	value							
-sesar:parent_igsn	validators	IGSN of Parent Sample	Parent IGSN	noop											
-sesar:physiographic_feature_name	validators	Name of the physiographic feature that you entered	Name of physiographic feature	noop											
-sesar:physiographic_feature_primary	validators	Type of physical feature that your sample was collected from (see suggested list)	Primary physiographic feature	noop											
-sesar:platform_description	validators	Description of platform for the cruise.	Platform description	noop											
-sesar:platform_name	validators	Name of platform for the cruise.	Platform name	noop											
-sesar:platform_type	validators	Type of platform for the cruise.	Platform type	noop											
-sesar:registrant_current	validators	Registrant of the sample in SESAR	Current Registrant Name	noop											
-sesar:registrant_org	validators	Registrant organization of the sample in SESAR	Organization Registrant Name	noop											
-sesar:related_identifiers	validators	IGSN of Related Samples	Related Identifiers	noop											
-sesar:relation_type	validators	Relation Type	Relation Type	noop											
-sesar:release_date	validators	Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).	Release date	noop											
-sesar:sample_type	validators	Sample Type	Sample Type	noop											
-sesar:size	validators	Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge	Size	noop											
-sesar:size_unit	validators	Unit for the numerical value provided for 'size'.	Size unit	noop											
-sesar:state_province	validators	State or Province where the sample was collected	State/Province	noop											
-sesar:sub-object_type	validators	More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.	Sub-object type	noop											
-sesar:vertical_datum	validators	Vertical datum used to calculate the elevation	Vertical Datum	noop											
-sesar:zone	validators	"Zone for the geographic Cartesian coordinate ""11R"""	Zone	noop											
-size	validators	Size in meters cubed	Size	units	units	units m^3;	number	value	required True;						
-state_province	validators	State or Province	State/Province	noop											
-study_doi	validators	Study DOI	Study DOI	noop											
-study_principal_investigator	validators	Study Principal Investigator	Study Principal Investigator	noop											
-temperature	validators	Temperature (Celsius)	Temperature	units	units	units celsius;	number	value							
-url	validators	URL for Sample	URL	noop											
+biome	validators	Biome from ENVO (child of ENVO:00000428)		ontology_has_ancestor		ancestor_term ENVO:00000428;ontology envo_ontology;									
+city_township	validators	City or Township where the sample was collected		noop											
+collection_time	validators	Date amd time when the sample was collected in ISO 8601 format		noop											
+comment	validators	Free form Comment		noop											
+continent	validators	Continent		noop											
+country	validators	Country		noop											
+county	validators	County		noop											
+depth_bgs	validators	depth in meters below ground surface (m BGS)		units	units	units m;	number	value							
+description	validators	Free text to describe features of a sample such as its components, texture, color, shape, etc.		noop											
+elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
+elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
+enigma:aodc	validators	units in cells per gram		units	units	units cells/g;	number	value	gte 0.0;						
+enigma:aquifer	validators	Aquifer		noop											
+enigma:area_name	validators	Area Name		noop											
+enigma:average_water_level	validators	units in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:biomass_carbon	validators	units in milligrams per gram		units	units	units mg/g;	number	value	gte 0.0;						
+enigma:boncat_activity	validators	units in cells per gram		units	units	units cells/g;	number	value	gte 0.0;						
+enigma:boring	validators	boring depth in ft below groud surface (ft BGS)		units	units	units ft;	number	value	gte 0.0;						
+enigma:boring_diameter	validators	boring diameter in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:boring_refusal	validators	Boring Refusal (Y/N)		noop											
+enigma:collection_time	validators	Collection Time		noop											
+enigma:condition	validators	Condition		noop											
+enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units mS/cm;	number	value							
+enigma:dapi_cell_count	validators	DAPI cell count in cells per gram		number	value										
+enigma:date	validators	Date (YYYY-MM-DD)		noop											
+enigma:dna_picogreen_total	validators	units in nanograms		units	units	units ng;	number	value							
+enigma:drive_casing_end_depth	validators	drive casing end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:drive_casing_id	validators	drive casing inner diameter in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:drive_casing_od	validators	drive casing outer diameter in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:drive_casing_start_depth	validators	units in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:drive_casing_type	validators	Drive Casing Type		noop											
+enigma:experiment_name	validators	Experiment Name		noop											
+enigma:filter	validators	Filter pore size in microns		units	units	units microns;	number	value	gte 0.0;						
+enigma:fraction	validators	Fraction		noop											
+enigma:fractures_cavities_waterbreaks	validators	Fractures/Cavities/WaterBreaks		noop											
+enigma:functional_area	validators	Functional Area		noop											
+enigma:geological_zone	validators	Geological Zone		noop											
+enigma:ground_elevation	validators	ground elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:installation_method	validators	Method of installation		noop											
+enigma:leucine_activity	validators	units in ngC/day cell		number	value										
+enigma:lower_seal_end_depth	validators	Lower seal end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:lower_seal_start_depth	validators	Lower seal start depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:lower_seal_type	validators	Lower Seal Type (BENT; BENT-PEL)		noop											
+enigma:maturation_time	validators	Maturation Time		noop											
+enigma:max_water_level	validators	Maximum water level in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:method	validators	Method		noop											
+enigma:min_water_level	validators	Minimum water level in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:moisture	validators	percent moisture		units	units	units percent;	number	value	gte 0.0;lte 100.0;						
+enigma:open	validators	Open (yes/no)		noop											
+enigma:open_casing_depth	validators	Open casing depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:open_casing_id	validators	open casing inner diameter in inches (in)		units	units	units in;	number	value	gte 0.0;						
+enigma:open_casing_od	validators	open casing outer diameter in inches (in)		units	units	units in;	number	value	gte 0.0;						
+enigma:open_casing_type	validators	Open Casing Type (SF25; STL)		noop											
+enigma:open_hole_depth	validators	Open hole depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:open_hole_diameter	validators	Open hole diameter in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:open_interval_diameter	validators	Open interval diameter in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:open_interval_end_depth	validators	Open interval end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:open_interval_start_depth	validators	Open interval start depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:organic_carbon	validators	Organic carbon in milligrams per gram dry weight		units	units	units mg/g;	number	value	gte 0.0;						
+enigma:origination_or_plug_abandon	validators	Origination or Plug/Abandon (Date)		noop											
+enigma:packing_depth_end	validators	Packind depth end in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:packing_depth_start	validators	Packind depth start in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:packing_type	validators	Packing Type (e.g. SAND; SAND-2)		noop											
+enigma:pore_water_extraction	validators	Pore water extraction in microliters		units	units	units microliters;	number	value							
+enigma:recovery_factor	validators	Recovery Factor		number	value										
+enigma:redox_potential	validators	Redox Potential		number	value										
+enigma:replicate	validators	Replicate		noop											
+enigma:rock_formation	validators	Rock Formation		noop											
+enigma:screen_bottom_elevation	validators	Screen bottom elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:screen_end_depth	validators	Screen end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:screen_start_depth	validators	Screen start depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:screen_top_elevation	validators	Screen top elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:screen_type	validators	Screen Type		noop											
+enigma:screened	validators	Screened (yes/no)		noop											
+enigma:screened_interval	validators	Screened interval in ft		units	units	units ft;	number	value							
+enigma:time_zone	validators	Time Zone (relative to UTC)		noop											
+enigma:top_of_casing_elevation	validators	Top of casing elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
+enigma:top_of_casing_stickup	validators	Top of casing stickup in ft		units	units	units ft;	number	value							
+enigma:top_of_fresh_bedrock	validators	Top of fresh bedrock in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:top_of_weathered_bedrock	validators	Top of weathered bedrock in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:total_carbon	validators	Total carbon in milligrams per gram dry weight		units	units	units mg/g;	number	value	gte 0.0;						
+enigma:total_nitrogen	validators	Total nitrogen in milligrams per gram dry weight		units	units	units mg/g;	number	value	gte 0.0;						
+enigma:treatment	validators	Treatment		noop											
+enigma:upper_seal_end_depth	validators	Upper seal end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:upper_seal_start_depth	validators	Upper seal start depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:upper_seal_type	validators	Upper Seal Type		noop											
+enigma:well_casing_depth	validators	Well casing depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
+enigma:well_casing_id	validators	Well casing inner diameter. units in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:well_casing_od	validators	Well casing outer diameter. units in inches		units	units	units in;	number	value	gte 0.0;						
+enigma:well_casing_type	validators	Well Casing Type		noop											
+enigma:well_name	validators	Well Name (ID)		noop											
+enigma:well_status	validators	Status of Well		noop											
+enigma:well_type	validators	Type of Welll (SP; MP)		noop											
+env_package	validators	Environmental Package (MIxS vocabulary)		noop											
+feature	validators	Feature from ENVO (child of ENVO:01000813)		ontology_has_ancestor		ancestor_term ENVO:01000813;ontology envo_ontology;									
+gold:biosample_id	validators	GOLD biosample identifier		noop											
+gold:community	validators	Community Sampled		noop											
+gold:ecosystem	validators	Ecosystem (GOLD)		noop											
+gold:ecosystem_category	validators	Ecosystem Category (GOLD)		noop											
+gold:ecosystem_path_id	validators	Ecosystem Path ID (GOLD)		noop											
+gold:ecosystem_subtype	validators	Ecosystem Subtype (GOLD)		noop											
+gold:ecosystem_type	validators	Ecosystem Type (GOLD)		noop											
+gold:habitat	validators	Sample Habitat (MIGS-6)		noop											
+gold:specific_ecosystem	validators	Specific Ecosystem (GOLD)		noop											
+gold:study_id	validators	GOLD study identifier		noop											
+latitude	validators	Latitude of the location where the sample was collected in WGS 84 coordinate system. ('Start latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.		units	units	units degrees;	number	value	gte -90.0;lte 90.0;						
+latitude_end	validators	End latitude of the location where the sample was collected in WGS 84 coordinate system. ('End latitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for South latitudes.		units	units	units degrees;	number	value	gte -90.0;lte 90.0;						
+locality	validators	Name of the specific place where your sample was collected. This could be the name of a mine, a volcanic field, a vent field, or similar		noop											
+locality_description	validators	Additional information about the specific place where your sample was collected		noop											
+location_description	validators	Free text description of the location		noop											
+longitude	validators	Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
+longitude_end	validators	End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
+material	validators	Material from ENVO (child of ENVO:00010483)		ontology_has_ancestor		ancestor_term ENVO:00010483;ontology envo_ontology;									
+modification_date	validators	Modification date		noop											
+name	validators	name validator		string		max-len 240;									
+ncbi:taxonomy_name	validators	NCBI Taxonomy Name		noop											
+nmdc:omics_type	validators	NMDC OMICS Type		noop											
+other_names	validators	Other name(s) used for the sample.		noop											
+ph	validators	pH of sample		units	units	units pH;	number	value	gte -10.0;lte 20.0;						
+purpose	validators	Purpose of the Sample		noop											
+sample_template	validators	Template Format		enum		allowed-values ['SESAR', 'ENIGMA', 'KBASE'];									
+sesar:age_max	validators	Maximum geological age in years		units	units	units years;	number	value	gte 0.0;						
+sesar:age_min	validators	minimum geological age in years		units	units	units years;	number	value	gte 0.0;						
+sesar:archive_contact_current	validators	Address and/or email of the person who should be contacted for information about or access to the sample.		noop											
+sesar:archive_contact_original	validators	Address and/or email of the person who should be contacted for information about the sample's original archive.		noop											
+sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.		noop											
+sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.		noop											
+sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.		noop											
+sesar:classification_comment	validators	Classification Comment		noop											
+sesar:collection_date	validators	Date when the sample was collected.		noop											
+sesar:collection_date_end	validators	Date when the sample collection was finished (if a date range is provided).		noop											
+sesar:collection_date_precision	validators	Precision to display the collection date and time.		noop											
+sesar:collection_method	validators	Method by which a sample was collected		noop											
+sesar:collection_method_description	validators	Additional information about the collection method		noop											
+sesar:collection_time	validators	Time when the sample was collected.		noop											
+sesar:collection_time_end	validators	End time when the sample was collected.		noop											
+sesar:collector_chief_scientist	validators	Name of the person who collected the sample. In case of larger field programs, name of chief scientist responsible for sample collection.		noop											
+sesar:collector_chief_scientist_address	validators	Institution, address, & email of the collector or chief scientist.		noop											
+sesar:depth_in_core_max	validators	maximum depth in core in meters		units	units	units meters;	number	value	required True;						
+sesar:depth_in_core_min	validators	Minimum depth in core in meters		units	units	units meters;	number	value	required True;						
+sesar:depth_scale	validators	Unit in which the depth is provided		noop											
+sesar:easting	validators	Easting in meters		units	units	units m;	number	value							
+sesar:elevation_end	validators	Elevation end in meters		units	units	units m;	number	value	required True;						
+sesar:elevation_start	validators	Elevation start in meters		units	units	units m;	number	value	required True;						
+sesar:field_name	validators	Taxonomy (field name) Informal classification of sample.		noop											
+sesar:field_program_cruise	validators	Name or identifier of the field program (cruise or expedition), during which the sample was collected.		noop											
+sesar:geological_age	validators	Age of a sample as described by the stratigraphic era, period, state, etc.		noop											
+sesar:geological_unit	validators	A body of rock established as a distinct entity in the classification of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow		noop											
+sesar:igsn	validators	IGSN assigned by SESAR		noop											
+sesar:is_archived	validators	Is Archived		noop											
+sesar:launch_id	validators	Further identifying information about the launch		noop											
+sesar:launch_platform_name	validators	The name of the launch used to collect the sample.		noop											
+sesar:launch_type	validators	The type of launch used to collect the sample.		noop											
+sesar:material	validators	Material that the sample consists of using SESAR vocabulary.		enum		allowed-values ['Biology', 'Gas', 'Ice', 'Liquid>aqueous', 'Liquid>organic', 'Mineral', 'NotApplicable', 'Other', 'Particulate', 'Rock', 'Sediment', 'Soil', 'Synthetic'];									
+sesar:navigation_type	validators	Navigation type		enum		allowed-values ['ACOUSTIC_RANGING/GPS', 'DGPS', 'DVL', 'DVL:Renav', 'DVL:Renav:Confirmed', 'DVL/LBL', 'DVL/LBL:Renav', 'DVL/LBL:Renav:Confirmed', 'DVL/LBL/INS', 'DVL/USBL', 'DVL/USBL:Renav', 'GLONASS', 'GPS', 'GPS:Assumed', 'GPS/WireOut', 'LAYBACK', 'LAYBACK/LBL', 'LBL', 'Locale', 'LORAN', 'NotApplicable', 'NotProvided', 'RTK GPS', 'USBL'];									
+sesar:northing	validators	Northing in meters		units	units	units m;	number	value							
+sesar:parent_igsn	validators	IGSN of Parent Sample		noop											
+sesar:physiographic_feature_name	validators	Name of the physiographic feature that you entered		noop											
+sesar:physiographic_feature_primary	validators	Type of physical feature that your sample was collected from (see suggested list)		noop											
+sesar:platform_description	validators	Description of platform for the cruise.		noop											
+sesar:platform_name	validators	Name of platform for the cruise.		noop											
+sesar:platform_type	validators	Type of platform for the cruise.		noop											
+sesar:registrant_current	validators	Registrant of the sample in SESAR		noop											
+sesar:registrant_org	validators	Registrant organization of the sample in SESAR		noop											
+sesar:related_identifiers	validators	IGSN of Related Samples		noop											
+sesar:relation_type	validators	Relation Type		noop											
+sesar:release_date	validators	Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).		noop											
+sesar:sample_type	validators	Sample Type		noop											
+sesar:size	validators	Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge		noop											
+sesar:size_unit	validators	Unit for the numerical value provided for 'size'.		noop											
+sesar:state_province	validators	State or Province where the sample was collected		noop											
+sesar:sub-object_type	validators	More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.		noop											
+sesar:vertical_datum	validators	Vertical datum used to calculate the elevation		noop											
+sesar:zone	validators	"Zone for the geographic Cartesian coordinate ""11R"""		noop											
+size	validators	Size in meters cubed		units	units	units m^3;	number	value	required True;						
+state_province	validators	State or Province		noop											
+study_doi	validators	Study DOI		noop											
+study_principal_investigator	validators	Study Principal Investigator		noop											
+temperature	validators	Temperature (Celsius)		units	units	units celsius;	number	value							
+url	validators	URL for Sample		noop											
