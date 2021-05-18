@@ -70,17 +70,17 @@ def process_row(row, ct):
     col_name = row['Column name']
     ids = []
     col_ids = []
+#          'category': row['Category'],
+#          'example': row['Example'].replace("\r\n", ' '),
+#          'definition': row['Definition'].replace("\r\n", ' '),
+#          'order': ct
     new = {
-          'category': row['Category'],
-          'example': row['Example'].replace("\r\n", ' '),
-          'definition': row['Definition'].replace("\r\n", ' '),
-          'order': ct
           }
     new['required'] = False
     if row['Required'].lower() == 'y':
         new['required'] = True
-    if row['Additional instructions'] != '':
-        new['instructions'] = row['Additional instructions']
+#    if row['Additional instructions'] != '':
+#        new['instructions'] = row['Additional instructions']
     new['aliases']=create_aliases(col_name, row.get('Aliases'))
     transform = row['Transformation']
     if transform != '':

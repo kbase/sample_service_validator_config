@@ -2,10 +2,6 @@ Columns:
   AODC (cells/g):
     aliases:
     - aodc (cells/g)
-    category: measurement
-    definition: units in cells per gram
-    example: '200456.8368'
-    order: 27
     required: false
     transformations:
     - parameters:
@@ -15,10 +11,6 @@ Columns:
   Aquifer:
     aliases:
     - aquifer
-    category: well
-    definition: Aquifer
-    example: B; wB; U/wB; wB
-    order: 65
     required: false
     transformations:
     - parameters:
@@ -27,10 +19,6 @@ Columns:
   Area Name:
     aliases:
     - area name
-    category: description
-    definition: Area Name
-    example: Area 2; Background A; Area 4
-    order: 2
     required: true
     transformations:
     - parameters:
@@ -39,10 +27,6 @@ Columns:
   Average Water Level (ft AMSL):
     aliases:
     - average water level (ft amsl)
-    category: well
-    definition: units in ft above mean sea level (ft AMSL)
-    example: '1006.01'
-    order: 74
     required: false
     transformations:
     - parameters:
@@ -52,10 +36,6 @@ Columns:
   BONCAT Activity (cell/g):
     aliases:
     - boncat activity (cell/g)
-    category: measurement
-    definition: units in cells per gram
-    example: '1270000'
-    order: 34
     required: false
     transformations:
     - parameters:
@@ -65,10 +45,6 @@ Columns:
   Biomass Carbon (mg/g):
     aliases:
     - biomass carbon (mg/g)
-    category: measurement
-    definition: units in milligrams per gram
-    example: '0.98'
-    order: 32
     required: false
     transformations:
     - parameters:
@@ -78,10 +54,6 @@ Columns:
   Boring (ft BGS):
     aliases:
     - boring (ft bgs)
-    category: well
-    definition: boring depth in ft below groud surface (ft BGS)
-    example: '50.25'
-    order: 42
     required: false
     transformations:
     - parameters:
@@ -91,10 +63,6 @@ Columns:
   Boring Diameter (in):
     aliases:
     - boring diameter (in)
-    category: well
-    definition: boring diameter in inches
-    example: '8'
-    order: 44
     required: false
     transformations:
     - parameters:
@@ -104,10 +72,6 @@ Columns:
   Boring Refusal:
     aliases:
     - boring refusal
-    category: well
-    definition: Boring Refusal (Y/N)
-    example: Y; N
-    order: 43
     required: false
     transformations:
     - parameters:
@@ -116,10 +80,6 @@ Columns:
   Collection Time:
     aliases:
     - collection time
-    category: collection
-    definition: Collection Time
-    example: 9:39:00 AM
-    order: 9
     required: false
     transformations:
     - parameters:
@@ -128,10 +88,6 @@ Columns:
   Condition:
     aliases:
     - condition
-    category: well
-    definition: Condition
-    example: Open
-    order: 71
     required: false
     transformations:
     - parameters:
@@ -140,10 +96,6 @@ Columns:
   Conductivity (mS/cm):
     aliases:
     - conductivity (ms/cm)
-    category: measurement
-    definition: conductivity in millisiemens per centimeter
-    example: '802.65'
-    order: 24
     required: false
     transformations:
     - parameters:
@@ -153,10 +105,6 @@ Columns:
   DAPI Cell Count (cells/g):
     aliases:
     - dapi cell count (cells/g)
-    category: measurement
-    definition: DAPI cell count in cells per gram
-    example: '9690000'
-    order: 28
     required: false
     transformations:
     - parameters:
@@ -166,10 +114,6 @@ Columns:
   DNA Picogreen Total (ng):
     aliases:
     - dna picogreen total (ng)
-    category: measurement
-    definition: units in nanograms
-    example: '228.6658163'
-    order: 29
     required: false
     transformations:
     - parameters:
@@ -179,10 +123,6 @@ Columns:
   Date:
     aliases:
     - date
-    category: collection
-    definition: Date (YYYY-MM-DD)
-    example: '2019-06-18'
-    order: 8
     required: false
     transformations:
     - parameters:
@@ -191,10 +131,6 @@ Columns:
   Depth (cm bgs):
     aliases:
     - depth (cm bgs)
-    category: geolocation
-    definition: depth in meters below ground surface (m BGS)
-    example: '5'
-    order: 13
     required: true
     transformations:
     - parameters:
@@ -204,10 +140,6 @@ Columns:
   Description:
     aliases:
     - description
-    category: description
-    definition: Sample Description
-    example: dredge with 50 pieces of basalt and mud
-    order: 6
     required: true
     transformations:
     - parameters:
@@ -216,10 +148,6 @@ Columns:
   Drive Casing End Depth (ft BGS):
     aliases:
     - drive casing end depth (ft bgs)
-    category: well
-    definition: drive casing end depth in ft below ground surface (ft BGS)
-    example: '27'
-    order: 59
     required: false
     transformations:
     - parameters:
@@ -229,10 +157,6 @@ Columns:
   Drive Casing ID (in):
     aliases:
     - drive casing id (in)
-    category: well
-    definition: drive casing inner diameter in inches
-    example: '2.625'
-    order: 56
     required: false
     transformations:
     - parameters:
@@ -242,10 +166,6 @@ Columns:
   Drive Casing OD (in):
     aliases:
     - drive casing od (in)
-    category: well
-    definition: drive casing outer diameter in inches
-    example: '3.25'
-    order: 57
     required: false
     transformations:
     - parameters:
@@ -255,10 +175,6 @@ Columns:
   Drive Casing Start Depth (ft BGS):
     aliases:
     - drive casing start depth (ft bgs)
-    category: well
-    definition: units in ft below ground surface (ft BGS)
-    example: '10'
-    order: 58
     required: false
     transformations:
     - parameters:
@@ -268,10 +184,6 @@ Columns:
   Drive Casing Type:
     aliases:
     - drive casing type
-    category: well
-    definition: Drive Casing Type
-    example: GP DT-32
-    order: 55
     required: false
     transformations:
     - parameters:
@@ -280,10 +192,6 @@ Columns:
   Environmental Package:
     aliases:
     - environmental package
-    category: description
-    definition: Environmental Package (MIxS vocabulary)
-    example: Water; Soil
-    order: 4
     required: true
     transformations:
     - parameters:
@@ -292,10 +200,6 @@ Columns:
   Experiment Name:
     aliases:
     - experiment name
-    category: description
-    definition: Experiment Name
-    example: 100 Well
-    order: 1
     required: true
     transformations:
     - parameters:
@@ -304,10 +208,6 @@ Columns:
   Filter (micron):
     aliases:
     - filter (micron)
-    category: description
-    definition: Filter pore size in microns
-    example: 2; 10
-    order: 7
     required: true
     transformations:
     - parameters:
@@ -317,10 +217,6 @@ Columns:
   Fraction:
     aliases:
     - fraction
-    category: measurement
-    definition: Fraction
-    example: Spin Down; Total Cells; .2um
-    order: 17
     required: false
     transformations:
     - parameters:
@@ -329,10 +225,6 @@ Columns:
   Fractures/Cavities/WaterBreaks:
     aliases:
     - fractures/cavities/waterbreaks
-    category: well
-    definition: Fractures/Cavities/WaterBreaks
-    example: WB @ 14, 41
-    order: 66
     required: false
     transformations:
     - parameters:
@@ -341,10 +233,6 @@ Columns:
   Functional Area:
     aliases:
     - functional area
-    category: measurement
-    definition: Functional Area
-    example: S-3 Site; New Hope Pond
-    order: 36
     required: false
     transformations:
     - parameters:
@@ -353,10 +241,6 @@ Columns:
   Geological Zone:
     aliases:
     - geological zone
-    category: geolocation
-    definition: Geological Zone
-    example: Saturated; Vadose
-    order: 14
     required: false
     transformations:
     - parameters:
@@ -365,10 +249,6 @@ Columns:
   Ground Elevation (ft AMSL):
     aliases:
     - ground elevation (ft amsl)
-    category: well
-    definition: ground elevation in ft above mean sea level (ft AMSL)
-    example: '1004.62'
-    order: 40
     required: false
     transformations:
     - parameters:
@@ -378,10 +258,6 @@ Columns:
   Installation Method:
     aliases:
     - installation method
-    category: well
-    definition: Method of installation
-    example: CORE; AUGER; MANUAL
-    order: 41
     required: false
     transformations:
     - parameters:
@@ -390,11 +266,6 @@ Columns:
   Latitude:
     aliases:
     - latitude
-    category: geolocation
-    definition: Latitude of the location where the sample was collected in WGS 84
-      coordinate system.
-    example: '5.89634'
-    order: 11
     required: true
     transformations:
     - parameters:
@@ -403,10 +274,6 @@ Columns:
   Leucine Activity (ngC/day cell}:
     aliases:
     - leucine activity (ngc/day cell}
-    category: measurement
-    definition: units in ngC/day cell
-    example: '0.000576856'
-    order: 35
     required: false
     transformations:
     - parameters:
@@ -416,11 +283,6 @@ Columns:
   Longitude:
     aliases:
     - longitude
-    category: geolocation
-    definition: Longitude of the location where the sample was collected in WGS 84
-      cooridinate system.
-    example: '-103.785'
-    order: 12
     required: true
     transformations:
     - parameters:
@@ -429,10 +291,6 @@ Columns:
   Lower Seal End Depth (ft BGS):
     aliases:
     - lower seal end depth (ft bgs)
-    category: well
-    definition: Lower seal end depth in ft below ground surface (ft BGS)
-    example: '22.1'
-    order: 81
     required: false
     transformations:
     - parameters:
@@ -442,10 +300,6 @@ Columns:
   Lower Seal Start Depth (ft BGS):
     aliases:
     - lower seal start depth (ft bgs)
-    category: well
-    definition: Lower seal start depth in ft below ground surface (ft BGS)
-    example: '20.25'
-    order: 80
     required: false
     transformations:
     - parameters:
@@ -455,10 +309,6 @@ Columns:
   Lower Seal Type (ft BGS):
     aliases:
     - lower seal type (ft bgs)
-    category: well
-    definition: Lower Seal Type (BENT; BENT-PEL)
-    example: BENT-PEL; BENT
-    order: 79
     required: false
     transformations:
     - parameters:
@@ -468,10 +318,6 @@ Columns:
   Material:
     aliases:
     - material
-    category: description
-    definition: Material from ENVO (child of ENVO:00010483)
-    example: ENVO:01001614
-    order: 5
     required: true
     transformations:
     - parameters:
@@ -480,10 +326,6 @@ Columns:
   Maturation Time:
     aliases:
     - maturation time
-    category: measurement
-    definition: Maturation Time
-    example: 24hr; 72hr
-    order: 19
     required: false
     transformations:
     - parameters:
@@ -492,10 +334,6 @@ Columns:
   Max Water Level (ft AMSL):
     aliases:
     - max water level (ft amsl)
-    category: well
-    definition: Maximum water level in ft above mean sea level (ft AMSL)
-    example: '1008.41'
-    order: 75
     required: false
     transformations:
     - parameters:
@@ -505,10 +343,6 @@ Columns:
   Method:
     aliases:
     - method
-    category: measurement
-    definition: Method
-    example: BONCAT; PMA; No PMA
-    order: 16
     required: false
     transformations:
     - parameters:
@@ -517,10 +351,6 @@ Columns:
   Min Water Level (ft AMSL):
     aliases:
     - min water level (ft amsl)
-    category: well
-    definition: Minimum water level in ft above mean sea level (ft AMSL)
-    example: '1002.99'
-    order: 73
     required: false
     transformations:
     - parameters:
@@ -530,10 +360,6 @@ Columns:
   Moisture (%):
     aliases:
     - moisture (%)
-    category: measurement
-    definition: Temperature (Celsius)
-    example: '22.1'
-    order: 22
     required: false
     transformations:
     - parameters:
@@ -542,10 +368,6 @@ Columns:
   Open:
     aliases:
     - open
-    category: well
-    definition: Open (yes/no)
-    example: yes; no
-    order: 69
     required: false
     transformations:
     - parameters:
@@ -554,10 +376,6 @@ Columns:
   Open Casing Depth (ft BGS):
     aliases:
     - open casing depth (ft bgs)
-    category: well
-    definition: Open casing depth in ft below ground surface (ft BGS)
-    example: '92'
-    order: 85
     required: false
     transformations:
     - parameters:
@@ -567,10 +385,6 @@ Columns:
   Open Casing ID (in):
     aliases:
     - open casing id (in)
-    category: well
-    definition: open casing inner diameter in inches (in)
-    example: '6.12'
-    order: 84
     required: false
     transformations:
     - parameters:
@@ -580,10 +394,6 @@ Columns:
   Open Casing OD (in):
     aliases:
     - open casing od (in)
-    category: well
-    definition: open casing outer diameter in inches (in)
-    example: '6.62'
-    order: 83
     required: false
     transformations:
     - parameters:
@@ -593,10 +403,6 @@ Columns:
   Open Casing Type:
     aliases:
     - open casing type
-    category: well
-    definition: Open Casing Type (SF25; STL)
-    example: SF25; STL
-    order: 82
     required: false
     transformations:
     - parameters:
@@ -605,10 +411,6 @@ Columns:
   Open Hole Depth (ft BGS):
     aliases:
     - open hole depth (ft bgs)
-    category: well
-    definition: Open hole depth in ft below ground surface (ft BGS)
-    example: '92'
-    order: 87
     required: false
     transformations:
     - parameters:
@@ -618,10 +420,6 @@ Columns:
   Open Hole Diameter (in):
     aliases:
     - open hole diameter (in)
-    category: well
-    definition: Open hole diameter in inches
-    example: '10'
-    order: 86
     required: false
     transformations:
     - parameters:
@@ -631,10 +429,6 @@ Columns:
   Open Interval Diameter (in):
     aliases:
     - open interval diameter (in)
-    category: well
-    definition: Open interval diameter in inches
-    example: '6'
-    order: 90
     required: false
     transformations:
     - parameters:
@@ -644,10 +438,6 @@ Columns:
   Open Interval End Depth (ft BGS):
     aliases:
     - open interval end depth (ft bgs)
-    category: well
-    definition: Open interval end depth in ft below ground surface (ft BGS)
-    example: '125'
-    order: 89
     required: false
     transformations:
     - parameters:
@@ -657,10 +447,6 @@ Columns:
   Open Interval Start Depth (ft BGS):
     aliases:
     - open interval start depth (ft bgs)
-    category: well
-    definition: Open interval start depth in ft below ground surface (ft BGS)
-    example: '92'
-    order: 88
     required: false
     transformations:
     - parameters:
@@ -670,10 +456,6 @@ Columns:
   Organic Carbon (mg/g dry weight):
     aliases:
     - organic carbon (mg/g dry weight)
-    category: measurement
-    definition: Organic carbon in milligrams per gram dry weight
-    example: '0.532'
-    order: 31
     required: false
     transformations:
     - parameters:
@@ -683,10 +465,6 @@ Columns:
   Origination or Plug/Abandon:
     aliases:
     - origination or plug/abandon
-    category: well
-    definition: Origination or Plug/Abandon (Date)
-    example: 02/06/92
-    order: 72
     required: false
     transformations:
     - parameters:
@@ -695,10 +473,6 @@ Columns:
   Other Name:
     aliases:
     - other name
-    category: description
-    definition: Other name(s) used for the sample.
-    example: TRPOW; T-PROW
-    order: 67
     required: false
     transformations:
     - parameters:
@@ -707,10 +481,6 @@ Columns:
   Packing Depth End (ft BGS):
     aliases:
     - packing depth end (ft bgs)
-    category: well
-    definition: Packind depth end in ft below ground surface (ft BGS)
-    example: '17.5'
-    order: 62
     required: false
     transformations:
     - parameters:
@@ -720,10 +490,6 @@ Columns:
   Packing Depth Start (ft BGS):
     aliases:
     - packing depth start (ft bgs)
-    category: well
-    definition: Packind depth start in ft below ground surface (ft BGS)
-    example: '15.08'
-    order: 61
     required: false
     transformations:
     - parameters:
@@ -733,10 +499,6 @@ Columns:
   Packing Type:
     aliases:
     - packing type
-    category: well
-    definition: Packing Type (e.g. SAND; SAND-2)
-    example: SAND; SAND-2
-    order: 60
     required: false
     transformations:
     - parameters:
@@ -745,10 +507,6 @@ Columns:
   Pore Water Extraction (microliters):
     aliases:
     - pore water extraction (microliters)
-    category: measurement
-    definition: Pore water extraction in microliters
-    example: '200'
-    order: 23
     required: false
     transformations:
     - parameters:
@@ -758,10 +516,6 @@ Columns:
   Recovery Factor:
     aliases:
     - recovery factor
-    category: measurement
-    definition: Recovery Factor
-    example: '1.57'
-    order: 15
     required: false
     transformations:
     - parameters:
@@ -770,10 +524,6 @@ Columns:
   Redox Potential:
     aliases:
     - redox potential
-    category: measurement
-    definition: Redox Potential
-    example: '421.5'
-    order: 25
     required: false
     transformations:
     - parameters:
@@ -782,10 +532,6 @@ Columns:
   Replicate:
     aliases:
     - replicate
-    category: measurement
-    definition: Replicate
-    example: A1; A2; B1; C
-    order: 18
     required: false
     transformations:
     - parameters:
@@ -794,10 +540,6 @@ Columns:
   Rock Formation:
     aliases:
     - rock formation
-    category: well
-    definition: Rock Formation
-    example: Conasauga/Maynardville Limestone; Conasauga/Nolichucky Shale
-    order: 91
     required: false
     transformations:
     - parameters:
@@ -806,10 +548,6 @@ Columns:
   SampleID:
     aliases:
     - sampleid
-    category: description
-    definition: Sample ID/Name
-    example: SAM1234; IEMEG0001
-    order: 0
     required: true
     transformations:
     - parameters:
@@ -818,10 +556,6 @@ Columns:
   Screen Bottom Elevation (ft AMSL):
     aliases:
     - screen bottom elevation (ft amsl)
-    category: well
-    definition: Screen bottom elevation in ft above mean sea level (ft AMSL)
-    example: '985.27'
-    order: 50
     required: false
     transformations:
     - parameters:
@@ -831,10 +565,6 @@ Columns:
   Screen End Depth (ft BGS):
     aliases:
     - screen end depth (ft bgs)
-    category: well
-    definition: Screen end depth in ft below ground surface (ft BGS)
-    example: '14.39'
-    order: 48
     required: false
     transformations:
     - parameters:
@@ -844,10 +574,6 @@ Columns:
   Screen Start Depth (ft BGS):
     aliases:
     - screen start depth (ft bgs)
-    category: well
-    definition: Screen start depth in ft below ground surface (ft BGS)
-    example: '14.14'
-    order: 47
     required: false
     transformations:
     - parameters:
@@ -857,10 +583,6 @@ Columns:
   Screen Top Elevation (ft AMSL):
     aliases:
     - screen top elevation (ft amsl)
-    category: well
-    definition: Screen top elevation in ft above mean sea level (ft AMSL)
-    example: 985.52:was
-    order: 49
     required: false
     transformations:
     - parameters:
@@ -870,10 +592,6 @@ Columns:
   Screen Type:
     aliases:
     - screen type
-    category: well
-    definition: Screen Type
-    example: PP/.02
-    order: 45
     required: false
     transformations:
     - parameters:
@@ -882,10 +600,6 @@ Columns:
   Screened:
     aliases:
     - screened
-    category: well
-    definition: Screened (yes/no)
-    example: yes; no
-    order: 68
     required: false
     transformations:
     - parameters:
@@ -894,10 +608,6 @@ Columns:
   Screened Interval (ft):
     aliases:
     - screened interval (ft)
-    category: well
-    definition: Screened interval in ft
-    example: '0.25'
-    order: 46
     required: false
     transformations:
     - parameters:
@@ -907,10 +617,6 @@ Columns:
   Temperature (Celsius):
     aliases:
     - temperature (celsius)
-    category: measurement
-    definition: Temperature (Celsius)
-    example: '22.1'
-    order: 21
     required: false
     transformations:
     - parameters:
@@ -920,10 +626,6 @@ Columns:
   Time Zone:
     aliases:
     - time zone
-    category: collection
-    definition: Time Zone (relative to UTC)
-    example: UTC-4
-    order: 10
     required: false
     transformations:
     - parameters:
@@ -932,10 +634,6 @@ Columns:
   Top of Casing Elevation (ft AMSL):
     aliases:
     - top of casing elevation (ft amsl)
-    category: well
-    definition: Top of casing elevation in ft above mean sea level (ft AMSL)
-    example: '1000.9076'
-    order: 39
     required: false
     transformations:
     - parameters:
@@ -945,10 +643,6 @@ Columns:
   Top of Casing Stickup (ft):
     aliases:
     - top of casing stickup (ft)
-    category: well
-    definition: Top of casing stickup in ft
-    example: '1.84'
-    order: 38
     required: false
     transformations:
     - parameters:
@@ -958,10 +652,6 @@ Columns:
   TopofFreshBedrock (ft BGS):
     aliases:
     - topoffreshbedrock (ft bgs)
-    category: well
-    definition: Top of fresh bedrock in ft below ground surface (ft BGS)
-    example: '6.4'
-    order: 64
     required: false
     transformations:
     - parameters:
@@ -971,10 +661,6 @@ Columns:
   TopofWeatheredBedrock (ft BGS):
     aliases:
     - topofweatheredbedrock (ft bgs)
-    category: well
-    definition: Top of weathered bedrock in ft below ground surface (ft BGS)
-    example: '8'
-    order: 63
     required: false
     transformations:
     - parameters:
@@ -984,10 +670,6 @@ Columns:
   Total Carbon (mg/g dry weight):
     aliases:
     - total carbon (mg/g dry weight)
-    category: measurement
-    definition: Total carbon in milligrams per gram dry weight
-    example: '0.3689'
-    order: 30
     required: false
     transformations:
     - parameters:
@@ -997,10 +679,6 @@ Columns:
   Total Nitrogen (mg/g dry weight):
     aliases:
     - total nitrogen (mg/g dry weight)
-    category: measurement
-    definition: Total nitrogen in milligrams per gram dry weight
-    example: '0.0572'
-    order: 33
     required: false
     transformations:
     - parameters:
@@ -1010,10 +688,6 @@ Columns:
   Treatment:
     aliases:
     - treatment
-    category: measurement
-    definition: Treatment
-    example: HPG; No HPG
-    order: 20
     required: false
     transformations:
     - parameters:
@@ -1022,10 +696,6 @@ Columns:
   Type of Well:
     aliases:
     - type of well
-    category: well
-    definition: Type of Welll (SP; MP)
-    example: SP; MP
-    order: 37
     required: false
     transformations:
     - parameters:
@@ -1034,10 +704,6 @@ Columns:
   Upper Seal End Depth (ft BGS):
     aliases:
     - upper seal end depth (ft bgs)
-    category: well
-    definition: Upper seal end depth in ft below ground surface (ft BGS)
-    example: '12'
-    order: 78
     required: false
     transformations:
     - parameters:
@@ -1047,10 +713,6 @@ Columns:
   Upper Seal Start Depth (ft BGS):
     aliases:
     - upper seal start depth (ft bgs)
-    category: well
-    definition: Upper seal start depth in ft below ground surface (ft BGS)
-    example: '10'
-    order: 77
     required: false
     transformations:
     - parameters:
@@ -1060,10 +722,6 @@ Columns:
   Upper Seal Type:
     aliases:
     - upper seal type
-    category: well
-    definition: Upper Seal Type
-    example: BENT; BENT-PEL
-    order: 76
     required: false
     transformations:
     - parameters:
@@ -1072,10 +730,6 @@ Columns:
   Well Casing Depth (ft BGS):
     aliases:
     - well casing depth (ft bgs)
-    category: well
-    definition: Well casing depth in ft below ground surface (ft BGS)
-    example: '45.25'
-    order: 54
     required: false
     transformations:
     - parameters:
@@ -1085,10 +739,6 @@ Columns:
   Well Casing ID (in):
     aliases:
     - well casing id (in)
-    category: well
-    definition: Well casing inner diameter. units in inches
-    example: '3.975'
-    order: 53
     required: false
     transformations:
     - parameters:
@@ -1098,10 +748,6 @@ Columns:
   Well Casing OD (in):
     aliases:
     - well casing od (in)
-    category: well
-    definition: Well casing outer diameter. units in inches
-    example: '4.5'
-    order: 52
     required: false
     transformations:
     - parameters:
@@ -1111,10 +757,6 @@ Columns:
   Well Casing Type:
     aliases:
     - well casing type
-    category: well
-    definition: Well Casing Type
-    example: SP; MP
-    order: 51
     required: false
     transformations:
     - parameters:
@@ -1123,10 +765,6 @@ Columns:
   Well Name:
     aliases:
     - well name
-    category: description
-    definition: Well Name (ID)
-    example: GW085; GW098
-    order: 3
     required: true
     transformations:
     - parameters:
@@ -1135,10 +773,6 @@ Columns:
   Well Status:
     aliases:
     - well status
-    category: well
-    definition: Status of Well
-    example: Active; Inactive
-    order: 70
     required: false
     transformations:
     - parameters:
@@ -1147,10 +781,6 @@ Columns:
   pH:
     aliases:
     - ph
-    category: measurement
-    definition: pH of sample
-    example: '7'
-    order: 26
     required: false
     transformations:
     - parameters:
