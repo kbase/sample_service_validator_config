@@ -10,7 +10,6 @@ validators:
       parameters:
         ancestor_term: ENVO:00010483
         ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
   SESAR:material:
     key_metadata:
       display_name: Material
@@ -147,7 +146,6 @@ validators:
       parameters:
         ancestor_term: ENVO:00000428
         ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
   boncat_activity:
     key_metadata:
       description: units in cells per gram
@@ -642,7 +640,6 @@ validators:
       parameters:
         ancestor_term: ENVO:01000813
         ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
   field_name_informal_classification:
     key_metadata:
       display_name: Field name (informal classification)
