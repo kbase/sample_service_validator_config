@@ -1,3 +1,5 @@
 temp_file.yml
 temp_file2.yml
-
+/venv/
+.idea
+/_temp/
