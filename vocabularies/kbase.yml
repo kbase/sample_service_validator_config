@@ -1,0 +1,20 @@
+# KBase Sample Fields
+# These fields are in support of free-form "KBase Format" samples.
+# They differ from "core" fields in that they are equivalents to
+# fields commonly provided by other formats and required for proper
+# sample construction.
+terms:
+  sample_id:
+    description: A user-supplied sample identifier
+    examples:
+      - SAMPLE 1234
+    title: Sample ID
+    type: string
+    maxLength: 254
+  parent_sample_id:
+    description: A user-supplied identifier for a parent sample
+    examples:
+      - SAMPLE 1234
+    title: Parent Sample ID
+    type: string
+    maxLength: 254

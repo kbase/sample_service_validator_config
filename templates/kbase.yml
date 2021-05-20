@@ -1,0 +1,7 @@
+Template: kbase
+Mappings:
+  ID: id
+  ParentID: parent_id
+  Name: name
+
+

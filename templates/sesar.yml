@@ -1,3 +1,13 @@
+# Why all the keys in ProperCase?
+Template: sesar
+Mappings:
+  ID: sesar:igsn
+  ParentID: sesar:parent_igsn
+  Name: name
+  # OmitRow is set of regexes which, when matched on a line, causes the line
+  # to be skipped. Useful for automatically omitting extra header lines
+  # which may or may not be present.
+  SkipLines: "^Object Type:"
 Columns:
   Age (max):
     aliases:
@@ -41,6 +51,9 @@ Columns:
     example: Ma
     order: 13
     required: false
+    transformations:
+      - parameters:
+          - sesar:age_unit
   City/Township:
     aliases:
     - city/township
@@ -79,7 +92,7 @@ Columns:
     required: false
     transformations:
     - parameters:
-      - sesar:classification
+      - sesar:classification_comment
       transform: map
   Collection date:
     aliases:
@@ -220,6 +233,9 @@ Columns:
     example: cm; kg
     order: 21
     required: false
+    transformations:
+      - parameters:
+          - comment
   Country:
     aliases:
     - country
@@ -355,7 +371,7 @@ Columns:
     required: false
     transformations:
     - parameters:
-      - sesar:elevation_end
+      - elevation_end
       - Elevation unit
       transform: unit_measurement
   Elevation start:
@@ -372,7 +388,7 @@ Columns:
     required: false
     transformations:
     - parameters:
-      - sesar:elevation_start
+      - elevation
       - Elevation unit
       transform: unit_measurement
   Elevation unit:
@@ -384,6 +400,9 @@ Columns:
     instructions: 'Must be one of the following: meters, feet, miles, kilometers'
     order: 33
     required: false
+    transformations:
+      - parameters:
+          - sesar:elevation_unit
   Field name (informal classification):
     aliases:
     - field name (informal classification)
@@ -435,6 +454,9 @@ Columns:
     example: Coconino Sandstone; Fig Tree Formation
     order: 15
     required: false
+    transformations:
+      - parameters:
+          - sesar:geological_unit
   IGSN:
     aliases:
     - igsn
@@ -792,6 +814,34 @@ Columns:
     example: Biogeochemistry, geochemistry and microbiology
     order: 22
     required: false
+    transformations:
+      - parameters:
+          - purpose
+  Related URL:
+    aliases: []
+    transformations:
+      - parameters:
+          - sesar:related_url
+  Related URL Type:
+    aliases: []
+    transformations:
+      - parameters:
+          - sesar:related_url_type
+  Related URL Desription:
+    aliases: []
+    transformations:
+      - parameters:
+          - sesar:related_url_description
+  Related Identifiers:
+    aliases: []
+    transformations:
+      - parameters:
+          - sesar:related_identifiers
+  Relation Type:
+    aliases: []
+    transformations:
+      - parameters:
+          - sesar:relation_type
   Release Date:
     aliases:
     - release date
@@ -843,6 +893,9 @@ Columns:
     example: Core; Core Section
     order: 20
     required: false
+    transformations:
+      - parameters:
+          - sesar:sample_type
   Size:
     aliases:
     - size
@@ -865,6 +918,9 @@ Columns:
     example: cm; kg
     order: 19
     required: false
+    transformations:
+      - parameters:
+          - sesar:size_unit
   State/Province:
     aliases:
     - state/province
@@ -931,6 +987,4 @@ Columns:
     - parameters:
       - sesar:zone
       transform: map
-ID: sesar:igsn
-Name: name
-Template: sesar
+

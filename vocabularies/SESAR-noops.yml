@@ -32,6 +32,7 @@ terms:
     type: string
   classification_comment:
     description: Classification Comment
+    comment: Not in current SESAR format
     examples:
     - TODO
     title: Classification Comment
@@ -141,6 +142,7 @@ terms:
     type: string
   is_archived:
     description: Is Archived
+    comment: Not in current SESAR format
     examples:
     - Y
     - N
@@ -207,24 +209,28 @@ terms:
     type: string
   registrant_current:
     description: Registrant of the sample in SESAR
+    comments: Not in current SESAR field dictionary
     examples:
     - Jane Smith
     title: Current Registrant Name
     type: string
   registrant_org:
     description: Registrant organization of the sample in SESAR
+    comments: Not in current SESAR field dictionary
     examples:
     - Jane Smith
     title: Organization Registrant Name
     type: string
   related_identifiers:
     description: IGSN of Related Samples
+    comments: Not in current SESAR field dictionary
     examples:
     - IEMEG0003
     title: Related Identifiers
     type: string
   relation_type:
     description: Relation Type
+    comments: Not in current SESAR field dictionary
     examples:
     - TODO
     title: Relation Type
@@ -257,12 +263,12 @@ terms:
     - kg
     title: Size unit
     type: string
-  state_province:
-    description: State or Province where the sample was collected
-    examples:
-    - Alaska
-    title: State/Province
-    type: string
+#  state_province:
+#    description: State or Province where the sample was collected
+#    examples:
+#    - Alaska
+#    title: State/Province
+#    type: string
   vertical_datum:
     description: Vertical datum used to calculate the elevation
     examples:
@@ -276,4 +282,24 @@ terms:
     - 11R
     title: Zone
     type: string
+  related_url:
+    title: Related URL
+    description: Related URL associated with the samples
+    examples:
+      - https://doi.org/10.1594/IEDA/999999
+    format: url
+    type: string
+  related_url_type:
+    title: Related URL Type
+    description: Related URL type. Either DOI or Regular URL
+    examples:
+      - DOI
+    type: string
+  related_url_description:
+    title: Related URL Description
+    description: Free text description of the related URL
+    examples:
+      - DOI for related published data
+    type: string
+
 

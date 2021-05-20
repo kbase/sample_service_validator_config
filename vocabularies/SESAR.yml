@@ -16,6 +16,12 @@ terms:
     title: Age (min)
     type: number
     units: years
+  age_unit:
+    title: Age Unit
+    description: Unit for the age provided
+    examples:
+      - Ma
+    type: string
   classification:
     description: Taxonomy (formal classification) Formal categorization of sample.
     examples:
@@ -46,24 +52,33 @@ terms:
     title: Easting
     type: number
     units: m
-  elevation_end:
-    description: Elevation end in meters
+  #  elevation_end:
+  #    description: Elevation end in meters
+  #    examples:
+  #    - '673.5'
+  #    - '-4520'
+  #    required: true
+  #    title: Elevation end
+  #    type: number
+  #    units: m
+  #  elevation_start:
+  #    description: Elevation start in meters
+  #    examples:
+  #    - '678.5'
+  #    - '-4536'
+  #    required: true
+  #    title: Elevation start
+  #    type: number
+  #    units: m
+  elevation_unit:
+    title: Elevation Unit
+    description: Unit in which elevation start and/or end are provided in.
     examples:
-    - '673.5'
-    - '-4520'
-    required: true
-    title: Elevation end
-    type: number
-    units: m
-  elevation_start:
-    description: Elevation start in meters
-    examples:
-    - '678.5'
-    - '-4536'
-    required: true
-    title: Elevation start
-    type: number
-    units: m
+      - meters
+      - feet
+      - miles
+      - kilometers
+    type: string
   material:
     description: Material that the sample consists of using SESAR vocabulary.
     enum:

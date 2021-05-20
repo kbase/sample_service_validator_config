@@ -1,3 +1,14 @@
+Template: enigma
+Mappings:
+  # might it not be better to preserve the original key name (down below
+  #  in the definition of SampleID), and rely on this mapping, rather than
+  # transforming it twice? (once to name, second to id).
+  # Also "name" cannot be reverse mapped to SampleID (unless going through this
+  # template config, but field mappings go through the main specs),
+  # so that information is lost.
+  ID: name
+  ParentID: enigma:well_name
+  Name: name
 Columns:
   AODC (cells/g):
     aliases:
@@ -1156,6 +1167,5 @@ Columns:
     - parameters:
       - ph
       transform: map
-ID: name
-Name: name
-Template: enigma
+
+

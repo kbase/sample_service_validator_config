@@ -3,12 +3,17 @@ terms:
     description: Biome from ENVO (child of ENVO:00000428)
     examples:
     - FENVO:01001831
-    ontology:
-      ancestor_term: ENVO:00000428
-      ns: envo_ontology
     title: Biome
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:00000428
+    namespace: envo_ontology
   city_township:
+    # Perhaps the canonical name should be just  "city"?
+    # I think people are accustomed to interpreting city as
+    # population center - so city, town, township, village, etc.
+    # the designation of which is dependent on the laws of a
+    # country, state, etc.
     description: City or Township where the sample was collected
     examples:
     - Palisades
@@ -18,7 +23,7 @@ terms:
     description: Date amd time when the sample was collected in ISO 8601 format
     examples:
     - '2021-04-28T09:10:23-07:00'
-    title: Collection date
+    title: Collection time
     type: string
   comment:
     description: Free form Comment
@@ -87,11 +92,11 @@ terms:
     description: Feature from ENVO (child of ENVO:01000813)
     examples:
     - ENVO:00000314
-    ontology:
-      ancestor_term: ENVO:01000813
-      ns: envo_ontology
     title: Feature
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:01000813
+    namespace: envo_ontology
   latitude:
     description: Latitude of the location where the sample was collected in WGS 84
       coordinate system. ('Start latitude' for linear sampling features such as dredges.)
@@ -162,11 +167,11 @@ terms:
     description: Material from ENVO (child of ENVO:00010483)
     examples:
     - ENVO:01001614
-    ontology:
-      ancestor_term: ENVO:00010483
-      ns: envo_ontology
     title: Material
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:00010483
+    namespace: envo_ontology
   modification_date:
     description: Modification date
     examples:
@@ -178,7 +183,7 @@ terms:
     examples:
     - SAM1234
     - IEMEG0001
-    max-len: 240
+    maxLength: 240
     title: Sample Name
     type: string
   other_names:
@@ -205,6 +210,7 @@ terms:
     type: string
   sample_template:
     description: Template Format
+    # TODO: should be lower case
     enum:
     - SESAR
     - ENIGMA
