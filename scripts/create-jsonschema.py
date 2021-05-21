@@ -4,6 +4,14 @@ import yaml
 import json
 import re
 
+####
+# python scripts/create-jsonschema.py outputdir
+#
+# E.g.
+# python scripts/create-jsonschema.py _temp/schemas
+#
+####
+
 ONTOLOGY_MAPPING = {
     "envo_ontology": "ENVO_terms",
     "go_ontology": "GO_terms"
@@ -72,6 +80,9 @@ def transform_validator(key, validator):
         schema['kbase']['units'] = {
             'canonical': validator['units']
         }
+
+    if 'formatting' in validator:
+        schema['kbase']['formatting'] = validator['formatting']
 
     return schema
 
