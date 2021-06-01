@@ -4,6 +4,7 @@ import yaml
 import json
 import re
 
+
 ####
 # python scripts/create-jsonschema.py outputdir
 #
@@ -11,18 +12,6 @@ import re
 # python scripts/create-jsonschema.py _temp/schemas
 #
 ####
-
-ONTOLOGY_MAPPING = {
-    "envo_ontology": "ENVO_terms",
-    "go_ontology": "GO_terms"
-}
-
-_BUILTIN = 'SampleService.core.validator.builtin'
-_NOOP = [{
-    'callable_builder': 'noop',
-    'module': _BUILTIN
-}]
-
 
 def copy_if(source, from_key, dest, to_key=None, must=False):
     if to_key is None:
@@ -77,9 +66,7 @@ def transform_validator(key, validator):
         raise Exception(f'Unsupported type: {validator["type"]}')
 
     if 'units' in validator:
-        schema['kbase']['units'] = {
-            'canonical': validator['units']
-        }
+        schema['kbase']['unit'] = validator['units']
 
     if 'formatting' in validator:
         schema['kbase']['formatting'] = validator['formatting']
