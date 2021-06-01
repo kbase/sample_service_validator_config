@@ -1,4 +1,8 @@
 Template: enigma
+Info:
+  title: Ecosystems and Networks Integrated with Genes and Molecular Assemblies
+  shortTitle: ENIGMA
+  homePage: https://enigma.lbl.gov
 Mappings:
   # might it not be better to preserve the original key name (down below
   #  in the definition of SampleID), and rely on this mapping, rather than

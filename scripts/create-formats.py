@@ -14,6 +14,7 @@ def create_formats(format_sources, output_dir):
             # Transform mappings:
             sample_format = {
                 'name': format_name,
+                'info': template['Info'],
                 'mappings': {
                     'id': template['Mappings']['ID'],
                     'parent': template['Mappings']['ParentID'],
@@ -24,8 +25,8 @@ def create_formats(format_sources, output_dir):
             }
 
             if 'SkipLines' in template['Mappings']:
-                sample_format['mappings']['skipLines'] = template['Mappings']['SkipLines']
-
+                sample_format['mappings']['skipLines'] = template['Mappings'][
+                    'SkipLines']
 
             # Transform columns:
             if 'Columns' in template:

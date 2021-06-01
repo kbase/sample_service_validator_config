@@ -1,4 +1,8 @@
 Template: kbase
+Info:
+  title: KBase custom sample template
+  shortTitle: KBase
+  homePage: https://kbase.us
 Mappings:
   ID: id
   ParentID: parent_id

@@ -1,5 +1,9 @@
 # Why all the keys in ProperCase?
 Template: sesar
+Info:
+  title: System for Earth Sample Regsitration
+  shortTitle: SESAR
+  homePage: https://www.geosamples.org/
 Mappings:
   ID: sesar:igsn
   ParentID: sesar:parent_igsn
