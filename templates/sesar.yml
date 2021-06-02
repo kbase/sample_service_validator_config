@@ -831,7 +831,7 @@ Columns:
     transformations:
       - parameters:
           - sesar:related_url_type
-  Related URL Desription:
+  Related URL Description:
     aliases: []
     transformations:
       - parameters:
