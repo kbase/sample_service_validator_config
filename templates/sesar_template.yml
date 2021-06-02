@@ -77,12 +77,6 @@ Columns:
     example: ''
     order: 7
     required: false
-    transformations:
-    - parameters:
-      # we should not have fields that map to the same validation.
-      # if we want this, we should enforce some hierarchy or merging method.
-      - sesar:classification
-      transform: map
   Collection date:
     aliases:
     - collection date

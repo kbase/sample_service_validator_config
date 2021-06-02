@@ -5,6 +5,7 @@ TEMP_FILE_2=temp_file2.yml
 SAMPLE_SERVICE_SCHEMA = test_data/validator_schema.json
 MACRO_SCHEMA = test_data/validator_macro_schema.json
 VOCAB_SCHEMA = test_data/vocabulary_schema.json
+TEMPLATES_DIR = 'templates'
 
 all: update templates
 
@@ -20,6 +21,7 @@ test:
 	python3 scripts/check_if_updated.py $(ONTOLOGY_FILE) $(TEMP_FILE_2)
 	rm $(TEMP_FILE)
 	rm $(TEMP_FILE_2)
+	python3 scripts/validate_templates.py $(TEMPLATES_DIR)/*yml
 
 update:
 	python3 scripts/merge_validators.py $(VALIDATION_FILE) $(ONTOLOGY_FILE)

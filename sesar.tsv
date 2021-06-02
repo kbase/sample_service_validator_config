@@ -6,7 +6,7 @@ Release Date	description	N	2018-03-15	Date when sample metadata is publicly acce
 Material	description	Y	Rock; Liquid>Aqueous	Material that the sample consists of. Mandatory.	Please use controlled list	map	sesar:material		
 Sub-object type	description	Y	Thin section; Powder	More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.	Please use controlled list	map	sesar:sub-object_type		
 Classification	description	Y	Igneous>Plutonic>Felsic; Plagioclase	Taxonomy (formal classification) Formal categorization of sample.	Please use controlled list (for Rocks), Please use controlled list (for Minerals)	map	sesar:classification		
-Classification Comment	description	N		Additional comment on the classification		map	sesar:classification		
+Classification Comment	description	N		Additional comment on the classification					
 Field name (informal classification)	description	Y	basalt; amphibole; sea water	Taxonomy (field name) Informal classification of sample.		map	sesar:field_name		Field Name
 Other name(s)	description	N	TRPOW; T-PROW	Other name(s) used for the sample.	Provide multiple other names in a semi-colon delimited fashion.	map	other_names		
 Sample Description	description	N	dredge with 50 pieces of basalt and mud	Free text to describe features of a sample such as its components, texture, color, shape, etc.		map	description		Description
