@@ -3,6 +3,13 @@ import yaml
 
 
 def validate_template(template_file):
+    '''
+    This function does the following checks within a template file:
+    1.) file contains 'Columns', 'ID', 'Name' and 'Template' fields at highest level
+    2.) No two terms in 'Columns' have the same transformation target
+    3.) No two terms in 'Columns' share aliases
+    4.) No collisions on 'order' field between terms
+    '''
     with open(template_file) as f:
         data = yaml.load(f, Loader=yaml.SafeLoader)
     # confirm a few aspects of the file
@@ -11,10 +18,6 @@ def validate_template(template_file):
     for key in keys:
         if key not in data_keys:
             raise ValueError(f"Missing required key {key} from file {template_file}")
-    '''
-    1.) make sure no two files have the same transformation
-    2.) make surew no alias maps to multiple fields
-    '''
     existing_validation_targets = {}
     existing_alias_targets = {}
     existing_orders = {}
