@@ -315,13 +315,13 @@ validators:
       - 802.65
       title: Conductivity
       type: number
-      units: mS/cm
+      units: ms/cm
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
-        units: mS/cm
+        units: ms/cm
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:

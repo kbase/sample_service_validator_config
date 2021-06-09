@@ -21,7 +21,7 @@ enigma:boring_diameter	validators	boring diameter in inches		units	units	units i
 enigma:boring_refusal	validators	Boring Refusal (Y/N)		noop											
 enigma:collection_time	validators	Collection Time		noop											
 enigma:condition	validators	Condition		noop											
-enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units mS/cm;	number	value							
+enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units ms/cm;	number	value							
 enigma:dapi_cell_count	validators	DAPI cell count in cells per gram		number	value										
 enigma:date	validators	Date (YYYY-MM-DD)		noop											
 enigma:dna_picogreen_total	validators	units in nanograms		units	units	units ng;	number	value							

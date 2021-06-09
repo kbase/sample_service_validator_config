@@ -53,7 +53,7 @@ terms:
     - 802.65
     title: Conductivity
     type: number
-    units: mS/cm
+    units: ms/cm
   dna_picogreen_total:
     description: units in nanograms
     examples:
