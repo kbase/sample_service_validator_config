@@ -77,10 +77,6 @@ Columns:
     example: ''
     order: 7
     required: false
-    transformations:
-    - parameters:
-      - sesar:classification
-      transform: map
   Collection date:
     aliases:
     - collection date

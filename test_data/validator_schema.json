@@ -25,6 +25,8 @@
             },
             "additionalProperties": {
               "type": [
+                "array",
+                "object",
                 "number",
                 "boolean",
                 "string",

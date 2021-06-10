@@ -25,6 +25,8 @@
             },
             "additionalProperties": {
               "type": [
+                "array",
+                "object",
                 "number",
                 "boolean",
                 "string",
@@ -76,7 +78,8 @@
           }
         },
         "required": [
-          "key_metadata"
+          "description",
+          "title"
         ]
       }
     },
@@ -86,7 +89,7 @@
     "namespace": {
       "type": "string"
     },
-    "validators": {
+    "terms": {
       "$ref": "#/definitions/validator_set"
     }
   },
