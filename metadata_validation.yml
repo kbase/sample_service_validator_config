@@ -114,7 +114,13 @@ validators:
       - -4536
       title: Elevation
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -129,7 +135,13 @@ validators:
       - -4520
       title: Elevation End
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
