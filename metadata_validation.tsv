@@ -8,8 +8,8 @@ country	validators	Country		noop
 county	validators	County		noop											
 depth_bgs	validators	depth in meters below ground surface (m BGS)		units	units	units m;	number	value							
 description	validators	Free text to describe features of a sample such as its components, texture, color, shape, etc.		noop											
-elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
-elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
+elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		units	units	units m;	number	value							
+elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		units	units	units m;	number	value							
 enigma:aodc	validators	units in cells per gram		units	units	units cells/g;	number	value	gte 0.0;						
 enigma:aquifer	validators	Aquifer		noop											
 enigma:area_name	validators	Area Name		noop											
