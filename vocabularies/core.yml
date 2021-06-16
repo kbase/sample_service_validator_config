@@ -67,6 +67,7 @@ terms:
     - -4536
     title: Elevation
     type: number
+    units: m
   elevation_end:
     description: End elevation at which a sample was collected. Use negative values
       for depth below sea level. Minimum elevation if a range is provided for the
@@ -76,6 +77,7 @@ terms:
     - -4520
     title: Elevation End
     type: number
+    units: m
   env_package:
     description: Environmental Package (MIxS vocabulary)
     examples:
