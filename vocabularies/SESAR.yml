@@ -16,6 +16,12 @@ terms:
     title: Age (min)
     type: number
     units: years
+  age_unit:
+    title: Age Unit
+    description: Unit for the age provided
+    examples:
+      - Ma
+    type: string
   classification:
     description: Taxonomy (formal classification) Formal categorization of sample.
     examples:
@@ -27,7 +33,6 @@ terms:
     description: maximum depth in core in meters
     examples:
     - 0.003
-    required: true
     title: Depth in Core (max)
     type: number
     units: meters
@@ -35,7 +40,6 @@ terms:
     description: Minimum depth in core in meters
     examples:
     - 0.001
-    required: true
     title: Depth in Core (min)
     type: number
     units: meters
@@ -51,7 +55,6 @@ terms:
     examples:
     - '673.5'
     - '-4520'
-    required: true
     title: Elevation end
     type: number
     units: m
@@ -60,10 +63,18 @@ terms:
     examples:
     - '678.5'
     - '-4536'
-    required: true
     title: Elevation start
     type: number
     units: m
+  elevation_unit:
+    title: Elevation Unit
+    description: Unit in which elevation start and/or end are provided in.
+    examples:
+      - meters
+      - feet
+      - miles
+      - kilometers
+    type: string
   material:
     description: Material that the sample consists of using SESAR vocabulary.
     enum:
