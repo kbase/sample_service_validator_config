@@ -77,6 +77,8 @@ Columns:
       transform: map
   Classification Comment:
     apiKey: classification_comment
+    disposition: ignore
+    comment: Only in exported samples
     category: description
     definition: Additional comment on the classification
     example: ''
@@ -246,6 +248,7 @@ Columns:
   Cur Registrant Name:
     apiKey: cur_registrant_name
     disposition: ignore
+    comment: Only in exported samples; reflects the name of the registered user who uploaded the sample.
     category: curation
     definition: Current registrant in SESAR
     example: John Smith
@@ -654,6 +657,8 @@ Columns:
       transform: map
   Org Registrant Name:
     apiKey: org_registrant_name
+    disposition: ignore
+    comment: Only in exported samples; contains the Organization name for the registered user who uploaded the sample.
     category: curation
     definition: Organizational registrant in SESAR
     example: Woods Hole Oceanographic Institution
