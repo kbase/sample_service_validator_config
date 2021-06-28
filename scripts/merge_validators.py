@@ -40,6 +40,7 @@ def expand_validators(val):
         print(val)
         raise ValueError("Missing type")
     typ = val['type']
+    format = val.get('format')
     if 'units' in val:
         v = {'callable_builder': 'units', 'module': _BUILTIN, 'parameters': {
             'key': 'units',
@@ -61,16 +62,17 @@ def expand_validators(val):
     elif 'enum' in val:
         v['callable_builder'] = 'enum'
         v['parameters'] = {'allowed-values': deepcopy(val['enum'])}
-    elif 'ontology' in val:
-        v['callable_builder'] = 'ontology_has_ancestor'
-        v['parameters'] = {
-            'ontology': val['ontology']['ns'],
-            'ancestor_term': val['ontology']['ancestor_term']
-        }
     elif 'max-len' in val:
         v['parameters'] = {'max-len': val['max-len']}
     elif typ == 'string':
-        return deepcopy(_NOOP)
+        if format == 'ontology-term':
+            v['callable_builder'] = 'ontology_has_ancestor'
+            v['parameters'] = {
+                'ontology': val['namespace'],
+                'ancestor_term': val['ancestorTerm']
+            }
+        else:
+            return deepcopy(_NOOP)
     else:
         print("type not recongnized %s" % (typ))
         raise KeyError("type %s not recognized" % (typ))

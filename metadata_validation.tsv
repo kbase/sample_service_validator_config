@@ -1,5 +1,5 @@
 key	type	description	display_name	function 1	sub key 1	params 1	function 2	sub key 2	params 2	function 3	sub key 3	params 3	function 4	sub key 4	params 4
-biome	validators	Biome from ENVO (child of ENVO:00000428)		noop											
+biome	validators	Biome from ENVO (child of ENVO:00000428)		ontology_has_ancestor		ancestor_term ENVO:00000428;ontology envo_ontology;									
 city_township	validators	City or Township where the sample was collected		noop											
 collection_time	validators	Date amd time when the sample was collected in ISO 8601 format		noop											
 comment	validators	Free form Comment		noop											
@@ -93,7 +93,7 @@ enigma:well_name	validators	Well Name (ID)		noop
 enigma:well_status	validators	Status of Well		noop											
 enigma:well_type	validators	Type of Welll (SP; MP)		noop											
 env_package	validators	Environmental Package (MIxS vocabulary)		noop											
-feature	validators	Feature from ENVO (child of ENVO:01000813)		noop											
+feature	validators	Feature from ENVO (child of ENVO:01000813)		ontology_has_ancestor		ancestor_term ENVO:01000813;ontology envo_ontology;									
 gold:biosample_id	validators	GOLD biosample identifier		noop											
 gold:community	validators	Community Sampled		noop											
 gold:ecosystem	validators	Ecosystem (GOLD)		noop											
@@ -111,7 +111,7 @@ locality_description	validators	Additional information about the specific place 
 location_description	validators	Free text description of the location		noop											
 longitude	validators	Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
 longitude_end	validators	End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
-material	validators	Material from ENVO (child of ENVO:00010483)		noop											
+material	validators	Material from ENVO (child of ENVO:00010483)		ontology_has_ancestor		ancestor_term ENVO:00010483;ontology envo_ontology;									
 modification_date	validators	Modification date		noop											
 name	validators	name validator		noop											
 ncbi:taxonomy_name	validators	NCBI Taxonomy Name		noop											

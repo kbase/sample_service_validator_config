@@ -10,8 +10,11 @@ validators:
       title: Biome
       type: string
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:00000428
+        ontology: envo_ontology
   city_township:
     key_metadata:
       description: City or Township where the sample was collected
@@ -1430,8 +1433,11 @@ validators:
       title: Feature
       type: string
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:01000813
+        ontology: envo_ontology
   gold:biosample_id:
     key_metadata:
       description: GOLD biosample identifier
@@ -1687,8 +1693,11 @@ validators:
       title: Material
       type: string
     validators:
-    - callable_builder: noop
+    - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:00010483
+        ontology: envo_ontology
   modification_date:
     key_metadata:
       description: Modification date
