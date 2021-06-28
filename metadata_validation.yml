@@ -1,20 +1,17 @@
 validators:
   biome:
     key_metadata:
+      ancestorTerm: ENVO:00000428
       description: Biome from ENVO (child of ENVO:00000428)
       examples:
-      - FENVO:01001831
-      ontology:
-        ancestor_term: ENVO:00000428
-        ns: envo_ontology
+      - ENVO:01001831
+      format: ontology-term
+      namespace: envo_ontology
       title: Biome
-      type: ontology
+      type: string
     validators:
-    - callable_builder: ontology_has_ancestor
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        ancestor_term: ENVO:00000428
-        ontology: envo_ontology
   city_township:
     key_metadata:
       description: City or Township where the sample was collected
@@ -30,7 +27,7 @@ validators:
       description: Date amd time when the sample was collected in ISO 8601 format
       examples:
       - '2021-04-28T09:10:23-07:00'
-      title: Collection date
+      title: Collection time
       type: string
     validators:
     - callable_builder: noop
@@ -112,6 +109,8 @@ validators:
       examples:
       - 678.5
       - -4536
+      formatting:
+        useGrouping: true
       title: Elevation
       type: number
     validators:
@@ -127,6 +126,8 @@ validators:
       examples:
       - 673.5
       - -4520
+      formatting:
+        useGrouping: true
       title: Elevation End
       type: number
     validators:
@@ -315,13 +316,13 @@ validators:
       - 802.65
       title: Conductivity
       type: number
-      units: ms/cm
+      units: mS/cm
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
-        units: ms/cm
+        units: mS/cm
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -1420,20 +1421,17 @@ validators:
       module: SampleService.core.validator.builtin
   feature:
     key_metadata:
+      ancestorTerm: ENVO:01000813
       description: Feature from ENVO (child of ENVO:01000813)
       examples:
       - ENVO:00000314
-      ontology:
-        ancestor_term: ENVO:01000813
-        ns: envo_ontology
+      format: ontology-term
+      namespace: envo_ontology
       title: Feature
-      type: ontology
+      type: string
     validators:
-    - callable_builder: ontology_has_ancestor
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        ancestor_term: ENVO:01000813
-        ontology: envo_ontology
   gold:biosample_id:
     key_metadata:
       description: GOLD biosample identifier
@@ -1542,6 +1540,9 @@ validators:
         latitudes.
       examples:
       - 5.89634
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 90.0
       minimum: -90.0
       title: Latitude
@@ -1567,6 +1568,9 @@ validators:
         latitudes.
       examples:
       - 5.89634
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 90.0
       minimum: -90.0
       title: Latitude End
@@ -1625,6 +1629,9 @@ validators:
         longitudes.
       examples:
       - -103.785
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 180.0
       minimum: -180.0
       title: Longitude
@@ -1649,6 +1656,9 @@ validators:
         values for 'West' longitudes.
       examples:
       - -103.285
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 180.0
       minimum: -180.0
       title: Longitude End
@@ -1668,20 +1678,17 @@ validators:
         lte: 180.0
   material:
     key_metadata:
+      ancestorTerm: ENVO:00010483
       description: Material from ENVO (child of ENVO:00010483)
       examples:
       - ENVO:01001614
-      ontology:
-        ancestor_term: ENVO:00010483
-        ns: envo_ontology
+      format: ontology-term
+      namespace: envo_ontology
       title: Material
-      type: ontology
+      type: string
     validators:
-    - callable_builder: ontology_has_ancestor
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        ancestor_term: ENVO:00010483
-        ontology: envo_ontology
   modification_date:
     key_metadata:
       description: Modification date
@@ -1698,14 +1705,12 @@ validators:
       examples:
       - SAM1234
       - IEMEG0001
-      max-len: 240
+      maxLength: 240
       title: Sample Name
       type: string
     validators:
-    - callable_builder: string
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
   ncbi:taxonomy_name:
     key_metadata:
       description: NCBI Taxonomy Name
@@ -1831,6 +1836,17 @@ validators:
       parameters:
         gte: 0.0
         keys: value
+  sesar:age_unit:
+    key_metadata:
+      description: Unit for the age provided
+      examples:
+      - Ma
+      - years
+      title: Age Unit
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:archive_contact_current:
     key_metadata:
       description: Address and/or email of the person who should be contacted for
@@ -1877,6 +1893,17 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  sesar:build_url:
+    key_metadata:
+      description: ??
+      examples:
+      - http://igsn.org/BWH00001R
+      format: url
+      title: Build URL
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:classification:
     key_metadata:
       description: Taxonomy (formal classification) Formal categorization of sample.
@@ -1890,6 +1917,8 @@ validators:
       module: SampleService.core.validator.builtin
   sesar:classification_comment:
     key_metadata:
+      comments:
+      - Not in current SESAR format
       description: Classification Comment
       examples:
       - TODO
@@ -2069,7 +2098,6 @@ validators:
       examples:
       - '673.5'
       - '-4520'
-      required: true
       title: Elevation end
       type: number
       units: m
@@ -2083,14 +2111,12 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-        required: true
   sesar:elevation_start:
     key_metadata:
       description: Elevation start in meters
       examples:
       - '678.5'
       - '-4536'
-      required: true
       title: Elevation start
       type: number
       units: m
@@ -2104,7 +2130,19 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-        required: true
+  sesar:elevation_unit:
+    key_metadata:
+      description: Unit in which elevation start and/or end are provided in.
+      examples:
+      - meters
+      - feet
+      - miles
+      - kilometers
+      title: Elevation Unit
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:field_name:
     key_metadata:
       description: Taxonomy (field name) Informal classification of sample.
@@ -2163,6 +2201,8 @@ validators:
       module: SampleService.core.validator.builtin
   sesar:is_archived:
     key_metadata:
+      comments:
+      - Not in current SESAR format
       description: Is Archived
       examples:
       - Y
@@ -2386,8 +2426,44 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  sesar:primary_location_name:
+    key_metadata:
+      comments:
+      - Not in current SESAR field dictionary; but found in SESAR samples
+      description: NOT IN DATA DICTIONARY
+      examples:
+      - Felt, ID, USA
+      title: Primary location name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:primary_location_type:
+    key_metadata:
+      comments:
+      - Not in current SESAR field dictionary; but found in SESAR samples
+      description: NOT IN DATA DICTIONARY
+      examples:
+      - Moutain
+      title: Primary location type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:publish_date:
+    key_metadata:
+      description: ??
+      examples:
+      - '2019-10-30'
+      title: Publish Date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:registrant_current:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: Registrant of the sample in SESAR
       examples:
       - Jane Smith
@@ -2398,6 +2474,8 @@ validators:
       module: SampleService.core.validator.builtin
   sesar:registrant_org:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: Registrant organization of the sample in SESAR
       examples:
       - Jane Smith
@@ -2408,6 +2486,8 @@ validators:
       module: SampleService.core.validator.builtin
   sesar:related_identifiers:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: IGSN of Related Samples
       examples:
       - IEMEG0003
@@ -2416,8 +2496,41 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  sesar:related_url:
+    key_metadata:
+      description: Related URL associated with the samples
+      examples:
+      - https://doi.org/10.1594/IEDA/999999
+      format: url
+      title: Related URL
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:related_url_description:
+    key_metadata:
+      description: Free text description of the related URL
+      examples:
+      - DOI for related published data
+      title: Related URL Description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:related_url_type:
+    key_metadata:
+      description: Related URL type. Either DOI or Regular URL
+      examples:
+      - DOI
+      title: Related URL Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:relation_type:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: Relation Type
       examples:
       - TODO
@@ -2433,6 +2546,16 @@ validators:
       examples:
       - '2018-03-15'
       title: Release date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:sample_comment:
+    key_metadata:
+      description: ??
+      examples:
+      - Red cinders - No olv found, plag present
+      title: Sample Comment
       type: string
     validators:
     - callable_builder: noop
@@ -2466,16 +2589,6 @@ validators:
       - cm
       - kg
       title: Size unit
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:state_province:
-    key_metadata:
-      description: State or Province where the sample was collected
-      examples:
-      - Alaska
-      title: State/Province
       type: string
     validators:
     - callable_builder: noop
@@ -2586,6 +2699,7 @@ validators:
       description: URL for Sample
       examples:
       - http://igsn.org/IEBWE0001
+      format: url
       title: URL
       type: string
     validators:

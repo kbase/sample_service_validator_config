@@ -1,5 +1,5 @@
 key	type	description	display_name	function 1	sub key 1	params 1	function 2	sub key 2	params 2	function 3	sub key 3	params 3	function 4	sub key 4	params 4
-biome	validators	Biome from ENVO (child of ENVO:00000428)		ontology_has_ancestor		ancestor_term ENVO:00000428;ontology envo_ontology;									
+biome	validators	Biome from ENVO (child of ENVO:00000428)		noop											
 city_township	validators	City or Township where the sample was collected		noop											
 collection_time	validators	Date amd time when the sample was collected in ISO 8601 format		noop											
 comment	validators	Free form Comment		noop											
@@ -21,7 +21,7 @@ enigma:boring_diameter	validators	boring diameter in inches		units	units	units i
 enigma:boring_refusal	validators	Boring Refusal (Y/N)		noop											
 enigma:collection_time	validators	Collection Time		noop											
 enigma:condition	validators	Condition		noop											
-enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units ms/cm;	number	value							
+enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units mS/cm;	number	value							
 enigma:dapi_cell_count	validators	DAPI cell count in cells per gram		number	value										
 enigma:date	validators	Date (YYYY-MM-DD)		noop											
 enigma:dna_picogreen_total	validators	units in nanograms		units	units	units ng;	number	value							
@@ -93,7 +93,7 @@ enigma:well_name	validators	Well Name (ID)		noop
 enigma:well_status	validators	Status of Well		noop											
 enigma:well_type	validators	Type of Welll (SP; MP)		noop											
 env_package	validators	Environmental Package (MIxS vocabulary)		noop											
-feature	validators	Feature from ENVO (child of ENVO:01000813)		ontology_has_ancestor		ancestor_term ENVO:01000813;ontology envo_ontology;									
+feature	validators	Feature from ENVO (child of ENVO:01000813)		noop											
 gold:biosample_id	validators	GOLD biosample identifier		noop											
 gold:community	validators	Community Sampled		noop											
 gold:ecosystem	validators	Ecosystem (GOLD)		noop											
@@ -111,9 +111,9 @@ locality_description	validators	Additional information about the specific place 
 location_description	validators	Free text description of the location		noop											
 longitude	validators	Longitude of the location where the sample was collected in WGS 84 cooridinate system. ('Start longitude' for linear sampling features such as dredges.) Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
 longitude_end	validators	End longitude of the location where the sample was collected in WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative values for 'West' longitudes.		units	units	units degrees;	number	value	gte -180.0;lte 180.0;						
-material	validators	Material from ENVO (child of ENVO:00010483)		ontology_has_ancestor		ancestor_term ENVO:00010483;ontology envo_ontology;									
+material	validators	Material from ENVO (child of ENVO:00010483)		noop											
 modification_date	validators	Modification date		noop											
-name	validators	name validator		string		max-len 240;									
+name	validators	name validator		noop											
 ncbi:taxonomy_name	validators	NCBI Taxonomy Name		noop											
 nmdc:omics_type	validators	NMDC OMICS Type		noop											
 other_names	validators	Other name(s) used for the sample.		noop											
@@ -122,10 +122,12 @@ purpose	validators	Purpose of the Sample		noop
 sample_template	validators	Template Format		enum		allowed-values ['SESAR', 'ENIGMA', 'KBASE'];									
 sesar:age_max	validators	Maximum geological age in years		units	units	units years;	number	value	gte 0.0;						
 sesar:age_min	validators	minimum geological age in years		units	units	units years;	number	value	gte 0.0;						
+sesar:age_unit	validators	Unit for the age provided		noop											
 sesar:archive_contact_current	validators	Address and/or email of the person who should be contacted for information about or access to the sample.		noop											
 sesar:archive_contact_original	validators	Address and/or email of the person who should be contacted for information about the sample's original archive.		noop											
 sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.		noop											
 sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.		noop											
+sesar:build_url	validators	??		noop											
 sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.		noop											
 sesar:classification_comment	validators	Classification Comment		noop											
 sesar:collection_date	validators	Date when the sample was collected.		noop											
@@ -141,8 +143,9 @@ sesar:depth_in_core_max	validators	maximum depth in core in meters		units	units	
 sesar:depth_in_core_min	validators	Minimum depth in core in meters		units	units	units meters;	number	value	required True;						
 sesar:depth_scale	validators	Unit in which the depth is provided		noop											
 sesar:easting	validators	Easting in meters		units	units	units m;	number	value							
-sesar:elevation_end	validators	Elevation end in meters		units	units	units m;	number	value	required True;						
-sesar:elevation_start	validators	Elevation start in meters		units	units	units m;	number	value	required True;						
+sesar:elevation_end	validators	Elevation end in meters		units	units	units m;	number	value							
+sesar:elevation_start	validators	Elevation start in meters		units	units	units m;	number	value							
+sesar:elevation_unit	validators	Unit in which elevation start and/or end are provided in.		noop											
 sesar:field_name	validators	Taxonomy (field name) Informal classification of sample.		noop											
 sesar:field_program_cruise	validators	Name or identifier of the field program (cruise or expedition), during which the sample was collected.		noop											
 sesar:geological_age	validators	Age of a sample as described by the stratigraphic era, period, state, etc.		noop											
@@ -161,15 +164,21 @@ sesar:physiographic_feature_primary	validators	Type of physical feature that you
 sesar:platform_description	validators	Description of platform for the cruise.		noop											
 sesar:platform_name	validators	Name of platform for the cruise.		noop											
 sesar:platform_type	validators	Type of platform for the cruise.		noop											
+sesar:primary_location_name	validators	NOT IN DATA DICTIONARY		noop											
+sesar:primary_location_type	validators	NOT IN DATA DICTIONARY		noop											
+sesar:publish_date	validators	??		noop											
 sesar:registrant_current	validators	Registrant of the sample in SESAR		noop											
 sesar:registrant_org	validators	Registrant organization of the sample in SESAR		noop											
 sesar:related_identifiers	validators	IGSN of Related Samples		noop											
+sesar:related_url	validators	Related URL associated with the samples		noop											
+sesar:related_url_description	validators	Free text description of the related URL		noop											
+sesar:related_url_type	validators	Related URL type. Either DOI or Regular URL		noop											
 sesar:relation_type	validators	Relation Type		noop											
 sesar:release_date	validators	Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).		noop											
+sesar:sample_comment	validators	??		noop											
 sesar:sample_type	validators	Sample Type		noop											
 sesar:size	validators	Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge		noop											
 sesar:size_unit	validators	Unit for the numerical value provided for 'size'.		noop											
-sesar:state_province	validators	State or Province where the sample was collected		noop											
 sesar:sub-object_type	validators	More descriptive Object Type. This applies only to samples with Object Type set to Individual Sample.		noop											
 sesar:vertical_datum	validators	Vertical datum used to calculate the elevation		noop											
 sesar:zone	validators	"Zone for the geographic Cartesian coordinate ""11R"""		noop											
