@@ -264,12 +264,6 @@ terms:
     - '2018-03-15'
     title: Release date
     type: string
-  sample_comment:
-    description: "??"
-    examples:
-    - Red cinders - No olv found, plag present
-    title: Sample Comment
-    type: string
   sample_type:
     description: Sample Type
     examples:
