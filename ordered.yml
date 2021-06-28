@@ -31,7 +31,6 @@ ordered:
   - env_package
   - material
   - enigma:filter
-  - sesar:sample_comment
   - comment
   - gold:biosample_id
   - gold:study_id

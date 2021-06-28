@@ -175,7 +175,6 @@ sesar:related_url_description	validators	Free text description of the related UR
 sesar:related_url_type	validators	Related URL type. Either DOI or Regular URL		noop											
 sesar:relation_type	validators	Relation Type		noop											
 sesar:release_date	validators	Date when sample metadata is publicly accessible and searchable. If null, defaults to date of registration (recommended).		noop											
-sesar:sample_comment	validators	??		noop											
 sesar:sample_type	validators	Sample Type		noop											
 sesar:size	validators	Size of the registered object, such as the dimension of a specimen, the length of a core, or the weight of a dredge		noop											
 sesar:size_unit	validators	Unit for the numerical value provided for 'size'.		noop											

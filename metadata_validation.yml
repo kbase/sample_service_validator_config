@@ -2550,16 +2550,6 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  sesar:sample_comment:
-    key_metadata:
-      description: ??
-      examples:
-      - Red cinders - No olv found, plag present
-      title: Sample Comment
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
   sesar:sample_type:
     key_metadata:
       description: Sample Type
