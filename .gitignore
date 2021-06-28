@@ -1,3 +1,10 @@
+# Python virtual environment locations
+/venv/
+
+# IDE Configs
+/.idea/
+
+# Temporary file locations
+/_temp/
 temp_file.yml
 temp_file2.yml
-
