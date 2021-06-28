@@ -21,6 +21,7 @@ terms:
     description: Unit for the age provided
     examples:
       - Ma
+      - years
     type: string
   classification:
     description: Taxonomy (formal classification) Formal categorization of sample.
@@ -33,6 +34,7 @@ terms:
     description: maximum depth in core in meters
     examples:
     - 0.003
+    required: true
     title: Depth in Core (max)
     type: number
     units: meters
@@ -40,6 +42,7 @@ terms:
     description: Minimum depth in core in meters
     examples:
     - 0.001
+    required: true
     title: Depth in Core (min)
     type: number
     units: meters
