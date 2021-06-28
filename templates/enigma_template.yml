@@ -650,6 +650,8 @@ Columns:
       - enigma:recovery_factor
       transform: map
   Redox Potential:
+    aliases:
+    - "Redox Potential  (?)"
     category: measurement
     definition: Redox Potential
     example: '421.5'
