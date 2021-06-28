@@ -878,7 +878,7 @@ Columns:
     required: true
     transformations:
     - parameters:
-      - sesar:subobject_type
+      - sesar:sub-object_type
       transform: map
   Related URL:
     apiKey: "??"
