@@ -3,27 +3,51 @@ ordered:
   name: description
   ordered_fields:
   - name
+  - sample_template
+  - sesar:sample_type
   - sesar:igsn
   - sesar:parent_igsn
   - sesar:release_date
   - sesar:material
   - sesar:sub-object_type
   - sesar:classification
+  - sesar:classification_comment
   - sesar:field_name
   - other_names
   - description
   - sesar:age_min
   - sesar:age_max
+  - sesar:age_unit
   - sesar:geological_age
+  - sesar:geological_unit
   - sesar:collection_method
   - sesar:collection_method_description
   - sesar:size
+  - size
+  - sesar:size_unit
   - enigma:experiment_name
   - enigma:area_name
   - enigma:well_name
   - env_package
   - material
   - enigma:filter
+  - sesar:sample_comment
+  - comment
+  - gold:biosample_id
+  - gold:study_id
+  - modification_date
+  - ncbi:taxonomy_name
+  - nmdc:omics_type
+  - purpose
+  - sesar:registrant_current
+  - sesar:registrant_org
+  - sesar:related_identifiers
+  - sesar:relation_type
+  - study_doi
+  - study_principal_investigator
+  - url
+  - sesar:publish_date
+  - sesar:build_url
 - display: Geolocation
   name: geolocation
   ordered_fields:
@@ -35,26 +59,46 @@ ordered:
   - sesar:easting
   - sesar:zone
   - sesar:vertical_datum
+  - elevation
   - sesar:elevation_start
+  - elevation_end
   - sesar:elevation_end
+  - sesar:elevation_unit
   - sesar:navigation_type
+  - feature
   - sesar:physiographic_feature_primary
   - sesar:physiographic_feature_name
+  - sesar:primary_location_type
+  - sesar:primary_location_name
   - location_description
   - locality
   - locality_description
+  - continent
   - country
   - state_province
   - county
   - city_township
   - depth_bgs
   - enigma:geological_zone
+- display: Environment and Ecosystem
+  name: environment
+  ordered_fields:
+  - biome
+  - gold:community
+  - gold:ecosystem
+  - gold:ecosystem_category
+  - gold:ecosystem_path_id
+  - gold:ecosystem_type
+  - gold:ecosystem_subtype
+  - gold:habitat
+  - gold:specific_ecosystem
 - display: Collection
   name: collection
   ordered_fields:
   - sesar:field_program_cruise
   - sesar:platform_type
   - sesar:platform_name
+  - sesar:platform_description
   - sesar:launch_type
   - sesar:launch_platform_name
   - sesar:launch_id
@@ -62,6 +106,7 @@ ordered:
   - sesar:collector_chief_scientist_address
   - sesar:collection_date
   - sesar:collection_time
+  - collection_time
   - sesar:collection_date_end
   - sesar:collection_time_end
   - sesar:collection_date_precision
@@ -71,6 +116,7 @@ ordered:
 - display: Curation
   name: curation
   ordered_fields:
+  - sesar:is_archived
   - sesar:archive_current
   - sesar:archive_contact_current
   - sesar:archive_original
@@ -157,6 +203,12 @@ ordered:
   - enigma:open_interval_end_depth
   - enigma:open_interval_diameter
   - enigma:rock_formation
+- display: Related URL of the samples
+  name: related_url
+  ordered_fields:
+  - sesar:related_url
+  - sesar:related_url_type
+  - sesar:related_url_description
 - display: Relation to Parent
   name: relation_to_parent
   ordered_fields:
