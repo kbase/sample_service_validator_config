@@ -1,7 +1,9 @@
+Template: enigma
+ID: name
+Parent: enigma:well_name
+Name: name
 Columns:
   AODC (cells/g):
-    aliases:
-    - aodc (cells/g)
     category: measurement
     definition: units in cells per gram
     example: '200456.8368'
@@ -13,8 +15,6 @@ Columns:
       - cells/g
       transform: unit_measurement_fixed
   Aquifer:
-    aliases:
-    - aquifer
     category: well
     definition: Aquifer
     example: B; wB; U/wB; wB
@@ -25,8 +25,6 @@ Columns:
       - enigma:aquifer
       transform: map
   Area Name:
-    aliases:
-    - area name
     category: description
     definition: Area Name
     example: Area 2; Background A; Area 4
@@ -37,8 +35,6 @@ Columns:
       - enigma:area_name
       transform: map
   Average Water Level (ft AMSL):
-    aliases:
-    - average water level (ft amsl)
     category: well
     definition: units in ft above mean sea level (ft AMSL)
     example: '1006.01'
@@ -50,8 +46,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   BONCAT Activity (cell/g):
-    aliases:
-    - boncat activity (cell/g)
     category: measurement
     definition: units in cells per gram
     example: '1270000'
@@ -63,8 +57,6 @@ Columns:
       - cells/g
       transform: unit_measurement_fixed
   Biomass Carbon (mg/g):
-    aliases:
-    - biomass carbon (mg/g)
     category: measurement
     definition: units in milligrams per gram
     example: '0.98'
@@ -76,8 +68,6 @@ Columns:
       - mg/g
       transform: unit_measurement_fixed
   Boring (ft BGS):
-    aliases:
-    - boring (ft bgs)
     category: well
     definition: boring depth in ft below groud surface (ft BGS)
     example: '50.25'
@@ -89,8 +79,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Boring Diameter (in):
-    aliases:
-    - boring diameter (in)
     category: well
     definition: boring diameter in inches
     example: '8'
@@ -102,8 +90,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Boring Refusal:
-    aliases:
-    - boring refusal
     category: well
     definition: Boring Refusal (Y/N)
     example: Y; N
@@ -114,8 +100,6 @@ Columns:
       - enigma:boring_refusal
       transform: map
   Collection Time:
-    aliases:
-    - collection time
     category: collection
     definition: Collection Time
     example: 9:39:00 AM
@@ -126,8 +110,6 @@ Columns:
       - enigma:collection_time
       transform: map
   Condition:
-    aliases:
-    - condition
     category: well
     definition: Condition
     example: Open
@@ -138,8 +120,6 @@ Columns:
       - enigma:condition
       transform: map
   Conductivity (mS/cm):
-    aliases:
-    - conductivity (ms/cm)
     category: measurement
     definition: conductivity in millisiemens per centimeter
     example: '802.65'
@@ -151,8 +131,6 @@ Columns:
       - ms/cm
       transform: unit_measurement_fixed
   DAPI Cell Count (cells/g):
-    aliases:
-    - dapi cell count (cells/g)
     category: measurement
     definition: DAPI cell count in cells per gram
     example: '9690000'
@@ -164,8 +142,6 @@ Columns:
       - cells/g
       transform: unit_measurement_fixed
   DNA Picogreen Total (ng):
-    aliases:
-    - dna picogreen total (ng)
     category: measurement
     definition: units in nanograms
     example: '228.6658163'
@@ -177,8 +153,6 @@ Columns:
       - ng
       transform: unit_measurement_fixed
   Date:
-    aliases:
-    - date
     category: collection
     definition: Date (YYYY-MM-DD)
     example: '2019-06-18'
@@ -189,8 +163,6 @@ Columns:
       - enigma:date
       transform: map
   Depth (cm bgs):
-    aliases:
-    - depth (cm bgs)
     category: geolocation
     definition: depth in meters below ground surface (m BGS)
     example: '5'
@@ -202,8 +174,6 @@ Columns:
       - cm
       transform: unit_measurement_fixed
   Description:
-    aliases:
-    - description
     category: description
     definition: Sample Description
     example: dredge with 50 pieces of basalt and mud
@@ -214,8 +184,6 @@ Columns:
       - description
       transform: map
   Drive Casing End Depth (ft BGS):
-    aliases:
-    - drive casing end depth (ft bgs)
     category: well
     definition: drive casing end depth in ft below ground surface (ft BGS)
     example: '27'
@@ -227,8 +195,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Drive Casing ID (in):
-    aliases:
-    - drive casing id (in)
     category: well
     definition: drive casing inner diameter in inches
     example: '2.625'
@@ -240,8 +206,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Drive Casing OD (in):
-    aliases:
-    - drive casing od (in)
     category: well
     definition: drive casing outer diameter in inches
     example: '3.25'
@@ -253,8 +217,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Drive Casing Start Depth (ft BGS):
-    aliases:
-    - drive casing start depth (ft bgs)
     category: well
     definition: units in ft below ground surface (ft BGS)
     example: '10'
@@ -266,8 +228,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Drive Casing Type:
-    aliases:
-    - drive casing type
     category: well
     definition: Drive Casing Type
     example: GP DT-32
@@ -278,8 +238,6 @@ Columns:
       - enigma:drive_casing_type
       transform: map
   Environmental Package:
-    aliases:
-    - environmental package
     category: description
     definition: Environmental Package (MIxS vocabulary)
     example: Water; Soil
@@ -290,8 +248,6 @@ Columns:
       - env_package
       transform: map
   Experiment Name:
-    aliases:
-    - experiment name
     category: description
     definition: Experiment Name
     example: 100 Well
@@ -302,8 +258,6 @@ Columns:
       - enigma:experiment_name
       transform: map
   Filter (micron):
-    aliases:
-    - filter (micron)
     category: description
     definition: Filter pore size in microns
     example: 2; 10
@@ -315,8 +269,6 @@ Columns:
       - micron
       transform: unit_measurement_fixed
   Fraction:
-    aliases:
-    - fraction
     category: measurement
     definition: Fraction
     example: Spin Down; Total Cells; .2um
@@ -327,8 +279,6 @@ Columns:
       - enigma:fraction
       transform: map
   Fractures/Cavities/WaterBreaks:
-    aliases:
-    - fractures/cavities/waterbreaks
     category: well
     definition: Fractures/Cavities/WaterBreaks
     example: WB @ 14, 41
@@ -339,8 +289,6 @@ Columns:
       - enigma:fractures_cavities_waterbreaks
       transform: map
   Functional Area:
-    aliases:
-    - functional area
     category: measurement
     definition: Functional Area
     example: S-3 Site; New Hope Pond
@@ -351,8 +299,6 @@ Columns:
       - enigma:functional_area
       transform: map
   Geological Zone:
-    aliases:
-    - geological zone
     category: geolocation
     definition: Geological Zone
     example: Saturated; Vadose
@@ -363,8 +309,6 @@ Columns:
       - enigma:geological_zone
       transform: map
   Ground Elevation (ft AMSL):
-    aliases:
-    - ground elevation (ft amsl)
     category: well
     definition: ground elevation in ft above mean sea level (ft AMSL)
     example: '1004.62'
@@ -376,8 +320,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Installation Method:
-    aliases:
-    - installation method
     category: well
     definition: Method of installation
     example: CORE; AUGER; MANUAL
@@ -388,8 +330,6 @@ Columns:
       - enigma:installation_method
       transform: map
   Latitude:
-    aliases:
-    - latitude
     category: geolocation
     definition: Latitude of the location where the sample was collected in WGS 84
       coordinate system.
@@ -401,8 +341,6 @@ Columns:
       - latitude
       transform: map
   Leucine Activity (ngC/day cell}:
-    aliases:
-    - leucine activity (ngc/day cell}
     category: measurement
     definition: units in ngC/day cell
     example: '0.000576856'
@@ -414,8 +352,6 @@ Columns:
       - ngc/day
       transform: unit_measurement_fixed
   Longitude:
-    aliases:
-    - longitude
     category: geolocation
     definition: Longitude of the location where the sample was collected in WGS 84
       cooridinate system.
@@ -427,8 +363,6 @@ Columns:
       - longitude
       transform: map
   Lower Seal End Depth (ft BGS):
-    aliases:
-    - lower seal end depth (ft bgs)
     category: well
     definition: Lower seal end depth in ft below ground surface (ft BGS)
     example: '22.1'
@@ -440,8 +374,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Lower Seal Start Depth (ft BGS):
-    aliases:
-    - lower seal start depth (ft bgs)
     category: well
     definition: Lower seal start depth in ft below ground surface (ft BGS)
     example: '20.25'
@@ -453,8 +385,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Lower Seal Type (ft BGS):
-    aliases:
-    - lower seal type (ft bgs)
     category: well
     definition: Lower Seal Type (BENT; BENT-PEL)
     example: BENT-PEL; BENT
@@ -466,8 +396,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Material:
-    aliases:
-    - material
     category: description
     definition: Material from ENVO (child of ENVO:00010483)
     example: ENVO:01001614
@@ -478,8 +406,6 @@ Columns:
       - material
       transform: map
   Maturation Time:
-    aliases:
-    - maturation time
     category: measurement
     definition: Maturation Time
     example: 24hr; 72hr
@@ -490,8 +416,6 @@ Columns:
       - enigma:maturation_time
       transform: map
   Max Water Level (ft AMSL):
-    aliases:
-    - max water level (ft amsl)
     category: well
     definition: Maximum water level in ft above mean sea level (ft AMSL)
     example: '1008.41'
@@ -503,8 +427,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Method:
-    aliases:
-    - method
     category: measurement
     definition: Method
     example: BONCAT; PMA; No PMA
@@ -515,8 +437,6 @@ Columns:
       - enigma:method
       transform: map
   Min Water Level (ft AMSL):
-    aliases:
-    - min water level (ft amsl)
     category: well
     definition: Minimum water level in ft above mean sea level (ft AMSL)
     example: '1002.99'
@@ -528,8 +448,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Moisture (%):
-    aliases:
-    - moisture (%)
     category: measurement
     definition: Temperature (Celsius)
     example: '22.1'
@@ -540,8 +458,6 @@ Columns:
       - enigma:moisture
       transform: percent
   Open:
-    aliases:
-    - open
     category: well
     definition: Open (yes/no)
     example: yes; no
@@ -552,8 +468,6 @@ Columns:
       - enigma:open
       transform: map
   Open Casing Depth (ft BGS):
-    aliases:
-    - open casing depth (ft bgs)
     category: well
     definition: Open casing depth in ft below ground surface (ft BGS)
     example: '92'
@@ -565,8 +479,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Open Casing ID (in):
-    aliases:
-    - open casing id (in)
     category: well
     definition: open casing inner diameter in inches (in)
     example: '6.12'
@@ -578,8 +490,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Open Casing OD (in):
-    aliases:
-    - open casing od (in)
     category: well
     definition: open casing outer diameter in inches (in)
     example: '6.62'
@@ -591,8 +501,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Open Casing Type:
-    aliases:
-    - open casing type
     category: well
     definition: Open Casing Type (SF25; STL)
     example: SF25; STL
@@ -603,8 +511,6 @@ Columns:
       - enigma:open_casing_type
       transform: map
   Open Hole Depth (ft BGS):
-    aliases:
-    - open hole depth (ft bgs)
     category: well
     definition: Open hole depth in ft below ground surface (ft BGS)
     example: '92'
@@ -616,8 +522,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Open Hole Diameter (in):
-    aliases:
-    - open hole diameter (in)
     category: well
     definition: Open hole diameter in inches
     example: '10'
@@ -629,8 +533,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Open Interval Diameter (in):
-    aliases:
-    - open interval diameter (in)
     category: well
     definition: Open interval diameter in inches
     example: '6'
@@ -642,8 +544,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Open Interval End Depth (ft BGS):
-    aliases:
-    - open interval end depth (ft bgs)
     category: well
     definition: Open interval end depth in ft below ground surface (ft BGS)
     example: '125'
@@ -655,8 +555,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Open Interval Start Depth (ft BGS):
-    aliases:
-    - open interval start depth (ft bgs)
     category: well
     definition: Open interval start depth in ft below ground surface (ft BGS)
     example: '92'
@@ -668,8 +566,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Organic Carbon (mg/g dry weight):
-    aliases:
-    - organic carbon (mg/g dry weight)
     category: measurement
     definition: Organic carbon in milligrams per gram dry weight
     example: '0.532'
@@ -681,8 +577,6 @@ Columns:
       - mg/g
       transform: unit_measurement_fixed
   Origination or Plug/Abandon:
-    aliases:
-    - origination or plug/abandon
     category: well
     definition: Origination or Plug/Abandon (Date)
     example: 02/06/92
@@ -693,8 +587,6 @@ Columns:
       - enigma:origination_or_plug_abandon
       transform: map
   Other Name:
-    aliases:
-    - other name
     category: description
     definition: Other name(s) used for the sample.
     example: TRPOW; T-PROW
@@ -705,8 +597,6 @@ Columns:
       - other_names
       transform: map
   Packing Depth End (ft BGS):
-    aliases:
-    - packing depth end (ft bgs)
     category: well
     definition: Packind depth end in ft below ground surface (ft BGS)
     example: '17.5'
@@ -718,8 +608,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Packing Depth Start (ft BGS):
-    aliases:
-    - packing depth start (ft bgs)
     category: well
     definition: Packind depth start in ft below ground surface (ft BGS)
     example: '15.08'
@@ -731,8 +619,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Packing Type:
-    aliases:
-    - packing type
     category: well
     definition: Packing Type (e.g. SAND; SAND-2)
     example: SAND; SAND-2
@@ -743,8 +629,6 @@ Columns:
       - enigma:packing_type
       transform: map
   Pore Water Extraction (microliters):
-    aliases:
-    - pore water extraction (microliters)
     category: measurement
     definition: Pore water extraction in microliters
     example: '200'
@@ -756,8 +640,6 @@ Columns:
       - ml
       transform: unit_measurement_fixed
   Recovery Factor:
-    aliases:
-    - recovery factor
     category: measurement
     definition: Recovery Factor
     example: '1.57'
@@ -768,8 +650,6 @@ Columns:
       - enigma:recovery_factor
       transform: map
   Redox Potential:
-    aliases:
-    - redox potential
     category: measurement
     definition: Redox Potential
     example: '421.5'
@@ -780,8 +660,6 @@ Columns:
       - enigma:redox_potential
       transform: map
   Replicate:
-    aliases:
-    - replicate
     category: measurement
     definition: Replicate
     example: A1; A2; B1; C
@@ -792,8 +670,6 @@ Columns:
       - enigma:replicate
       transform: map
   Rock Formation:
-    aliases:
-    - rock formation
     category: well
     definition: Rock Formation
     example: Conasauga/Maynardville Limestone; Conasauga/Nolichucky Shale
@@ -804,8 +680,6 @@ Columns:
       - enigma:rock_formation
       transform: map
   SampleID:
-    aliases:
-    - sampleid
     category: description
     definition: Sample ID/Name
     example: SAM1234; IEMEG0001
@@ -816,8 +690,6 @@ Columns:
       - name
       transform: map
   Screen Bottom Elevation (ft AMSL):
-    aliases:
-    - screen bottom elevation (ft amsl)
     category: well
     definition: Screen bottom elevation in ft above mean sea level (ft AMSL)
     example: '985.27'
@@ -829,8 +701,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Screen End Depth (ft BGS):
-    aliases:
-    - screen end depth (ft bgs)
     category: well
     definition: Screen end depth in ft below ground surface (ft BGS)
     example: '14.39'
@@ -842,8 +712,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Screen Start Depth (ft BGS):
-    aliases:
-    - screen start depth (ft bgs)
     category: well
     definition: Screen start depth in ft below ground surface (ft BGS)
     example: '14.14'
@@ -855,8 +723,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Screen Top Elevation (ft AMSL):
-    aliases:
-    - screen top elevation (ft amsl)
     category: well
     definition: Screen top elevation in ft above mean sea level (ft AMSL)
     example: 985.52:was
@@ -868,8 +734,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Screen Type:
-    aliases:
-    - screen type
     category: well
     definition: Screen Type
     example: PP/.02
@@ -880,8 +744,6 @@ Columns:
       - enigma:screen_type
       transform: map
   Screened:
-    aliases:
-    - screened
     category: well
     definition: Screened (yes/no)
     example: yes; no
@@ -892,8 +754,6 @@ Columns:
       - enigma:screened
       transform: map
   Screened Interval (ft):
-    aliases:
-    - screened interval (ft)
     category: well
     definition: Screened interval in ft
     example: '0.25'
@@ -905,8 +765,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Temperature (Celsius):
-    aliases:
-    - temperature (celsius)
     category: measurement
     definition: Temperature (Celsius)
     example: '22.1'
@@ -918,8 +776,6 @@ Columns:
       - celsius
       transform: unit_measurement_fixed
   Time Zone:
-    aliases:
-    - time zone
     category: collection
     definition: Time Zone (relative to UTC)
     example: UTC-4
@@ -930,8 +786,6 @@ Columns:
       - enigma:time_zone
       transform: map
   Top of Casing Elevation (ft AMSL):
-    aliases:
-    - top of casing elevation (ft amsl)
     category: well
     definition: Top of casing elevation in ft above mean sea level (ft AMSL)
     example: '1000.9076'
@@ -943,8 +797,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Top of Casing Stickup (ft):
-    aliases:
-    - top of casing stickup (ft)
     category: well
     definition: Top of casing stickup in ft
     example: '1.84'
@@ -956,8 +808,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   TopofFreshBedrock (ft BGS):
-    aliases:
-    - topoffreshbedrock (ft bgs)
     category: well
     definition: Top of fresh bedrock in ft below ground surface (ft BGS)
     example: '6.4'
@@ -969,8 +819,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   TopofWeatheredBedrock (ft BGS):
-    aliases:
-    - topofweatheredbedrock (ft bgs)
     category: well
     definition: Top of weathered bedrock in ft below ground surface (ft BGS)
     example: '8'
@@ -982,8 +830,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Total Carbon (mg/g dry weight):
-    aliases:
-    - total carbon (mg/g dry weight)
     category: measurement
     definition: Total carbon in milligrams per gram dry weight
     example: '0.3689'
@@ -995,8 +841,6 @@ Columns:
       - mg/g
       transform: unit_measurement_fixed
   Total Nitrogen (mg/g dry weight):
-    aliases:
-    - total nitrogen (mg/g dry weight)
     category: measurement
     definition: Total nitrogen in milligrams per gram dry weight
     example: '0.0572'
@@ -1008,8 +852,6 @@ Columns:
       - mg/g
       transform: unit_measurement_fixed
   Treatment:
-    aliases:
-    - treatment
     category: measurement
     definition: Treatment
     example: HPG; No HPG
@@ -1020,8 +862,6 @@ Columns:
       - enigma:treatment
       transform: map
   Type of Well:
-    aliases:
-    - type of well
     category: well
     definition: Type of Welll (SP; MP)
     example: SP; MP
@@ -1032,8 +872,6 @@ Columns:
       - enigma:well_type
       transform: map
   Upper Seal End Depth (ft BGS):
-    aliases:
-    - upper seal end depth (ft bgs)
     category: well
     definition: Upper seal end depth in ft below ground surface (ft BGS)
     example: '12'
@@ -1045,8 +883,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Upper Seal Start Depth (ft BGS):
-    aliases:
-    - upper seal start depth (ft bgs)
     category: well
     definition: Upper seal start depth in ft below ground surface (ft BGS)
     example: '10'
@@ -1058,8 +894,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Upper Seal Type:
-    aliases:
-    - upper seal type
     category: well
     definition: Upper Seal Type
     example: BENT; BENT-PEL
@@ -1070,8 +904,6 @@ Columns:
       - enigma:upper_seal_type
       transform: map
   Well Casing Depth (ft BGS):
-    aliases:
-    - well casing depth (ft bgs)
     category: well
     definition: Well casing depth in ft below ground surface (ft BGS)
     example: '45.25'
@@ -1083,8 +915,6 @@ Columns:
       - ft
       transform: unit_measurement_fixed
   Well Casing ID (in):
-    aliases:
-    - well casing id (in)
     category: well
     definition: Well casing inner diameter. units in inches
     example: '3.975'
@@ -1096,8 +926,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Well Casing OD (in):
-    aliases:
-    - well casing od (in)
     category: well
     definition: Well casing outer diameter. units in inches
     example: '4.5'
@@ -1109,8 +937,6 @@ Columns:
       - in
       transform: unit_measurement_fixed
   Well Casing Type:
-    aliases:
-    - well casing type
     category: well
     definition: Well Casing Type
     example: SP; MP
@@ -1121,8 +947,6 @@ Columns:
       - enigma:well_casing_type
       transform: map
   Well Name:
-    aliases:
-    - well name
     category: description
     definition: Well Name (ID)
     example: GW085; GW098
@@ -1133,8 +957,6 @@ Columns:
       - enigma:well_name
       transform: map
   Well Status:
-    aliases:
-    - well status
     category: well
     definition: Status of Well
     example: Active; Inactive
@@ -1145,8 +967,6 @@ Columns:
       - enigma:well_status
       transform: map
   pH:
-    aliases:
-    - ph
     category: measurement
     definition: pH of sample
     example: '7'
@@ -1156,6 +976,5 @@ Columns:
     - parameters:
       - ph
       transform: map
-ID: name
-Name: name
-Template: enigma
+
+
