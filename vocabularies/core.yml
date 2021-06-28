@@ -2,13 +2,18 @@ terms:
   biome:
     description: Biome from ENVO (child of ENVO:00000428)
     examples:
-    - FENVO:01001831
-    ontology:
-      ancestor_term: ENVO:00000428
-      ns: envo_ontology
+    - ENVO:01001831
     title: Biome
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:00000428
+    namespace: envo_ontology
   city_township:
+    # Perhaps the canonical name should be just  "city"?
+    # I think people are accustomed to interpreting city as
+    # population center - so city, town, township, village, etc.
+    # the designation of which is dependent on the laws of a
+    # country, state, etc.
     description: City or Township where the sample was collected
     examples:
     - Palisades
@@ -18,7 +23,7 @@ terms:
     description: Date amd time when the sample was collected in ISO 8601 format
     examples:
     - '2021-04-28T09:10:23-07:00'
-    title: Collection date
+    title: Collection time
     type: string
   comment:
     description: Free form Comment
@@ -67,6 +72,8 @@ terms:
     - -4536
     title: Elevation
     type: number
+    formatting:
+      useGrouping: true
   elevation_end:
     description: End elevation at which a sample was collected. Use negative values
       for depth below sea level. Minimum elevation if a range is provided for the
@@ -76,6 +83,8 @@ terms:
     - -4520
     title: Elevation End
     type: number
+    formatting:
+      useGrouping: true
   env_package:
     description: Environmental Package (MIxS vocabulary)
     examples:
@@ -87,11 +96,11 @@ terms:
     description: Feature from ENVO (child of ENVO:01000813)
     examples:
     - ENVO:00000314
-    ontology:
-      ancestor_term: ENVO:01000813
-      ns: envo_ontology
     title: Feature
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:01000813
+    namespace: envo_ontology
   latitude:
     description: Latitude of the location where the sample was collected in WGS 84
       coordinate system. ('Start latitude' for linear sampling features such as dredges.)
@@ -103,6 +112,9 @@ terms:
     title: Latitude
     type: number
     units: degrees
+    formatting:
+      minimumFractionDigits: 3
+      maximumFractionDigits: 3
   latitude_end:
     description: End latitude of the location where the sample was collected in WGS
       84 coordinate system. ('End latitude' for linear sampling features such as dredges.)
@@ -114,6 +126,9 @@ terms:
     title: Latitude End
     type: number
     units: degrees
+    formatting:
+      minimumFractionDigits: 3
+      maximumFractionDigits: 3
   locality:
     description: Name of the specific place where your sample was collected. This
       could be the name of a mine, a volcanic field, a vent field, or similar
@@ -147,6 +162,9 @@ terms:
     title: Longitude
     type: number
     units: degrees
+    formatting:
+      minimumFractionDigits: 3
+      maximumFractionDigits: 3
   longitude_end:
     description: End longitude of the location where the sample was collected in WGS
       84 cooridinate system. Needs to be entered in decimal degrees. Negative values
@@ -158,15 +176,18 @@ terms:
     title: Longitude End
     type: number
     units: degrees
+    formatting:
+      minimumFractionDigits: 3
+      maximumFractionDigits: 3
   material:
     description: Material from ENVO (child of ENVO:00010483)
     examples:
     - ENVO:01001614
-    ontology:
-      ancestor_term: ENVO:00010483
-      ns: envo_ontology
     title: Material
-    type: ontology
+    type: string
+    format: ontology-term
+    ancestorTerm: ENVO:00010483
+    namespace: envo_ontology
   modification_date:
     description: Modification date
     examples:
@@ -178,7 +199,7 @@ terms:
     examples:
     - SAM1234
     - IEMEG0001
-    max-len: 240
+    maxLength: 240
     title: Sample Name
     type: string
   other_names:
@@ -205,6 +226,7 @@ terms:
     type: string
   sample_template:
     description: Template Format
+    # TODO: should be lower case
     enum:
     - SESAR
     - ENIGMA
@@ -254,4 +276,4 @@ terms:
     - http://igsn.org/IEBWE0001
     title: URL
     type: string
-
+    format: url
