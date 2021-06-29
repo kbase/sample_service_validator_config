@@ -11,6 +11,3 @@ jobs:
       run: docker build -t test .
     - name: run tests in container
       run: docker run test
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
