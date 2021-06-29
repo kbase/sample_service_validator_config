@@ -2,7 +2,6 @@ import os
 import sys
 import yaml
 import json
-from pathlib import PurePosixPath
 
 DEFAULT_OUTPUT_DIRECTORY = '_temp'
 
