@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Template": {
+      "type": "string"
+    },
+    "ID": {
+      "type": "string"
+    },
+    "Parent": {
+      "type": "string"
+    },
+    "Name": {
+      "type": "string"
+    },
+    "Config": {
+      "$ref": "base.json#definitions/Config"
+    },
+    "Columns": {
+      "type": "object",
+      "properties": {
+        "Age (max)": {
+          "$ref": "base.json#definitions/NumberField"
+        }
+      },
+      "required": [
+        "Age (max)"
+      ]
+    }
+  },
+  "required": [
+    "Template",
+    "ID",
+    "Parent",
+    "Name",
+    "Config",
+    "Columns"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "properties": {
+        "skipLines": {
+          "type": "string"
+        }
+      }
+    },
+    "Aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Transformation": {
+      "type": "object",
+      "properties": {
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transform": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "parameters",
+        "transform"
+      ]
+    },
+    "NumberField": {
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "$ref": "#definitions/Aliases"
+        },
+        "apiKey": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "transformations": {
+          "type": "array",
+          "items": [
+            {
+              "$ref": "#definitions/Transformation"
+            }
+          ]
+        }
+      },
+      "required": [
+        "apiKey",
+        "definition",
+        "example",
+        "transformations"
+      ]
+    }
+  }
+}

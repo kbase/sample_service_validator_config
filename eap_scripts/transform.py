@@ -4,6 +4,7 @@ import json
 import create_formats
 import create_schemas
 import create_groups
+import validate
 
 DEFAULT_OUTPUT_DIRECTORY = '_temp'
 
@@ -125,3 +126,14 @@ if __name__ == "__main__":
     create_schemas.create_schemas(output_directory)
 
     verify(output_directory)
+
+    validate.validateFile(f'{output_directory}/groups.json', 'groups.json')
+
+    validate.validateFile(f'{output_directory}/formats/sesar.json', 'format-with-api.json')
+    validate.validateFile(f'{output_directory}/formats/enigma.json', 'format.json')
+
+    for format_file in os.listdir(f'{output_directory}/schemas'):
+        print(format_file)
+        validate.validateFile(f'{output_directory}/schemas/{format_file}', 'schema.json')
+
+

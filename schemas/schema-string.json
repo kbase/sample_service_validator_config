@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "kbase": {
+     "$ref": "base2.json#definitions/KBaseSchemaConfig"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "examples": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "type": {
+      "constant": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "maxLength": {
+      "type": "number"
+    },
+    "minLength": {
+      "type": "number"
+    },
+    "enum": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "kbase",
+    "title",
+    "description",
+    "examples",
+    "type"
+  ],
+  "additionalProperties": false
+}
