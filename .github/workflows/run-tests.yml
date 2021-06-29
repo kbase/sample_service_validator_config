@@ -1,0 +1,6 @@
+name: Sample Service Validator Config Tests
+on:
+  [push, pull_request]
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
