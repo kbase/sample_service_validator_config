@@ -94,8 +94,8 @@ terms:
   filter:
     description: Filter pore size in microns
     examples:
-    - '2'
-    - '10'
+    - 2
+    - 10
     minimum: 0.0
     title: Filter
     type: number
