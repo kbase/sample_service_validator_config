@@ -145,7 +145,7 @@ ordered:
   - enigma:boncat_activity
   - enigma:leucine_activity
   - enigma:functional_area
-- display: ENIGMA Well
+- display: Borehole and Wells
   name: well
   ordered_fields:
   - enigma:well_type
