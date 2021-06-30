@@ -20,7 +20,7 @@
     "Columns": {
       "type": "object",
       "additionalProperties": {
-         "$ref": "base.json#definitions/Column"
+         "$ref": "base.json#definitions/ColumnWithAPI"
       }
     }
   },

@@ -133,7 +133,4 @@ if __name__ == "__main__":
     validate.validateFile(f'{output_directory}/formats/enigma.json', 'format.json')
 
     for format_file in os.listdir(f'{output_directory}/schemas'):
-        print(format_file)
         validate.validateFile(f'{output_directory}/schemas/{format_file}', 'schema.json')
-
-
