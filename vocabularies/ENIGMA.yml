@@ -257,7 +257,7 @@ terms:
   screen_top_elevation:
     description: Screen top elevation in ft above mean sea level (ft AMSL)
     examples:
-    - 985.52:was
+    - 985.52
     title: Screen Top Elevation
     type: number
     units: ft
