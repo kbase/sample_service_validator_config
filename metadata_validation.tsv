@@ -127,9 +127,7 @@ sesar:archive_contact_current	validators	Address and/or email of the person who 
 sesar:archive_contact_original	validators	Address and/or email of the person who should be contacted for information about the sample's original archive.		noop											
 sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.		noop											
 sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.		noop											
-sesar:build_url	validators	??		noop											
 sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.		noop											
-sesar:classification_comment	validators	Classification Comment		noop											
 sesar:collection_date	validators	Date when the sample was collected.		noop											
 sesar:collection_date_end	validators	Date when the sample collection was finished (if a date range is provided).		noop											
 sesar:collection_date_precision	validators	Precision to display the collection date and time.		noop											
@@ -164,11 +162,6 @@ sesar:physiographic_feature_primary	validators	Type of physical feature that you
 sesar:platform_description	validators	Description of platform for the cruise.		noop											
 sesar:platform_name	validators	Name of platform for the cruise.		noop											
 sesar:platform_type	validators	Type of platform for the cruise.		noop											
-sesar:primary_location_name	validators	NOT IN DATA DICTIONARY		noop											
-sesar:primary_location_type	validators	NOT IN DATA DICTIONARY		noop											
-sesar:publish_date	validators	??		noop											
-sesar:registrant_current	validators	Registrant of the sample in SESAR		noop											
-sesar:registrant_org	validators	Registrant organization of the sample in SESAR		noop											
 sesar:related_identifiers	validators	IGSN of Related Samples		noop											
 sesar:related_url	validators	Related URL associated with the samples		noop											
 sesar:related_url_description	validators	Free text description of the related URL		noop											
