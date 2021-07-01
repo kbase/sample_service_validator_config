@@ -30,14 +30,6 @@ terms:
     - Palisades, NY
     title: Original archive
     type: string
-  classification_comment:
-    description: Classification Comment
-    comments:
-    - Not in current SESAR format
-    examples:
-    - TODO
-    title: Classification Comment
-    type: string
   collection_date:
     description: Date when the sample was collected.
     examples:
@@ -136,11 +128,11 @@ terms:
     title: Geological Unit
     type: string
   igsn:
+    type: string
+    title: IGSN
     description: IGSN assigned by SESAR
     examples:
     - IEMEG0001
-    title: IGSN
-    type: string
   is_archived:
     description: Is Archived
     comments:
@@ -203,44 +195,6 @@ terms:
     - R/V Roger Revelle
     title: Platform name
     type: string
-  platform_type:
-    description: Type of platform for the cruise.
-    examples:
-    - Ship
-    title: Platform type
-    type: string
-  primary_location_type:
-    title: Primary location type
-    description: NOT IN DATA DICTIONARY
-    comments:
-    - Not in current SESAR field dictionary; but found in SESAR samples
-    examples:
-    - Moutain
-    type: string
-  primary_location_name:
-    title: Primary location name
-    description: NOT IN DATA DICTIONARY
-    comments:
-    - Not in current SESAR field dictionary; but found in SESAR samples
-    examples:
-    - Felt, ID, USA
-    type: string
-  registrant_current:
-    description: Registrant of the sample in SESAR
-    comments:
-    - Not in current SESAR field dictionary
-    examples:
-    - Jane Smith
-    title: Current Registrant Name
-    type: string
-  registrant_org:
-    description: Registrant organization of the sample in SESAR
-    comments:
-    - Not in current SESAR field dictionary
-    examples:
-    - Jane Smith
-    title: Organization Registrant Name
-    type: string
   related_identifiers:
     description: IGSN of Related Samples
     comments:
@@ -256,6 +210,12 @@ terms:
     examples:
     - TODO
     title: Relation Type
+    type: string
+  platform_type:
+    description: Type of platform for the cruise.
+    examples:
+    - Ship
+    title: Platform type
     type: string
   release_date:
     description: Date when sample metadata is publicly accessible and searchable.
@@ -317,19 +277,3 @@ terms:
     examples:
       - DOI for related published data
     type: string
-  publish_date:
-    title: Publish Date
-    description: "??"
-    examples:
-    - "2019-10-30"
-    type: string
-  build_url:
-    title: Build URL
-    description: "??"
-    examples:
-    - "http://igsn.org/BWH00001R"
-    type: string
-    format: url
-
-
-
