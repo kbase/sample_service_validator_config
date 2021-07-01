@@ -10,7 +10,6 @@ def relative_path(path):
 
 
 def validateFile(data_file, schema_file):
-    # dataPath = relative_path(f'../_temp/{dataFile}')
     schema_path = relative_path(f'../schemas/{schema_file}')
     schema_dir = relative_path('../schemas')
     resolver = RefResolver(f'file://{schema_dir}/', None)
@@ -28,7 +27,6 @@ def validateFile(data_file, schema_file):
     if result is not None:
         print('!! Validation Error')
         print(result)
-
 
 
 def validateAll():
