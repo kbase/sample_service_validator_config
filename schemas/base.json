@@ -79,7 +79,7 @@
           "$ref": "#definitions/Aliases"
         },
         "apiKey": {
-          "type": "string"
+          "type": ["string", null]
         },
         "category": {
           "type": "string"
