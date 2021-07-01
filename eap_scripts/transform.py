@@ -41,9 +41,18 @@ def verify(output_dir):
 
     # Load formats
     formats = []
+    formats_key_map = []
     for format_file in os.listdir(f'{output_dir}/formats'):
+        column_map = {}
         with open(f'{output_dir}/formats/{format_file}') as fin:
-            formats.append(json.load(fin))
+            format = json.load(fin)
+            formats.append(format)
+            for column in format['columns']:
+                column_map[column['sample']['key']] = column
+            formats_key_map.append({
+                'name': format['name'],
+                'column_map': column_map
+            })
 
     ####
     # Verifications
@@ -61,21 +70,53 @@ def verify(output_dir):
                     'field_key': field_key
                 })
 
-    # check that all fields defined in schemas are in only one group
-    ungrouped_fields = []
+    # Check schemas
+    schema_fields_not_in_group = []
+    schema_fields_not_in_format = []
     for schema in schemas:
-        if schema['kbase']['sample']['key'] not in group_keys:
-            ungrouped_fields.append(schema)
+        # check that all fields defined in schemas are in only one group
+        field_key = schema['kbase']['sample']['key']
+        if field_key not in group_keys:
+            schema_fields_not_in_group.append(schema)
+
+        # check that schema fields are in at least one format.
+        found_in_format = False
+        for format in formats_key_map:
+            if field_key in format['column_map']:
+                found_in_format = True
+                break
+        # print(f'not found: {field_key}, {key_map}')
+        if found_in_format is False:
+            schema_fields_not_in_format.append(schema)
 
     # Check for formats with undefined fields.
     format_column_not_in_schema = []
+    ignored_format_column_in_schema = []
+    ignored_format_column_in_groups = []
     for format in formats:
         for column in format['columns']:
-            if column['sample']['key'] not in schemas_by_field:
-                format_column_not_in_schema.append({
-                    'format': format['name'],
-                    'column': column
-                })
+            if 'disposition' in column and column['disposition'] == 'ignore':
+                # Ignored fields should not have a schema
+                if column['sample']['key'] in schemas_by_field:
+                    ignored_format_column_in_schema.append({
+                        'format': format['name'],
+                        'column': column
+                    })
+                # And should not be in a group either.
+                if column['sample']['key'] in group_keys:
+                    ignored_format_column_in_groups.append({
+                        'format': format['name'],
+                        'column': column
+                    })
+            else:
+                # A format field must have a schema
+                if column['sample']['key'] not in schemas_by_field:
+                    format_column_not_in_schema.append({
+                        'format': format['name'],
+                        'column': column
+                    })
+                # A format field must be in a group is implied by above, since
+                # we already ensure that all defined fields are in a group.
 
     ####
     # Print diagnostics if inconsistencies found.
@@ -94,16 +135,40 @@ def verify(output_dir):
         for field in group_undefined_fields:
             print(f"    '{field['field_key']}' in group '{field['group']}'")
 
-    if len(ungrouped_fields):
+    if len(schema_fields_not_in_group):
         print()
         print('!! Schemas found whose sample key is not in a group')
-        for schema in ungrouped_fields:
+        for schema in schema_fields_not_in_group:
             print(f"    '{schema['kbase']['sample']['key']}'")
+
+    if len(schema_fields_not_in_format):
+        print()
+        print('!! Schemas found whose sample key is not in a format')
+        for schema in schema_fields_not_in_format:
+            print(f"    {schema['kbase']['sample']['key']}")
 
     if len(format_column_not_in_schema):
         print()
         print('!! Format column not defined in a schema')
         for undefined in format_column_not_in_schema:
+            print(
+                f"    '{undefined['column']['sample']['key']}' in '"
+                f"{undefined['format']}'")
+            print(undefined['column'])
+
+    if len(ignored_format_column_in_schema):
+        print()
+        print('!! Ignored format column defined in a schema')
+        for undefined in ignored_format_column_in_schema:
+            print(
+                f"    '{undefined['column']['sample']['key']}' in '"
+                f"{undefined['format']}'")
+            print(undefined['column'])
+
+    if len(ignored_format_column_in_groups):
+        print()
+        print('!! Ignored format column defined in a group')
+        for undefined in ignored_format_column_in_groups:
             print(
                 f"    '{undefined['column']['sample']['key']}' in '"
                 f"{undefined['format']}'")
@@ -129,8 +194,10 @@ if __name__ == "__main__":
 
     validate.validateFile(f'{output_directory}/groups.json', 'groups.json')
 
-    validate.validateFile(f'{output_directory}/formats/sesar.json', 'format-with-api.json')
+    validate.validateFile(f'{output_directory}/formats/sesar.json',
+                          'format-with-api.json')
     validate.validateFile(f'{output_directory}/formats/enigma.json', 'format.json')
 
     for format_file in os.listdir(f'{output_directory}/schemas'):
-        validate.validateFile(f'{output_directory}/schemas/{format_file}', 'schema.json')
+        validate.validateFile(f'{output_directory}/schemas/{format_file}',
+                              'schema.json')
