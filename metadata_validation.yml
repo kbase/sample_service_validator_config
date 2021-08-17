@@ -116,7 +116,13 @@ validators:
         useGrouping: true
       title: Elevation
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -133,7 +139,13 @@ validators:
         useGrouping: true
       title: Elevation End
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -337,7 +349,13 @@ validators:
       - 9690000.0
       title: DAPI Cell Count
       type: number
+      units: cells/g
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: cells/g
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -568,7 +586,13 @@ validators:
       - 0.000576856
       title: Leucine Activity (ngC/day cell)
       type: number
+      units: ngC/day cell
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ngC/day cell
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -977,7 +1001,13 @@ validators:
       - 1.57
       title: Recovery Factor
       type: number
+      units: UNKNOWN
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: UNKNOWN
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -989,7 +1019,13 @@ validators:
       - 421.5
       title: Redox Potential
       type: number
+      units: mV
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mV
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -1482,7 +1518,7 @@ validators:
     key_metadata:
       description: Ecosystem Path ID (GOLD)
       examples:
-      - 3948
+      - '3948'
       title: Ecosystem Path ID
       type: string
     validators:
