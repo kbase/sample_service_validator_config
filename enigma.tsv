@@ -1,0 +1,93 @@
+Column name	Category	Required	Example	Definition	Additional instructions	Transformation	Parameter	Parameter 2
+SampleID	description	Y	SAM1234; IEMEG0001	Sample ID/Name		map	name	
+Experiment Name	description	Y	100 Well	Experiment Name		map	enigma:experiment_name	
+Area Name	description	Y	Area 2; Background A; Area 4	Area Name		map	enigma:area_name	
+Well Name	description	Y	GW085; GW098	Well Name (ID)		map	enigma:well_name	
+Environmental Package	description	Y	Water; Soil	Environmental Package (MIxS vocabulary)		map	env_package	
+Material	description	Y	ENVO:01001614	Material from ENVO (child of ENVO:00010483)		map	material	
+Description	description	Y	dredge with 50 pieces of basalt and mud	Sample Description		map	description	
+Filter (micron)	description	Y	2; 10	Filter pore size in microns		unit_measurement_fixed	enigma:filter	micron
+Date	collection	N	2019-06-18	Date (YYYY-MM-DD)		map	enigma:date	
+Collection Time	collection	N	9:39:00 AM	Collection Time		map	enigma:collection_time	
+Time Zone	collection	N	UTC-4	Time Zone (relative to UTC)		map	enigma:time_zone	
+Latitude	geolocation	Y	5.89634	Latitude of the location where the sample was collected in WGS 84 coordinate system.		map	latitude	
+Longitude	geolocation	Y	-103.785	Longitude of the location where the sample was collected in WGS 84 cooridinate system.		map	longitude	
+Depth (cm bgs)	geolocation	Y	5	depth in meters below ground surface (m BGS)		unit_measurement_fixed	depth_bgs	cm
+Geological Zone	geolocation	N	Saturated; Vadose	Geological Zone		map	enigma:geological_zone	
+Recovery Factor	measurement	N	1.57	Recovery Factor		map	enigma:recovery_factor	
+Method	measurement	N	BONCAT; PMA; No PMA	Method		map	enigma:method	
+Fraction	measurement	N	Spin Down; Total Cells; .2um	Fraction		map	enigma:fraction	
+Replicate	measurement	N	A1; A2; B1; C	Replicate		map	enigma:replicate	
+Maturation Time	measurement	N	24hr; 72hr	Maturation Time		map	enigma:maturation_time	
+Treatment	measurement	N	HPG; No HPG	Treatment		map	enigma:treatment	
+Temperature (Celsius)	measurement	N	22.1	Temperature (Celsius)		unit_measurement_fixed	temperature	celsius
+Moisture (%)	measurement	N	22.1	Temperature (Celsius)		percent	enigma:moisture	
+Pore Water Extraction (microliters)	measurement	N	200	Pore water extraction in microliters		unit_measurement_fixed	enigma:pore_water_extraction	ml
+Conductivity (mS/cm)	measurement	N	802.65	conductivity in millisiemens per centimeter		unit_measurement_fixed	enigma:conductivity	ms/cm
+Redox Potential	measurement	N	421.5	Redox Potential		map	enigma:redox_potential	
+pH	measurement	N	7	pH of sample		map	ph	
+AODC (cells/g)	measurement	N	200456.8368	units in cells per gram		unit_measurement_fixed	enigma:aodc	cells/g
+DAPI Cell Count (cells/g)	measurement	N	9690000	DAPI cell count in cells per gram		unit_measurement_fixed	enigma:dapi_cell_count	cells/g
+DNA Picogreen Total (ng)	measurement	N	228.6658163	units in nanograms		unit_measurement_fixed	enigma:dna_picogreen_total	ng
+Total Carbon (mg/g dry weight)	measurement	N	0.3689	Total carbon in milligrams per gram dry weight		unit_measurement_fixed	enigma:total_carbon	mg/g
+Organic Carbon (mg/g dry weight)	measurement	N	0.532	Organic carbon in milligrams per gram dry weight		unit_measurement_fixed	enigma:organic_carbon	mg/g
+Biomass Carbon (mg/g)	measurement	N	0.98	units in milligrams per gram		unit_measurement_fixed	enigma:biomass_carbon	mg/g
+Total Nitrogen (mg/g dry weight)	measurement	N	0.0572	Total nitrogen in milligrams per gram dry weight		unit_measurement_fixed	enigma:total_nitrogen	mg/g
+BONCAT Activity (cell/g)	measurement	N	1270000	units in cells per gram		unit_measurement_fixed	enigma:boncat_activity	cells/g
+Leucine Activity (ngC/day cell}	measurement	N	0.000576856	units in ngC/day cell		unit_measurement_fixed	enigma:leucine_activity	ngc/day
+Functional Area	measurement	N	S-3 Site; New Hope Pond	Functional Area		map	enigma:functional_area	
+Type of Well	well	N	SP; MP	Type of Welll (SP; MP)		map	enigma:well_type	
+Top of Casing Stickup (ft)	well	N	1.84	Top of casing stickup in ft		unit_measurement_fixed	enigma:top_of_casing_stickup	ft
+Top of Casing Elevation (ft AMSL)	well	N	1000.9076	Top of casing elevation in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:top_of_casing_elevation	ft
+Ground Elevation (ft AMSL)	well	N	1004.62	ground elevation in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:ground_elevation	ft
+Installation Method	well	N	CORE; AUGER; MANUAL	Method of installation		map	enigma:installation_method	
+Boring (ft BGS)	well	N	50.25	boring depth in ft below groud surface (ft BGS)		unit_measurement_fixed	enigma:boring	ft
+Boring Refusal	well	N	Y; N	Boring Refusal (Y/N)		map	enigma:boring_refusal	
+Boring Diameter (in)	well	N	8	boring diameter in inches		unit_measurement_fixed	enigma:boring_diameter	in
+Screen Type	well	N	PP/.02	Screen Type		map	enigma:screen_type	
+Screened Interval (ft)	well	N	0.25	Screened interval in ft		unit_measurement_fixed	enigma:screened_interval	ft
+Screen Start Depth (ft BGS)	well	N	14.14	Screen start depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:screen_start_depth	ft
+Screen End Depth (ft BGS)	well	N	14.39	Screen end depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:screen_end_depth	ft
+Screen Top Elevation (ft AMSL)	well	N	985.52:was	Screen top elevation in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:screen_top_elevation	ft
+Screen Bottom Elevation (ft AMSL)	well	N	985.27	Screen bottom elevation in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:screen_bottom_elevation	ft
+Well Casing Type	well	N	SP; MP	Well Casing Type		map	enigma:well_casing_type	
+Well Casing OD (in)	well	N	4.5	Well casing outer diameter. units in inches		unit_measurement_fixed	enigma:well_casing_od	in
+Well Casing ID (in)	well	N	3.975	Well casing inner diameter. units in inches		unit_measurement_fixed	enigma:well_casing_id	in
+Well Casing Depth (ft BGS)	well	N	45.25	Well casing depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:well_casing_depth	ft
+Drive Casing Type	well	N	GP DT-32	Drive Casing Type		map	enigma:drive_casing_type	
+Drive Casing ID (in)	well	N	2.625	drive casing inner diameter in inches		unit_measurement_fixed	enigma:drive_casing_id	in
+Drive Casing OD (in)	well	N	3.25	drive casing outer diameter in inches		unit_measurement_fixed	enigma:drive_casing_od	in
+Drive Casing Start Depth (ft BGS)	well	N	10	units in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:drive_casing_start_depth	ft
+Drive Casing End Depth (ft BGS)	well	N	27	drive casing end depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:drive_casing_end_depth	ft
+Packing Type	well	N	SAND; SAND-2	Packing Type (e.g. SAND; SAND-2)		map	enigma:packing_type	
+Packing Depth Start (ft BGS)	well	N	15.08	Packind depth start in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:packing_depth_start	ft
+Packing Depth End (ft BGS)	well	N	17.5	Packind depth end in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:packing_depth_end	ft
+TopofWeatheredBedrock (ft BGS)	well	N	8	Top of weathered bedrock in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:top_of_weathered_bedrock	ft
+TopofFreshBedrock (ft BGS)	well	N	6.4	Top of fresh bedrock in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:top_of_fresh_bedrock	ft
+Aquifer	well	N	B; wB; U/wB; wB	Aquifer		map	enigma:aquifer	
+Fractures/Cavities/WaterBreaks	well	N	WB @ 14, 41	Fractures/Cavities/WaterBreaks		map	enigma:fractures_cavities_waterbreaks	
+Other Name	description	N	TRPOW; T-PROW	Other name(s) used for the sample.		map	other_names	
+Screened	well	N	yes; no	Screened (yes/no)		map	enigma:screened	
+Open	well	N	yes; no	Open (yes/no)		map	enigma:open	
+Well Status	well	N	Active; Inactive	Status of Well		map	enigma:well_status	
+Condition	well	N	Open	Condition		map	enigma:condition	
+Origination or Plug/Abandon	well	N	02/06/92	Origination or Plug/Abandon (Date)		map	enigma:origination_or_plug_abandon	
+Min Water Level (ft AMSL)	well	N	1002.99	Minimum water level in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:min_water_level	ft
+Average Water Level (ft AMSL)	well	N	1006.01	units in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:average_water_level	ft
+Max Water Level (ft AMSL)	well	N	1008.41	Maximum water level in ft above mean sea level (ft AMSL)		unit_measurement_fixed	enigma:max_water_level	ft
+Upper Seal Type	well	N	BENT; BENT-PEL	Upper Seal Type		map	enigma:upper_seal_type	
+Upper Seal Start Depth (ft BGS)	well	N	10	Upper seal start depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:upper_seal_start_depth	ft
+Upper Seal End Depth (ft BGS)	well	N	12	Upper seal end depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:upper_seal_end_depth	ft
+Lower Seal Type (ft BGS)	well	N	BENT-PEL; BENT	Lower Seal Type (BENT; BENT-PEL)		unit_measurement_fixed	enigma:lower_seal_type	ft
+Lower Seal Start Depth (ft BGS)	well	N	20.25	Lower seal start depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:lower_seal_start_depth	ft
+Lower Seal End Depth (ft BGS)	well	N	22.1	Lower seal end depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:lower_seal_end_depth	ft
+Open Casing Type	well	N	SF25; STL	Open Casing Type (SF25; STL)		map	enigma:open_casing_type	
+Open Casing OD (in)	well	N	6.62	open casing outer diameter in inches (in)		unit_measurement_fixed	enigma:open_casing_od	in
+Open Casing ID (in)	well	N	6.12	open casing inner diameter in inches (in)		unit_measurement_fixed	enigma:open_casing_id	in
+Open Casing Depth (ft BGS)	well	N	92	Open casing depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:open_casing_depth	ft
+Open Hole Diameter (in)	well	N	10	Open hole diameter in inches		unit_measurement_fixed	enigma:open_hole_diameter	in
+Open Hole Depth (ft BGS)	well	N	92	Open hole depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:open_hole_depth	ft
+Open Interval Start Depth (ft BGS)	well	N	92	Open interval start depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:open_interval_start_depth	ft
+Open Interval End Depth (ft BGS)	well	N	125	Open interval end depth in ft below ground surface (ft BGS)		unit_measurement_fixed	enigma:open_interval_end_depth	ft
+Open Interval Diameter (in)	well	N	6	Open interval diameter in inches		unit_measurement_fixed	enigma:open_interval_diameter	in
+Rock Formation	well	N	Conasauga/Maynardville Limestone; Conasauga/Nolichucky Shale	Rock Formation		map	enigma:rock_formation	

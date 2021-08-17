@@ -1,21 +1,2231 @@
 validators:
-  ENIGMA:material:
+  biome:
     key_metadata:
-      display_name: Material
-    static_mappings:
-      ENIGMA: Material
+      description: Biome from ENVO (child of ENVO:00000428)
+      examples:
+      - FENVO:01001831
+      ontology:
+        ancestor_term: ENVO:00000428
+        ns: envo_ontology
+      title: Biome
+      type: ontology
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:00000428
+        ontology: envo_ontology
+  city_township:
+    key_metadata:
+      description: City or Township where the sample was collected
+      examples:
+      - Palisades
+      title: City/Township
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  collection_time:
+    key_metadata:
+      description: Date amd time when the sample was collected in ISO 8601 format
+      examples:
+      - '2021-04-28T09:10:23-07:00'
+      title: Collection date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  comment:
+    key_metadata:
+      description: Free form Comment
+      examples:
+      - TODO
+      title: Comment
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  continent:
+    key_metadata:
+      description: Continent
+      examples:
+      - North America
+      title: Continent
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  country:
+    key_metadata:
+      description: Country
+      examples:
+      - United States
+      title: Country
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  county:
+    key_metadata:
+      description: County
+      examples:
+      - Alameda
+      title: County
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  depth_bgs:
+    key_metadata:
+      description: depth in meters below ground surface (m BGS)
+      examples:
+      - 5
+      title: Depth
+      type: number
+      units: m
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  description:
+    key_metadata:
+      description: Free text to describe features of a sample such as its components,
+        texture, color, shape, etc.
+      examples:
+      - dredge with 50 pieces of basalt and mud
+      title: Description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  elevation:
+    key_metadata:
+      description: Elevation at which a sample was collected. Use negative values
+        for depth below sea level. Minimum elevation if a range is provided for the
+        elevation/depth below sea level.
+      examples:
+      - 678.5
+      - -4536
+      title: Elevation
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  elevation_end:
+    key_metadata:
+      description: End elevation at which a sample was collected. Use negative values
+        for depth below sea level. Minimum elevation if a range is provided for the
+        elevation/depth below sea level.
+      examples:
+      - 673.5
+      - -4520
+      title: Elevation End
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:aodc:
+    key_metadata:
+      description: units in cells per gram
+      examples:
+      - 200456.8368
+      minimum: 0.0
+      title: AODC
+      type: number
+      units: cells/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: cells/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:aquifer:
+    key_metadata:
+      description: Aquifer
+      examples:
+      - B
+      - wB
+      - U/wB
+      - wB
+      title: Aquifer
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:area_name:
+    key_metadata:
+      description: Area Name
+      examples:
+      - Area 2
+      - Background A
+      - Area 4
+      title: Area Name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:average_water_level:
+    key_metadata:
+      description: units in ft above mean sea level (ft AMSL)
+      examples:
+      - 1006.01
+      title: Average Water Level
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:biomass_carbon:
+    key_metadata:
+      description: units in milligrams per gram
+      examples:
+      - 0.98
+      minimum: 0.0
+      title: Biomass Carbon
+      type: number
+      units: mg/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mg/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:boncat_activity:
+    key_metadata:
+      description: units in cells per gram
+      examples:
+      - 1270000.0
+      minimum: 0.0
+      title: BONCAT Activity
+      type: number
+      units: cells/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: cells/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:boring:
+    key_metadata:
+      description: boring depth in ft below groud surface (ft BGS)
+      examples:
+      - 50.25
+      minimum: 0.0
+      title: Boring depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:boring_diameter:
+    key_metadata:
+      description: boring diameter in inches
+      examples:
+      - 8
+      minimum: 0.0
+      title: Boring Diameter
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:boring_refusal:
+    key_metadata:
+      description: Boring Refusal (Y/N)
+      examples:
+      - Y
+      - N
+      title: Boring Refusal
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:collection_time:
+    key_metadata:
+      description: Collection Time
+      examples:
+      - 9:39:00 AM
+      title: Collection time
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:condition:
+    key_metadata:
+      description: Condition
+      examples:
+      - Open
+      title: Condition
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:conductivity:
+    key_metadata:
+      description: conductivity in millisiemens per centimeter
+      examples:
+      - 802.65
+      title: Conductivity
+      type: number
+      units: ms/cm
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ms/cm
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:dapi_cell_count:
+    key_metadata:
+      description: DAPI cell count in cells per gram
+      examples:
+      - 9690000.0
+      title: DAPI Cell Count
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:date:
+    key_metadata:
+      description: Date (YYYY-MM-DD)
+      examples:
+      - '2019-06-18'
+      title: Date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:dna_picogreen_total:
+    key_metadata:
+      description: units in nanograms
+      examples:
+      - 228.6658163
+      title: DNA Picogreen Total
+      type: number
+      units: ng
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ng
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:drive_casing_end_depth:
+    key_metadata:
+      description: drive casing end depth in ft below ground surface (ft BGS)
+      examples:
+      - 27
+      title: Drive Casing End Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:drive_casing_id:
+    key_metadata:
+      description: drive casing inner diameter in inches
+      examples:
+      - 2.625
+      minimum: 0.0
+      title: Drive Casing ID
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:drive_casing_od:
+    key_metadata:
+      description: drive casing outer diameter in inches
+      examples:
+      - 3.25
+      minimum: 0.0
+      title: Drive Casing OD
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:drive_casing_start_depth:
+    key_metadata:
+      description: units in ft below ground surface (ft BGS)
+      examples:
+      - 10
+      title: Drive Casing Start Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:drive_casing_type:
+    key_metadata:
+      description: Drive Casing Type
+      examples:
+      - GP DT-32
+      title: Drive Casing Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:experiment_name:
+    key_metadata:
+      description: Experiment Name
+      examples:
+      - 100 Well
+      title: Experiment Name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:filter:
+    key_metadata:
+      description: Filter pore size in microns
+      examples:
+      - '2'
+      - '10'
+      minimum: 0.0
+      title: Filter
+      type: number
+      units: microns
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: microns
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:fraction:
+    key_metadata:
+      description: Fraction
+      examples:
+      - Spin Down
+      - Total Cells
+      - .2um
+      title: Fraction
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:fractures_cavities_waterbreaks:
+    key_metadata:
+      description: Fractures/Cavities/WaterBreaks
+      examples:
+      - WB @ 14, 41
+      title: Fractures/Cavities/WaterBreaks
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:functional_area:
+    key_metadata:
+      description: Functional Area
+      examples:
+      - S-3 Site
+      - New Hope Pond
+      title: Functional Area
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:geological_zone:
+    key_metadata:
+      description: Geological Zone
+      examples:
+      - Saturated
+      - Vadose
+      title: Geological Zone
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:ground_elevation:
+    key_metadata:
+      description: ground elevation in ft above mean sea level (ft AMSL)
+      examples:
+      - 1004.62
+      title: Ground Elevation
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:installation_method:
+    key_metadata:
+      description: Method of installation
+      examples:
+      - CORE
+      - AUGER
+      - MANUAL
+      title: Installation Method
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:leucine_activity:
+    key_metadata:
+      description: units in ngC/day cell
+      examples:
+      - 0.000576856
+      title: Leucine Activity (ngC/day cell)
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:lower_seal_end_depth:
+    key_metadata:
+      description: Lower seal end depth in ft below ground surface (ft BGS)
+      examples:
+      - 22.1
+      title: Lower Seal End Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:lower_seal_start_depth:
+    key_metadata:
+      description: Lower seal start depth in ft below ground surface (ft BGS)
+      examples:
+      - 20.25
+      title: Lower Seal Start Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:lower_seal_type:
+    key_metadata:
+      description: Lower Seal Type (BENT; BENT-PEL)
+      examples:
+      - BENT-PEL
+      - BENT
+      title: Lower Seal Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:maturation_time:
+    key_metadata:
+      description: Maturation Time
+      examples:
+      - 24hr
+      - 72hr
+      title: Maturation Time
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:max_water_level:
+    key_metadata:
+      description: Maximum water level in ft above mean sea level (ft AMSL)
+      examples:
+      - 1008.41
+      title: Max Water Level
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:method:
+    key_metadata:
+      description: Method
+      examples:
+      - BONCAT
+      - PMA
+      - No PMA
+      title: Method
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:min_water_level:
+    key_metadata:
+      description: Minimum water level in ft above mean sea level (ft AMSL)
+      examples:
+      - 1002.99
+      title: Min Water Level
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:moisture:
+    key_metadata:
+      description: percent moisture
+      examples:
+      - 11.26
+      maximum: 100.0
+      minimum: 0.0
+      title: Moisture
+      type: number
+      units: percent
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: percent
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+        lte: 100.0
+  enigma:open:
+    key_metadata:
+      description: Open (yes/no)
+      examples:
+      - 'yes'
+      - 'no'
+      title: Open
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:open_casing_depth:
+    key_metadata:
+      description: Open casing depth in ft below ground surface (ft BGS)
+      examples:
+      - 92
+      title: Open Casing Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:open_casing_id:
+    key_metadata:
+      description: open casing inner diameter in inches (in)
+      examples:
+      - 6.12
+      minimum: 0.0
+      title: Open Casing ID
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:open_casing_od:
+    key_metadata:
+      description: open casing outer diameter in inches (in)
+      examples:
+      - 6.62
+      minimum: 0.0
+      title: Open Casing OD
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:open_casing_type:
+    key_metadata:
+      description: Open Casing Type (SF25; STL)
+      examples:
+      - SF25
+      - STL
+      title: Open Casing Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:open_hole_depth:
+    key_metadata:
+      description: Open hole depth in ft below ground surface (ft BGS)
+      examples:
+      - 92
+      title: Open Hole Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:open_hole_diameter:
+    key_metadata:
+      description: Open hole diameter in inches
+      examples:
+      - 10
+      minimum: 0.0
+      title: Open Hole Diameter
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:open_interval_diameter:
+    key_metadata:
+      description: Open interval diameter in inches
+      examples:
+      - 6
+      minimum: 0.0
+      title: Open Interval Diameter
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:open_interval_end_depth:
+    key_metadata:
+      description: Open interval end depth in ft below ground surface (ft BGS)
+      examples:
+      - 125
+      title: Open Interval End Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:open_interval_start_depth:
+    key_metadata:
+      description: Open interval start depth in ft below ground surface (ft BGS)
+      examples:
+      - 92
+      title: Open Interval Start Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:organic_carbon:
+    key_metadata:
+      description: Organic carbon in milligrams per gram dry weight
+      examples:
+      - 0.532
+      minimum: 0.0
+      title: Organic Carbon
+      type: number
+      units: mg/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mg/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:origination_or_plug_abandon:
+    key_metadata:
+      description: Origination or Plug/Abandon (Date)
+      examples:
+      - 02/06/92
+      title: Origination or Plug/Abandon
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:packing_depth_end:
+    key_metadata:
+      description: Packind depth end in ft below ground surface (ft BGS)
+      examples:
+      - 17.5
+      title: Packing Depth End
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:packing_depth_start:
+    key_metadata:
+      description: Packind depth start in ft below ground surface (ft BGS)
+      examples:
+      - 15.08
+      title: Packing Depth Start
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:packing_type:
+    key_metadata:
+      description: Packing Type (e.g. SAND; SAND-2)
+      examples:
+      - SAND
+      - SAND-2
+      title: Packing Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:pore_water_extraction:
+    key_metadata:
+      description: Pore water extraction in microliters
+      examples:
+      - 200
+      title: Pore Water Extraction
+      type: number
+      units: microliters
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: microliters
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:recovery_factor:
+    key_metadata:
+      description: Recovery Factor
+      examples:
+      - 1.57
+      title: Recovery Factor
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:redox_potential:
+    key_metadata:
+      description: Redox Potential
+      examples:
+      - 421.5
+      title: Redox Potential
+      type: number
+    validators:
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:replicate:
+    key_metadata:
+      description: Replicate
+      examples:
+      - A1
+      - A2
+      - B1
+      - C
+      title: Replicate
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:rock_formation:
+    key_metadata:
+      description: Rock Formation
+      examples:
+      - Conasauga/Maynardville Limestone
+      - Conasauga/Nolichucky Shale
+      title: Rock Formation
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:screen_bottom_elevation:
+    key_metadata:
+      description: Screen bottom elevation in ft above mean sea level (ft AMSL)
+      examples:
+      - 985.27
+      title: Screen Bottom Elevation
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:screen_end_depth:
+    key_metadata:
+      description: Screen end depth in ft below ground surface (ft BGS)
+      examples:
+      - 14.39
+      title: Screen End Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:screen_start_depth:
+    key_metadata:
+      description: Screen start depth in ft below ground surface (ft BGS)
+      examples:
+      - 14.14
+      title: Screen Start Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:screen_top_elevation:
+    key_metadata:
+      description: Screen top elevation in ft above mean sea level (ft AMSL)
+      examples:
+      - 985.52:was
+      title: Screen Top Elevation
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:screen_type:
+    key_metadata:
+      description: Screen Type
+      examples:
+      - PP/.02
+      title: Screen Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:screened:
+    key_metadata:
+      description: Screened (yes/no)
+      examples:
+      - 'yes'
+      - 'no'
+      title: Screened
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:screened_interval:
+    key_metadata:
+      description: Screened interval in ft
+      examples:
+      - 0.25
+      title: Screened Interval
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:time_zone:
+    key_metadata:
+      description: Time Zone (relative to UTC)
+      examples:
+      - UTC-4
+      title: Time Zone
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:top_of_casing_elevation:
+    key_metadata:
+      description: Top of casing elevation in ft above mean sea level (ft AMSL)
+      examples:
+      - 1000.9076
+      title: Top of Casing Elevation
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:top_of_casing_stickup:
+    key_metadata:
+      description: Top of casing stickup in ft
+      examples:
+      - 1.84
+      title: Top of Casing Stickup
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:top_of_fresh_bedrock:
+    key_metadata:
+      description: Top of fresh bedrock in ft below ground surface (ft BGS)
+      examples:
+      - 6.4
+      title: Top of Fresh Bedrock
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:top_of_weathered_bedrock:
+    key_metadata:
+      description: Top of weathered bedrock in ft below ground surface (ft BGS)
+      examples:
+      - 8
+      title: Top of Weathered Bedrock
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:total_carbon:
+    key_metadata:
+      description: Total carbon in milligrams per gram dry weight
+      examples:
+      - 0.3689
+      minimum: 0.0
+      title: Total Carbon
+      type: number
+      units: mg/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mg/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:total_nitrogen:
+    key_metadata:
+      description: Total nitrogen in milligrams per gram dry weight
+      examples:
+      - 0.0572
+      minimum: 0.0
+      title: Total Nitrogen
+      type: number
+      units: mg/g
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mg/g
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:treatment:
+    key_metadata:
+      description: Treatment
+      examples:
+      - HPG
+      - No HPG
+      title: Treatment
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:upper_seal_end_depth:
+    key_metadata:
+      description: Upper seal end depth in ft below ground surface (ft BGS)
+      examples:
+      - 12
+      title: Upper Seal End Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:upper_seal_start_depth:
+    key_metadata:
+      description: Upper seal start depth in ft below ground surface (ft BGS)
+      examples:
+      - 10
+      title: Upper Seal Start Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:upper_seal_type:
+    key_metadata:
+      description: Upper Seal Type
+      examples:
+      - BENT
+      - BENT-PEL
+      title: Upper Seal Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:well_casing_depth:
+    key_metadata:
+      description: Well casing depth in ft below ground surface (ft BGS)
+      examples:
+      - 45.25
+      title: Well Casing Depth
+      type: number
+      units: ft
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ft
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  enigma:well_casing_id:
+    key_metadata:
+      description: Well casing inner diameter. units in inches
+      examples:
+      - 3.975
+      minimum: 0.0
+      title: Well Casing ID
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:well_casing_od:
+    key_metadata:
+      description: Well casing outer diameter. units in inches
+      examples:
+      - 4.5
+      minimum: 0.0
+      title: Well Casing OD
+      type: number
+      units: in
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: in
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  enigma:well_casing_type:
+    key_metadata:
+      description: Well Casing Type
+      examples:
+      - SP
+      - MP
+      title: Well Casing Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:well_name:
+    key_metadata:
+      description: Well Name (ID)
+      examples:
+      - GW085
+      - GW098
+      title: Well Name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:well_status:
+    key_metadata:
+      description: Status of Well
+      examples:
+      - Active
+      - Inactive
+      title: Well Status
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  enigma:well_type:
+    key_metadata:
+      description: Type of Welll (SP; MP)
+      examples:
+      - SP
+      - MP
+      title: Type of Well
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  env_package:
+    key_metadata:
+      description: Environmental Package (MIxS vocabulary)
+      examples:
+      - Water
+      - Soil
+      title: Environmental Package
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  feature:
+    key_metadata:
+      description: Feature from ENVO (child of ENVO:01000813)
+      examples:
+      - ENVO:00000314
+      ontology:
+        ancestor_term: ENVO:01000813
+        ns: envo_ontology
+      title: Feature
+      type: ontology
+    validators:
+    - callable_builder: ontology_has_ancestor
+      module: SampleService.core.validator.builtin
+      parameters:
+        ancestor_term: ENVO:01000813
+        ontology: envo_ontology
+  gold:biosample_id:
+    key_metadata:
+      description: GOLD biosample identifier
+      examples:
+      - Gb0291112
+      title: Ecosystem Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:community:
+    key_metadata:
+      description: Community Sampled
+      examples:
+      - microbial communities
+      title: Community
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:ecosystem:
+    key_metadata:
+      description: Ecosystem (GOLD)
+      examples:
+      - Environmental
+      title: Ecosystem (GOLD)
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:ecosystem_category:
+    key_metadata:
+      description: Ecosystem Category (GOLD)
+      examples:
+      - Aquatic
+      title: Ecosystem Category
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:ecosystem_path_id:
+    key_metadata:
+      description: Ecosystem Path ID (GOLD)
+      examples:
+      - 3948
+      title: Ecosystem Path ID
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:ecosystem_subtype:
+    key_metadata:
+      description: Ecosystem Subtype (GOLD)
+      examples:
+      - Lake
+      title: Ecosystem Subtype
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:ecosystem_type:
+    key_metadata:
+      description: Ecosystem Type (GOLD)
+      examples:
+      - Freshwater
+      title: Ecosystem Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:habitat:
+    key_metadata:
+      description: Sample Habitat (MIGS-6)
+      examples:
+      - Lake sediment
+      title: Habitat
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:specific_ecosystem:
+    key_metadata:
+      description: Specific Ecosystem (GOLD)
+      examples:
+      - Sediment
+      title: Specific Ecosystem Term
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  gold:study_id:
+    key_metadata:
+      description: GOLD study identifier
+      examples:
+      - Gs0131983
+      title: GOLD study identifier
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  latitude:
+    key_metadata:
+      description: Latitude of the location where the sample was collected in WGS
+        84 coordinate system. ('Start latitude' for linear sampling features such
+        as dredges.) Needs to be entered in decimal degrees. Negative values for South
+        latitudes.
+      examples:
+      - 5.89634
+      maximum: 90.0
+      minimum: -90.0
+      title: Latitude
+      type: number
+      units: degrees
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: degrees
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: -90.0
+        keys: value
+        lte: 90.0
+  latitude_end:
+    key_metadata:
+      description: End latitude of the location where the sample was collected in
+        WGS 84 coordinate system. ('End latitude' for linear sampling features such
+        as dredges.) Needs to be entered in decimal degrees. Negative values for South
+        latitudes.
+      examples:
+      - 5.89634
+      maximum: 90.0
+      minimum: -90.0
+      title: Latitude End
+      type: number
+      units: degrees
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: degrees
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: -90.0
+        keys: value
+        lte: 90.0
+  locality:
+    key_metadata:
+      description: Name of the specific place where your sample was collected. This
+        could be the name of a mine, a volcanic field, a vent field, or similar
+      examples:
+      - Franklin Mine
+      - Craters of the Moon National Park
+      title: Locality
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  locality_description:
+    key_metadata:
+      description: Additional information about the specific place where your sample
+        was collected
+      examples:
+      - on private land
+      title: Locality description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  location_description:
+    key_metadata:
+      description: Free text description of the location
+      examples:
+      - flank of volcanic cone
+      title: Location description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  longitude:
+    key_metadata:
+      description: Longitude of the location where the sample was collected in WGS
+        84 cooridinate system. ('Start longitude' for linear sampling features such
+        as dredges.) Needs to be entered in decimal degrees. Negative values for 'West'
+        longitudes.
+      examples:
+      - -103.785
+      maximum: 180.0
+      minimum: -180.0
+      title: Longitude
+      type: number
+      units: degrees
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: degrees
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: -180.0
+        keys: value
+        lte: 180.0
+  longitude_end:
+    key_metadata:
+      description: End longitude of the location where the sample was collected in
+        WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative
+        values for 'West' longitudes.
+      examples:
+      - -103.285
+      maximum: 180.0
+      minimum: -180.0
+      title: Longitude End
+      type: number
+      units: degrees
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: degrees
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: -180.0
+        keys: value
+        lte: 180.0
+  material:
+    key_metadata:
+      description: Material from ENVO (child of ENVO:00010483)
+      examples:
+      - ENVO:01001614
+      ontology:
+        ancestor_term: ENVO:00010483
+        ns: envo_ontology
+      title: Material
+      type: ontology
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
       parameters:
         ancestor_term: ENVO:00010483
         ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
-  SESAR:material:
+  modification_date:
     key_metadata:
-      display_name: Material
-    static_mappings:
-      SESAR: Material
+      description: Modification date
+      examples:
+      - 01-OCT-19 11.32.17.481000000 AM
+      title: Modification Date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  name:
+    key_metadata:
+      description: name validator
+      examples:
+      - SAM1234
+      - IEMEG0001
+      max-len: 240
+      title: Sample Name
+      type: string
+    validators:
+    - callable_builder: string
+      module: SampleService.core.validator.builtin
+      parameters:
+        max-len: 240
+  ncbi:taxonomy_name:
+    key_metadata:
+      description: NCBI Taxonomy Name
+      examples:
+      - soil metagenome
+      title: NCBI taxonomy name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  nmdc:omics_type:
+    key_metadata:
+      description: NMDC OMICS Type
+      examples:
+      - Metagenome
+      - Metatranscriptome
+      title: NMDC OMICS type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  other_names:
+    key_metadata:
+      description: Other name(s) used for the sample.
+      examples:
+      - TRPOW
+      - T-PROW
+      title: Other name(s)
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  ph:
+    key_metadata:
+      description: pH of sample
+      examples:
+      - 7.0
+      maximum: 20.0
+      minimum: -10.0
+      title: pH
+      type: number
+      units: pH
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: pH
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: -10.0
+        keys: value
+        lte: 20.0
+  purpose:
+    key_metadata:
+      description: Purpose of the Sample
+      examples:
+      - Biogeochemistry, geochemistry and microbiology
+      title: Purpose
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sample_template:
+    key_metadata:
+      description: Template Format
+      enum:
+      - SESAR
+      - ENIGMA
+      - KBASE
+      examples:
+      - SESAR
+      - ENIGMA
+      - KBASE
+      title: Template
+      type: string
+    validators:
+    - callable_builder: enum
+      module: SampleService.core.validator.builtin
+      parameters:
+        allowed-values:
+        - SESAR
+        - ENIGMA
+        - KBASE
+  sesar:age_max:
+    key_metadata:
+      description: Maximum geological age in years
+      examples:
+      - 4.6
+      minimum: 0.0
+      title: Age (max)
+      type: number
+      units: years
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: years
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  sesar:age_min:
+    key_metadata:
+      description: minimum geological age in years
+      examples:
+      - 4.2
+      minimum: 0.0
+      title: Age (min)
+      type: number
+      units: years
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: years
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        gte: 0.0
+        keys: value
+  sesar:archive_contact_current:
+    key_metadata:
+      description: Address and/or email of the person who should be contacted for
+        information about or access to the sample.
+      examples:
+      - curator@ldeo.columbia.edu
+      title: Current archive contact
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:archive_contact_original:
+    key_metadata:
+      description: Address and/or email of the person who should be contacted for
+        information about the sample's original archive.
+      examples:
+      - curator@ldeo.columbia.edu
+      title: Original archive contact
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:archive_current:
+    key_metadata:
+      description: Name of institution, museum, or repository where the sample is
+        currently stored.
+      examples:
+      - Lamont Deep Sea Core Repository
+      - Palisades, NY
+      title: Current archive
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:archive_original:
+    key_metadata:
+      description: Name of institution, museum, or repository where the sample is
+        originally stored.
+      examples:
+      - Lamont Deep Sea Core Repository
+      - Palisades, NY
+      title: Original archive
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:classification:
+    key_metadata:
+      description: Taxonomy (formal classification) Formal categorization of sample.
+      examples:
+      - Igneous>Plutonic>Felsic
+      - Plagioclase
+      title: Classification
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:classification_comment:
+    key_metadata:
+      description: Classification Comment
+      examples:
+      - TODO
+      title: Classification Comment
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_date:
+    key_metadata:
+      description: Date when the sample was collected.
+      examples:
+      - '2015-03-31'
+      title: Collection date
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_date_end:
+    key_metadata:
+      description: Date when the sample collection was finished (if a date range is
+        provided).
+      examples:
+      - '2015-03-31'
+      title: Collection date (end)
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_date_precision:
+    key_metadata:
+      description: Precision to display the collection date and time.
+      examples:
+      - year
+      - month
+      - day
+      - time
+      title: Collection date precision
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_method:
+    key_metadata:
+      description: Method by which a sample was collected
+      examples:
+      - Dredging
+      - Manual
+      title: Collection method
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_method_description:
+    key_metadata:
+      description: Additional information about the collection method
+      examples:
+      - Hand sample collected from the top part of a large boulder
+      title: Collection method description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_time:
+    key_metadata:
+      description: Time when the sample was collected.
+      examples:
+      - 12:05:03Z
+      title: Collection time
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collection_time_end:
+    key_metadata:
+      description: End time when the sample was collected.
+      examples:
+      - 13:05:01Z
+      title: Collection time (end)
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collector_chief_scientist:
+    key_metadata:
+      description: Name of the person who collected the sample. In case of larger
+        field programs, name of chief scientist responsible for sample collection.
+      examples:
+      - Jane Smith
+      title: Collector/Chief Scientist name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:collector_chief_scientist_address:
+    key_metadata:
+      description: Institution, address, & email of the collector or chief scientist.
+      examples:
+      - Woods Hole Oceanographic Institution, Woods Hole, MA
+      title: Collector/Chief Scientist address
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:depth_in_core_max:
+    key_metadata:
+      description: maximum depth in core in meters
+      examples:
+      - 0.003
+      required: true
+      title: Depth in Core (max)
+      type: number
+      units: meters
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: meters
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+        required: true
+  sesar:depth_in_core_min:
+    key_metadata:
+      description: Minimum depth in core in meters
+      examples:
+      - 0.001
+      required: true
+      title: Depth in Core (min)
+      type: number
+      units: meters
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: meters
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+        required: true
+  sesar:depth_scale:
+    key_metadata:
+      description: Unit in which the depth is provided
+      examples:
+      - MBSF
+      - cm
+      title: Depth scale
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:easting:
+    key_metadata:
+      description: Easting in meters
+      examples:
+      - 305294
+      title: Easting
+      type: number
+      units: m
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+  sesar:elevation_end:
+    key_metadata:
+      description: Elevation end in meters
+      examples:
+      - '673.5'
+      - '-4520'
+      required: true
+      title: Elevation end
+      type: number
+      units: m
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+        required: true
+  sesar:elevation_start:
+    key_metadata:
+      description: Elevation start in meters
+      examples:
+      - '678.5'
+      - '-4536'
+      required: true
+      title: Elevation start
+      type: number
+      units: m
+    validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
+    - callable_builder: number
+      module: SampleService.core.validator.builtin
+      parameters:
+        keys: value
+        required: true
+  sesar:field_name:
+    key_metadata:
+      description: Taxonomy (field name) Informal classification of sample.
+      examples:
+      - basalt
+      - amphibole
+      - sea water
+      title: Field name (informal classification)
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:field_program_cruise:
+    key_metadata:
+      description: Name or identifier of the field program (cruise or expedition),
+        during which the sample was collected.
+      examples:
+      - TN182
+      title: Field program/cruise
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:geological_age:
+    key_metadata:
+      description: Age of a sample as described by the stratigraphic era, period,
+        state, etc.
+      examples:
+      - Cretaceous
+      title: Geological Age
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:geological_unit:
+    key_metadata:
+      description: A body of rock established as a distinct entity in the classification
+        of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow
+      examples:
+      - Coconino Sandstone
+      - Fig Tree Formation
+      title: Geological Unit
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:igsn:
+    key_metadata:
+      description: IGSN assigned by SESAR
+      examples:
+      - IEMEG0001
+      title: IGSN
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:is_archived:
+    key_metadata:
+      description: Is Archived
+      examples:
+      - Y
+      - N
+      title: Is Archived
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:launch_id:
+    key_metadata:
+      description: Further identifying information about the launch
+      examples:
+      - '3969'
+      - J2-434
+      title: Launch ID
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:launch_platform_name:
+    key_metadata:
+      description: The name of the launch used to collect the sample.
+      examples:
+      - Alvin
+      - Jason II
+      title: Launch platform name
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:launch_type:
+    key_metadata:
+      description: The type of launch used to collect the sample.
+      examples:
+      - HOV
+      title: Launch type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:material:
+    key_metadata:
+      description: Material that the sample consists of using SESAR vocabulary.
+      enum:
+      - Biology
+      - Gas
+      - Ice
+      - Liquid>aqueous
+      - Liquid>organic
+      - Mineral
+      - NotApplicable
+      - Other
+      - Particulate
+      - Rock
+      - Sediment
+      - Soil
+      - Synthetic
+      examples:
+      - Rock
+      - Liquid>Aqueous
+      title: Material (SESAR)
+      type: string
     validators:
     - callable_builder: enum
       module: SampleService.core.validator.builtin
@@ -34,1627 +2244,284 @@ validators:
         - Sediment
         - Soil
         - Synthetic
-  age_max:
-    key_metadata:
-      description: Maximum age in years
-      display_name: Age (max)
-    static_mappings:
-      SESAR: Age (max)
-      units: age_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: years
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
-  age_min:
-    key_metadata:
-      description: minimum age in years
-      display_name: Age (min)
-    static_mappings:
-      SESAR: Age (min)
-      units: age_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: years
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
-  aodc:
-    key_metadata:
-      description: units in cells per gram
-      display_name: AODC
-    static_mappings:
-      ENIGMA: AODC
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: cells/g
-  aquifer:
-    key_metadata:
-      display_name: Aquifer
-    static_mappings:
-      ENIGMA: Aquifer
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  area_name:
-    key_metadata:
-      display_name: Area Name
-    static_mappings:
-      ENIGMA: Area Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  average_water_level:
-    key_metadata:
-      description: units in ft above mean sea level (ft AMSL)
-      display_name: Average Water Level
-    static_mappings:
-      ENIGMA: Average Water Level
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  biomass_carbon:
-    key_metadata:
-      description: units in milligrams per gram
-      display_name: Biomass Carbon
-    static_mappings:
-      ENIGMA: Biomass Carbon
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: mg/g
-  biome:
-    key_metadata:
-      display_name: Biome
-    static_mappings:
-      ENIGMA: Biome
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ancestor_term: ENVO:00000428
-        ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
-  boncat_activity:
-    key_metadata:
-      description: units in cells per gram
-      display_name: BONCAT Activity
-    static_mappings:
-      ENIGMA: BONCAT Activity
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: cells/g
-  boring:
-    key_metadata:
-      description: boring depth in ft below groud surface (ft BGS)
-      display_name: Boring depth
-    static_mappings:
-      ENIGMA: Boring depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  boring_diameter:
-    key_metadata:
-      description: boring diameter in inches
-      display_name: Boring Diameter
-    static_mappings:
-      ENIGMA: Boring Diameter
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  boring_refusal:
-    key_metadata:
-      display_name: Boring Refusal
-    static_mappings:
-      ENIGMA: Boring Refusal
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  city_township:
-    key_metadata:
-      display_name: City/Township
-    static_mappings:
-      SESAR: City/Township
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  classification:
-    key_metadata:
-      display_name: Classification
-    static_mappings:
-      SESAR: Classification
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_date:
-    key_metadata:
-      display_name: Collection date
-    static_mappings:
-      SESAR: Collection date
-      units: collection_date_precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_date_end:
-    key_metadata:
-      display_name: Collection date (end)
-    static_mappings:
-      SESAR: Collection date (end)\
-      units: collection_date_precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_date_precision:
-    key_metadata:
-      display_name: Collection date precision
-    static_mappings:
-      SESAR: Collection date precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_method:
-    key_metadata:
-      display_name: Collection method
-    static_mappings:
-      SESAR: Collection method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_method_description:
-    key_metadata:
-      display_name: Collection method description
-    static_mappings:
-      SESAR: Collection method description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_time:
-    key_metadata:
-      display_name: Collection time
-    static_mappings:
-      ENIGMA: Collection time
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collection_time_end:
-    key_metadata:
-      display_name: Collection time (end)
-    static_mappings:
-      ENIGMA: Collection time (end)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collector_chief_scientist:
-    key_metadata:
-      display_name: Collector/Chief Scientist name
-    static_mappings:
-      SESAR: Collector/Chief Scientist name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  collector_chief_scientist_address:
-    key_metadata:
-      display_name: Collector/Chief Scientist address
-    static_mappings:
-      SESAR: Collector/Chief Scientist address
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  condition:
-    key_metadata:
-      display_name: Condition
-    static_mappings:
-      ENIGMA: Condition
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  conductivity:
-    key_metadata:
-      description: conductivity in millisiemens per centimeter
-      display_name: Conductivity
-    static_mappings:
-      ENIGMA: Conductivity
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: mS/cm
-  continent:
-    key_metadata:
-      display_name: Continent
-    static_mappings:
-      ENIGMA: Continent
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  coordinate_precision?:
-    key_metadata:
-      display_name: Coordinate Precision
-    static_mappings:
-      SESAR: Coordinate Precision
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  country:
-    key_metadata:
-      display_name: Country
-    static_mappings:
-      SESAR: Country
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  county:
-    key_metadata:
-      display_name: County
-    static_mappings:
-      SESAR: County
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  current_archive:
-    key_metadata:
-      display_name: Current archive
-    static_mappings:
-      SESAR: Current archive
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  current_archive_contact:
-    key_metadata:
-      display_name: Current archive contact name
-    static_mappings:
-      SESAR: Current archive contact name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  dapi_cell_count:
-    key_metadata:
-      description: DAPI cell count in cells per gram
-      display_name: DAPI Cell Count
-    static_mappings:
-      ENIGMA: DAPI Cell Count
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  date:
-    key_metadata:
-      display_name: Date
-    static_mappings:
-      ENIGMA: Date
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  depth:
-    key_metadata:
-      description: depth in centimeters below ground surface (cm BGS)
-      display_name: Depth
-    static_mappings:
-      ENIGMA: Depth
-      SESAR: Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: cm
-  depth_in_core_max:
-    key_metadata:
-      description: maximum depth in core in meters
-      display_name: Depth in Core (max)
-    static_mappings:
-      SESAR: Depth in Core (max)
-      units: depth_scale
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
-  depth_in_core_min:
-    key_metadata:
-      description: minimum depth in core in meters
-      display_name: Depth in Core (min)
-    static_mappings:
-      SESAR: Depth in Core (min)
-      units: depth_scale
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
-  depth_scale:
-    key_metadata:
-      display_name: Depth scale
-    static_mappings:
-      SESAR: Depth scale
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  description:
-    key_metadata:
-      display_name: Description
-    static_mappings:
-      ENIGMA: Description
-      SESAR: Description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  dna_picogreen_total:
-    key_metadata:
-      description: units in nanograms
-      display_name: DNA Picogreen Total
-    static_mappings:
-      ENIGMA: DNA Picogreen Total
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ng
-  drive_casing_end_depth:
-    key_metadata:
-      description: drive casing end depth in ft below ground surface (ft BGS)
-      display_name: Drive Casing End Depth
-    static_mappings:
-      ENIGMA: Drive Casing End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  drive_casing_id:
-    key_metadata:
-      description: drive casing inner diameter in inches
-      display_name: Drive Casing ID
-    static_mappings:
-      ENIGMA: Drive Casing ID
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  drive_casing_od:
-    key_metadata:
-      description: drive casing outer diameter in inches
-      display_name: Drive Casing OD
-    static_mappings:
-      ENIGMA: Drive Casing OD
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  drive_casing_start_depth:
-    key_metadata:
-      description: units in ft below ground surface (ft BGS)
-      display_name: Drive Casing Start Depth
-    static_mappings:
-      ENIGMA: Drive Casing Start Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  drive_casing_type:
-    key_metadata:
-      display_name: Drive Casing Type
-    static_mappings:
-      ENIGMA: Drive Casing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  easting:
-    key_metadata:
-      description: Easting in meters
-      display_name: Easting
-    static_mappings:
-      SESAR: Easting
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: m
-  elevation:
-    key_metadata:
-      description: Elevation in meters above mean sea level (ft AMSL)
-      display_name: Elevation
-    static_mappings:
-      ENIGMA: Elevation
-      SESAR: Elevation
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  elevation_end:
-    key_metadata:
-      description: Elevation end in meters
-      display_name: Elevation end
-    static_mappings:
-      SESAR: Elevation end
-      units: elevation_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
-  elevation_start:
-    key_metadata:
-      description: Elevation start in meters
-      display_name: Elevation start
-    static_mappings:
-      SESAR: Elevation start
-      units: elevation_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: meters
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        required: true
-  env_package:
-    key_metadata:
-      display_name: Env_package
-    static_mappings:
-      ENIGMA: Env_package
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  environmental_package:
-    key_metadata:
-      display_name: Environmental Package
-    static_mappings:
-      ENIGMA: Environmental Package
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  experiment_name:
-    key_metadata:
-      display_name: Experiment Name
-    static_mappings:
-      ENIGMA: Experiment Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  feature:
-    key_metadata:
-      display_name: Feature
-    static_mappings:
-      ENIGMA: Feature
-    validators:
-    - callable_builder: ontology_has_ancestor
-      module: SampleService.core.validator.builtin
-      parameters:
-        ancestor_term: ENVO:01000813
-        ontology: envo_ontology
-        srv_wiz_url: https://kbase.us/services/service_wizard
-  field_name_informal_classification:
-    key_metadata:
-      display_name: Field name (informal classification)
-    static_mappings:
-      SESAR: Field name (informal classification)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  field_program_cruise:
-    key_metadata:
-      display_name: Field program/cruise
-    static_mappings:
-      SESAR: Field program/cruise
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  filter:
-    key_metadata:
-      description: Filter pore size in microns
-      display_name: Filter
-    static_mappings:
-      ENIGMA: Filter
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: microns
-  fraction:
-    key_metadata:
-      display_name: Fraction
-    static_mappings:
-      ENIGMA: Fraction
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  fractures_cavities_waterbreaks:
-    key_metadata:
-      display_name: Fractures/Cavities/WaterBreaks
-    static_mappings:
-      ENIGMA: Fractures/Cavities/WaterBreaks
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  functional_area:
-    key_metadata:
-      display_name: Functional Area
-    static_mappings:
-      ENIGMA: Functional Area
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  geological_age:
-    key_metadata:
-      description: Geological Age in years * 1000000
-      display_name: Geological Age
-    static_mappings:
-      SESAR: Geological Age
-      units: geological_unit
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: year * 1000000
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0
-        keys: value
-  geological_zone:
-    key_metadata:
-      display_name: Geological Zone
-    static_mappings:
-      ENIGMA: Geological Zone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  gold:biosample_id:
-    key_metadata:
-      description: GOLD biosample identifier
-      display_name: Ecosystem Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  gold:ecosystem_subtype:
-    key_metadata:
-      description: null
-      display_name: Ecosystem Subtype
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  gold:ecosystem_type:
-    key_metadata:
-      description: null
-      display_name: Ecosystem Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  gold:habitat:
-    key_metadata:
-      description: null
-      display_name: Habitat
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  gold:study_id:
-    key_metadata:
-      description: null
-      display_name: GOLD study identifier
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  ground_elevation:
-    key_metadata:
-      description: ground elevation in ft above mean sea level (ft AMSL)
-      display_name: Ground Elevation
-    static_mappings:
-      ENIGMA: Ground Elevation
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  id:
-    key_metadata:
-      description: Unique identifier for the Sample
-      display_name: Id
-    static_mappings:
-      ENIGMA: SampleID
-      SESAR: IGSN
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
-  igsn:
-    key_metadata:
-      display_name: IGSN
-    static_mappings:
-      SESAR: IGSN
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  installation_method:
-    key_metadata:
-      display_name: Installation Method
-    static_mappings:
-      SESAR: Installation Method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  latitude:
-    key_metadata:
-      description: Latitude in degrees
-      display_name: Latitude
-    static_mappings:
-      ENIGMA: Latitude
-      SESAR: Latitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -90.0
-        keys: value
-        lte: 90.0
-  launch_id:
-    key_metadata:
-      display_name: Launch ID
-    static_mappings:
-      ENIGMA: Launch ID
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  launch_platform_name:
-    key_metadata:
-      display_name: Launch platform name
-    static_mappings:
-      ENIGMA: Launch platform name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  leucine_activity_ngc_day_cell:
-    key_metadata:
-      description: units in ngC/day cell
-      display_name: Leucine Activity (ngC/day cell)
-    static_mappings:
-      ENIGMA: Leucine Activity (ngC/day cell)
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  locality:
-    key_metadata:
-      display_name: Locality
-    static_mappings:
-      ENIGMA: Locality
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  locality_description:
-    key_metadata:
-      display_name: Locality description
-    static_mappings:
-      SESAR: Locality description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  location_description:
-    key_metadata:
-      display_name: Location description
-    static_mappings:
-      SESAR: Location description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  longitude:
-    key_metadata:
-      description: Longitude in degrees
-      display_name: Longitude
-    static_mappings:
-      ENIGMA: Longitude
-      SESAR: Longitude
-      units: str:degrees
-    validators:
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: degrees
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -180.0
-        keys: value
-        lte: 180.0
-  lower_seal_end_depth:
-    key_metadata:
-      description: Lower seal end depth in ft below ground surface (ft BGS)
-      display_name: Lower Seal End Depth
-    static_mappings:
-      ENIGMA: Lower Seal End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  lower_seal_start_depth:
-    key_metadata:
-      description: Lower seal start depth in ft below ground surface (ft BGS)
-      display_name: Lower Seal Start Depth
-    static_mappings:
-      ENIGMA: Lower Seal Start Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  lower_seal_type:
-    key_metadata:
-      display_name: Lower Seal Type
-    static_mappings:
-      ENIGMA: Lower Seal Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  material:
-    key_metadata:
-      display_name: Material
-    static_mappings:
-      ENIGMA: Material
-      SESAR: Material
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  maturation_time:
-    key_metadata:
-      display_name: Maturation Time
-    static_mappings:
-      ENIGMA: Maturation Time
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  max_water_level:
-    key_metadata:
-      description: Maximum water level in ft above mean sea level (ft AMSL)
-      display_name: Max Water Level
-    static_mappings:
-      ENIGMA: Max Water Level
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  method:
-    key_metadata:
-      display_name: Method
-    static_mappings:
-      ENIGMA: Method
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  min_water_level:
-    key_metadata:
-      description: Minimum water level in ft above mean sea level (ft AMSL)
-      display_name: Min Water Level
-    static_mappings:
-      ENIGMA: Min Water Level
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  moisture:
-    key_metadata:
-      description: percent moisture
-      display_name: Moisture
-    static_mappings:
-      ENIGMA: Moisture
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-        lte: 100.0
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: percent
-  name:
-    key_metadata:
-      description: name validator
-      display_name: Sample Name
-    static_mappings:
-      ENIGMA: Sample Name
-      SESAR: Sample Name
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
-  name_of_physiographic_feature:
-    key_metadata:
-      display_name: Name of physiographic feature
-    static_mappings:
-      SESAR: Name of physiographic feature
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  navigation_type:
-    key_metadata:
-      display_name: Navigation type
-    static_mappings:
-      SESAR: Navigation type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  ncbi:taxonomy_name:
-    key_metadata:
-      description: null
-      display_name: NCBI taxonomy name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:community:
-    key_metadata:
-      description: null
-      display_name: Community
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:description_long:
-    key_metadata:
-      description: null
-      display_name: NMDC study description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:doi:
-    key_metadata:
-      description: null
-      display_name: NMDC study DOI
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:ecosystem:
-    key_metadata:
-      description: null
-      display_name: NMDC ecosystem term
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:ecosystem_category:
-    key_metadata:
-      description: null
-      display_name: NMDC study ecosystem category
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:env_local_scale_term:
-    key_metadata:
-      description: null
-      display_name: NMDC environment term, local scale
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:mod_date:
-    key_metadata:
-      description: null
-      display_name: NMDC modification date
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:principal_investigator:
-    key_metadata:
-      description: null
-      display_name: NMDC study Principal Investigator
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:specific_ecosystem:
-    key_metadata:
-      description: null
-      display_name: NMDC specific ecosystem term
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  nmdc:type:
-    key_metadata:
-      description: null
-      display_name: NMDC sample type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  northing:
+  sesar:navigation_type:
+    key_metadata:
+      description: Navigation type
+      enum:
+      - ACOUSTIC_RANGING/GPS
+      - DGPS
+      - DVL
+      - DVL:Renav
+      - DVL:Renav:Confirmed
+      - DVL/LBL
+      - DVL/LBL:Renav
+      - DVL/LBL:Renav:Confirmed
+      - DVL/LBL/INS
+      - DVL/USBL
+      - DVL/USBL:Renav
+      - GLONASS
+      - GPS
+      - GPS:Assumed
+      - GPS/WireOut
+      - LAYBACK
+      - LAYBACK/LBL
+      - LBL
+      - Locale
+      - LORAN
+      - NotApplicable
+      - NotProvided
+      - RTK GPS
+      - USBL
+      examples:
+      - GPS
+      title: Navigation type
+      type: string
+    validators:
+    - callable_builder: enum
+      module: SampleService.core.validator.builtin
+      parameters:
+        allowed-values:
+        - ACOUSTIC_RANGING/GPS
+        - DGPS
+        - DVL
+        - DVL:Renav
+        - DVL:Renav:Confirmed
+        - DVL/LBL
+        - DVL/LBL:Renav
+        - DVL/LBL:Renav:Confirmed
+        - DVL/LBL/INS
+        - DVL/USBL
+        - DVL/USBL:Renav
+        - GLONASS
+        - GPS
+        - GPS:Assumed
+        - GPS/WireOut
+        - LAYBACK
+        - LAYBACK/LBL
+        - LBL
+        - Locale
+        - LORAN
+        - NotApplicable
+        - NotProvided
+        - RTK GPS
+        - USBL
+  sesar:northing:
     key_metadata:
       description: Northing in meters
-      display_name: Northing
-    static_mappings:
-      SESAR: Northing
+      examples:
+      - 4111279
+      title: Northing
+      type: number
+      units: m
     validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
         units: m
-  open:
-    key_metadata:
-      display_name: Open
-    static_mappings:
-      ENIGMA: Open
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  open_casing_depth:
-    key_metadata:
-      description: Open casing depth in ft below ground surface (ft BGS)
-      display_name: Open Casing Depth
-    static_mappings:
-      ENIGMA: Open Casing Depth
-    validators:
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  open_casing_id:
+  sesar:parent_igsn:
     key_metadata:
-      description: open casing inner diameter in inches (in)
-      display_name: Open Casing ID
-    static_mappings:
-      ENIGMA: Open Casing ID
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  open_casing_od:
-    key_metadata:
-      description: open casing outer diameter in inches (in)
-      display_name: Open Casing OD
-    static_mappings:
-      ENIGMA: Open Casing OD
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  open_casing_type:
-    key_metadata:
-      display_name: Open Casing Type
-    static_mappings:
-      ENIGMA: Open Casing Type
+      description: IGSN of Parent Sample
+      examples:
+      - IEMEG0002
+      title: Parent IGSN
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  open_hole_depth:
+  sesar:physiographic_feature_name:
     key_metadata:
-      description: Open hole depth in ft below ground surface (ft BGS)
-      display_name: Open Hole Depth
-    static_mappings:
-      ENIGMA: Open Hole Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  open_hole_diameter:
-    key_metadata:
-      description: Open hole diameter in inches
-      display_name: Open Hole Diameter
-    static_mappings:
-      ENIGMA: Open Hole Diameter
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  open_interval_diameter:
-    key_metadata:
-      description: Open interval diameter in inches
-      display_name: Open Interval Diameter
-    static_mappings:
-      ENIGMA: Open Interval Diameter
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  open_interval_end_depth:
-    key_metadata:
-      description: Open interval end depth in ft below ground surface (ft BGS)
-      display_name: Open Interval End Depth
-    static_mappings:
-      ENIGMA: Open Interval End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  open_interval_start_depth:
-    key_metadata:
-      description: Open interval start depth in ft below ground surface (ft BGS)
-      display_name: Open Interval Start Depth
-    static_mappings:
-      ENIGMA: Open Interval Start Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  organic_carbon:
-    key_metadata:
-      description: Organic carbon in milligrams per gram dry weight
-      display_name: Organic Carbon
-    static_mappings:
-      ENIGMA: Organic Carbon
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: mg/g
-  original_archive:
-    key_metadata:
-      display_name: Original archive
-    static_mappings:
-      ENIGMA: Original archive
+      description: Name of the physiographic feature that you entered
+      examples:
+      - East Pacific Rise
+      - Dead Sea
+      title: Name of physiographic feature
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  original_archive_contact:
+  sesar:physiographic_feature_primary:
     key_metadata:
-      display_name: Original archive contact
-    static_mappings:
-      ENIGMA: Original archive contact
+      description: Type of physical feature that your sample was collected from (see
+        suggested list)
+      examples:
+      - volcano
+      - mid-ocean ridge
+      title: Primary physiographic feature
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  origination_or_plug_abandon:
+  sesar:platform_description:
     key_metadata:
-      display_name: Origination or Plug/Abandon
-    static_mappings:
-      ENIGMA: Origination or Plug/Abandon
+      description: Description of platform for the cruise.
+      examples:
+      - TODO
+      title: Platform description
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  other_name:
+  sesar:platform_name:
     key_metadata:
-      display_name: Other Name
-    static_mappings:
-      ENIGMA: Other Name
+      description: Name of platform for the cruise.
+      examples:
+      - R/V Roger Revelle
+      title: Platform name
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  other_names:
+  sesar:platform_type:
     key_metadata:
-      display_name: Other name(s)
-    static_mappings:
-      SESAR: Other name(s)
+      description: Type of platform for the cruise.
+      examples:
+      - Ship
+      title: Platform type
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  packing_depth_end:
+  sesar:registrant_current:
     key_metadata:
-      description: Packind depth end in ft below ground surface (ft BGS)
-      display_name: Packing Depth End
-    static_mappings:
-      ENIGMA: Packing Depth End
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  packing_depth_start:
-    key_metadata:
-      description: Packind depth start in ft below ground surface (ft BGS)
-      display_name: Packing Depth Start
-    static_mappings:
-      ENIGMA: Packing Depth Start
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  packing_type:
-    key_metadata:
-      display_name: Packing Type
-    static_mappings:
-      ENIGMA: Packing Type
+      description: Registrant of the sample in SESAR
+      examples:
+      - Jane Smith
+      title: Current Registrant Name
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  parent_id:
+  sesar:registrant_org:
     key_metadata:
-      description: id field of parent
-      display_name: Parent ID
-    static_mappings:
-      ENIGMA: Well Name
-      SESAR: Parent IGSN
-    validators:
-    - callable_builder: string
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-        max-len: 240
-  parent_igsn:
-    key_metadata:
-      display_name: Parent IGSN
-    static_mappings:
-      SESAR: Parent IGSN
+      description: Registrant organization of the sample in SESAR
+      examples:
+      - Jane Smith
+      title: Organization Registrant Name
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  ph:
+  sesar:related_identifiers:
     key_metadata:
-      description: pH of sample
-      display_name: pH
-    static_mappings:
-      ENIGMA: pH
-      SESAR: pH
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: -10.0
-        keys: value
-        lte: 20.0
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: pH
-  platform_name:
-    key_metadata:
-      display_name: Platform name
-    static_mappings:
-      ENIGMA: Platform name
+      description: IGSN of Related Samples
+      examples:
+      - IEMEG0003
+      title: Related Identifiers
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  platform_type:
+  sesar:relation_type:
     key_metadata:
-      display_name: Platform type
-    static_mappings:
-      ENIGMA: Platform type
+      description: Relation Type
+      examples:
+      - TODO
+      title: Relation Type
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  pore_water_extraction:
+  sesar:release_date:
     key_metadata:
-      description: Pore water extraction in microliters
-      display_name: Pore Water Extraction
-    static_mappings:
-      ENIGMA: Pore Water Extraction
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: microliters
-  primary_physiographic_feature:
-    key_metadata:
-      display_name: Primary physiographic feature
-    static_mappings:
-      SESAR: Primary physiographic feature
+      description: Date when sample metadata is publicly accessible and searchable.
+        If null, defaults to date of registration (recommended).
+      examples:
+      - '2018-03-15'
+      title: Release date
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  purpose:
+  sesar:sample_type:
     key_metadata:
-      display_name: Purpose
-    static_mappings:
-      SESAR: Purpose
+      description: Sample Type
+      examples:
+      - Core, Core Section
+      title: Sample Type
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  recovery_factor:
+  sesar:size:
     key_metadata:
-      display_name: Recovery Factor
-    static_mappings:
-      ENIGMA: Recovery Factor
+      description: Size of the registered object, such as the dimension of a specimen,
+        the length of a core, or the weight of a dredge
+      examples:
+      - 2x4
+      - '45'
+      title: Size
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  redox_potential_?:
+  sesar:size_unit:
     key_metadata:
-      display_name: Redox Potential
-    static_mappings:
-      ENIGMA: Redox Potential
+      description: Unit for the numerical value provided for 'size'.
+      examples:
+      - cm
+      - kg
+      title: Size unit
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  region:
+  sesar:state_province:
     key_metadata:
-      display_name: Region
-    static_mappings:
-      ENIGMA: Region
+      description: State or Province where the sample was collected
+      examples:
+      - Alaska
+      title: State/Province
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  related_identifiers:
+  sesar:sub-object_type:
     key_metadata:
-      display_name: Related Identifiers
-    static_mappings:
-      SESAR: Related Identifiers
+      description: More descriptive Object Type. This applies only to samples with
+        Object Type set to Individual Sample.
+      examples:
+      - Thin section
+      - Powder
+      title: Sub-object type
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  relation_type:
+  sesar:vertical_datum:
     key_metadata:
-      display_name: Relation Type
-    static_mappings:
-      SESAR: Relation Type
+      description: Vertical datum used to calculate the elevation
+      examples:
+      - NAVD88
+      - MSL
+      title: Vertical Datum
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  release_date:
+  sesar:zone:
     key_metadata:
-      display_name: Release date
-    static_mappings:
-      ENIGMA: Release date
-      SESAR: Release date
+      description: Zone for the geographic Cartesian coordinate "11R"
+      examples:
+      - 11R
+      title: Zone
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  replicate:
-    key_metadata:
-      display_name: Replicate
-    static_mappings:
-      ENIGMA: Replicate
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  rock_formation:
-    key_metadata:
-      display_name: Rock Formation
-    static_mappings:
-      ENIGMA: Rock Formation
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sample_description:
-    key_metadata:
-      display_name: Sample Description
-    static_mappings:
-      SESAR: Sample Description
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sample_name:
-    key_metadata:
-      display_name: Sample Name
-    static_mappings:
-      SESAR: Sample Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sampleid:
-    key_metadata:
-      display_name: SampleID
-    static_mappings:
-      ENIGMA: SampleID
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  screen_bottom_elevation:
-    key_metadata:
-      description: Screen bottom elevation in ft above mean sea level (ft AMSL)
-      display_name: Screen Bottom Elevation
-    static_mappings:
-      ENIGMA: Screen Bottom Elevation
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  screen_end_depth:
-    key_metadata:
-      description: Screen end depth in ft below ground surface (ft BGS)
-      display_name: Screen End Depth
-    static_mappings:
-      ENIGMA: Screen End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  screen_start_depth:
-    key_metadata:
-      description: Screen start depth in ft below ground surface (ft BGS)
-      display_name: Screen Start Depth
-    static_mappings:
-      ENIGMA: Screen Start Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  screen_top_elevation:
-    key_metadata:
-      description: Screen top elevation in ft above mean sea level (ft AMSL)
-      display_name: Screen Top Elevation
-    static_mappings:
-      ENIGMA: Screen Top Elevation
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  screen_type:
-    key_metadata:
-      display_name: Screen Type
-    static_mappings:
-      ENIGMA: Screen Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  screened:
-    key_metadata:
-      display_name: Screened
-    static_mappings:
-      ENIGMA: Screened
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  screened_interval:
-    key_metadata:
-      description: Screened interval in ft
-      display_name: Screened Interval
-    static_mappings:
-      ENIGMA: Screened Interval
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
   size:
     key_metadata:
       description: Size in meters cubed
-      display_name: Size
-    static_mappings:
-      ENIGMA: Size
-      SESAR: Size
-      units: size_unit
+      examples:
+      - 0.025
+      required: true
+      title: Size
+      type: number
+      units: m^3
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
@@ -1668,310 +2535,59 @@ validators:
         required: true
   state_province:
     key_metadata:
-      display_name: State/Province
-    static_mappings:
-      ENIGMA: State/Province
-      SESAR: State/Province
+      description: State or Province
+      examples:
+      - Alaska
+      title: State/Province
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  sub-object_type:
+  study_doi:
     key_metadata:
-      display_name: Sub-object type
-    static_mappings:
-      SESAR: Sub-object type
+      description: Study DOI
+      examples:
+      - TODO
+      title: Study DOI
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  study_principal_investigator:
+    key_metadata:
+      description: Study Principal Investigator
+      examples:
+      - Charles Darwin
+      title: Study Principal Investigator
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
   temperature:
     key_metadata:
-      display_name: Temperature
-    static_mappings:
-      ENIGMA: Temperature
-      SESAR: Temperature
+      description: Temperature (Celsius)
+      examples:
+      - 22.1
+      title: Temperature
+      type: number
+      units: celsius
     validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
         units: celsius
-  time:
-    key_metadata:
-      display_name: Time
-    static_mappings:
-      ENIGMA: Time
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  time_zone:
-    key_metadata:
-      display_name: Time Zone
-    static_mappings:
-      ENIGMA: Time Zone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  timezone:
-    key_metadata:
-      display_name: Timezone
-    static_mappings:
-      ENIGMA: Timezone
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  top_of_casing_elevation:
-    key_metadata:
-      description: Top of casing elevation in ft above mean sea level (ft AMSL)
-      display_name: Top of Casing Elevation
-    static_mappings:
-      ENIGMA: Top of Casing Elevation
-    validators:
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  top_of_casing_stickup:
+  url:
     key_metadata:
-      description: Top of casing stickup in ft
-      display_name: Top of Casing Stickup
-    static_mappings:
-      ENIGMA: Top of Casing Stickup
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  top_of_fresh_bedrock:
-    key_metadata:
-      description: Top of fresh bedrock in ft below ground surface (ft BGS)
-      display_name: Top of Fresh Bedrock
-    static_mappings:
-      ENIGMA: Top of Fresh Bedrock
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  top_of_weathered_bedrock:
-    key_metadata:
-      description: Top of weathered bedrock in ft below ground surface (ft BGS)
-      display_name: Top of Weathered Bedrock
-    static_mappings:
-      ENIGMA: Top of Weathered Bedrock
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  total_carbon:
-    key_metadata:
-      description: Total carbon in milligrams per gram dry weight
-      display_name: Total Carbon
-    static_mappings:
-      ENIGMA: Total Carbon
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: mg/g
-  total_nitrogen:
-    key_metadata:
-      description: Total nitrogen in milligrams per gram dry weight
-      display_name: Total Nitrogen
-    static_mappings:
-      ENIGMA: Total Nitrogen
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: mg/g
-  treatment:
-    key_metadata:
-      display_name: Treatment
-    static_mappings:
-      ENIGMA: Treatment
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  type_of_well:
-    key_metadata:
-      display_name: Type of Well
-    static_mappings:
-      ENIGMA: Type of Well
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  upper_seal_end_depth:
-    key_metadata:
-      description: Upper seal end depth in ft below ground surface (ft BGS)
-      display_name: Upper Seal End Depth
-    static_mappings:
-      SESAR: Upper Seal End Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  upper_seal_start_depth:
-    key_metadata:
-      description: Upper seal start depth in ft below ground surface (ft BGS)
-      display_name: Upper Seal Start Depth
-    static_mappings:
-      ENIGMA: Upper Seal Start Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  upper_seal_type:
-    key_metadata:
-      display_name: Upper Seal Type
-    static_mappings:
-      ENIGMA: Upper Seal Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  vertical_datum:
-    key_metadata:
-      display_name: Vertical Datum
-    static_mappings:
-      SESAR: Vertical Datum
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  well:
-    key_metadata:
-      display_name: Well
-    static_mappings:
-      ENIGMA: Well
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  well_casing_depth:
-    key_metadata:
-      description: Well casing depth in ft below ground surface (ft BGS)
-      display_name: Well Casing Depth
-    static_mappings:
-      ENIGMA: Well Casing Depth
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: ft
-  well_casing_id:
-    key_metadata:
-      description: Well casing inner diameter. units in inches
-      display_name: Well Casing ID
-    static_mappings:
-      ENIGMA: Well Casing ID
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  well_casing_od:
-    key_metadata:
-      description: Well casing outer diameter. units in inches
-      display_name: Well Casing OD
-    static_mappings:
-      ENIGMA: Well Casing OD
-    validators:
-    - callable_builder: number
-      module: SampleService.core.validator.builtin
-      parameters:
-        gte: 0.0
-        keys: value
-    - callable_builder: units
-      module: SampleService.core.validator.builtin
-      parameters:
-        key: units
-        units: in
-  well_casing_type:
-    key_metadata:
-      display_name: Well Casing Type
-    static_mappings:
-      ENIGMA: Well Casing Type
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  well_name:
-    key_metadata:
-      display_name: Well Name
-    static_mappings:
-      ENIGMA: Well Name
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  well_status:
-    key_metadata:
-      display_name: Well Status
-    static_mappings:
-      ENIGMA: Well Status
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  zone:
-    key_metadata:
-      display_name: Zone
-    static_mappings:
-      SESAR: Zone
+      description: URL for Sample
+      examples:
+      - http://igsn.org/IEBWE0001
+      title: URL
+      type: string
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin

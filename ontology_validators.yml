@@ -1,9 +1,3 @@
-ENIGMA:material:
-- ancestor_term: ENVO:00010483
-  display_name: Material
-  ontology: envo_ontology
-  ontology_collection: ENVO_terms
-  validator_type: ontology_has_ancestor
 biome:
 - ancestor_term: ENVO:00000428
   display_name: Biome
@@ -13,6 +7,12 @@ biome:
 feature:
 - ancestor_term: ENVO:01000813
   display_name: Feature
+  ontology: envo_ontology
+  ontology_collection: ENVO_terms
+  validator_type: ontology_has_ancestor
+material:
+- ancestor_term: ENVO:00010483
+  display_name: Material
   ontology: envo_ontology
   ontology_collection: ENVO_terms
   validator_type: ontology_has_ancestor

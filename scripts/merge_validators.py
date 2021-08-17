@@ -1,6 +1,7 @@
 import os
 import sys
 import yaml
+from copy import deepcopy
 
 
 ONTOLOGY_MAPPING = {
@@ -8,10 +9,16 @@ ONTOLOGY_MAPPING = {
     "go_ontology": "GO_terms"
 }
 
+_BUILTIN = 'SampleService.core.validator.builtin'
+_NOOP = [{
+    'callable_builder': 'noop',
+    'module': _BUILTIN
+    }]
 
 def find_ontology_validator(data_field, key, ontology_validators):
-    if data_field[key].get('validators'):
-        for validator in data_field[key]['validators']:
+#    if data_field[key].get('validators'):
+#        for validator in data_field[key]['validators']:
+    for validator in data_field['validators']:
             if validator['callable_builder'] == 'ontology_has_ancestor':
                 if not ontology_validators.get(key):
                     ontology_validators[key] = []
@@ -20,9 +27,57 @@ def find_ontology_validator(data_field, key, ontology_validators):
                     "ontology": validator.get('parameters', {}).get('ontology'),
                     "ontology_collection": ONTOLOGY_MAPPING.get(validator.get('parameters', {}).get('ontology'), ""),
                     "ancestor_term": validator.get('parameters', {}).get('ancestor_term'),
-                    "display_name": data_field[key].get('key_metadata', {}).get('display_name')
+                    "display_name": data_field['key_metadata']['title']
                 })
     return ontology_validators
+
+def expand_validators(val):
+    nv = []
+    if 'type' not in val:
+        print("type required for validator")
+        print(val)
+        raise ValueError("Missing type")
+    typ = val['type']
+    if 'units' in val:
+        v = {
+            'callable_builder': 'units',
+            'module': _BUILTIN,
+            }
+        v['parameters'] = {
+                'key': 'units',
+                'units': val['units']
+                }
+        nv.append(v)
+    v = {
+        'callable_builder': typ,
+        'module': _BUILTIN,
+        }
+    if typ=='number':
+        v['parameters'] = {'keys': 'value'}
+        if 'maximum' in val:
+            v['parameters']['lte'] = val['maximum']
+        if 'minimum' in val:
+            v['parameters']['gte'] = val['minimum']
+        if 'required' in val:
+            v['parameters']['required'] = val['required']
+    elif 'enum' in val:
+        v['callable_builder'] = 'enum'
+        v['parameters'] = {'allowed-values': deepcopy(val['enum'])}
+    elif 'ontology' in val:
+        v['callable_builder'] = 'ontology_has_ancestor'
+        v['parameters'] = {
+                'ontology': val['ontology']['ns'],
+                'ancestor_term': val['ontology']['ancestor_term']
+                }
+    elif 'max-len' in val:
+             v['parameters'] = {'max-len': val['max-len']}
+    elif typ == 'string':
+        return deepcopy(_NOOP)
+    else:
+        print("type not recongnized %s" % (typ))
+        raise KeyError("type %s not recognized" % (typ))
+    nv.append(v)
+    return nv
 
 
 def merge_to_existing_validators(val_type, val_data, key, val, data):
@@ -36,7 +91,12 @@ def merge_to_existing_validators(val_type, val_data, key, val, data):
                 else:
                     val_data[key][data_field] = data[val_type][key][data_field]
     else:
-        val_data[key] = val
+        nv = {'key_metadata': {}}
+        nv['validators'] = expand_validators(val)
+        for k in val:
+            nv['key_metadata'][k] = val[k]
+           
+        val_data[key] = deepcopy(nv)
     return val_data
 
 
@@ -46,20 +106,24 @@ def merge_validation_files(files, output_file, ontology_file):
     ontology_validators = {}
 
     for f in files:
+        print(f)
         origin_file = f.split('.')[0]
         with open(f) as f_in:
             data = yaml.load(f_in, Loader=yaml.SafeLoader)
-        for val_type, val_data in [
-            ('validators', validators), ('prefix_validators', prefix_validators)
-        ]:
+        prefix = ''
+        if 'namespace' in data:
+            prefix = data['namespace'] + ":"
+        for val_type, val_data in [ ('terms', validators) ]:
             if data.get(val_type):
                 for key, val in data[val_type].items():
-                    ontology_validators = find_ontology_validator(
-                        data[val_type], key, ontology_validators
-                    )
+                    keyname = prefix + key
                     val_data = merge_to_existing_validators(
-                        val_type, val_data, key, val, data
+                        val_type, val_data, keyname, val, data
                     )
+                    ontology_validators = find_ontology_validator(
+                        val_data[keyname], keyname, ontology_validators
+                    )
+#                        data[val_type], key, ontology_validators
 
     v_keys = sorted(list(validators.keys()))
     pv_keys = sorted(list(prefix_validators.keys()))
@@ -91,7 +155,7 @@ if __name__ == "__main__":
         output_file = output_file + '.yml'
     if not ontology_file.endswith('.yml') and not ontology_file.endswith('.yaml'):
         ontology_file = ontology_file + '.yml'
-    files = os.listdir('validation_files')
-    files = ['validation_files/' + f for f in files]
+    files = os.listdir('vocabularies')
+    files = ['vocabularies/' + f for f in files]
     merge_validation_files(files, output_file, ontology_file)
     print(f"    Validators merged, written to {output_file}")
