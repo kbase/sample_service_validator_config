@@ -61,7 +61,8 @@
     "title",
     "description",
     "examples",
-    "type"
+    "type",
+    "units"
   ],
   "additionalProperties": false
 }
