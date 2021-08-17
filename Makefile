@@ -27,3 +27,6 @@ test:
 update:
 	python3 scripts/merge_validators.py $(VALIDATION_FILE) $(ONTOLOGY_FILE)
 	python3 scripts/create_tsv.py $(VALIDATION_FILE)
+
+export:
+	python3 eap_scripts/transform.py
