@@ -27,7 +27,7 @@ terms:
   ecosystem_path_id:
     description: Ecosystem Path ID (GOLD)
     examples:
-    - 3948
+    - "3948"
     title: Ecosystem Path ID
     type: string
   ecosystem_subtype:
