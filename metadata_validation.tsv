@@ -63,7 +63,7 @@ enigma:packing_depth_end	validators	Packind depth end in ft below ground surface
 enigma:packing_depth_start	validators	Packind depth start in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
 enigma:packing_type	validators	Packing Type (e.g. SAND; SAND-2)		noop											
 enigma:pore_water_extraction	validators	Pore water extraction in microliters		units	units	units microliters;	number	value							
-enigma:recovery_factor	validators	Recovery Factor		units	units	units UNKNOWN;	number	value							
+enigma:recovery_factor	validators	Recovery Factor		units	units	units dimensionless;	number	value							
 enigma:redox_potential	validators	Redox Potential		units	units	units mV;	number	value							
 enigma:replicate	validators	Replicate		noop											
 enigma:rock_formation	validators	Rock Formation		noop											

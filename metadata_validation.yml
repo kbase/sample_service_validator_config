@@ -1001,13 +1001,13 @@ validators:
       - 1.57
       title: Recovery Factor
       type: number
-      units: UNKNOWN
+      units: dimensionless
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
-        units: UNKNOWN
+        units: dimensionless
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
