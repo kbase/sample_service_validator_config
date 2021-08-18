@@ -1,15 +1,19 @@
+import json
 import os
 import sys
-import yaml
-import json
 
-DEFAULT_OUTPUT_DIRECTORY = '_temp'
+import yaml
+
+KEEP_FILES = False
 
 
 def create_formats(output_dir):
     format_sources = ['templates/' + f for f in os.listdir('templates')]
 
-    os.makedirs(os.path.dirname(f'{output_dir}/formats/'), exist_ok=True)
+    os.makedirs(os.path.dirname(f'{output_dir}/'), exist_ok=True)
+
+    if KEEP_FILES:
+        os.makedirs(os.path.dirname(f'{output_dir}/formats/'), exist_ok=True)
 
     all_formats = []
     for format_source in format_sources:
@@ -56,12 +60,12 @@ def create_formats(output_dir):
             else:
                 sample_format['columnsFromSchema'] = True
 
-            output_filename = f'{output_dir}/formats/{format_name}.json'
-
             all_formats.append(sample_format)
 
-            with open(output_filename, 'w') as fout:
-                json.dump(sample_format, fout, indent=4)
+            if KEEP_FILES:
+                output_filename = f'{output_dir}/formats/{format_name}.json'
+                with open(output_filename, 'w') as fout:
+                    json.dump(sample_format, fout, indent=4)
 
     # Save all schemas into a big JSON array.
     # This is convenient, for the time being, to support front ends which
@@ -70,16 +74,20 @@ def create_formats(output_dir):
         json.dump(all_formats, f, indent=4)
 
 
-if __name__ == "__main__":
+def main():
     # assert correct number of arguments.
     if len(sys.argv) > 2:
         raise RuntimeError(f"Too many arguments provided to create-formats.py")
 
     if len(sys.argv) == 1:
-        output_directory = DEFAULT_OUTPUT_DIRECTORY
-        print(f"Output directory defaulted to '{DEFAULT_OUTPUT_DIRECTORY}'.")
-    else:
-        output_directory = sys.argv[1]
+        print(f"Output directory is required.")
+        sys.exit(1)
+
+    output_directory = sys.argv[1]
 
     create_formats(output_directory)
     print(f"Templates converted to formats in '{output_directory}'.")
+
+
+if __name__ == "__main__":
+    main()

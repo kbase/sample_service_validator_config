@@ -1,9 +1,8 @@
+import json
 import os
 import sys
-import yaml
-import json
 
-DEFAULT_OUTPUT_DIRECTORY = '_temp'
+import yaml
 
 
 def create_groups(output_dir):
@@ -29,16 +28,20 @@ def create_groups(output_dir):
         json.dump(groups, fout, indent=4)
 
 
-if __name__ == "__main__":
+def main():
     # assert correct number of arguments.
     if len(sys.argv) > 2:
         raise RuntimeError(f"Too many arguments provided to create-groups.py")
 
     if len(sys.argv) == 1:
-        output_directory = DEFAULT_OUTPUT_DIRECTORY
-        print(f"Output directory defaulted to '{DEFAULT_OUTPUT_DIRECTORY}'.")
-    else:
-        output_directory = sys.argv[1]
+        print(f"Output directory is required.")
+        sys.exit(1)
+
+    output_directory = sys.argv[1]
 
     create_groups(output_directory)
     print(f"Ordered config converted to groups in '{output_directory}'.")
+
+
+if __name__ == "__main__":
+    main()

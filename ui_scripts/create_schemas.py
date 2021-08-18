@@ -1,10 +1,11 @@
-import os
-import sys
-import yaml
 import json
+import os
 import re
+import sys
 
-DEFAULT_OUTPUT_DIRECTORY = '_temp'
+import yaml
+
+KEEP_FILES = False
 
 
 ####
@@ -75,7 +76,10 @@ def transform_validator(key, validator):
 
 
 def create_schemas(output_dir):
-    os.makedirs(os.path.dirname(f'{output_dir}/schemas/'), exist_ok=True)
+    os.makedirs(os.path.dirname(f'{output_dir}/'), exist_ok=True)
+
+    if KEEP_FILES:
+        os.makedirs(os.path.dirname(f'{output_dir}/schemas/'), exist_ok=True)
 
     validation_files = ['vocabularies/' + f for f in os.listdir('vocabularies')]
 
@@ -92,15 +96,17 @@ def create_schemas(output_dir):
 
         for key, validator in validator_config['terms'].items():
             namespaced_key = key_prefix + key
-            # should not use ":" in filenames (will fail on windows), so
-            # substitute with "-".
-            output_filename = re.sub(r':', '-', namespaced_key)
 
             ui_schema = transform_validator(namespaced_key, validator)
-            output_filename = f'{output_dir}/schemas/{output_filename}.json'
-            with open(output_filename, 'w') as f:
-                json.dump(ui_schema, f, indent=4)
             all_schemas.append(ui_schema)
+
+            if KEEP_FILES:
+                # should not use ":" in filenames (will fail on windows), so
+                # substitute with "-".
+                output_filename = re.sub(r':', '-', namespaced_key)
+                output_filename = f'{output_dir}/schemas/{output_filename}.json'
+                with open(output_filename, 'w') as f:
+                    json.dump(ui_schema, f, indent=4)
 
     # Save all schemas into a big JSON array.
     # This is convenient, for the time being, to support front ends which
@@ -109,16 +115,20 @@ def create_schemas(output_dir):
         json.dump(all_schemas, f, indent=4)
 
 
-if __name__ == "__main__":
+def main():
     # assert correct number of arguments.
     if len(sys.argv) > 2:
         raise RuntimeError(f"Too many arguments provided to create-jsonschema.py")
 
     if len(sys.argv) == 1:
-        output_directory = DEFAULT_OUTPUT_DIRECTORY
-        print(f"Output directory defaulted to '{DEFAULT_OUTPUT_DIRECTORY}'.")
-    else:
-        output_directory = sys.argv[1]
+        print(f"Output directory is required.")
+        sys.exit(1)
+
+    output_directory = sys.argv[1]
 
     create_schemas(output_directory)
     print(f"Validators transformed to jsonschema, written to '{output_directory}'.")
+
+
+if __name__ == "__main__":
+    main()

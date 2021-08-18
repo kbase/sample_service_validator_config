@@ -1,12 +1,10 @@
-import os
-import sys
 import json
-import create_formats
-import create_schemas
-import create_groups
-import validate
+import sys
 
-DEFAULT_OUTPUT_DIRECTORY = '_temp'
+import create_formats
+import create_groups
+import create_schemas
+import validate
 
 
 def verify(output_dir):
@@ -40,19 +38,17 @@ def verify(output_dir):
         schemas_by_field[schema['kbase']['sample']['key']] = schema
 
     # Load formats
-    formats = []
+    with open(f'{output_dir}/formats.json') as fin:
+        sample_formats = json.load(fin)
     formats_key_map = []
-    for format_file in os.listdir(f'{output_dir}/formats'):
+    for sample_format in sample_formats:
         column_map = {}
-        with open(f'{output_dir}/formats/{format_file}') as fin:
-            format = json.load(fin)
-            formats.append(format)
-            for column in format['columns']:
-                column_map[column['sample']['key']] = column
-            formats_key_map.append({
-                'name': format['name'],
-                'column_map': column_map
-            })
+        for column in sample_format['columns']:
+            column_map[column['sample']['key']] = column
+        formats_key_map.append({
+            'name': sample_format['name'],
+            'column_map': column_map
+        })
 
     ####
     # Verifications
@@ -81,11 +77,10 @@ def verify(output_dir):
 
         # check that schema fields are in at least one format.
         found_in_format = False
-        for format in formats_key_map:
-            if field_key in format['column_map']:
+        for sample_format in formats_key_map:
+            if field_key in sample_format['column_map']:
                 found_in_format = True
                 break
-        # print(f'not found: {field_key}, {key_map}')
         if found_in_format is False:
             schema_fields_not_in_format.append(schema)
 
@@ -93,26 +88,26 @@ def verify(output_dir):
     format_column_not_in_schema = []
     ignored_format_column_in_schema = []
     ignored_format_column_in_groups = []
-    for format in formats:
-        for column in format['columns']:
+    for sample_format in sample_formats:
+        for column in sample_format['columns']:
             if 'disposition' in column and column['disposition'] == 'ignore':
                 # Ignored fields should not have a schema
                 if column['sample']['key'] in schemas_by_field:
                     ignored_format_column_in_schema.append({
-                        'format': format['name'],
+                        'format': sample_format['name'],
                         'column': column
                     })
                 # And should not be in a group either.
                 if column['sample']['key'] in group_keys:
                     ignored_format_column_in_groups.append({
-                        'format': format['name'],
+                        'format': sample_format['name'],
                         'column': column
                     })
             else:
                 # A format field must have a schema
                 if column['sample']['key'] not in schemas_by_field:
                     format_column_not_in_schema.append({
-                        'format': format['name'],
+                        'format': sample_format['name'],
                         'column': column
                     })
                 # A format field must be in a group is implied by above, since
@@ -175,16 +170,16 @@ def verify(output_dir):
             print(undefined['column'])
 
 
-if __name__ == "__main__":
+def main():
     # assert correct number of arguments.
     if len(sys.argv) > 2:
         raise RuntimeError(f"Too many arguments provided to verify.py")
 
     if len(sys.argv) == 1:
-        output_directory = DEFAULT_OUTPUT_DIRECTORY
-        print(f"Output directory defaulted to '{DEFAULT_OUTPUT_DIRECTORY}'.")
-    else:
-        output_directory = sys.argv[1]
+        print(f"Output directory is required.")
+        sys.exit(1)
+
+    output_directory = sys.argv[1]
 
     create_formats.create_formats(output_directory)
     create_groups.create_groups(output_directory)
@@ -192,12 +187,18 @@ if __name__ == "__main__":
 
     verify(output_directory)
 
-    validate.validateFile(f'{output_directory}/groups.json', 'groups.json')
+    validate.validate_file(f'{output_directory}/groups.json', 'groups.json')
+    validate.validate_file(f'{output_directory}/formats.json', 'formats.json')
+    validate.validate_file(f'{output_directory}/schemas.json', 'schemas.json')
 
-    validate.validateFile(f'{output_directory}/formats/sesar.json',
-                          'format-with-api.json')
-    validate.validateFile(f'{output_directory}/formats/enigma.json', 'format.json')
+    # validate.validate_file(f'{output_directory}/formats/sesar.json',
+    #                        'format-with-api.json')
+    # validate.validate_file(f'{output_directory}/formats/enigma.json', 'format.json')
 
-    for format_file in os.listdir(f'{output_directory}/schemas'):
-        validate.validateFile(f'{output_directory}/schemas/{format_file}',
-                              'schema.json')
+    # for format_file in os.listdir(f'{output_directory}/schemas'):
+    #     validate.validate_file(f'{output_directory}/schemas/{format_file}',
+    #                            'schema.json')
+
+
+if __name__ == "__main__":
+    main()
