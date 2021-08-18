@@ -6,7 +6,7 @@
       "type": "string"
     },
     "kbase": {
-     "$ref": "base2.json#definitions/KBaseSchemaConfig"
+     "$ref": "base.json#definitions/KBaseSchemaConfig"
     },
     "title": {
       "type": "string"

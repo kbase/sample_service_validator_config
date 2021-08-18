@@ -22,7 +22,11 @@ test:
 	rm $(TEMP_FILE)
 	rm $(TEMP_FILE_2)
 	python3 scripts/validate_templates.py $(TEMPLATES_DIR)/*yml
+	python3 scripts/validate-jsonschema.py all
 
 update:
 	python3 scripts/merge_validators.py $(VALIDATION_FILE) $(ONTOLOGY_FILE)
 	python3 scripts/create_tsv.py $(VALIDATION_FILE)
+
+export:
+	python3 eap_scripts/transform.py

@@ -8,8 +8,8 @@ country	validators	Country		noop
 county	validators	County		noop											
 depth_bgs	validators	depth in meters below ground surface (m BGS)		units	units	units m;	number	value							
 description	validators	Free text to describe features of a sample such as its components, texture, color, shape, etc.		noop											
-elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
-elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		number	value										
+elevation	validators	Elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		units	units	units m;	number	value							
+elevation_end	validators	End elevation at which a sample was collected. Use negative values for depth below sea level. Minimum elevation if a range is provided for the elevation/depth below sea level.		units	units	units m;	number	value							
 enigma:aodc	validators	units in cells per gram		units	units	units cells/g;	number	value	gte 0.0;						
 enigma:aquifer	validators	Aquifer		noop											
 enigma:area_name	validators	Area Name		noop											
@@ -22,7 +22,7 @@ enigma:boring_refusal	validators	Boring Refusal (Y/N)		noop
 enigma:collection_time	validators	Collection Time		noop											
 enigma:condition	validators	Condition		noop											
 enigma:conductivity	validators	conductivity in millisiemens per centimeter		units	units	units mS/cm;	number	value							
-enigma:dapi_cell_count	validators	DAPI cell count in cells per gram		number	value										
+enigma:dapi_cell_count	validators	DAPI cell count in cells per gram		units	units	units cells/g;	number	value							
 enigma:date	validators	Date (YYYY-MM-DD)		noop											
 enigma:dna_picogreen_total	validators	units in nanograms		units	units	units ng;	number	value							
 enigma:drive_casing_end_depth	validators	drive casing end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
@@ -38,7 +38,7 @@ enigma:functional_area	validators	Functional Area		noop
 enigma:geological_zone	validators	Geological Zone		noop											
 enigma:ground_elevation	validators	ground elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
 enigma:installation_method	validators	Method of installation		noop											
-enigma:leucine_activity	validators	units in ngC/day cell		number	value										
+enigma:leucine_activity	validators	units in ngC/day cell		units	units	units ngC/day cell;	number	value							
 enigma:lower_seal_end_depth	validators	Lower seal end depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
 enigma:lower_seal_start_depth	validators	Lower seal start depth in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
 enigma:lower_seal_type	validators	Lower Seal Type (BENT; BENT-PEL)		noop											
@@ -63,8 +63,8 @@ enigma:packing_depth_end	validators	Packind depth end in ft below ground surface
 enigma:packing_depth_start	validators	Packind depth start in ft below ground surface (ft BGS)		units	units	units ft;	number	value							
 enigma:packing_type	validators	Packing Type (e.g. SAND; SAND-2)		noop											
 enigma:pore_water_extraction	validators	Pore water extraction in microliters		units	units	units microliters;	number	value							
-enigma:recovery_factor	validators	Recovery Factor		number	value										
-enigma:redox_potential	validators	Redox Potential		number	value										
+enigma:recovery_factor	validators	Recovery Factor		units	units	units UNKNOWN;	number	value							
+enigma:redox_potential	validators	Redox Potential		units	units	units mV;	number	value							
 enigma:replicate	validators	Replicate		noop											
 enigma:rock_formation	validators	Rock Formation		noop											
 enigma:screen_bottom_elevation	validators	Screen bottom elevation in ft above mean sea level (ft AMSL)		units	units	units ft;	number	value							
@@ -127,9 +127,7 @@ sesar:archive_contact_current	validators	Address and/or email of the person who 
 sesar:archive_contact_original	validators	Address and/or email of the person who should be contacted for information about the sample's original archive.		noop											
 sesar:archive_current	validators	Name of institution, museum, or repository where the sample is currently stored.		noop											
 sesar:archive_original	validators	Name of institution, museum, or repository where the sample is originally stored.		noop											
-sesar:build_url	validators	??		noop											
 sesar:classification	validators	Taxonomy (formal classification) Formal categorization of sample.		noop											
-sesar:classification_comment	validators	Classification Comment		noop											
 sesar:collection_date	validators	Date when the sample was collected.		noop											
 sesar:collection_date_end	validators	Date when the sample collection was finished (if a date range is provided).		noop											
 sesar:collection_date_precision	validators	Precision to display the collection date and time.		noop											
@@ -164,11 +162,6 @@ sesar:physiographic_feature_primary	validators	Type of physical feature that you
 sesar:platform_description	validators	Description of platform for the cruise.		noop											
 sesar:platform_name	validators	Name of platform for the cruise.		noop											
 sesar:platform_type	validators	Type of platform for the cruise.		noop											
-sesar:primary_location_name	validators	NOT IN DATA DICTIONARY		noop											
-sesar:primary_location_type	validators	NOT IN DATA DICTIONARY		noop											
-sesar:publish_date	validators	??		noop											
-sesar:registrant_current	validators	Registrant of the sample in SESAR		noop											
-sesar:registrant_org	validators	Registrant organization of the sample in SESAR		noop											
 sesar:related_identifiers	validators	IGSN of Related Samples		noop											
 sesar:related_url	validators	Related URL associated with the samples		noop											
 sesar:related_url_description	validators	Free text description of the related URL		noop											

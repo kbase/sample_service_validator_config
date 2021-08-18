@@ -64,25 +64,27 @@ terms:
     title: Description
     type: string
   elevation:
+    title: Elevation
+    type: number
     description: Elevation at which a sample was collected. Use negative values for
       depth below sea level. Minimum elevation if a range is provided for the elevation/depth
       below sea level.
+    units: m
     examples:
     - 678.5
     - -4536
-    title: Elevation
-    type: number
     formatting:
       useGrouping: true
   elevation_end:
+    type: number
     description: End elevation at which a sample was collected. Use negative values
       for depth below sea level. Minimum elevation if a range is provided for the
       elevation/depth below sea level.
+    units: m
     examples:
     - 673.5
     - -4520
     title: Elevation End
-    type: number
     formatting:
       useGrouping: true
   env_package:

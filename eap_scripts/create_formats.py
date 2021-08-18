@@ -11,6 +11,7 @@ def create_formats(output_dir):
 
     os.makedirs(os.path.dirname(f'{output_dir}/formats/'), exist_ok=True)
 
+    all_formats = []
     for format_source in format_sources:
         with open(format_source) as fin:
             template = yaml.load(fin, Loader=yaml.SafeLoader)
@@ -57,8 +58,16 @@ def create_formats(output_dir):
 
             output_filename = f'{output_dir}/formats/{format_name}.json'
 
+            all_formats.append(sample_format)
+
             with open(output_filename, 'w') as fout:
                 json.dump(sample_format, fout, indent=4)
+
+    # Save all schemas into a big JSON array.
+    # This is convenient, for the time being, to support front ends which
+    # need to fake a "get_schemas" method before it is available.
+    with open(f'{output_dir}/formats.json', 'w') as f:
+        json.dump(all_formats, f, indent=4)
 
 
 if __name__ == "__main__":

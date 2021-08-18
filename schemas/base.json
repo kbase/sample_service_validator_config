@@ -33,14 +33,53 @@
         "transform"
       ]
     },
-    "NumberField": {
+    "Column": {
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "$ref": "#definitions/Aliases"
+        },
+        "category": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "transformations": {
+          "type": "array",
+          "items": [
+            {
+              "$ref": "#definitions/Transformation"
+            }
+          ]
+        }
+      },
+      "required": [
+        "definition",
+        "example",
+        "transformations"
+      ]
+    },
+    "ColumnWithAPI": {
       "type": "object",
       "properties": {
         "aliases": {
           "$ref": "#definitions/Aliases"
         },
         "apiKey": {
-          "type": "string"
+          "type": ["string", null]
         },
         "category": {
           "type": "string"

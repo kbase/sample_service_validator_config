@@ -116,7 +116,13 @@ validators:
         useGrouping: true
       title: Elevation
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -133,7 +139,13 @@ validators:
         useGrouping: true
       title: Elevation End
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -337,7 +349,13 @@ validators:
       - 9690000.0
       title: DAPI Cell Count
       type: number
+      units: cells/g
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: cells/g
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -568,7 +586,13 @@ validators:
       - 0.000576856
       title: Leucine Activity (ngC/day cell)
       type: number
+      units: ngC/day cell
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ngC/day cell
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -977,7 +1001,13 @@ validators:
       - 1.57
       title: Recovery Factor
       type: number
+      units: UNKNOWN
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: UNKNOWN
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -989,7 +1019,13 @@ validators:
       - 421.5
       title: Redox Potential
       type: number
+      units: mV
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mV
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -1076,7 +1112,7 @@ validators:
     key_metadata:
       description: Screen top elevation in ft above mean sea level (ft AMSL)
       examples:
-      - 985.52:was
+      - 985.52
       title: Screen Top Elevation
       type: number
       units: ft
@@ -1482,7 +1518,7 @@ validators:
     key_metadata:
       description: Ecosystem Path ID (GOLD)
       examples:
-      - 3948
+      - '3948'
       title: Ecosystem Path ID
       type: string
     validators:
@@ -1902,17 +1938,6 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  sesar:build_url:
-    key_metadata:
-      description: ??
-      examples:
-      - http://igsn.org/BWH00001R
-      format: url
-      title: Build URL
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
   sesar:classification:
     key_metadata:
       description: Taxonomy (formal classification) Formal categorization of sample.
@@ -1920,18 +1945,6 @@ validators:
       - Igneous>Plutonic>Felsic
       - Plagioclase
       title: Classification
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:classification_comment:
-    key_metadata:
-      comments:
-      - Not in current SESAR format
-      description: Classification Comment
-      examples:
-      - TODO
-      title: Classification Comment
       type: string
     validators:
     - callable_builder: noop
@@ -2105,8 +2118,8 @@ validators:
     key_metadata:
       description: Elevation end in meters
       examples:
-      - '673.5'
-      - '-4520'
+      - 673.5
+      - -4520
       title: Elevation end
       type: number
       units: m
@@ -2124,8 +2137,8 @@ validators:
     key_metadata:
       description: Elevation start in meters
       examples:
-      - '678.5'
-      - '-4536'
+      - 678.5
+      - -4536
       title: Elevation start
       type: number
       units: m
@@ -2431,64 +2444,6 @@ validators:
       examples:
       - Ship
       title: Platform type
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:primary_location_name:
-    key_metadata:
-      comments:
-      - Not in current SESAR field dictionary; but found in SESAR samples
-      description: NOT IN DATA DICTIONARY
-      examples:
-      - Felt, ID, USA
-      title: Primary location name
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:primary_location_type:
-    key_metadata:
-      comments:
-      - Not in current SESAR field dictionary; but found in SESAR samples
-      description: NOT IN DATA DICTIONARY
-      examples:
-      - Moutain
-      title: Primary location type
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:publish_date:
-    key_metadata:
-      description: ??
-      examples:
-      - '2019-10-30'
-      title: Publish Date
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:registrant_current:
-    key_metadata:
-      comments:
-      - Not in current SESAR field dictionary
-      description: Registrant of the sample in SESAR
-      examples:
-      - Jane Smith
-      title: Current Registrant Name
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:registrant_org:
-    key_metadata:
-      comments:
-      - Not in current SESAR field dictionary
-      description: Registrant organization of the sample in SESAR
-      examples:
-      - Jane Smith
-      title: Organization Registrant Name
       type: string
     validators:
     - callable_builder: noop

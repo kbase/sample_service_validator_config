@@ -6,7 +6,7 @@
       "type": "string"
     },
     "kbase": {
-     "$ref": "base2.json#definitions/KBaseSchemaConfig"
+     "$ref": "base.json#definitions/KBaseSchemaConfig"
     },
     "title": {
       "type": "string"
@@ -26,13 +26,19 @@
       "constant": "string"
     },
     "format": {
-      "constant": "ontology-term"
-    },
-    "ancestorTerm": {
       "type": "string"
     },
-    "namespace": {
-      "type": "string"
+    "maxLength": {
+      "type": "number"
+    },
+    "minLength": {
+      "type": "number"
+    },
+    "enum": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "required": [
@@ -41,10 +47,7 @@
     "title",
     "description",
     "examples",
-    "type",
-    "format",
-    "ancestorTerm",
-    "namespace"
+    "type"
   ],
   "additionalProperties": false
 }

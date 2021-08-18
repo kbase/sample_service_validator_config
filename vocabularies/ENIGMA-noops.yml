@@ -37,11 +37,12 @@ terms:
     title: Condition
     type: string
   dapi_cell_count:
+    type: number
     description: DAPI cell count in cells per gram
     examples:
     - 9690000.0
     title: DAPI Cell Count
-    type: number
+    units: cells/g
   date:
     description: Date (YYYY-MM-DD)
     examples:
@@ -102,6 +103,7 @@ terms:
     - 0.000576856
     title: Leucine Activity (ngC/day cell)
     type: number
+    units: ngC/day cell
   lower_seal_type:
     description: Lower Seal Type (BENT; BENT-PEL)
     examples:
@@ -157,12 +159,14 @@ terms:
     - 1.57
     title: Recovery Factor
     type: number
+    units: dimensionless
   redox_potential:
     description: Redox Potential
     examples:
     - 421.5
     title: Redox Potential
     type: number
+    units: mV
   replicate:
     description: Replicate
     examples:
