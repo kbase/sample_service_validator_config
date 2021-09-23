@@ -4,6 +4,12 @@
 # IDE Configs
 /.idea/
 
+# Development artifacts
+*.pyc
+
+# OS funny business
+.DS_Store
+
 # Temporary file locations
 /_temp/
 temp_file.yml
