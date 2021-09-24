@@ -6,6 +6,7 @@
 
 # Development artifacts
 *.pyc
+/dist
 
 # OS funny business
 .DS_Store
