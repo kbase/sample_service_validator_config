@@ -53,9 +53,9 @@ jobs:
       #   run: docker run cli scripts/run_tests.sh
       - name: build UI exports in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli ui_scripts/export.sh 
-      - name build validators in "dist" directory:
+      - name: build validators in "dist" directory:
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/merge_validators.sh
-      - name build validators in "dist" directory:
+      - name: build validators in "dist" directory:
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/create_tsv.sh
       - name: create a branch, depending on the workflow action
         uses: s0/git-publish-subdir-action@2.5.0
