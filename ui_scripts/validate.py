@@ -20,14 +20,15 @@ def validate_file(data_file, schema_file):
         schema = json.load(schema_in)
     validate(instance=data, schema=schema, resolver=resolver)
 
-
-if __name__ == "__main__":
+def main():
     if len(sys.argv) != 3:
-        print("Usage: <validate-schemas.py> <file-to-validate> <schema-file-name>")
-        print("...")
+        print("Usage: validate.py <file-to-validate> <schema-file-name>")
         sys.exit(1)
 
     file_to_validate = sys.argv[1]
     schema_file = sys.argv[2]
 
     validate_file(file_to_validate, schema_file)
+
+if __name__ == "__main__":
+    main()
