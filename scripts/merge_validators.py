@@ -139,14 +139,14 @@ def merge_validation_files(files, output_file, ontology_file):
     with open(ontology_file, 'w') as f:
         yaml.dump(ontology_validators, f)  # , default_stype='"')
 
-
-if __name__ == "__main__":
+def main():
     # assert correct number of arguments.
     if len(sys.argv) < 3:
         raise RuntimeError('Please provide both output file and ontology '
                            'file paths as arguments to merge_validators.py')
     if len(sys.argv) > 3:
         raise RuntimeError("Too many arguments for merge_validators.py")
+
     # get input files
     output_file = sys.argv[1]
     ontology_file = sys.argv[2]
@@ -158,3 +158,6 @@ if __name__ == "__main__":
     files = ['vocabularies/' + f for f in files]
     merge_validation_files(files, output_file, ontology_file)
     print(f"    Validators merged, written to {output_file}")
+
+if __name__ == "__main__":
+    main()
