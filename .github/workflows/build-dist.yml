@@ -48,8 +48,8 @@ jobs:
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
       - name: build container
         run: docker build -t cli .
-      - name: run tests in container
-        run: docker run cli scripts/run_tests.sh
+      # - name: run tests in container
+      #   run: docker run cli scripts/run_tests.sh
       - name: build UI exports in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli ui_scripts/export.sh 
       - name build validators in "dist" directory:
