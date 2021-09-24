@@ -1,5 +1,5 @@
 FROM alpine:3.14
-MAINTAINER KBase Developer
+LABEL org.opencontainers.image.authors="KBase Developer"
 
 # update and add system dependencies
 RUN apk upgrade --update-cache --available && \
@@ -10,6 +10,6 @@ COPY ./ /kb/module
 
 WORKDIR /kb/module
 
-#RUN pip install -r requirements.txt
+ENTRYPOINT ["bash"]
 
-ENTRYPOINT ["bash", "/kb/module/scripts/run_tests.sh"]
+CMD ["/kb/module/scripts/run_tests.sh"]
