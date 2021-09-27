@@ -82,6 +82,12 @@ jobs:
       #
       - name: add a "readme" file to the dist directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_readme.sh
+
+      #
+      # Add a manifest file
+      #
+      - name: add a "manifest" file to the dist directory
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
     
  
       #
