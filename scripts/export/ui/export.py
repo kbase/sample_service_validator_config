@@ -175,7 +175,7 @@ def verify(output_dir):
 def main():
     # assert correct number of arguments.
     if len(sys.argv) > 2:
-        raise RuntimeError(f"Too many arguments provided to verify.py")
+        raise RuntimeError(f"Too many arguments provided to export.py")
 
     if len(sys.argv) == 1:
         print(f"Output directory is required.")
@@ -188,18 +188,6 @@ def main():
     create_schemas.create_schemas(output_directory)
 
     verify(output_directory)
-
-    # validate_export.validate_file(f"{output_directory}/groups.json", "groups.json")
-    # validate_export.validate_file(f"{output_directory}/formats.json", "formats.json")
-    # validate_export.validate_file(f"{output_directory}/schemas.json", "schemas.json")
-
-    # validate.validate_file(f'{output_directory}/formats/sesar.json',
-    #                        'format-with-api.json')
-    # validate.validate_file(f'{output_directory}/formats/enigma.json', 'format.json')
-
-    # for format_file in os.listdir(f'{output_directory}/schemas'):
-    #     validate.validate_file(f'{output_directory}/schemas/{format_file}',
-    #                            'schema.json')
 
 
 if __name__ == "__main__":
