@@ -1,6 +1,6 @@
 # Sample Specifications Distribution
 
-This directory contains the distributable files for sample specifications.
+This directory contains the distributable files for sample specifications used for validation, description, and presentation.
 
 ## Contents
 
@@ -9,11 +9,14 @@ This directory contains the distributable files for sample specifications.
 These files are used by the Sample Service and/or Sample Uploader to validate samples.
 
 - `metadata_validation.yml`: Validators for all sample fields; utilized by the Sample Service and Sample Uploader
-- `metadata_validation.tsv`: ???
 - `ontology_validators.tsv`: A subset of metadata validators for fields which hold KBase ontology terms.
 - `templates`: Predefined sets of fields used by the Sample Uploader to interpret a set of samples in a spreadsheet given a sample format identifier (`SESAR` or `ENIGMA`).
         - `enigma_template.yml`
         - `sesar_template.yml`
+
+### Used by documentation site
+
+- `metadata_validation.tsv`: A tab-separated (TSV) file containing the field (metadata) validation configuration; for presentation to users on the documentation site.
 
 ### Used by UIs, via Sample Service
 
