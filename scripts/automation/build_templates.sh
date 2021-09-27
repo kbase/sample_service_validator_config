@@ -1,0 +1,1 @@
+cp -pr templates dist

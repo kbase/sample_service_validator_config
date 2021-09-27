@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Check out GitHub Repo
         uses: actions/checkout@v2
-      - name: Generate useful environment variables; recommended by GitHub.
+      - name: Generate useful environment variables; this action is in a list recommended by GitHub.
         uses: FranzDiebold/github-env-vars-action@v2
       - name: Get current date for usage in subsequent steps as env.BUILD_DATE
         run: echo BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') >> $GITHUB_ENV
@@ -47,16 +47,39 @@ jobs:
           echo "CI_WORKFLOW=$CI_WORKFLOW"
           echo "CI_ACTION=$CI_ACTION"
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
+      #
+      # We build a lightweight container with this entire repo inside, and python 3 and
+      # dependencies available for running scripts.
+      #
       - name: build container
         run: docker build -t cli .
-      # - name: run tests in container
-      #   run: docker run cli scripts/run_tests.sh
+      #
+      # Validate the source spec files.
+      #
+      - name: run tests in container
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_source_specs.sh
+      #
+      # Generate files for the distribution.
+      #
       - name: build UI exports in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli ui_scripts/export.sh 
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/ui_export.sh 
       - name: build validators in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/merge_validators.sh
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/merge_validators.sh
       - name: build validators in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/create_tsv.sh
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_tsv.sh
+      - name: build templates in "dist" directory
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
+      #
+      # Validate the generated files
+      #
+      - name: validate the generated validator files
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
+      - name: validate the generated ui spec files
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+ 
+      #
+      # Publish the /dist directory to a dist-* branch
+      #
       - name: create a branch, depending on the workflow action
         uses: s0/git-publish-subdir-action@develop
         env:

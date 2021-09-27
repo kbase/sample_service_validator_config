@@ -1,1 +1,0 @@
-python3 ui_scripts/export.py `pwd`/dist

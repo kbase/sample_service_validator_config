@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "namespace": {
+      "type": "string"
+    },
+    "validators": {
+      "$ref": "base.json#definitions/validator_set"
+    },
+    "prefix_validators": {
+      "$ref": "base.json#definitions/validator_set"
+    }
+  },
+  "required": [
+    "validators"
+  ]
+}
