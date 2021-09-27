@@ -76,6 +76,13 @@ jobs:
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
       - name: validate the generated ui spec files
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+
+      #
+      # Add a README.md
+      #
+      - name: add a "readme" file to the dist directory
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_readme.sh
+    
  
       #
       # Publish the /dist directory to a dist-* branch
