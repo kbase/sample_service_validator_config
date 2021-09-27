@@ -7,7 +7,6 @@ def generate_manifest(output_filename):
     repo = Repo(".")
     manifest = {
         "source": {
-            "branch": repo.active_branch.name,
             "commit_hash": repo.head.object.hexsha,
             "commit_message": repo.head.object.message.strip("\n"),
             "committer": {
