@@ -2,7 +2,7 @@
 
 This directory contains the distributable files for sample specifications.
 
-## Contents:
+## Contents
 
 ### Used by Sample Service, Sample Uploader
 
