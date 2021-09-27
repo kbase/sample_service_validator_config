@@ -6,7 +6,7 @@ import pandas as pd
 def main():
     if len(sys.argv) != 2:
         raise RuntimeError(
-            f"Please provide input file path as sole argument to merge_validators.py"
+            f"Please provide input file path as sole argument to create_tsv.py"
         )
     input_file = sys.argv[1]
 

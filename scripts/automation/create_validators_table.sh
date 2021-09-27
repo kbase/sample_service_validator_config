@@ -1,0 +1,1 @@
+python3 scripts/export/docs/create_table.py `pwd`/dist/metadata_validation.yml dist

@@ -63,10 +63,12 @@ jobs:
       #
       - name: build UI exports in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/ui_export.sh 
-      - name: build validators in "dist" directory
+      - name: build validators config in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/merge_validators.sh
-      - name: build validators in "dist" directory
+      - name: build validators TSV in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_tsv.sh
+      - name: build validators documentation table in "dist" directory
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_validators_table.sh
       - name: build templates in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
       #
