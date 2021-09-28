@@ -344,6 +344,25 @@ ul.Examples-{style_id} > li::before {{
 
 
 def build_page(content):
+    return """
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KBase Sample Fields</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
+</head>
+<body>
+{content}
+</body>
+</html>
+
+""".format(
+        content=content
+    )
+
+
+def build_pagex(content):
     encoded_content = content.replace("&", "&amp;").replace('"', "&quot;")
     return """
 <!DOCTYPE html>
