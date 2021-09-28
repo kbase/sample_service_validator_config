@@ -1,1 +1,0 @@
-python3 scripts/export/docs/create_tsv.py `pwd`/dist/metadata_validation.yml

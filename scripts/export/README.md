@@ -16,7 +16,7 @@ These files are used by the Sample Service and/or Sample Uploader to validate sa
 
 ### Used by documentation site
 
-- `metadata_validation.tsv`: A tab-separated (TSV) file containing the field (metadata) validation configuration; for presentation to users on the documentation site.
+- `sample_fields.html`: A static html file listing all fields, presented according to the grouping and ordering configuration, showing the descriptive and type information for each field.
 
 ### Used by UIs, via Sample Service
 

@@ -41,15 +41,14 @@ def get_ontology_constraints(validator_spec, default_value={}):
 
 
 def dict_to_table(value, style_id):
-    html = f'<table class="Dict-{style_id}">'
+    # html = f'<table class="Dict-{style_id}">'
 
-    html += "<tbody>"
+    html = ""
     for key, value in value.items():
-        html += "<tr>"
-        html += f"<th >{key}</th>"
-        html += f"<td >{value}</td>"
-        html += "</tr>"
-    html += "</tbody></table>"
+        html += '<div class="Field">'
+        html += f'<div class="Label">{key}</div>'
+        html += f'<div class="Value">{value}</div>'
+        html += "</div>"
 
     return html
 
@@ -62,7 +61,7 @@ def validator_to_row(key, validator, style_id):
             for example in validator["key_metadata"].get("examples", [])
         ]
     )
-    unit = get_unit(validator)
+    unit = get_unit(validator, None)
     constraints = {}
     if field_type == "number":
         constraints = get_number_constraints(validator)
@@ -100,36 +99,6 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
     ]
 
     validators = metadata_validation["validators"]
-    # f"<div style='margin-bottom: 4px; display: flex; flex-direction: row;'><div style='flex: 0 0 1em; color: gray;'>⦁</div><div style='1 1 0;'><code>{str(example)}</code></div></div>"
-    # rows = []
-    # for key, validator in validators.items():
-    #     field_type = validator["key_metadata"].get("type", "string")
-    #     examples = "".join(
-    #         [
-    #             f"<li><code>{str(example)}</code></li>"
-    #             for example in validator["key_metadata"].get("examples", [])
-    #         ]
-    #     )
-    #     unit = get_unit(validator)
-    #     constraints = {}
-    #     if field_type == "number":
-    #         constraints = get_number_constraints(validator)
-    #     elif field_type == "string":
-    #         if validator["key_metadata"].get("format", None) == "ontology-term":
-    #             unit = "ontology_term"
-    #             constraints = get_ontology_constraints(validator)
-
-    #     rows.append(
-    #         [
-    #             key,
-    #             validator["key_metadata"]["title"],
-    #             validator["key_metadata"]["description"],
-    #             f'<ul class="Examples-{style_id}">{examples}</ul>',
-    #             field_type,
-    #             unit,
-    #             dict_to_table(constraints, style_id),
-    #         ]
-    #     )
 
     table_head = ""
     for col in table_columns:
@@ -148,29 +117,68 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
 
     table_body = ""
     for group in grouped_rows:
-        table_body += f'<tr class="-groupTitle"><td colspan="7">{group["group"]["title"]}</td></tr>\n'
-        for row in group["rows"]:
-            table_body += "<tr>"
-            for col in row:
-                table_body += f"<td>{col}</td>"
-            table_body += "</tr>\n"
+        table_body += f'<div class="-titleRow">{group["group"]["title"]}</div>\n'
+        table_body += """
+<div class="-rowGroup">
+    <div class="-headerRow ">
+        <div class="-dataCol -title">
+            Field name
+        </div>
+        <div class="-dataCol -desc">
+            Description
+        </div>
+        <div class="-dataCol -type">
+            Type 
+        </div>
+    </div>
+"""
+        for [key, title, description, examples, field_type, unit, constraints] in group[
+            "rows"
+        ]:
+            unit_field = ""
+            if unit is not None:
+                unit_field = """
+        <div class="Field">
+            <div class="Label">unit</div>
+            <div class="Value">{unit}</div>
+        </div>
+""".format(
+                    unit=unit
+                )
 
-    # for row in sorted(rows, key=lambda kv: kv[1][sort_by_column]):
-    #     table_body += "<tr>\n"
-    #     for col in row:
-    #         table_body += f"<td>{col}</td>\n"
-    #     table_body == "</tr>\n"
+            table_body += """
+    <div class="-dataRow">
+        <div class="-dataCol -title">
+            <div class="-titleCol">{title}</div>
+            <div class="-fieldKeyCol">{key}</div>
+        </div>
+        <div class="-dataCol -desc">
+            <div>{description}</div>
+            <div style="font-size: 90%; color: rgb(157, 170, 182);">examples</div>
+            <div>{examples}</div>
+        </div>
+        <div class="-dataCol -type">
+            <div>{field_type}</div>
+            {unit_field}
+            <div>{constraints}</div>
+        </div>
+    </div>
+""".format(
+                key=key,
+                title=title,
+                description=description,
+                examples=examples,
+                field_type=field_type,
+                unit_field=unit_field,
+                constraints=constraints,
+            )
+        table_body += "</div>"
 
     table_html = """
-<table class="Validators-{style_id}">
-    <thead>
-        <tr>
-            {table_head}
-        </tr>
-    </thead>
-    <tbody>
+<div class="Validators-{style_id}">
+    <div class="-body">
     {table_body}
-    </tbody>
+    </div>
 </table>
 """
     return table_html.format(
@@ -181,37 +189,106 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
 def create_stylesheet(style_id):
     stylesheet = """
 <style>
-table.Validators-{style_id} {{
+div.Validators-{style_id} {{
     width: 100%;
     font-size: 16px;
     font-family: Content-font, Roboto, sans-serif;
     font-weight: 400;
     line-height: 1.625;
     border-collapse: collapse;
-}}
-table.Validators-{style_id} > thead > tr {{
-    border-bottom: 1px solid rgb(230, 236, 241);
-}}
-table.Validators-{style_id} > thead > tr > th,
-table.Validators-{style_id} > tbody > tr > td {{
-    margin: 0; 
-    padding: 6px;
-    border: 1px solid rgb(200, 200, 200);
-    vertical-align: top;
+    display: flex;
+    flex-direction: column;
 }}
 
-table.Validators-{style_id} > thead > tr > th {{
-    font-weight: 700;
-    color: rgb(157, 170, 182);
+div.Validators-{style_id} .-rowGroup {{
+    border: 1px solid silver;
+    border-radius: 8px;
+    padding: 8px;
 }}
-
-table.Validators-{style_id} tr.-groupTitle {{
-    font-weight: bold;
+div.Validators-{style_id} .-titleRow {{
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
     font-size: 150%;
+    font-weight: bold;
     color: rgb(157, 170, 182);
     margin-top: 20px;
 }}
 
+div.Validators-{style_id} .-headerRow {{
+    border-bottom: 1px solid rgb(230, 236, 241);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    color: rgb(157, 170, 182);
+}}
+
+div.Validators-{style_id} .-dataRow {{
+    border-bottom: 1px solid rgb(230, 236, 241);
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}}
+
+
+div.Validators-{style_id} .-dataRow:nth-last-child(1) {{
+    border-bottom: none;
+}}
+
+div.Validators-{style_id} .-dataRow:hover {{
+    background-color: rgba(230, 236, 241, 0.5);
+}}
+
+div.Validators-{style_id} .-dataCol {{
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+}}
+
+div.Validators-{style_id} .-dataCol + .-dataCol {{
+    margin-left: 0.25em;
+}}
+
+
+div.Validators-{style_id} .-dataCol:nth-child(1) {{
+    flex: 2 1 0;
+}}
+
+div.Validators-{style_id} .-dataCol:nth-child(2) {{
+    flex: 3 1 0;
+}}
+
+div.Validators-{style_id} .-dataCol:nth-child(3) {{
+    flex: 1 1 0;
+}}
+
+/* individual fields */
+div.Validators-{style_id} .-dataCol .-titleCol  {{
+    font-weight: bold;
+}}
+
+div.Validators-{style_id} .-dataCol .-fieldKeyCol  {{
+    font-family: monospace;
+    white-space: pre;
+    font-size: 90%;
+}}
+
+div.Validators-{style_id} .Field {{
+    flex: 0 0 auto;
+    display: flex; 
+    flex-direction: row;
+    font-size: 80%;
+}}
+
+div.Validators-{style_id} .Label {{
+    color: rgb(157, 170, 182);
+    margin-right: 0.5em;
+}}
+
+div.Validators-{style_id} .Value {{
+}}
 
 table.Dict-{style_id} {{
     width: 100%;
@@ -248,10 +325,10 @@ table.Dict-{style_id} > tbody > tr > th::after {{
 }}
 
 ul.Examples-{style_id} {{
+    font-size: 90%;
     list-style: none;
     margin: 0;
     padding: 0;
-    margin: 0.5em;
 }}
 
 ul.Examples-{style_id} > li::before {{
@@ -264,6 +341,23 @@ ul.Examples-{style_id} > li::before {{
 </style>
 """
     return stylesheet.format(style_id=style_id)
+
+
+def build_page(content):
+    return """
+<!DOCTYPE html>
+<html>
+<head>
+	<title>KBase Sample Fields</title>
+</head>
+<body>
+{content}
+</body>
+</html>
+
+""".format(
+        content=content
+    )
 
 
 def main():
@@ -284,8 +378,8 @@ def main():
 
     html = f'<div class="">{table_stylesheet}{html_table}</div>'
 
-    with codecs.open(f"{output_dir}/sample_fields_grouped.html", "w", "utf-8-sig") as f:
-        f.write(html)
+    with codecs.open(f"{output_dir}/sample_fields.html", "w", "utf-8-sig") as f:
+        f.write(build_page(html))
 
     print(f"    created table  {input_file} written to {output_dir}.")
 
