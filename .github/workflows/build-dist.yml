@@ -104,16 +104,16 @@ jobs:
       #
       - name: Create friendly branch name for push to master
         if: github.event_name == 'push'
-        run: echo DIST_BRANCH_NAME=master >> $GITHUB_ENV
+        run: echo DIST_BRANCH_NAME=dist-master >> $GITHUB_ENV
  
       - name: Create friendly branch name for pull request
         if: github.event_name == 'pull_request'
-        run: echo DIST_BRANCH_NAME=pull_request_${{github.event.pull_request.number}} >> $GITHUB_ENV
+        run: echo DIST_BRANCH_NAME=dist-pull_request_${{github.event.pull_request.number}} >> $GITHUB_ENV
  
       - name: Create friendly branch name for a release against master
         if: github.event_name == 'release'
         run: |
-          echo DIST_BRANCH_NAME=release >> $GITHUB_ENV
+          echo DIST_BRANCH_NAME=dist-release >> $GITHUB_ENV
           echo DIST_TAG_NAME=dist-release_${{ github.event.release.tag_name }} >> $GITHUB_ENV
  
       #
@@ -123,7 +123,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: dist-${{ env.DIST_BRANCH_NAME }}
+          BRANCH: ${{ env.DIST_BRANCH_NAME }}
           TAG: ${{ env.DIST_TAG_NAME }}
           FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
