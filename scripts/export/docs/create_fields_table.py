@@ -350,7 +350,7 @@ def build_page(content):
 	<title>KBase Sample Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="thumbnail" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
-    <meta name="description" content="The current catalog of all KBase Sample fields, with their descriptions, types, and constraints." />
+    <meta name="description" content="An up-to-date catalog of all KBase Sample fields, including their descriptions, types, and constraints." />
 </head>
 <body>
 {content}
@@ -397,7 +397,7 @@ def main():
     html_table = create_table(input_file, grouping_file, style_id, 1)
     table_stylesheet = create_stylesheet(style_id)
 
-    html = f'{table_stylesheet}{html_table}'
+    html = f"{table_stylesheet}{html_table}"
 
     with codecs.open(f"{output_dir}/sample_fields.html", "w", "utf-8-sig") as f:
         f.write(build_page(html))
