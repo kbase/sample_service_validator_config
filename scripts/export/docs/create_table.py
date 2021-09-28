@@ -23,7 +23,6 @@ def get_number_constraints(validator_spec, default_value={}):
             for key in ["gte", "lte"]:
                 if key in validator["parameters"]:
                     constraints[key] = validator["parameters"][key]
-
             return constraints
     return default_value
 
@@ -69,12 +68,13 @@ def create_table(input_file, style_id):
     ]
 
     validators = metadata_validation["validators"]
+    # f"<div style='margin-bottom: 4px; display: flex; flex-direction: row;'><div style='flex: 0 0 1em; color: gray;'>⦁</div><div style='1 1 0;'><code>{str(example)}</code></div></div>"
     rows = []
     for key, validator in validators.items():
         field_type = validator["key_metadata"].get("type", "string")
         examples = "".join(
             [
-                f"<div style='margin-bottom: 4px; display: flex; flex-direction: row;'><div style='flex: 0 0 1em; color: gray;'>⦁</div><div style='1 1 0;'><code>{str(example)}</code></div></div>"
+                f"<li><code>{str(example)}</code></li>"
                 for example in validator["key_metadata"].get("examples", [])
             ]
         )
@@ -92,7 +92,7 @@ def create_table(input_file, style_id):
                 key,
                 validator["key_metadata"]["title"],
                 validator["key_metadata"]["description"],
-                f"<div>{examples}</div>",
+                f'<ul class="Examples-{style_id}">{examples}</ul>',
                 field_type,
                 unit,
                 dict_to_table(constraints, style_id),
@@ -188,6 +188,21 @@ table.Dict-{style_id} > tbody > tr > th {{
 table.Dict-{style_id} > tbody > tr > th::after {{
     content: ":"
 }}
+
+ul.Examples-{style_id} {{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 0.5em;
+}}
+
+ul.Examples-{style_id} > li::before {{
+    content: "\\2981";
+    color: gray;
+    display: inline-block;
+    width: 0.5em;
+    margin-right: 0.25em;
+}}
 </style>
 """
     return stylesheet.format(style_id=style_id)
@@ -202,7 +217,6 @@ def main():
     output_dir = sys.argv[2]
 
     style_id = str(uuid.uuid4())
-    print("style id", style_id)
 
     html_table = create_table(input_file, style_id)
     table_stylesheet = create_stylesheet(style_id)
