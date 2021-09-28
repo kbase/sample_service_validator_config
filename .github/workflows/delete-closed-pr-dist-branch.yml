@@ -3,7 +3,7 @@ on:
   pull_request:
     branches:
     - master
-    types: [close]
+    types: [closed]
 jobs:
   delete-pr-dist:
     runs-on: ubuntu-latest
