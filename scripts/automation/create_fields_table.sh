@@ -1,1 +1,1 @@
-python3 scripts/export/docs/create_fields_table.py `pwd`/dist/metadata_validation.yml `pwd`/dist/groups.json dist
+python3 scripts/export/docs/create_fields_table.py dist/metadata_validation.yml dist/groups.json dist

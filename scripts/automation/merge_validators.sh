@@ -1,1 +1,1 @@
-python3 scripts/export/service/merge_validators.py `pwd`/dist/metadata_validation.yml `pwd`/dist/ontology_validators.yml 
+python3 scripts/export/service/merge_validators.py dist/metadata_validation.yml dist/ontology_validators.yml 

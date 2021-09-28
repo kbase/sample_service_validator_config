@@ -1,1 +1,1 @@
-python3 scripts/export/ui/export.py `pwd`/dist
+python3 scripts/export/ui/export.py dist
