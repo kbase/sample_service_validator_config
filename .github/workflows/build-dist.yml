@@ -114,8 +114,9 @@ jobs:
  
       - name: Create friendly branch name for a release against master
         if: github.event_name == 'release'
-        run: echo DIST_BRANCH_NAME=release >> $GITHUB_ENV
-        run: echo DIST_TAG_NAME=$GITHUB_REF >> $GITHUB_ENV
+        run: |
+          echo DIST_BRANCH_NAME=release >> $GITHUB_ENV
+          echo DIST_TAG_NAME=$GITHUB_REF >> $GITHUB_ENV
  
       #
       # Publish the /dist directory to a dist-* branch
