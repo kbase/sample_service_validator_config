@@ -350,6 +350,7 @@ def build_page(content):
 <html>
 <head>
 	<title>KBase Sample Fields</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
