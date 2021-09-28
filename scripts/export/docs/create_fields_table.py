@@ -351,7 +351,7 @@ def build_page(content):
 	<title>KBase Sample Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
-    <meta name="summary" content="The released catalog of all KBase Sample fields, with their descriptions, types, and constraints." />
+    <meta name="description" content="The released catalog of all KBase Sample fields, with their descriptions, types, and constraints." />
 </head>
 <body>
 {content}
