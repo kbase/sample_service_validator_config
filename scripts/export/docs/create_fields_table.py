@@ -179,7 +179,7 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
     <div class="-body">
     {table_body}
     </div>
-</table>
+</div>
 """
     return table_html.format(
         table_head=table_head, table_body=table_body, style_id=style_id
@@ -344,6 +344,7 @@ ul.Examples-{style_id} > li::before {{
 
 
 def build_page(content):
+    encoded_content = content.replace("&", "&amp;").replace('"', "&quot;")
     return """
 <!DOCTYPE html>
 <html>
@@ -351,12 +352,12 @@ def build_page(content):
 	<title>KBase Sample Fields</title>
 </head>
 <body>
-{content}
+<iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
 </body>
 </html>
 
 """.format(
-        content=content
+        content=encoded_content
     )
 
 
