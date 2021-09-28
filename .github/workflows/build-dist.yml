@@ -116,7 +116,7 @@ jobs:
         if: github.event_name == 'release'
         run: |
           echo DIST_BRANCH_NAME=release >> $GITHUB_ENV
-          echo DIST_TAG_NAME=release_$GITHUB_REF >> $GITHUB_ENV
+          echo DIST_TAG_NAME=dist-release_${{ github.event.release.tag_name }} >> $GITHUB_ENV
  
       #
       # Publish the /dist directory to a dist-* branch
