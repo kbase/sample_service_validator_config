@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - refactor2-*
   pull_request:
     branches:
       - master
@@ -16,10 +15,13 @@ jobs:
     steps:
       - name: Check out GitHub Repo
         uses: actions/checkout@v2
+
       - name: Generate useful environment variables; this action is in a list recommended by GitHub.
         uses: FranzDiebold/github-env-vars-action@v2
+
       - name: Get current date for usage in subsequent steps as env.BUILD_DATE
         run: echo BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') >> $GITHUB_ENV
+
       - name: Print environment variables; helps diagnosing issues with a workflow
         run: |
           echo "CI_REPOSITORY_SLUG=$CI_REPOSITORY_SLUG"
@@ -47,17 +49,20 @@ jobs:
           echo "CI_WORKFLOW=$CI_WORKFLOW"
           echo "CI_ACTION=$CI_ACTION"
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
+
       #
       # We build a lightweight container with this entire repo inside, and python 3 and
       # dependencies available for running scripts.
       #
       - name: build container
         run: docker build -t cli .
+
       #
       # Validate the source spec files.
       #
       - name: run tests in container
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_source_specs.sh
+
       #
       # Generate files for the distribution.
       #
@@ -71,6 +76,7 @@ jobs:
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_validators_table.sh
       - name: build templates in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
+
       #
       # Validate the generated files
       #
@@ -90,7 +96,6 @@ jobs:
       #
       - name: add a "manifest" file to the dist directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
-    
  
       #
       # Publish the /dist directory to a dist-* branch
@@ -102,5 +107,3 @@ jobs:
           BRANCH: dist-${{ env.CI_REF_NAME_SLUG }}
           FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-                
