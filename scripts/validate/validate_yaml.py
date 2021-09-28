@@ -29,11 +29,7 @@ def validate_file(data_file, schema_dir, schema_file):
             raise Exception(f'Unsupported data file extension "{ext}"')
     with open(schema_path) as schema_in:
         schema = json.load(schema_in)
-    try:
-        validate(instance=data, schema=schema, resolver=resolver)
-    except Exception as ex:
-        print("!! Validation Error")
-        print(str(ex))
+    validate(instance=data, schema=schema, resolver=resolver)
 
 
 def main():
