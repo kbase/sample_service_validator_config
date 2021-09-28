@@ -351,6 +351,7 @@ def build_page(content):
 <head>
 	<title>KBase Sample Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
 </head>
 <body>
 <iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
