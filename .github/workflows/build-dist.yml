@@ -126,4 +126,4 @@ jobs:
           BRANCH: ${{ env.DIST_BRANCH_NAME }}
           TAG: ${{ env.DIST_TAG_NAME }}
           FOLDER: dist
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.KBASE_BOT_TOKEN }}
