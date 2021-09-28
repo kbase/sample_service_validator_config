@@ -344,43 +344,41 @@ ul.Examples-{style_id} > li::before {{
 
 
 def build_page(content):
-    return """
-<!DOCTYPE html>
+    return """<!DOCTYPE html>
 <html>
 <head>
 	<title>KBase Sample Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
-    <meta name="description" content="The released catalog of all KBase Sample fields, with their descriptions, types, and constraints." />
+    <meta name="thumbnail" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
+    <meta name="description" content="The current catalog of all KBase Sample fields, with their descriptions, types, and constraints." />
 </head>
 <body>
 {content}
 </body>
 </html>
-
 """.format(
         content=content
     )
 
 
-def build_pagex(content):
-    encoded_content = content.replace("&", "&amp;").replace('"', "&quot;")
-    return """
-<!DOCTYPE html>
-<html>
-<head>
-	<title>KBase Sample Fields</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
-</head>
-<body>
-<iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
-</body>
-</html>
+# def build_page_with_iframe(content):
+#     encoded_content = content.replace("&", "&amp;").replace('"', "&quot;")
+#     return """
+# <!DOCTYPE html>
+# <html>
+# <head>
+# 	<title>KBase Sample Fields</title>
+#     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+#     <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
+# </head>
+# <body>
+# <iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
+# </body>
+# </html>
 
-""".format(
-        content=encoded_content
-    )
+# """.format(
+#         content=encoded_content
+#     )
 
 
 def main():
