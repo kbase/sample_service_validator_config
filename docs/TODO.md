@@ -1,1 +1,4 @@
-* Add travis test to validate config
+# TODO
+
+* Add documentation
+* Add tests

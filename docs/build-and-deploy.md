@@ -27,3 +27,23 @@ These files are utilized by user interfaces, including the Sample Landing Page, 
 
 You won't find the generated files in the repo. In a previous iteration, the generated files were created locally by a developer after making changes to the sources, and then pushed up to the canonical repo. They would eventually be made available by creating a release at GitHub, and the resulting generated files fetched directly from the repo (master branch? actual release?)
 
+The generation process was redesigned to take place in the upstream GitHub repository through a GitHub Action workflow, `.github/build-dist.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
+
+Although the distribution is not stored in the main repo, you may generate them locally with just Docker.
+
+The following script invocation
+
+```bash
+bash scripts/automation/local-build.sh
+```
+
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of script to build validate the source files, build the distribution, and validate the distribution.
+
+After running it, you should see a `dist` directory, with the following contents:
+
+```bash
+% ls dist
+README.md               metadata_validation.yml templates
+groups.json             sample_fields.html
+manifest.json           schemas.json
+```

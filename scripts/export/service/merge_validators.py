@@ -3,33 +3,10 @@ import sys
 import yaml
 from copy import deepcopy
 
-ONTOLOGY_MAPPING = {"envo_ontology": "ENVO_terms", "go_ontology": "GO_terms"}
-
 _BUILTIN = "SampleService.core.validator.builtin"
 _NOOP = [{"callable_builder": "noop", "module": _BUILTIN}]
 
 VOCABULARY_DIR = "specs/vocabularies"
-
-
-def find_ontology_validator(data_field, key, ontology_validators):
-    for validator in data_field["validators"]:
-        if validator["callable_builder"] == "ontology_has_ancestor":
-            if not ontology_validators.get(key):
-                ontology_validators[key] = []
-            ontology_validators[key].append(
-                {
-                    "validator_type": "ontology_has_ancestor",
-                    "ontology": validator.get("parameters", {}).get("ontology"),
-                    "ontology_collection": ONTOLOGY_MAPPING.get(
-                        validator.get("parameters", {}).get("ontology"), ""
-                    ),
-                    "ancestor_term": validator.get("parameters", {}).get(
-                        "ancestor_term"
-                    ),
-                    "display_name": data_field["key_metadata"]["title"],
-                }
-            )
-    return ontology_validators
 
 
 def expand_validators(val):
@@ -74,7 +51,7 @@ def expand_validators(val):
         else:
             return deepcopy(_NOOP)
     else:
-        print("type not recongnized %s" % (typ))
+        print("type not recognized %s" % (typ))
         raise KeyError("type %s not recognized" % (typ))
     nv.append(v)
     return nv
@@ -99,10 +76,9 @@ def merge_to_existing_validators(val_type, val_data, key, val, data):
     return val_data
 
 
-def merge_validation_files(files, output_file, ontology_file):
+def merge_validation_files(files, output_file):
     validators = {}
     prefix_validators = {}
-    ontology_validators = {}
 
     for f in files:
         print(f)
@@ -118,42 +94,35 @@ def merge_validation_files(files, output_file, ontology_file):
                     val_data = merge_to_existing_validators(
                         val_type, val_data, keyname, val, data
                     )
-                    ontology_validators = find_ontology_validator(
-                        val_data[keyname], keyname, ontology_validators
-                    )
+
     data = {}
     if validators:
         data["validators"] = validators
     if prefix_validators:
         data["prefix_validators"] = prefix_validators
-    # try default_style with quotes here.
+
     with open(output_file, "w") as f:
-        yaml.dump(data, f)  # , default_style='"')
-    # save ontology_file
-    with open(ontology_file, "w") as f:
-        yaml.dump(ontology_validators, f)  # , default_stype='"')
+        yaml.dump(data, f)
 
 
 def main():
     # assert correct number of arguments.
-    if len(sys.argv) < 3:
+    if len(sys.argv) < 2:
         raise RuntimeError(
-            "Please provide both output file and ontology "
-            "file paths as arguments to merge_validators.py"
+            "Please provide the output file as and argument to merge_validators.py"
         )
-    if len(sys.argv) > 3:
+    if len(sys.argv) > 2:
         raise RuntimeError("Too many arguments for merge_validators.py")
 
     # get input files
     output_file = sys.argv[1]
-    ontology_file = sys.argv[2]
+
     if not output_file.endswith(".yml") and not output_file.endswith(".yaml"):
         output_file = output_file + ".yml"
-    if not ontology_file.endswith(".yml") and not ontology_file.endswith(".yaml"):
-        ontology_file = ontology_file + ".yml"
+
     files = os.listdir(VOCABULARY_DIR)
     files = [f"{VOCABULARY_DIR}/{f}" for f in files]
-    merge_validation_files(files, output_file, ontology_file)
+    merge_validation_files(files, output_file)
     print(f"    Validators merged, written to {output_file}")
 
 

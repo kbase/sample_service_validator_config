@@ -1,5 +1,4 @@
 VALIDATION_FILE=metadata_validation.yml
-ONTOLOGY_FILE=ontology_validators.yml
 TEMP_FILE=temp_file.yml
 TEMP_FILE_2=temp_file2.yml
 SAMPLE_SERVICE_SCHEMA = test_data/validator_schema.json
@@ -19,6 +18,6 @@ test:
 	python3 scripts/validate-jsonschema.py all
 
 update:
-	python3 scripts/export/merge_validators.py $(VALIDATION_FILE) $(ONTOLOGY_FILE)
+	python3 scripts/export/merge_validators.py $(VALIDATION_FILE) 
 	python3 scripts/export/create_tsv.py $(VALIDATION_FILE)
 	python3 scripts/export/ui_export.py dist

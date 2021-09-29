@@ -3,6 +3,7 @@
 
 # IDE Configs
 /.idea/
+/.vscode/
 
 # Development artifacts
 *.pyc
@@ -13,5 +14,3 @@
 
 # Temporary file locations
 /_temp/
-temp_file.yml
-temp_file2.yml
