@@ -331,7 +331,7 @@ def build_page(content):
 	<title>KBase Sample Metadata Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="og:description" content="An up-to-date catalog of all KBase Sample Metadata fields, including their descriptions, types, and constraints." />
-    <meta name="og:title" content="Samples Metadata Fields" />
+    <meta name="og:title" content="KBase Sample Metadata Fields" />
     <meta name="og:type" content="website" />
     <meta name="og:url" content="https://github.com/kbase/sample_service_validator_config" />
     <meta name="og:site_name" content="KBase" />
