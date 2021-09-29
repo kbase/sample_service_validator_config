@@ -1,7 +1,6 @@
 import sys
 import yaml
 import json
-import pandas as pd
 import codecs
 import uuid
 
@@ -40,9 +39,7 @@ def get_ontology_constraints(validator_spec, default_value={}):
     return default_value
 
 
-def dict_to_table(value, style_id):
-    # html = f'<table class="Dict-{style_id}">'
-
+def dict_to_table(value):
     html = ""
     for key, value in value.items():
         html += '<div class="Field">'
@@ -77,7 +74,7 @@ def validator_to_row(key, validator, style_id):
         f'<ul class="Examples-{style_id}">{examples}</ul>',
         field_type,
         unit,
-        dict_to_table(constraints, style_id),
+        dict_to_table(constraints),
     ]
 
 
@@ -88,23 +85,7 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
     with open(grouping_file) as f:
         grouping = json.load(f)
 
-    table_columns = [
-        {"key": "key", "label": "Field Key"},
-        {"key": "label", "label": "Field Label"},
-        {"key": "description", "label": "Description"},
-        {"key": "examples", "label": "Example(s)"},
-        {"key": "type", "label": "Type"},
-        {"key": "unit", "label": "Unit"},
-        {"key": "constraints", "label": "Constraints"},
-    ]
-
     validators = metadata_validation["validators"]
-
-    table_head = ""
-    for col in table_columns:
-        table_head += f'<th>{col["label"]}</th>'
-
-    table_body = ""
 
     grouped_rows = []
     for group in grouping:
@@ -132,6 +113,7 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
         </div>
     </div>
 """
+
         for [key, title, description, examples, field_type, unit, constraints] in group[
             "rows"
         ]:
@@ -174,15 +156,14 @@ def create_table(input_file, grouping_file, style_id, sort_by_column=0):
             )
         table_body += "</div>"
 
-    table_html = """
+    return """
 <div class="Validators-{style_id}">
     <div class="-body">
     {table_body}
     </div>
 </div>
-"""
-    return table_html.format(
-        table_head=table_head, table_body=table_body, style_id=style_id
+""".format(
+        table_body=table_body, style_id=style_id
     )
 
 
@@ -343,14 +324,21 @@ ul.Examples-{style_id} > li::before {{
     return stylesheet.format(style_id=style_id)
 
 
+# <meta name="thumbnail" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
+
+
 def build_page(content):
     return """<!DOCTYPE html>
 <html>
 <head>
 	<title>KBase Sample Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="thumbnail" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
-    <meta name="description" content="An up-to-date catalog of all KBase Sample fields, including their descriptions, types, and constraints." />
+    <meta name="og:description" content="An up-to-date catalog of all KBase Sample fields, including their descriptions, types, and constraints." />
+    <meta name="og:title" content="Samples Schema" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://github.com/kbase/sample_service_validator_config" />
+    <meta name="og:image" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
+    <meta name="og:site_name" content="KBase" />
 </head>
 <body>
 {content}
@@ -361,31 +349,9 @@ def build_page(content):
     )
 
 
-# def build_page_with_iframe(content):
-#     encoded_content = content.replace("&", "&amp;").replace('"', "&quot;")
-#     return """
-# <!DOCTYPE html>
-# <html>
-# <head>
-# 	<title>KBase Sample Fields</title>
-#     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-#     <meta name="thumbnail" content="https://narrative.kbase.us/images/kbase_logo.png" />
-# </head>
-# <body>
-# <iframe style="width: 100%; height: 500px" srcdoc="{content}"></iframe>
-# </body>
-# </html>
-
-# """.format(
-#         content=encoded_content
-#     )
-
-
 def main():
     if len(sys.argv) != 4:
-        print(
-            "Usage: create_table.py <file-to-transform> <groupings> <output-directory>"
-        )
+        print("Usage: create_table.py <input-file> <groupings-file> <output-directory>")
         sys.exit(1)
 
     input_file = sys.argv[1]
