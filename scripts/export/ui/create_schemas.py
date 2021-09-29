@@ -7,6 +7,7 @@ import yaml
 
 KEEP_FILES = False
 
+SPECS_DIR = "specs"
 
 ####
 # python scripts/create-jsonschema.py outputdir
@@ -78,7 +79,9 @@ def create_schemas(output_dir):
     if KEEP_FILES:
         os.makedirs(os.path.dirname(f"{output_dir}/schemas/"), exist_ok=True)
 
-    validation_files = ["vocabularies/" + f for f in os.listdir("vocabularies")]
+    validation_files = [
+        f"{SPECS_DIR}/vocabularies/{f}" for f in os.listdir(f"{SPECS_DIR}/vocabularies")
+    ]
 
     all_schemas = []
     for validation_file in validation_files:

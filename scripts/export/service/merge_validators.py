@@ -8,6 +8,8 @@ ONTOLOGY_MAPPING = {"envo_ontology": "ENVO_terms", "go_ontology": "GO_terms"}
 _BUILTIN = "SampleService.core.validator.builtin"
 _NOOP = [{"callable_builder": "noop", "module": _BUILTIN}]
 
+VOCABULARY_DIR = "specs/vocabularies"
+
 
 def find_ontology_validator(data_field, key, ontology_validators):
     for validator in data_field["validators"]:
@@ -149,8 +151,8 @@ def main():
         output_file = output_file + ".yml"
     if not ontology_file.endswith(".yml") and not ontology_file.endswith(".yaml"):
         ontology_file = ontology_file + ".yml"
-    files = os.listdir("vocabularies")
-    files = ["vocabularies/" + f for f in files]
+    files = os.listdir(VOCABULARY_DIR)
+    files = [f"{VOCABULARY_DIR}/{f}" for f in files]
     merge_validation_files(files, output_file, ontology_file)
     print(f"    Validators merged, written to {output_file}")
 

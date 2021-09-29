@@ -4,9 +4,11 @@ import sys
 
 import yaml
 
+SPECS_DIR = "specs"
+
 
 def create_groups(output_dir):
-    source_file = "ordered.yml"
+    source_file = f"{SPECS_DIR}/ordered.yml"
 
     os.makedirs(os.path.dirname(f"{output_dir}/"), exist_ok=True)
 

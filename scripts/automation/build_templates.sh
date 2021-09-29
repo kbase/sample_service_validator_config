@@ -1,1 +1,1 @@
-cp -pr templates dist
+cp -pr specs/templates dist
