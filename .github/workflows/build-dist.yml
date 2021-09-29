@@ -7,7 +7,9 @@ on:
     branches:
       - master
   release:
-    types: [created]
+    branches: 
+      -master
+    types: [published]
   workflow_dispatch:
 jobs:
   build-dist:
@@ -108,13 +110,13 @@ jobs:
  
       - name: Create friendly branch name for pull request
         if: github.event_name == 'pull_request'
-        run: echo DIST_BRANCH_NAME=dist-pull_request_${{github.event.pull_request.number}} >> $GITHUB_ENV
+        run: echo DIST_BRANCH_NAME=dist-pull_request-${{github.event.pull_request.number}} >> $GITHUB_ENV
  
       - name: Create friendly branch name for a release against master
         if: github.event_name == 'release'
         run: |
           echo DIST_BRANCH_NAME=dist-release >> $GITHUB_ENV
-          echo DIST_TAG_NAME=dist-release_${{ github.event.release.tag_name }} >> $GITHUB_ENV
+          echo DIST_TAG_NAME=dist-release-${{ github.event.release.tag_name }} >> $GITHUB_ENV
  
       #
       # Publish the /dist directory to a dist-* branch

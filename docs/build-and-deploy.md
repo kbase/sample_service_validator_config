@@ -11,8 +11,8 @@ For historical reasons, these files are transformed into an additional set of fi
 There are actually two sets of generated files. The original set is composed of yaml files in a proprietary format:
 
 - `metadata_validation.yml` - field definitions
-- `templates/sesar.yml` - upload template for SESAR samples
-- `templates/enigma.yml` - upload template for ENIGMA samples
+- `templates/sesar_template.yml` - upload template for SESAR samples
+- `templates/enigma_template.yml` - upload template for ENIGMA samples
 
 These files are used by the Sample Service and Sample Uploader. The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, and the templates to validate sample sets of type SESAR or ENIGMA.
 
@@ -37,13 +37,84 @@ The following script invocation
 bash scripts/automation/local-build.sh
 ```
 
-will build a Docker image with Python and all dependencies installed, and then proceed to run a set of script to build validate the source files, build the distribution, and validate the distribution.
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of script to build and validate the source files, build the distribution, and validate the distribution.
 
 After running it, you should see a `dist` directory, with the following contents:
 
 ```bash
-% ls dist
-README.md               metadata_validation.yml templates
-groups.json             sample_fields.html
-manifest.json           schemas.json
+% tree dist
+dist
+├── README.md
+├── groups.json
+├── manifest.json
+├── metadata_validation.yml
+├── sample_fields.html
+├── schemas.json
+└── templates
+    ├── enigma_template.yml
+    └── sesar_template.yml
+
+1 directory, 8 files
 ```
+
+Let's itemize those files
+
+- `README.me` - short doc describing the directory
+- `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
+- `manifest.json` - information about the distribution build
+- `metadata_validation.yml` - field definitions for services
+- `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field, for user interfaces
+- `templates` - upload templates
+  - `sesar_template.yml` - upload template for SESAR samples
+  - `enigma_template.yml` - upload template for ENIGMA samples
+
+## GitHub Action Workflow Process
+
+The heart of the GitHub Action build workflow is identical to the script run above. It in addition to the build and validation steps, it also takes care of trapping the generated files in special distribution branches. More on that later.
+
+An additional small workflow deletes distribution branches created for pull requests.
+
+### Build and Validate
+
+The build and validate workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
+
+The workflow has a single step for each logical operation. Each operation is run inside a docker container, the same one utilized in the local build procedure. If you peek into the workflow file, you'll see that each each step actually runs a shell script. The default entry point for the image is `bash`, and the command is expected to be a script. All of the scripts run within the workflow are located in `scripts/automation`. 
+
+Each shell script in turn calls a Python script to conduct the actual work. These scripts are located in `scripts/export` and `scripts/validate`. This double-step process is used because each Python script expects a certain number of parameters. This facilitates re-usage for some of the scripts, and testability for all. It also insulates the build process from the details of script execution, other than the very simple shell scripts. However, the build process always uses the same parameters. The automation scripts are used to decouple the workflow from the specific values required, and instead they are encoded into the automation scripts.
+
+#### Preparation Steps
+
+The workflow first takes care of boilerplate operations, like cloning the repo and preparing some environment variables.
+
+The final preparation step is to create the script-runner image, which is tagged `cli`, since it is used for running commands.
+
+#### Validation and Build Steps
+
+Following the preparation steps is a sequence of validation and build steps, all run through the script-runner container simply using docker run. The only notable feature of the invocation of the script runner is that a local (i.e. in the GHA runner itself) directory `dist` is volume mounted into the container at `/kb/module/dist`. This allows the files generated within the container to be available locally.
+
+These steps carry out the following tasks:
+    - validation source spec files
+    - generate files for distribution into `dist`
+    - validate generated files
+    - copies a special `README.md` into the `dist` directory
+    - creates a special `manifest.json` file in `dist`, containing information about the build itself
+
+#### Create distribution branch steps
+
+After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on the trigger which invoked the workflow.
+
+The following trigger and branch naming conventions are used:
+
+| trigger                             | description                                                                                            | branch name           |
+|-------------------------------------|--------------------------------------------------------------------------------------------------------|-----------------------|
+| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                  | `dist-master`         |
+| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number | `dist-pull_request-#` |
+| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release  | `dist-release-v#.#.#` |
+
+The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
+
+### Remove pull request branches
+
+As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further value.
+
+The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
