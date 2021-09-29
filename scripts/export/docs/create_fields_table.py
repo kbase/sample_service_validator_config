@@ -324,20 +324,16 @@ ul.Examples-{style_id} > li::before {{
     return stylesheet.format(style_id=style_id)
 
 
-# <meta name="thumbnail" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
-
-
 def build_page(content):
     return """<!DOCTYPE html>
 <html>
 <head>
-	<title>KBase Sample Fields</title>
+	<title>KBase Sample Metadata Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="og:description" content="An up-to-date catalog of all KBase Sample fields, including their descriptions, types, and constraints." />
-    <meta name="og:title" content="Samples Schema" />
+    <meta name="og:description" content="An up-to-date catalog of all KBase Sample Metadata fields, including their descriptions, types, and constraints." />
+    <meta name="og:title" content="Samples Metadata Fields" />
     <meta name="og:type" content="website" />
     <meta name="og:url" content="https://github.com/kbase/sample_service_validator_config" />
-    <meta name="og:image" content="https://kbase.us/services/ui-assets/images/kbase-logos/logo-icon-46-46.png" />
     <meta name="og:site_name" content="KBase" />
 </head>
 <body>
