@@ -31,13 +31,15 @@ The generation process was redesigned to take place in the upstream GitHub repos
 
 Although the distribution is not stored in the main repo, you may generate them locally with just Docker.
 
-The following script invocation
+The following command
 
 ```bash
-bash scripts/automation/local-build.sh
+make
 ```
 
 will build a Docker image with Python and all dependencies installed, and then proceed to run a set of script to build and validate the source files, build the distribution, and validate the distribution.
+
+The `Makefile` also contains tasks to conduct each group of scripts separately.
 
 After running it, you should see a `dist` directory, with the following contents:
 
@@ -78,7 +80,7 @@ An additional small workflow deletes distribution branches created for pull requ
 
 The build and validate workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
 
-The workflow has a single step for each logical operation. Each operation is run inside a docker container, the same one utilized in the local build procedure. If you peek into the workflow file, you'll see that each each step actually runs a shell script. The default entry point for the image is `bash`, and the command is expected to be a script. All of the scripts run within the workflow are located in `scripts/automation`. 
+The workflow has a single step for each logical operation. Each operation is run inside a docker container, the same one utilized in the local build procedure. If you peek into the workflow file, you'll see that each each step actually runs a shell script. The default entry point for the image is `bash`, and the command is expected to be a script. All of the scripts run within the workflow are located in `scripts/automation`.
 
 Each shell script in turn calls a Python script to conduct the actual work. These scripts are located in `scripts/export` and `scripts/validate`. This double-step process is used because each Python script expects a certain number of parameters. This facilitates re-usage for some of the scripts, and testability for all. It also insulates the build process from the details of script execution, other than the very simple shell scripts. However, the build process always uses the same parameters. The automation scripts are used to decouple the workflow from the specific values required, and instead they are encoded into the automation scripts.
 
@@ -105,13 +107,15 @@ After the `dist` directory is populated and verified, it is copied into a specia
 
 The following trigger and branch naming conventions are used:
 
-| trigger                             | description                                                                                            | branch name           |
-|-------------------------------------|--------------------------------------------------------------------------------------------------------|-----------------------|
-| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                  | `dist-master`         |
-| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number | `dist-pull_request-#` |
-| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release  | `dist-release-v#.#.#` |
+| trigger                             | description                                                                                                                                               | branch name           | tag name              |
+|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------|
+| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
+| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number                                                    | `dist-pull_request-#` | n/a                   |
+| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release | `dist-release` | `dist-release-v#.#.#` |
 
 The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
+
+Note that releases create/update an evergreen branch `dist-release` as well as a per-release tag `dist-release-v#.#.#`.
 
 ### Remove pull request branches
 

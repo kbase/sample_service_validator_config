@@ -53,6 +53,11 @@ jobs:
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
 
       #
+      # Note that rather than run "make" to do this all, we specify each step
+      # here. This facilitates workflow debugging should anything go awry.
+      #
+
+      #
       # We build a lightweight container with this entire repo inside, and python 3 and
       # dependencies available for running scripts.
       #
@@ -62,8 +67,8 @@ jobs:
       #
       # Validate the source spec files.
       #
-      - name: run tests in container
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_source_specs.sh
+      - name: validate source specs
+        run: docker run cli scripts/automation/validate_source_specs.sh
 
       #
       # Generate files for the distribution.
@@ -77,13 +82,6 @@ jobs:
       - name: build templates in "dist" directory
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
 
-      #
-      # Validate the generated files
-      #
-      - name: validate the generated validator files
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
-      - name: validate the generated ui spec files
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
 
       #
       # Add a README.md
@@ -98,11 +96,19 @@ jobs:
         run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
 
       #
+      # Validate the generated files
+      #
+      - name: validate the generated validator files
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
+      - name: validate the generated ui spec files
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+
+      #
       # Create friendly branch names.
       # Cases we handle:
       # - push to "master" - name "dist-master"
-      # - any activity in PR against "master" - name "dist-pr_#""
-      # - release created - name "release", tag "dist-v#.#.#""
+      # - any activity in PR against "master" - name "dist-pull_request-#""
+      # - release created - name "release", tag "dist-release-v#.#.#""
       #
       - name: Create friendly branch name for push to master
         if: github.event_name == 'push'

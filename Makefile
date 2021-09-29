@@ -1,23 +1,28 @@
-VALIDATION_FILE=metadata_validation.yml
-TEMP_FILE=temp_file.yml
-TEMP_FILE_2=temp_file2.yml
-SAMPLE_SERVICE_SCHEMA = test_data/validator_schema.json
-MACRO_SCHEMA = test_data/validator_macro_schema.json
-VOCAB_SCHEMA = test_data/vocabulary_schema.json
-TEMPLATES_DIR = 'templates'
+all: script-runner validate-specs generate-dist validate-dist
 
-all: update templates
+script-runner:
+	@docker build -t cli .
 
-templates:
-	python3 ./gen_template_yaml.py sesar_template.yml sesar.tsv
-	python3 ./gen_template_yaml.py enigma_template.yml enigma.tsv
-test:
-	python3 scripts/validate_schemas.py $(SAMPLE_SERVICE_SCHEMA) $(VALIDATION_FILE)
-	python3 scripts/validate_schemas.py $(MACRO_SCHEMA) vocabularies/*yml
-	python3 scripts/validate_templates.py $(TEMPLATES_DIR)/*yml
-	python3 scripts/validate-jsonschema.py all
+validate-specs:
+	@echo "validate source specs"
+	@docker run cli scripts/automation/validate_source_specs.sh
 
-update:
-	python3 scripts/export/merge_validators.py $(VALIDATION_FILE) 
-	python3 scripts/export/create_tsv.py $(VALIDATION_FILE)
-	python3 scripts/export/ui_export.py dist
+generate-dist:
+	@echo "build UI exports in 'dist' directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/ui_export.sh 
+	@echo "build validators config in 'dist' directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/merge_validators.sh
+	@echo "build validators documentation table in 'dist' directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_fields_table.sh
+	@echo "build templates in "dist" directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
+	@echo "add a 'readme' file to the dist directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_readme.sh
+	@echo "add a 'manifest' file to the dist directory"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
+
+validate-dist:
+	@echo "validate the generated validator files"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
+	@echo "validate the generated ui spec files"
+	@docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
