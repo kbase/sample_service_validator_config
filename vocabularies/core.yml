@@ -88,7 +88,7 @@ terms:
     examples:
     - ENVO:00000314
     ontology:
-      ancestor_term: ENVO:01000813
+      ancestor_term: ENVO:00002297 
       ns: envo_ontology
     title: Feature
     type: ontology
