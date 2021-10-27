@@ -37,11 +37,11 @@ The following command
 make
 ```
 
-will build a Docker image with Python and all dependencies installed, and then proceed to run a set of script to build and validate the source files, build the distribution, and validate the distribution.
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts to build and validate the source files, build the distribution, and validate the distribution.
 
-The `Makefile` also contains tasks to conduct each group of scripts separately.
+The `Makefile` also contains tasks to run each group of scripts separately.
 
-After running it, you should see a `dist` directory, with the following contents:
+After running `make`, you should see a `dist` directory, with the following contents:
 
 ```bash
 % tree dist
@@ -72,13 +72,13 @@ Let's itemize those files
 
 ## GitHub Action Workflow Process
 
-The heart of the GitHub Action build workflow is identical to the script run above. It in addition to the build and validation steps, it also takes care of trapping the generated files in special distribution branches. More on that later.
+The heart of the GitHub Action build workflow is equivalent to the script run above. In addition to the build and validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
 
 An additional small workflow deletes distribution branches created for pull requests.
 
 ### Build and Validate
 
-The build and validate workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
+The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
 
 The workflow has a single step for each logical operation. Each operation is run inside a docker container, the same one utilized in the local build procedure. If you peek into the workflow file, you'll see that each each step actually runs a shell script. The default entry point for the image is `bash`, and the command is expected to be a script. All of the scripts run within the workflow are located in `scripts/automation`.
 
@@ -92,7 +92,7 @@ The final preparation step is to create the script-runner image, which is tagged
 
 #### Validation and Build Steps
 
-Following the preparation steps is a sequence of validation and build steps, all run through the script-runner container simply using docker run. The only notable feature of the invocation of the script runner is that a local (i.e. in the GHA runner itself) directory `dist` is volume mounted into the container at `/kb/module/dist`. This allows the files generated within the container to be available locally.
+Following the preparation steps is a sequence of validation and build steps, all run through the script-runner container simply using docker run. A local (i.e. in the GHA runner itself) directory `dist` is volume mounted into the container at `/kb/module/dist`. This allows the files generated within the container to be available locally.
 
 These steps carry out the following tasks:
     - validation source spec files
@@ -115,10 +115,10 @@ The following trigger and branch naming conventions are used:
 
 The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
 
-Note that releases create/update an evergreen branch `dist-release` as well as a per-release tag `dist-release-v#.#.#`.
+Note that releases create or update an evergreen branch `dist-release` as well as creating a per-release tag `dist-release-v#.#.#` on the `dist-release` branch.
 
 ### Remove pull request branches
 
-As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further value.
+As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further use.
 
 The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
