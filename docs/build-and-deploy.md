@@ -109,8 +109,8 @@ The following trigger and branch naming conventions are used:
 
 | trigger                             | description                                                                                                                                               | branch name           | tag name              |
 |-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------|
-| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
 | `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number                                                    | `dist-pull_request-#` | n/a                   |
+| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
 | `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release | `dist-release` | `dist-release-v#.#.#` |
 
 The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
