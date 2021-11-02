@@ -103,7 +103,7 @@ terms:
     - 0.000576856
     title: Leucine Activity (ngC/day cell)
     type: number
-    units: ngC/day cell
+    units: ng Carbon / day / cell
   lower_seal_type:
     description: Lower Seal Type (BENT; BENT-PEL)
     examples:
