@@ -1,1 +1,1 @@
-cp scripts/export/README.md dist
+cp assets/dist-README.md dist/README.md
