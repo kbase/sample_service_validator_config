@@ -12,6 +12,7 @@ These files are used by the Sample Service and/or Sample Uploader to validate sa
 - `templates`: Predefined sets of fields used by the Sample Uploader to interpret a set of samples in a spreadsheet given a sample format identifier (`SESAR` or `ENIGMA`).
         - `enigma_template.yml`
         - `sesar_template.yml`
+- `pint_unit_definitions.txt`: Additional units for the Python `pint` library required to validate units specified in vocabularies.
 
 ### Used by documentation site
 
