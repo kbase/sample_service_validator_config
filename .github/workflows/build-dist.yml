@@ -89,7 +89,7 @@ jobs:
       # Add a README.md
       #
       - name: add a "readme" file to the dist directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_readme.sh
+        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_other_files.sh
 
       #
       # Add a manifest file

@@ -1,1 +1,0 @@
-cp assets/dist-README.md dist/README.md

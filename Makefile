@@ -19,7 +19,7 @@ generate-dist:
 	@echo "build templates in "dist" directory"
 	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
 	@echo "add a 'readme' file to the dist directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_readme.sh
+	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_other_files.sh
 	@echo "add a 'manifest' file to the dist directory"
 	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
 
