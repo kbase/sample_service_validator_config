@@ -122,3 +122,10 @@ Note that releases create or update an evergreen branch `dist-release` as well a
 As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further use.
 
 The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
+
+### GHA Token
+
+The GHA workflow requires a token named `KBASE_BOT_TOKEN`. This token requires just `repo:public_repo` access.
+
+- create a PAT or other token with `repo:public_repo` access
+- create a secret named `KBASE_BOT_TOKEN` with the value set to the token
