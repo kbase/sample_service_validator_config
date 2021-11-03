@@ -16,4 +16,4 @@ Transform files in `/vocabularies` to `schemas.json`. Since at the moment there 
 
 ## `export.py`
 
-Combines transformations to create groups and schemas into one script.
+Combines transformations to create groups and schemas into one script, with verification.

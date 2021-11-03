@@ -54,6 +54,8 @@ To validate source, generate files, and validate generated files:
 make
 ```
 
+Please see [the developer docs](./docs/index.md) for further information.
+
 ## API
 
 ## Maintainers

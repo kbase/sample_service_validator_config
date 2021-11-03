@@ -6,9 +6,9 @@ The Sample Specifications are maintained in an internal YAML format, located in 
 - `specs/templates/*.yml` - define upload templates
 - `specs/ordered.yml` - defines sample field grouping and ordering
 
-For historical reasons, these files are transformed into an additional set of files for usage by the Sample Service, Sample Uploader, and sample user interfaces. The process of transforming the source specifications to generate an additional set of files for usage is the subject of this document.
+These files are transformed into an additional set of files for usage by the Sample Service, Sample Uploader, and sample user interfaces. The process of transforming the source specifications to generate an additional set of files for usage is the subject of this document.
 
-There are actually two sets of generated files. The original set is composed of yaml files in a proprietary format:
+There are two sets of generated files. One set is composed of yaml files in a proprietary format:
 
 - `metadata_validation.yml` - field definitions
 - `templates/sesar_template.yml` - upload template for SESAR samples
