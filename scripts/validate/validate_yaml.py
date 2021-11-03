@@ -35,7 +35,7 @@ def validate_file(data_file, schema_dir, schema_file):
 def main():
     if len(sys.argv) != 4:
         print(
-            "Usage: <validate-schemas.py> all or <file-to-validate> <schema-dir> <schema-file-name>"
+            "Usage: validate-schemas.py all or <file-to-validate> <schema-dir> <schema-file-name>"
         )
         sys.exit(1)
 

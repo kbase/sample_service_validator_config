@@ -69,6 +69,8 @@ jobs:
       #
       - name: validate source specs
         run: docker run cli scripts/automation/validate_source_specs.sh
+      - name: validate source spec units
+        run: docker run --rm cli scripts/automation/validate_vocabulary_units.sh
 
       #
       # Generate files for the distribution.

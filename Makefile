@@ -6,6 +6,8 @@ script-runner:
 validate-specs:
 	@echo "validate source specs"
 	@docker run --rm cli scripts/automation/validate_source_specs.sh
+	@echo "validate source spec units"
+	@docker run --rm cli scripts/automation/validate_vocabulary_units.sh
 
 generate-dist:
 	@echo "build UI exports in 'dist' directory"
