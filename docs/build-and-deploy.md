@@ -23,6 +23,12 @@ The second set are composed of JSON files, one of which is in JSON-Schema format
 
 These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Sample Set Viewer.
 
+## Prerequisites
+
+In order to build and test the specs, you just need `make`, `docker`, and be using a basic `sh` compatible shell.
+
+For editing the files, you will also need to have Python 3.7 available. No special Python tooling is required, but it is recommended to use `black` to format all code prior to issuing a pull request.
+
 ## Generating
 
 You won't find the generated files in the repo. In a previous iteration, the generated files were created locally by a developer after making changes to the sources, and then pushed up to the canonical repo. They would eventually be made available by creating a release at GitHub, and the resulting generated files fetched directly from the repo (master branch? actual release?)
