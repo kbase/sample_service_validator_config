@@ -1,7 +1,8 @@
 import os
 import sys
-import yaml
 from copy import deepcopy
+
+import yaml
 
 _BUILTIN = "SampleService.core.validator.builtin"
 _NOOP = [{"callable_builder": "noop", "module": _BUILTIN}]
@@ -16,7 +17,7 @@ def expand_validators(val):
         print(val)
         raise ValueError("Missing type")
     typ = val["type"]
-    format = val.get("format")
+    field_format = val.get("format")
     if "units" in val:
         v = {
             "callable_builder": "units",
@@ -42,7 +43,7 @@ def expand_validators(val):
     elif "max-len" in val:
         v["parameters"] = {"max-len": val["max-len"]}
     elif typ == "string":
-        if format == "ontology-term":
+        if field_format == "ontology-term":
             v["callable_builder"] = "ontology_has_ancestor"
             v["parameters"] = {
                 "ontology": val["namespace"],
@@ -51,15 +52,15 @@ def expand_validators(val):
         else:
             return deepcopy(_NOOP)
     else:
-        print("type not recognized %s" % (typ))
-        raise KeyError("type %s not recognized" % (typ))
+        print("type not recognized %s" % typ)
+        raise KeyError("type %s not recognized" % typ)
     nv.append(v)
     return nv
 
 
 def merge_to_existing_validators(val_type, val_data, key, val, data):
     if val_data.get(key):
-        # update auxillary fields and not the 'validators'
+        # update auxiliary fields and not the 'validators'
         for data_field in ["static_mappings", "key_metadata"]:
             if data[val_type][key].get(data_field):
                 if val_data[key].get(data_field):

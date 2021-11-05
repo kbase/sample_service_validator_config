@@ -1,8 +1,9 @@
-import sys
-import yaml
-import json
 import codecs
+import json
+import sys
 import uuid
+
+import yaml
 
 
 def get_unit(validator_spec, default_value=""):
@@ -14,7 +15,9 @@ def get_unit(validator_spec, default_value=""):
     return default_value
 
 
-def get_number_constraints(validator_spec, default_value={}):
+def get_number_constraints(validator_spec, default_value=None):
+    if default_value is None:
+        default_value = {}
     if "validators" not in validator_spec:
         return default_value
     for validator in validator_spec["validators"]:
@@ -27,7 +30,9 @@ def get_number_constraints(validator_spec, default_value={}):
     return default_value
 
 
-def get_ontology_constraints(validator_spec, default_value={}):
+def get_ontology_constraints(validator_spec, default_value=None):
+    if default_value is None:
+        default_value = {}
     if "validators" not in validator_spec:
         return default_value
     for validator in validator_spec["validators"]:
@@ -78,7 +83,7 @@ def validator_to_row(key, validator, style_id):
     ]
 
 
-def create_table(input_file, grouping_file, style_id, sort_by_column=0):
+def create_table(input_file, grouping_file, style_id):
     with open(input_file) as f:
         metadata_validation = yaml.load(f, Loader=yaml.SafeLoader)
 
@@ -328,7 +333,7 @@ def build_page(content):
     return """<!DOCTYPE html>
 <html>
 <head>
-	<title>KBase Sample Metadata Fields</title>
+    <title>KBase Sample Metadata Fields</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="og:description" content="An up-to-date catalog of all KBase Sample Metadata fields, including their descriptions, types, and constraints." />
     <meta name="og:title" content="KBase Sample Metadata Fields" />
@@ -356,7 +361,7 @@ def main():
 
     style_id = str(uuid.uuid4())
 
-    html_table = create_table(input_file, grouping_file, style_id, 1)
+    html_table = create_table(input_file, grouping_file, style_id)
     table_stylesheet = create_stylesheet(style_id)
 
     html = f"{table_stylesheet}{html_table}"
