@@ -8,7 +8,9 @@ The Sample Specifications are maintained in an idiosyncratic YAML format. The YA
 
 These files are transformed into an additional set of files for usage by the Sample Service, Sample Uploader, and sample user interfaces. The process of transforming the source specifications to generate an additional set of files for usage is the subject of this document.
 
-There are two sets of generated files. One set is composed of yaml files in a proprietary format:
+There are two sets of generated files.
+
+One set is composed of yaml files in a proprietary format:
 
 - `metadata_validation.yml` - field definitions
 - `templates/sesar_template.yml` - upload template for SESAR samples
@@ -16,13 +18,14 @@ There are two sets of generated files. One set is composed of yaml files in a pr
 
 These files are used by the [Sample Service](https://github.com/kbase/sample_service) and [Sample Uploader](https://github.com/kbaseapps/sample_uploader). The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, and the templates to validate sample sets of type SESAR or ENIGMA.
 
+Until those services are updated to use the new config distribution scheme (described below), they are also generated in their "legacy" location, which is conducted by the individual developer locally, and included directly as part of the repo.
+
 The second set are composed of JSON files, one of which is in JSON-Schema format.
 
 - `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field
 - `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
 
-These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Sample
-Set Viewer.
+These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Sample Set Viewer.
 
 ## Prerequisites
 
@@ -30,13 +33,52 @@ In order to build and test the specs, you just need `make`, `docker`, and a `bas
 
 For editing the files, you will also need to have Python 3.7 available. No special Python tooling is required, but it is recommended to use `black` to format all code prior to issuing a pull request.
 
-## Generating
+## Legacy Config Generation
 
-You won't find the generated files in the repo. In a previous iteration, the generated files were created locally by a developer after making changes to the sources, and then pushed up to the canonical repo. They would eventually be made available by creating a release at GitHub, and the resulting generated files fetched directly from the repo (master branch? actual release?)
+The Sample Service and Sample Uploader currently expect to find configuration files in specific locations in the "master" branch of this repo. In this document, these are called "legacy" config files.
 
-The generation process was redesigned to take place in the upstream GitHub repository through a GitHub Action workflow, `.github/build-dist.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
+At some future time these services will be refactored to pick up the same files from a distribution branch, as is described in sections below.
 
-Although the distribution is not stored in the main repo, you may generate them locally with just Docker.
+The legacy configuration files are created locally by a developer after making changes to the sources, and then pushed up to the canonical repo along with the source changes, and ultimately made available by merging a Pull Request to the master branch.
+
+In order to generate these files, issue the following command:
+
+```bash
+make legacy-files
+```
+
+This will result in the following files being created or replaced:
+
+```text
+├── metadata-validation.json
+└── templates
+    ├── enigma_template.yml
+    └── sesar_template.yml
+```
+
+- `metadata-validation.json` - KBase-formatted validation configuration for each defined metadata field
+- `templates/enigma_template.yml` - Metadata fields defined for the ENIGMA sample type, utilized by the importer
+- `templates/sesar_template.yml` - Metadata fields defined for the SESAR sample type, utilized by the importer
+
+### Consumption by Services
+
+This section describes how services consume the legacy files.
+
+#### Sample Service
+
+The Sample Service fetches the `metadata_validation.yml` file directly from the master branch of this repo through the url `https://raw.githubusercontent.com/kbase/sample_service_validator_config/master/metadata_validation.yml`.
+
+#### Sample Importer
+
+Sample import is conducted by the `import_samples` method of the `sample_uploader` app. This app acquires the legacy validation and template configs by cloning this repo at a specific commit by hash reference.
+
+## Generating Config Distribution
+
+A new generation process has been designed to replace the legacy process described above. Rather than generate the configs and include them in the repo directly, they are generated in the GitHub repository through a GitHub Action workflow, `.github/build-dist.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
+
+The generated files are made available in special distribution branches, which are either created or updated by the workflow itself. This process is described in more detail below.
+
+You may generate the distribution locally with just Docker.
 
 The following command
 
@@ -44,9 +86,13 @@ The following command
 make
 ```
 
-will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts to build and validate the source files, build the distribution, and validate the distribution.
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts via the container to build and validate the source files, build the distribution, and validate the distribution.
 
-The `Makefile` also contains tasks to run each group of scripts separately.
+> The `dist` directory is excluded from `git`, so you may generate them locally in order to inspect and validate them without worrying about affecting the repo.
+
+ If you peek into the Makefile, you'll see that each step actually runs one or more shell scripts. The default entry point for the image is `bash`, and the command is expected to be a script. All the scripts run within the workflow are located in `scripts/automation`.
+
+Each automation shell script in turn calls a Python script to conduct the actual work. These scripts are located in `scripts/export` and `scripts/validate`. This double-step process is used because each Python script expects certain parameters. This facilitates re-usage and testability. It also insulates the build process from the details of script execution, other than the very simple shell scripts.
 
 After running `make`, you should see a `dist` directory, with the following contents:
 
@@ -79,18 +125,15 @@ Let's itemize those files
 
 ## GitHub Action Workflow Process
 
-The heart of the GitHub Action build workflow is equivalent to the script run above. In addition to the build and
-validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
+The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
 
-An additional small workflow deletes distribution branches created for pull requests.
+An additional small workflow deletes distribution branches created for pull requests after the PR is merged.
 
 ### Build and Validate
 
 The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
 
-The workflow has a single step for each logical operation. Each operation is run inside a docker container, the same one utilized in the local build procedure. If you peek into the workflow file, you'll see that each step actually runs a shell script. The default entry point for the image is `bash`, and the command is expected to be a script. All the scripts run within the workflow are located in `scripts/automation`.
-
-Each shell script in turn calls a Python script to conduct the actual work. These scripts are located in `scripts/export` and `scripts/validate`. This double-step process is used because each Python script expects a certain number of parameters. This facilitates re-usage for some scripts, and testability for all. It also insulates the build process from the details of script execution, other than the very simple shell scripts. However, the build process always uses the same parameters. The automation scripts are used to decouple the workflow from the specific values required, and instead they are encoded into the automation scripts.
+The generation and validation of config files is conducted via the Makefile as a sequence of scripts run inside a docker container. This workflow step is the same one utilized in the local build procedure described above.
 
 #### Preparation Steps
 
@@ -100,17 +143,19 @@ The final preparation step is to create the script-runner image, which is tagged
 
 #### Validation and Build Steps
 
-Following the preparation steps is a sequence of validation and build steps, all run through the script-runner container simply using docker run. A local (i.e. in the GHA runner itself) directory `dist` is volume mounted into the container at `/kb/module/dist`. This allows the files generated within the container to be available locally.
+Following the preparation steps is the validation and build step. A repo directory (i.e. in the GHA runner itself) is volume mounted into the container at `/kb/module`. This allows the files generated within the container to be available in the GHA host for later steps.
 
 These steps carry out the following tasks:
 
-- validation source spec files - generate files for distribution into `dist`
-- validate generated files - copies a special `README.md` into the `dist` directory - creates a special `manifest.json`
-  file in `dist`, containing information about the build itself
+- validation source spec files
+- generate files for distribution into `dist`
+- validate generated files 
+- copies a special `README.md` into the `dist` directory
+- creates a special `manifest.json` file in `dist`, containing information about the build itself
 
 #### Create distribution branch steps
 
-After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on the trigger which invoked the workflow.
+After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on which trigger invoked the workflow.
 
 The following trigger and branch naming conventions are used:
 
