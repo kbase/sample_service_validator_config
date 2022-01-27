@@ -13,10 +13,11 @@ There are two sets of generated files.
 One set is composed of yaml files in a proprietary format:
 
 - `metadata_validation.yml` - field definitions
+- `ontology_validators.yml` - ontology term field definitions extracted and transformed
 - `templates/sesar_template.yml` - upload template for SESAR samples
 - `templates/enigma_template.yml` - upload template for ENIGMA samples
 
-These files are used by the [Sample Service](https://github.com/kbase/sample_service) and [Sample Uploader](https://github.com/kbaseapps/sample_uploader). The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, and the templates to validate sample sets of type SESAR or ENIGMA.
+These files are used by the [Sample Service](https://github.com/kbase/sample_service) and [Sample Uploader](https://github.com/kbaseapps/sample_uploader). The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, `ontology_validators.yml` to validate ontology sample fields, and the templates to validate sample sets of type SESAR or ENIGMA.
 
 Until those services are updated to use the new config distribution scheme (described below), they are also generated in their "legacy" location, which is conducted by the individual developer locally, and included directly as part of the repo.
 
@@ -65,13 +66,15 @@ make legacy-files
 This will result in the following files being created or replaced:
 
 ```text
-├── metadata-validation.json
+├── metadata_validation.yml
+├── ontology_validators.yml
 └── templates
     ├── enigma_template.yml
     └── sesar_template.yml
 ```
 
-- `metadata-validation.json` - KBase-formatted validation configuration for each defined metadata field
+- `metadata_validation.yml` - KBase-formatted validation configuration for each defined metadata field
+- `ontology_validators.yml` - KBase-formatted validation configuration for ontology fields (different format than in metadata_validation.yml)
 - `templates/enigma_template.yml` - Metadata fields defined for the ENIGMA sample type, utilized by the importer
 - `templates/sesar_template.yml` - Metadata fields defined for the SESAR sample type, utilized by the importer
 
