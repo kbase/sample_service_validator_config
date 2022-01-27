@@ -22,7 +22,7 @@ dist:
 	@printf "Building UI exports in 'dist' directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/ui_export.sh 
 	@printf "done.\n"
-	@printf "Building validators config in 'dist' directory"
+	@printf "Building validators config in 'dist' directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators.sh
 	@printf "done.\n"
 	@printf "Building validators documentation table in 'dist' directory..."
@@ -47,7 +47,7 @@ validate-dist:
 	@printf "done.\n"
 
 legacy-files: script-runner
-	@printf "building validators config in root directory"
+	@printf "Building validators config in root directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators_legacy.sh
 	@printf "done.\n"
 	@printf "Building templates in "dist" directory..."
