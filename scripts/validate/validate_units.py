@@ -2,7 +2,6 @@ import os
 import yaml
 import sys
 from pint import UnitRegistry
-from pint import DimensionalityError
 from pint import UndefinedUnitError
 from pint import DefinitionSyntaxError
 
