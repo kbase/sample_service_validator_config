@@ -1,0 +1,965 @@
+Template: sesar
+ID: sesar:igsn
+Parent: sesar:parent_igsn
+Name: name
+Config:
+  skipLines: "^Object Type:"
+Columns:
+  Age (max):
+    aliases:
+    - age max
+    apiKey: age_max
+    category: description
+    definition: Numerical value for the maximum age of a sample
+    example: '4.6'
+    instructions: Must be a number
+    order: 12
+    required: false
+    transformations:
+    - parameters:
+      - sesar:age_max
+      - Age unit (e.g. million years (Ma))
+      transform: unit_measurement
+  Age (min):
+    aliases:
+    - age min
+    apiKey: age_min
+    category: description
+    definition: Numerical value for the minimum age of a sample
+    example: '4.2'
+    instructions: Must be a number
+    order: 11
+    required: false
+    transformations:
+    - parameters:
+      - sesar:age_min
+      - Age unit (e.g. million years (Ma))
+      transform: unit_measurement
+  Age unit (e.g. million years (Ma)):
+    aliases:
+    - age unit
+    apiKey: age_unit
+    category: description
+    definition: Unit for the age provided
+    example: Ma
+    order: 13
+    required: false
+    transformations:
+    - parameters:
+      - sesar:age_unit
+      transform: map
+  City/Township:
+    aliases:
+    - city
+    apiKey: city
+    category: geolocation
+    definition: City or Township where the sample was collected
+    example: Palisades
+    order: 43
+    required: true
+    transformations:
+    - parameters:
+      - city_township
+      transform: map
+  Classification:
+    apiKey: classification
+    disposition: recommend
+    category: description
+    definition: Taxonomy (formal classification) Formal categorization of sample.
+    example: Igneous>Plutonic>Felsic; Plagioclase
+    instructions: Please use controlled list (for Rocks), Please use controlled list
+      (for Minerals)
+    order: 6
+    required: true
+    transformations:
+    - parameters:
+      - sesar:classification
+      transform: map
+  Classification Comment:
+    apiKey: classification_comment
+    disposition: ignore
+    comment: Only in exported samples
+    category: description
+    definition: Additional comment on the classification
+    example: ''
+    order: 7
+    required: false
+    transformations:
+    - parameters:
+      - sesar:classification_comment
+      transform: map
+  Collection date:
+    aliases:
+    - collection start date
+    apiKey: collection_start_date
+    category: collection
+    definition: Date when the sample was collected.
+    example: '2015-03-31'
+    instructions: 'YYYY-MM-DD: for best results, format this column in the spreadsheet
+        as ''Text''. If only the year of collection is known, please enter, for example,
+        2015-01-01 and specify ''year'' as the Collection date precision.'
+    order: 53
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_date
+      transform: map
+  Collection date (end):
+    aliases:
+    - collection end date
+    apiKey: collection_end_date
+    category: collection
+    definition: Date when the sample collection was finished (if a date range is provided).
+    example: '2015-03-31'
+    instructions: 'YYYY-MM-DD: for best results, format this column in the spreadsheet
+        as ''Text'''
+    order: 55
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_date_end
+      transform: map
+  Collection date precision:
+    apiKey: collection_date_precision
+    category: collection
+    definition: Precision to display the collection date and time.
+    example: year; month; day; time
+    order: 57
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_date_precision
+      transform: map
+  Collection method:
+    apiKey: collection_method
+    disposition: recommend
+    category: description
+    definition: Method by which a sample was collected
+    example: Dredging; Manual
+    instructions: Suggested list
+    order: 16
+    required: true
+    transformations:
+    - parameters:
+      - sesar:collection_method
+      transform: map
+  Collection method description:
+    aliases:
+    - collection method descr
+    apiKey: collection_method_descr
+    category: description
+    definition: Additional information about the collection method
+    example: Hand sample collected from the top part of a large boulder
+    order: 17
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_method_description
+      transform: map
+  Collection time:
+    aliases:
+    - collection start time
+    apiKey: collection_start_time
+    category: collection
+    definition: Time when the sample was collected.
+    example: 12:05:03Z
+    instructions: HH:MM:SSZ, format this column in the spreadsheet as 'Text'. If 'Z'
+      is not specified, United States Eastern Time is assumed.
+    order: 54
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_time
+      transform: map
+  Collection time (end):
+    aliases:
+    - collection end time
+    apiKey: collection_end_time
+    category: collection
+    definition: Time when the sample was collected.
+    example: 13:05:01Z
+    instructions: HH:MM:SSZ, format this column in the spreadsheet as 'Text'. If 'Z'
+      is not specified, United States Eastern Time is assumed.
+    order: 56
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collection_time_end
+      transform: map
+  Collector/Chief Scientist:
+    apiKey: collector
+    category: collection
+    definition: Name of the person who collected the sample. In case of larger field
+      programs, name of chief scientist responsible for sample collection.
+    example: John Smith
+    order: 51
+    required: true
+    transformations:
+    - parameters:
+      - sesar:collector_chief_scientist
+      transform: map
+  Collector/Chief Scientist Address:
+    aliases:
+    - collector/chief scientist detail
+    apiKey: collector_detail
+    category: collection
+    definition: Institution, address, & email of the collector or chief scientist.
+    example: Woods Hole Oceanographic Institution, Woods Hole, MA
+    order: 52
+    required: false
+    transformations:
+    - parameters:
+      - sesar:collector_chief_scientist_address
+      transform: map
+  Comment:
+    apiKey: sample_comment
+    category: description
+    definition: Free text to add any comments pertaining to the sample
+    example: cm; kg
+    order: 21
+    required: false
+    transformations:
+    - parameters:
+      - comment
+      transform: map
+  Country:
+    apiKey: country_name
+    category: geolocation
+    definition: Country where the sample was collected
+    example: United States
+    instructions: Please use controlled list
+    order: 40
+    required: true
+    transformations:
+    - parameters:
+      - country
+      transform: map
+  County:
+    apiKey: county
+    category: geolocation
+    definition: County where the sample was collected
+    example: Bristol County
+    order: 42
+    required: true
+    transformations:
+    - parameters:
+      - county
+      transform: map
+  Cur Registrant Name:
+    apiKey: cur_registrant_name
+    disposition: ignore
+    comment: Only in exported samples; reflects the name of the registered user who uploaded the sample.
+    category: curation
+    definition: Current registrant in SESAR
+    example: John Smith
+    order: 66
+    required: false
+    transformations:
+    - parameters:
+      - sesar:registrant_current
+      transform: map
+  Current Archive:
+    apiKey: current_archive
+    category: curation
+    definition: Name of institution, museum, or repository where the sample is currently
+      stored.
+    example: Lamont Deep Sea Core Repository; Palisades, NY
+    order: 58
+    required: true
+    transformations:
+    - parameters:
+      - sesar:archive_current
+      transform: map
+  Current Archive Contact:
+    apiKey: current_archive_contact
+    category: curation
+    definition: Address and/or email of the person who should be contacted for information
+      about or access to the sample.
+    example: curator@ldeo.columbia.edu
+    instructions: Email is not mandatory, but helps for communication about samples.
+    order: 59
+    required: false
+    transformations:
+    - parameters:
+      - sesar:archive_contact_current
+      transform: map
+  Depth in Core (max):
+    aliases:
+    - depth max
+    apiKey: depth_max
+    category: relation_to_parent
+    definition: Maximum depth at which a sample was collected from its parent core
+    example: '0.003'
+    order: 63
+    required: false
+    transformations:
+    - parameters:
+      - sesar:depth_in_core_max
+      - Depth scale
+      transform: unit_measurement
+  Depth in Core (min):
+    aliases:
+    - depth min
+    apiKey: depth_min
+    category: relation_to_parent
+    definition: Minimum depth at which a sample was collected from its parent core
+    example: '0.001'
+    order: 62
+    required: false
+    transformations:
+    - parameters:
+      - sesar:depth_in_core_min
+      - Depth scale
+      transform: unit_measurement
+  Depth scale:
+    apiKey: depth_scale
+    category: relation_to_parent
+    definition: Unit in which the depth is provided
+    example: MBSF; cm
+    order: 64
+    required: false
+    transformations:
+    - parameters:
+      - sesar:depth_scale
+      transform: map
+  'Easting (m) (Coordinate system: UTM NAD83)':
+    aliases:
+    - 'easting (m)'
+    apiKey: easting
+    category: geolocation
+    definition: Geographic Cartesian coordinate of where the sample was collected,
+      in meters, as in UTM. "305294"
+    example: '305294'
+    instructions: To be geolocated in the SESAR system, latitude and longitude must
+      be filled out. UTM coordinates can be specified for reference but will not place
+      the sample on the map. There are several web tools for converting from UTM to
+      latitude/longitude, such as http://www.earthpoint.us/Convert.aspx.
+    order: 28
+    required: false
+    transformations:
+    - parameters:
+      - sesar:easting
+      transform: map
+  Elevation end:
+    apiKey: elevation_end
+    category: geolocation
+    definition: Elevation at which a sample was collected. Use negative values for
+      depth below sea level. Maximum elevation if a range is provided for the elevation/depth
+      below sea level.
+    example: 673.5; -4520
+    order: 32
+    required: false
+    transformations:
+    - parameters:
+      - sesar:elevation_end
+      - Elevation unit
+      transform: unit_measurement
+  Elevation start:
+    aliases:
+    - elevation
+    apiKey: elevation
+    category: geolocation
+    definition: Elevation at which a sample was collected. Use negative values for
+      depth below sea level. Minimum elevation if a range is provided for the elevation/depth
+      below sea level.
+    example: 678.5; -4536
+    order: 31
+    required: false
+    transformations:
+    - parameters:
+      - sesar:elevation_start
+      - Elevation unit
+      transform: unit_measurement
+  Elevation unit:
+    apiKey: elevation_unit
+    category: geolocation
+    definition: Unit in which elevation start and/or end are provided in.
+    example: meters; feet, miles, kilometers
+    instructions: 'Must be one of the following: meters, feet, miles, kilometers'
+    order: 33
+    required: false
+    transformations:
+    - parameters:
+      - sesar:elevation_unit
+      transform: map
+  Field name (informal classification):
+    aliases:
+    - field name
+    apiKey: field_name
+    category: description
+    definition: Taxonomy (field name) Informal classification of sample.
+    example: basalt; amphibole; sea water
+    order: 8
+    required: true
+    transformations:
+    - parameters:
+      - sesar:field_name
+      transform: map
+  Field program/Cruise:
+    apiKey: cruise_field_prgrm
+    category: collection
+    definition: Name or identifier of the field program (cruise or expedition), during
+      which the sample was collected
+    example: TN182
+    instructions: For ship cruises, we recommended using the R2R Cruise ID at http://www.rvdata.us/catalog
+    order: 44
+    required: true
+    transformations:
+    - parameters:
+      - sesar:field_program_cruise
+      transform: map
+  Geological age:
+    apiKey: geological_age
+    category: description
+    definition: Age of a sample as described by the stratigraphic era, period, state,
+      etc.
+    example: Cretaceous
+    order: 14
+    required: false
+    transformations:
+    - parameters:
+      - sesar:geological_age
+      - Geological unit
+      transform: unit_measurement
+  Geological unit:
+    apiKey: geological_unit
+    category: description
+    definition: A body of rock established as a distinct entity in the classification
+      of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow
+    example: Coconino Sandstone; Fig Tree Formation
+    order: 15
+    required: false
+    transformations:
+    - parameters:
+      - sesar:geological_unit
+      transform: map
+  IGSN:
+    apiKey: igsn
+    category: description
+    definition: Leave blank if you want SESAR to assign the IGSN.
+    example: IEMEG0001
+    order: 1
+    required: true
+    disposition: require
+    transformations:
+    - parameters:
+      - sesar:igsn
+      transform: map
+  Is Archived:
+    apiKey: is_archived
+    category: curation
+    definition: Archive Status
+    comments:
+    - is this really a SESAR field? Can't find it.
+    example: Y; N
+    order: 68
+    required: false
+    transformations:
+    - parameters:
+      - sesar:is_archived
+      transform: map
+  'Latitude (Coordinate system: WGS 84)':
+    aliases:
+    - latitude start
+    - latitude
+    apiKey: latitude
+    disposition: recommend
+    category: geolocation
+    definition: Latitude of the location where the sample was collected. ('Start latitude'
+      for linear sampling features such as dredges.) Needs to be entered in decimal
+      degrees. Negative values for South latitudes.
+    example: '5.89634'
+    instructions: Please supply no more than 6 decimal places (meter scale resolution)
+      in the actual number (not just display format.) No letters are allowed.
+    order: 23
+    required: true
+    transformations:
+    - parameters:
+      - latitude
+      - degrees
+      transform: unit_measurement_fixed
+  'Latitude (end) (Coordinate system: WGS 84)':
+    aliases:
+    - latitude end
+    apiKey: latitude_end
+    category: geolocation
+    definition: End latitude of the location where the sample was collected.
+    example: '5.89222'
+    instructions: Please supply no more than 6 decimal places (meter scale resolution)
+      in the actual number (not just display format.) No letters are allowed.
+    order: 24
+    required: true
+    transformations:
+    - parameters:
+      - latitude_end
+      - degrees
+      transform: unit_measurement_fixed
+  Launch ID:
+    apiKey: launch_id
+    category: collection
+    definition: Further identifying information about the launch
+    example: 3969; J2-434
+    order: 50
+    required: false
+    transformations:
+    - parameters:
+      - sesar:launch_id
+      transform: map
+  Launch platform name:
+    apiKey: launch_platform_name
+    category: collection
+    definition: The name of the launch used to collect the sample.
+    example: Alvin; Jason II
+    order: 49
+    required: false
+    transformations:
+    - parameters:
+      - sesar:launch_platform_name
+      transform: map
+  Launch type:
+    aliases:
+    - launch type name
+    apiKey: launch_type_name
+    category: collection
+    definition: The type of launch used to collect the sample.
+    example: HOV
+    instructions: Please use controlled list
+    order: 48
+    required: false
+    transformations:
+    - parameters:
+      - sesar:launch_type
+      transform: map
+  Locality:
+    apiKey: locality
+    category: geolocation
+    definition: Name of the specific place where your sample was collected. This could
+      be the name of a mine, a volcanic field, a vent field, or similar
+    example: Franklin Mine; Craters of the Moon National Park
+    order: 38
+    required: true
+    transformations:
+    - parameters:
+      - locality
+      transform: map
+  Locality description:
+    apiKey: locality_description
+    category: geolocation
+    definition: Additional information about the specific place where your sample
+      was collected
+    example: on private land
+    order: 39
+    required: false
+    transformations:
+    - parameters:
+      - locality_description
+      transform: map
+  Location description:
+    apiKey: location_description
+    category: geolocation
+    definition: Free text description of the location
+    example: flank of volcanic cone
+    order: 37
+    required: false
+    transformations:
+    - parameters:
+      - location_description
+      transform: map
+  'Longitude (Coordinate system: WGS 84)':
+    aliases:
+    - longitude
+    - longitude start
+    apiKey: longitude
+    disposition: recommend
+    category: geolocation
+    definition: Longitude of the location where the sample was collected. ('Start
+      longitude' for linear sampling features such as dredges.) Needs to be entered
+      in decimal degrees. Negative values for 'West' longitudes.
+    example: '-103.785'
+    instructions: Please supply no more than 6 decimal places (meter scale resolution)
+      in the actual number (not just display format.) No letters are allowed.
+    order: 25
+    required: true
+    transformations:
+    - parameters:
+      - longitude
+      - degrees
+      transform: unit_measurement_fixed
+  'Longitude (end) (Coordinate system: WGS 84)':
+    aliases:
+    - longitude end
+    apiKey: longitude_end
+    category: geolocation
+    definition: End longitude of the location where the sample was collected.
+    example: '-103.285'
+    instructions: Please supply no more than 6 decimal places (meter scale resolution)
+      in the actual number (not just display format.) No letters are allowed.
+    order: 26
+    required: true
+    transformations:
+    - parameters:
+      - longitude_end
+      - degrees
+      transform: unit_measurement_fixed
+  Material:
+    apiKey: top_level_classification
+    disposition: require
+    category: description
+    definition: Material that the sample consists of. Mandatory.
+    example: Rock; Liquid>Aqueous
+    instructions: Please use controlled list
+    order: 4
+    required: true
+    transformations:
+    - parameters:
+      - sesar:material
+      transform: map
+  Name of physiographic feature:
+    apiKey: primary_location_name
+    category: geolocation
+    definition: Name of the physiographic feature that you entered
+    example: East Pacific Rise; Dead Sea
+    order: 36
+    required: true
+    transformations:
+    - parameters:
+      - sesar:physiographic_feature_name
+      transform: map
+  Navigation Type:
+    aliases:
+    - nav type name
+    apiKey: nav_type_name
+    category: geolocation
+    definition: Navigation type
+    example: GPS
+    instructions: Please use controlled list
+    order: 34
+    required: false
+    transformations:
+    - parameters:
+      - sesar:navigation_type
+      transform: map
+  'Northing (m) (Coordinate system: UTM NAD83)':
+    aliases:
+    - northing (m)
+    apiKey: northing
+    category: geolocation
+    definition: Geographic Cartesian coordinate of where the sample was collected,
+      in meters, as in UTM. "4111279"
+    example: '4111279'
+    instructions: To be geolocated in the SESAR system, latitude and longitude must
+      be filled out. UTM coordinates can be specified for reference but will not place
+      the sample on the map. There are several web tools for converting from UTM to
+      latitude/longitude, such as http://www.earthpoint.us/Convert.aspx.
+    order: 27
+    required: false
+    transformations:
+    - parameters:
+      - sesar:northing
+      transform: map
+  Org Registrant Name:
+    apiKey: org_registrant_name
+    disposition: ignore
+    comment: Only in exported samples; contains the Organization name for the registered user who uploaded the sample.
+    category: curation
+    definition: Organizational registrant in SESAR
+    example: Woods Hole Oceanographic Institution
+    order: 67
+    required: false
+    transformations:
+    - parameters:
+      - sesar:registrant_org
+      transform: map
+  Original Archive:
+    apiKey: original_archive
+    category: curation
+    definition: Name of institution, museum, or repository where the sample was originally
+      stored.
+    example: Lamont Deep Sea Core Repository; Palisades, NY
+    order: 60
+    required: false
+    transformations:
+    - parameters:
+      - sesar:archive_original
+      transform: map
+  Original Archive Contact:
+    apiKey: original_archive_contact
+    category: curation
+    definition: Address and/or email of the person who should be contacted for information
+      about the sample's original archive.
+    example: curator@ldeo.columbia.edu
+    order: 61
+    required: false
+    transformations:
+    - parameters:
+      - sesar:archive_contact_original
+      transform: map
+  Other name(s):
+    apiKey: sample_other_names
+    category: description
+    definition: Other name(s) used for the sample.
+    example: TRPOW; T-PROW
+    instructions: Provide multiple other names in a semi-colon delimited fashion.
+    order: 9
+    required: false
+    transformations:
+    - parameters:
+      - other_names
+      transform: map
+  Parent IGSN:
+    apiKey: parent_igsn
+    category: description
+    definition: Leave blank if a parent IGSN does not exist.
+    example: IEMEG0002
+    order: 2
+    required: false
+    transformations:
+    - parameters:
+      - sesar:parent_igsn
+      transform: map
+  Platform Description:
+    apiKey: platform_descr
+    category: collection
+    definition: Description of platform for the cruise.
+    example: ''
+    order: 47
+    required: false
+    transformations:
+    - parameters:
+      - sesar:platform_description
+      transform: map
+  Platform name:
+    apiKey: platform_name
+    category: collection
+    definition: Name of platform for the cruise.
+    example: R/V Roger Revelle
+    order: 46
+    required: true
+    transformations:
+    - parameters:
+      - sesar:platform_name
+      transform: map
+  Platform type:
+    apiKey: platform_type
+    category: collection
+    definition: Type of platform for the cruise.
+    example: Ship
+    instructions: Suggested list
+    order: 45
+    required: false
+    transformations:
+    - parameters:
+      - sesar:platform_type
+      transform: map
+  Primary Physiographic feature:
+    aliases:
+    - physiographic feature
+    apiKey: primary_location_type
+    category: geolocation
+    definition: Type of physical feature that your sample was collected from
+    example: volcano; mid-ocean ridge
+    instructions: Suggested list
+    order: 35
+    required: true
+    transformations:
+    - parameters:
+      - sesar:physiographic_feature_primary
+      transform: map
+  Purpose:
+    apiKey: purpose
+    category: description
+    definition: Purpose of sample
+    example: Biogeochemistry, geochemistry and microbiology
+    order: 22
+    required: false
+    transformations:
+    - parameters:
+      - purpose
+      transform: map
+  Related Identifiers:
+    definition: Identifiers for related samples.
+    apiKey: null
+    comments:
+    - from ESS-DIVE
+    example: IEAWH0002
+    transformations:
+    - parameters:
+      - sesar:related_identifiers
+      transform: map
+  Relation Type:
+    definition: Type of Relationship for the identifiers in "Related Identifiers"
+    apiKey: null
+    comments:
+    - from ESS-DIVE
+    example: grouped
+    transformations:
+    - parameters:
+      - sesar:relation_type
+      transform: map
+  Release Date:
+    apiKey: publish_date
+    category: description
+    definition: Date when sample metadata is publicly accessible and searchable. If
+      null, defaults to date of registration (recommended).
+    example: '2018-03-15'
+    instructions: SESAR recommends that sample metadata become public within 2 years
+      of sample registration.
+    order: 3
+    required: false
+    transformations:
+    - parameters:
+      - sesar:release_date
+      transform: map
+  Sample Description:
+    aliases:
+    - description
+    apiKey: sample_description
+    category: description
+    definition: Free text to describe features of a sample such as its components,
+      texture, color, shape, etc.
+    example: dredge with 50 pieces of basalt and mud
+    order: 10
+    required: false
+    transformations:
+    - parameters:
+      - description
+      transform: map
+  Sample Name:
+    apiKey: name
+    disposition: require
+    category: description
+    definition: Collector's sample name. Mandatory.
+    example: TR-POW
+    instructions: Must be unique in a sample set
+    order: 0
+    required: true
+    transformations:
+    - parameters:
+      - name
+      transform: map
+  Sample Type:
+    apiKey: sample_type
+    category: description
+    definition: Sample Type
+    example: Core; Core Section
+    order: 20
+    required: false
+    transformations:
+    - parameters:
+      - sesar:sample_type
+      transform: map
+  Size:
+    apiKey: size
+    category: description
+    definition: Size of the registered object, such as the dimension of a specimen,
+      the length of a core, or the weight of a dredge
+    example: 2x4; 45
+    order: 18
+    required: false
+    transformations:
+    - parameters:
+      - sesar:size
+      - Size unit
+      transform: unit_measurement
+  Size unit:
+    apiKey: size_unit
+    category: description
+    definition: Unit for the numerical value provided for 'size'.
+    example: cm; kg
+    order: 19
+    required: false
+    transformations:
+    - parameters:
+      - sesar:size_unit
+      transform: map
+  State/Province:
+    aliases:
+    - state
+    apiKey: province
+    category: geolocation
+    definition: State or Province where the sample was collected
+    example: Alaska
+    order: 41
+    required: true
+    transformations:
+    - parameters:
+      - state_province
+      transform: map
+  Sub-object type:
+    apiKey: sample_subtype
+    category: description
+    definition: More descriptive Object Type. This applies only to samples with Object
+      Type set to Individual Sample.
+    example: Thin section; Powder
+    instructions: Please use controlled list
+    order: 5
+    required: true
+    transformations:
+    - parameters:
+      - sesar:sub-object_type
+      transform: map
+  Related URL:
+    apiKey: null
+    category: description
+    definition: Related URL associated with the samples
+    instructions: Must be a valid URL (e.g., http://www.geosamples.org)
+    example: https://data.ess-dive.lbl.gov/view/doi:10.15485/1577263
+    order: 65
+    required: false
+    transformations:
+    - parameters:
+      - sesar:related_url
+      transform: map
+  Related URL Type:
+    apiKey: null
+    definition: Related URL type. Either DOI or Regular URL
+    instructions: Must be either 'DOI' or 'Regular URL'
+    example: DOI
+    transformations:
+    - parameters:
+      - sesar:related_url_type
+      transform: map
+  Related URL Description:
+    apiKey: null
+    definition: Free text description of the related URL
+    example: Associated data from surface and pore water samples (i.e. anions, cations, FTICR) are published on ESS-DIVE
+    transformations:
+    - parameters:
+      - sesar:related_url_description
+      transform: map
+  Vertical Datum:
+    apiKey: vertical_datum
+    category: geolocation
+    definition: Vertical datum used to calculate the elevation
+    example: NAVD88; MSL
+    order: 30
+    required: false
+    transformations:
+    - parameters:
+      - sesar:vertical_datum
+      transform: map
+  Zone (e.g., 11R):
+    apiKey: zone
+    category: geolocation
+    definition: Zone for the geographic Cartesian coordinate "11R"
+    example: 11R
+    instructions: UTM zone, use a number from 1 to 60, followed by a letter between
+      A and Z to specify UTM zone with no spaces in between. Letter must be capitalized.
+    order: 29
+    required: false
+    transformations:
+    - parameters:
+      - sesar:zone
+      transform: map
+  URL:
+    apiKey: build_url
+    disposition: ignore
+    definition: A url generated by the service which invokes a viewer page for the sample.
+    comments:
+    - This is a field generated by the downloader; it is a url to the sample at igsn, which redirects to geosamples
+    - We can generate if we need to, and it is not
+    example: http://igsn.org/BWH00001R
+    transformations:
+    - parameters:
+      - sesar:build_url
+      transform: map

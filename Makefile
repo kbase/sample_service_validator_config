@@ -1,4 +1,4 @@
-.PHONY: script-runner validate-specs clean validate-dist metadata-validation-file
+.PHONY: script-runner validate-specs clean validate-dist legacy-files
 
 all: clean script-runner validate-specs dist validate-dist
 
@@ -46,10 +46,13 @@ validate-dist:
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_ui_export.sh
 	@printf "done.\n"
 
-metadata-validation-file: script-runner
+legacy-files: script-runner
 	@printf "building validators config in root directory"
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators_legacy.sh
-	@printf "built!\n"
+	@printf "done.\n"
+	@printf "Building templates in "dist" directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates_legacy.sh
+	@printf "done.\n"
 	@printf "validate the generated validator files..."
-	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_legacy_validators.sh
-	@printf "validated!\n"
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_validators_legacy.sh
+	@printf "done.\n"
