@@ -42,7 +42,6 @@ def main():
     output_directory = sys.argv[1]
 
     create_groups(output_directory)
-    print(f"Ordered config converted to groups in '{output_directory}'.")
 
 
 if __name__ == "__main__":

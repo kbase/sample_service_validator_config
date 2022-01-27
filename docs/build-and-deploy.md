@@ -85,8 +85,8 @@ Let's itemize those files
 - `metadata_validation.yml` - field definitions for services
 - `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field, for user interfaces
 - `templates` - upload templates
-    - `sesar_template.yml` - upload template for SESAR samples
-    - `enigma_template.yml` - upload template for ENIGMA samples
+  - `sesar_template.yml` - upload template for SESAR samples
+  - `enigma_template.yml` - upload template for ENIGMA samples
 
 ## GitHub Action Workflow Process
 

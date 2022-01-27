@@ -53,57 +53,10 @@ jobs:
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
 
       #
-      # Note that rather than run "make" to do this all, we specify each step
-      # here. This facilitates workflow debugging should anything go awry.
+      # Keeping it simple ... just make all.
       #
-
-      #
-      # We build a lightweight container with this entire repo inside, and python 3 and
-      # dependencies available for running scripts.
-      #
-      - name: build container
-        run: docker build -t cli .
-
-      #
-      # Validate the source spec files.
-      #
-      - name: validate source specs
-        run: docker run cli scripts/automation/validate_source_specs.sh
-      - name: validate source spec units
-        run: docker run --rm cli scripts/automation/validate_vocabulary_units.sh
-
-      #
-      # Generate files for the distribution.
-      #
-      - name: build UI exports in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/ui_export.sh 
-      - name: build validators config in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/merge_validators.sh
-      - name: build validators documentation table in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_fields_table.sh
-      - name: build templates in "dist" directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
-
-
-      #
-      # Add a README.md
-      #
-      - name: add a "readme" file to the dist directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_other_files.sh
-
-      #
-      # Add a manifest file
-      #
-      - name: add a "manifest" file to the dist directory
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
-
-      #
-      # Validate the generated files
-      #
-      - name: validate the generated validator files
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
-      - name: validate the generated ui spec files
-        run: docker run -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+      - name: do it
+        run: make all
 
       #
       # Create friendly branch names.

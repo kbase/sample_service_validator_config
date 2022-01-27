@@ -85,8 +85,6 @@ def create_schemas(output_dir):
 
     all_schemas = []
     for validation_file in validation_files:
-
-        print(f"Merging {validation_file}...")
         with open(validation_file) as f_in:
             validator_config = yaml.load(f_in, Loader=yaml.SafeLoader)
 
@@ -127,7 +125,6 @@ def main():
     output_directory = sys.argv[1]
 
     create_schemas(output_directory)
-    print(f"Validators transformed to jsonschema, written to '{output_directory}'.")
 
 
 if __name__ == "__main__":

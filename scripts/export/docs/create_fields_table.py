@@ -369,8 +369,6 @@ def main():
     with codecs.open(f"{output_dir}/sample_fields.html", "w", "utf-8-sig") as f:
         f.write(build_page(html))
 
-    print(f"    created table  {input_file} written to {output_dir}.")
-
 
 if __name__ == "__main__":
     main()

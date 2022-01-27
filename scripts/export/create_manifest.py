@@ -37,7 +37,6 @@ def main():
     output_directory = sys.argv[1]
 
     generate_manifest(f"{output_directory}/manifest.json")
-    print(f"Manifest generated and written to '{output_directory}'.")
 
 
 if __name__ == "__main__":

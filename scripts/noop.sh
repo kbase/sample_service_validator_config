@@ -1,0 +1,1 @@
+@echo "Please supply a script as a command when running this container."

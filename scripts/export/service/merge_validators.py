@@ -82,7 +82,6 @@ def merge_validation_files(files, output_file):
     prefix_validators = {}
 
     for f in files:
-        print(f)
         with open(f) as f_in:
             data = yaml.load(f_in, Loader=yaml.SafeLoader)
         prefix = ""
@@ -124,7 +123,6 @@ def main():
     files = os.listdir(VOCABULARY_DIR)
     files = [f"{VOCABULARY_DIR}/{f}" for f in files]
     merge_validation_files(files, output_file)
-    print(f"    Validators merged, written to {output_file}")
 
 
 if __name__ == "__main__":

@@ -1,34 +1,55 @@
-all: script-runner validate-specs generate-dist validate-dist
+.PHONY: script-runner validate-specs clean validate-dist metadata-validation-file
+
+all: clean script-runner validate-specs dist validate-dist
 
 script-runner:
 	@docker build -t cli .
 
 validate-specs:
-	@echo "validate source specs"
-	@docker run --rm cli scripts/automation/validate_source_specs.sh
-	@echo "validate source spec units"
-	@docker run --rm cli scripts/automation/validate_vocabulary_units.sh
+	@printf "Validating source specs..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_source_specs.sh
+	@printf "done.\n"
+	@printf "Validating source spec units..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_vocabulary_units.sh
+	@printf "done.\n"
 
-generate-dist:
-	@echo "build UI exports in 'dist' directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/ui_export.sh 
-	@echo "build validators config in 'dist' directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/merge_validators.sh
-	@echo "build validators documentation table in 'dist' directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_fields_table.sh
-	@echo "build templates in "dist" directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/build_templates.sh
-	@echo "add a 'readme' file to the dist directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/copy_other_files.sh
-	@echo "add a 'manifest' file to the dist directory"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/create_manifest.sh
+clean:
+	@printf "Removing dist directory..."
+	@rm -rf dist
+	@printf "done.\n"
+
+dist:
+	@printf "Building UI exports in 'dist' directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/ui_export.sh 
+	@printf "done.\n"
+	@printf "Building validators config in 'dist' directory"
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators.sh
+	@printf "done.\n"
+	@printf "Building validators documentation table in 'dist' directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/create_fields_table.sh
+	@printf "done.\n"
+	@printf "Building templates in "dist" directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates.sh
+	@printf "done.\n"
+	@printf "Adding a 'readme' file to the dist directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/copy_other_files.sh
+	@printf "done.\n"
+	@printf "Adding a 'manifest' file to the dist directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/create_manifest.sh
+	@printf "done.\n"
 
 validate-dist:
-	@echo "validate the generated validator files"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
-	@echo "validate the generated ui spec files"
-	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+	@printf "Validating the generated validator files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_generated_validators.sh
+	@printf "done.\n"
+	@printf "Validating the generated ui spec files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_ui_export.sh
+	@printf "done.\n"
 
 metadata-validation-file: script-runner
-	@echo "build validators config in root directory"
-	@docker run --rm -v `pwd`:/kb/module cli scripts/automation/merge_validators_legacy.sh
+	@printf "building validators config in root directory"
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators_legacy.sh
+	@printf "built!\n"
+	@printf "validate the generated validator files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_legacy_validators.sh
+	@printf "validated!\n"
