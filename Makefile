@@ -28,3 +28,7 @@ validate-dist:
 	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_generated_validators.sh
 	@echo "validate the generated ui spec files"
 	@docker run --rm -v `pwd`/dist:/kb/module/dist cli scripts/automation/validate_ui_export.sh
+
+metadata-validation-file: script-runner
+	@echo "build validators config in root directory"
+	@docker run --rm -v `pwd`:/kb/module cli scripts/automation/merge_validators_legacy.sh
