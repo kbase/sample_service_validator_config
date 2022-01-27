@@ -182,6 +182,34 @@
         "validators",
         "key_metadata"
       ]
+    },
+    "ontology_validator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ancestor_term",
+        "display_name",
+        "ontology",
+        "ontology_collection",
+        "validator_type"
+      ],
+      "properties": {
+        "ancestor_term": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "ontology": {
+          "type": "string"
+        },
+        "ontology_collection": {
+          "type": "string"
+        },
+        "validator_type": {
+          "type": "string"
+        }
+      }
     }
   }
 }

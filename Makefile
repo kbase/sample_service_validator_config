@@ -53,6 +53,9 @@ legacy-files: script-runner
 	@printf "Building templates in "dist" directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates_legacy.sh
 	@printf "done.\n"
-	@printf "validate the generated validator files..."
+	@printf "Build the ontology validators file..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_ontology_validators.sh
+	@printf "done.\n"
+	@printf "Validate the generated validator files..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_validators_legacy.sh
 	@printf "done.\n"

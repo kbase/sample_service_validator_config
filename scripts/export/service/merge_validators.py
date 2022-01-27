@@ -101,15 +101,15 @@ def merge_validation_files(files, output_file):
     if prefix_validators:
         data["prefix_validators"] = prefix_validators
 
-    with open(output_file, "w") as f:
-        yaml.dump(data, f)
+    with open(output_file, "w") as f_out:
+        yaml.dump(data, f_out)
 
 
 def main():
     # assert correct number of arguments.
     if len(sys.argv) < 2:
         raise RuntimeError(
-            "Please provide the output file as and argument to merge_validators.py"
+            "Please provide the output file as an argument to merge_validators.py"
         )
     if len(sys.argv) > 2:
         raise RuntimeError("Too many arguments for merge_validators.py")
