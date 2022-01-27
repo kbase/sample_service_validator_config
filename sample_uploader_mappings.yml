@@ -1,0 +1,4 @@
+# Empty yaml file.
+# A file with this name is consumed by sample_uploader, but not used.
+# The presence of this file will prevent sample_uploader from crashing, until it is 
+# updated to remove this dependency.
