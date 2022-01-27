@@ -53,9 +53,9 @@ jobs:
           echo "BUILD_DATE=${{ env.BUILD_DATE }}"
 
       #
-      # Keeping it simple ... just make all.
+      # Generate the config files
       #
-      - name: do it
+      - name: Validate sources, Generate configs, and Verify generated configs
         run: make all
 
       #
