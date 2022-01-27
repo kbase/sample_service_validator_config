@@ -12,4 +12,4 @@ jobs:
         uses: dawidd6/action-delete-branch@v3
         with:
           github_token: ${{ secrets.KBASE_BOT_TOKEN }}
-          branches: dist-pull_request_${{github.event.pull_request.number}}
+          branches: dist-pull_request-${{github.event.pull_request.number}}
