@@ -54,9 +54,11 @@ To validate source, generate files, and validate generated files:
 make
 ```
 
-Please see [the developer docs](./docs/index.md) for further information.
+Please see [the developer docs](docs/index.md) for further information.
 
 ## API
+
+Generated configuration files are available in distribution branches - see [the build and deploy docs](docs/build-and-deploy.md).
 
 ## Maintainers
 

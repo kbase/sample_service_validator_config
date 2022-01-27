@@ -31,7 +31,22 @@ These files are utilized by user interfaces, including the Sample Landing Page, 
 
 In order to build and test the specs, you just need `make`, `docker`, and a `bash` compatible shell.
 
-For editing the files, you will also need to have Python 3.7 available. No special Python tooling is required, but it is recommended to use `black` to format all code prior to issuing a pull request.
+For editing the files, you will also need to have Python 3.7 available. A `requirements.txt` is available, and shared with the build image, and `requirements-dev.txt` provides additional developer support.
+
+E.g. to set up a virtual environment suitable for development:
+
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt -r requirements-dev.txt
+```
+
+At this time, `black` is the only developer tool provided. Please ensure that all Python files are formatted with `black`. A simple way to do so is to issue the following command within the virtual environment at the root of the repo.
+
+```bash
+black .
+```
 
 ## Legacy Config Generation
 
