@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import yaml
-from yaml import Dumper, Loader
-import json
+from yaml import Loader
 import csv
 import sys
 from SampleServiceClient import SampleService
