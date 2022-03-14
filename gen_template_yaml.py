@@ -97,10 +97,16 @@ def process_row(row, ct):
 
 def main():
     failed = False
-    required_units = []
     yamlfn = sys.argv[1]
     csvfn = sys.argv[2]
     validation = load_validations()
+
+    #
+    # Load the TSV for each template from the root
+    # These are the canonical definitions for the templates, in a form which can be unrolled
+    # into yaml. E.g. the column names become object properties, some fields are comma-separated
+    # and are converted to arrays, others are transformed.
+    #
     ct = 0
     rows, cols = read_tsv(csvfn)
     outdata = {}
@@ -118,16 +124,24 @@ def main():
         outdata[col_name] = new_row
         ct += 1
 
-
+   
     if failed:
         sys.exit(1)
-    # Generate new yaml file
-    newtemp = yaml.load(open(yamlfn), Loader=Loader)
+
+    #
+    # Generate a yaml version of the TSV template definition.
+    # This is a little weird. It first reads in the yaml file, then
+    # replaces the "Columns" with the transformed TSV from above.
+    #
+    # The YAML files have information not found in the template definitions,
+    # that is the fields ID, Name, Template
+    #
+    newtemp = yaml.load(open(f'templates/{yamlfn}'), Loader=Loader)
     if 'Columns' in newtemp:
         newtemp.pop('Columns')
     newtemp['Columns'] = outdata
-    with open(yamlfn, "w") as f:
-         f.write(yaml.dump(newtemp, Dumper=Dumper, default_flow_style=False))
+    with open(f'templates/{yamlfn}', "w") as f:
+        f.write(yaml.dump(newtemp, Dumper=Dumper, default_flow_style=False))
 
 if __name__ == '__main__':
     main()
