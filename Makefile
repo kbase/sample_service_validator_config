@@ -9,7 +9,7 @@ TEMPLATES_DIR = 'templates'
 
 .PHONY: templates test update copy-misc
 
-all: prepare-dist update templates copy-to-dist
+all: test prepare-dist update templates copy-to-dist
 
 templates:
 	python3 ./gen_template_yaml.py sesar_template.yml sesar.tsv
