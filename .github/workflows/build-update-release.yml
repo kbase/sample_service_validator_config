@@ -35,7 +35,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.KBASE_RELEASE_UPDATE_TOKEN }}
         with:
-          file: "dist/**/*"
+          file: "dist.zip"
           tags: true 
-          
+
 
