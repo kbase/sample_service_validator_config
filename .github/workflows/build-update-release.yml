@@ -31,7 +31,7 @@ jobs:
       # Add the built assets to the release
       #
       - name: Upload specs to release
-        uses: alexiellis/upload-assets@0.2.2
+        uses: alexellis/upload-assets@0.2.2
         env:
           GITHUB_TOKEN: ${{ secrets.KBASE_RELEASE_UPDATE_TOKEN }}
         with:
