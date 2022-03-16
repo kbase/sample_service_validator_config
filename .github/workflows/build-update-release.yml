@@ -1,4 +1,4 @@
-name: Sample Service Validator Config Distribution Builder
+name: Sample Service Validator Config Build and Update Release
 on:
   release:
     branches: 
