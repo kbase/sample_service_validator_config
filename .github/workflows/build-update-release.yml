@@ -32,6 +32,6 @@ jobs:
       - name: Upload specs to release
         uses: alexellis/upload-assets@0.2.2
         env:
-          GITHUB_TOKEN: ${{ secrets.KBASE_RELEASE_UPDATE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.KBASE_BOT_TOKEN }}
         with:
           asset_paths: '["dist.zip"]'

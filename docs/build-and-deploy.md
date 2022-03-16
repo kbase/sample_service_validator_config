@@ -103,9 +103,8 @@ will run a set of scripts via the container to build and validate the source fil
 
 ## GitHub Action Workflow Process
 
-The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
+The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files for releases (including pre-releases.)
 
-An additional small workflow deletes distribution branches created for pull requests after the PR is merged.
 
 ### Build and Validate
 
@@ -115,7 +114,7 @@ The generation and validation of config files is conducted via the Makefile as a
 
 #### Preparation Steps
 
-The workflow first takes care of boilerplate operations, like cloning the repo and preparing some environment variables.
+The workflow first takes care of boilerplate operations, like cloning the repo.
 
 #### Validation and Build Steps
 
@@ -126,33 +125,15 @@ These steps carry out the following tasks:
 - validate source spec files
 - generate files for distribution into `dist`
 - copies a special `README.md` into the `dist` directory
+- archives the directory as `dist.zip`
 
-#### Create distribution branch steps
+#### Create release asset
 
-After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on which trigger invoked the workflow.
-
-The following trigger and branch naming conventions are used:
-
-| trigger                             | description                                                                                                                                               | branch name           | tag name              |
-|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------|
-| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number                                                    | `dist-pull_request-#` | n/a                   |
-| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
-| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release | `dist-release`        | `dist-release-v#.#.#` |
-
-The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
-
-Note that releases create or update an evergreen branch `dist-release` as well as creating a per-release
-tag `dist-release-v#.#.#` on the `dist-release` branch.
-
-### Automatic delettion of pull request dist branches
-
-As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further use.
-
-The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
+After the `dist.zip` archive is created it is uploaded to the release. Since this workflow is only triggered by the publication of a release (including pre-releases), this is safe to do.
 
 ### GHA Token
 
-The GHA workflow requires a token named `KBASE_BOT_TOKEN`. This token requires just `repo:public_repo` access.
+The GHA workflow requires a token named `KBASE_BOT_TOKEN`. This token requires  `repo:public_repo` access.
 
 - create a PAT or other token with `repo:public_repo` access
 - create a secret named `KBASE_BOT_TOKEN` with the value set to the token
