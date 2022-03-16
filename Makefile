@@ -37,6 +37,7 @@ copy-to-dist:
 	cp ontology_validators.yml dist
 	cp sample_uploader_mappings.yml dist
 	cp assets/dist-README.md dist/README.md
+	zip -r dist.zip dist
 
 prepare-dist:
 	mkdir -p dist
