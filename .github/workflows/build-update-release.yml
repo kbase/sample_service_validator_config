@@ -26,7 +26,6 @@ jobs:
       - name: Validate sources, generate configs, and verify generated configs
         run: make
 
-
       #
       # Add the built assets to the release
       #
