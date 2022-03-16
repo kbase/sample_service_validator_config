@@ -35,4 +35,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.KBASE_RELEASE_UPDATE_TOKEN }}
         with:
-          asset_paths: '["dist.zip"]''
+          asset_paths: '["dist.zip"]'
