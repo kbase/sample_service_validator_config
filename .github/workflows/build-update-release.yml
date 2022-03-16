@@ -37,5 +37,6 @@ jobs:
         with:
           file: "dist.zip"
           tags: true 
+          draft: false
 
 
