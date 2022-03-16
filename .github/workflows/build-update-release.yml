@@ -31,8 +31,11 @@ jobs:
       # Add the built assets to the release
       #
       - name: Upload specs to release
-        uses: alexellis/upload-assets@0.2.2
+        uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.KBASE_RELEASE_UPDATE_TOKEN }}
         with:
-          asset_paths: '["dist/**/*"]'
+          file: "dist/**/*"
+          tags: true 
+          
+
