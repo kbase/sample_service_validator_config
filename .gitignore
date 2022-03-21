@@ -1,3 +1,14 @@
+
+# Development
+venv
 temp_file.yml
 temp_file2.yml
+/dist
+dist.zip
+*.pyc
 
+# OS
+.DS_Store
+
+# IDE
+.vscode

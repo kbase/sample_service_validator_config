@@ -1,0 +1,37 @@
+name: Sample Service Validator Config Build and Update Release
+on:
+  release:
+    branches: 
+      -master
+    types: [published]
+jobs:
+  build-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out GitHub Repo
+        uses: actions/checkout@v2
+
+      #
+      # Set up python
+      #
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      #
+      # Generate the config files
+      #
+      - name: Validate sources, generate configs, and verify generated configs
+        run: make
+
+      #
+      # Add the built assets to the release
+      #
+      - name: Upload specs to release
+        uses: alexellis/upload-assets@0.2.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.KBASE_BOT_TOKEN }}
+        with:
+          asset_paths: '["dist.zip"]'
