@@ -34,7 +34,7 @@ dist:
 	@printf "Building templates in "dist" directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates.sh
 	@printf "done.\n"
-	@printf "Adding a 'readme' file to the dist directory..."
+	@printf "Adding a 'README' and other files to the dist directory..."
 	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/copy_other_files.sh
 	@printf "done.\n"
 	@printf "Adding a 'manifest' file to the dist directory..."
