@@ -91,7 +91,7 @@ Sample import is conducted by the `import_samples` method of the `sample_uploade
 
 ## Generating Config Distribution
 
-A new process has been designed to replace the legacy process described above. Rather than generate the configs and include them in the repo directly, they are generated in the GitHub repository through a GitHub Action workflow, `.github/build-update-release.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
+A new process has been designed to replace the legacy process described above. Rather than generate the configs and include them in the repo directly, they are generated in the GitHub repository through a GitHub Action workflow, `.github/release.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
 
 The generated files are made available as an asset in a GitHub release. 
 
@@ -153,7 +153,7 @@ The heart of the GitHub Action build workflow invokes the makefile as described 
 
 ### Build and Validate
 
-The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-test.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
+The GitHub Action workflow, `.github/pull_request.yml`, triggered by a pull request open, reopen, or synchronize. It will validate the source specs, create the generated files, and validate the generated files. This, together with branch protection for the `master` branch, ensures that the specs are correct before a PR can be merged.
 
 The generation and validation of config files is conducted via the Makefile as a sequence of scripts run inside a docker container. This workflow step is the same one utilized in the local build procedure described above.
 
@@ -177,7 +177,7 @@ These steps carry out the following tasks:
 
 #### Publish a release
 
-When a release is created, the workflow `build-update-release.yml` is triggered. This workflow generates the files and builds the distribution as described above, and also makes the distribution available in the release.
+When a release is created, the workflow `release.yml` is triggered. This workflow generates the files and builds the distribution as described above, and also makes the distribution available in the release.
 
 This is conducted by:
 - archiving the distribution found in the `dist` directory into a single zip file `dist.zip`

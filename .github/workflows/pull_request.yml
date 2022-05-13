@@ -1,4 +1,4 @@
-name: Sample Service Validator Config Build
+name: Build and Validate on Pull Request
 on:
   pull_request:
     branches:

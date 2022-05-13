@@ -1,4 +1,4 @@
-name: Sample Service Validator Config Build and Update Release
+name: Build, Validate, and Upload upon Release
 on:
   release:
     branches: 
