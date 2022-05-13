@@ -1,0 +1,1 @@
+python3 scripts/export/zip_dist.py dist dist.zip

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ordered": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "display",
+          "name",
+          "ordered_fields"
+        ],
+        "properties": {
+          "display": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ordered_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

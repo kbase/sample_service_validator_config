@@ -1,0 +1,148 @@
+namespace: sesar
+terms:
+  age_max:
+    description: Maximum geological age in years
+    examples:
+    - 4.6
+    minimum: 0.0
+    title: Age (max)
+    type: number
+    units: years
+  age_min:
+    description: minimum geological age in years
+    examples:
+    - 4.2
+    minimum: 0.0
+    title: Age (min)
+    type: number
+    units: years
+  age_unit:
+    title: Age Unit
+    description: Unit for the age provided
+    examples:
+      - Ma
+      - years
+    type: string
+  classification:
+    description: Taxonomy (formal classification) Formal categorization of sample.
+    examples:
+    - Igneous>Plutonic>Felsic
+    - Plagioclase
+    title: Classification
+    type: string
+  depth_in_core_max:
+    description: maximum depth in core in meters
+    examples:
+    - 0.003
+    required: true
+    title: Depth in Core (max)
+    type: number
+    units: meters
+  depth_in_core_min:
+    description: Minimum depth in core in meters
+    examples:
+    - 0.001
+    required: true
+    title: Depth in Core (min)
+    type: number
+    units: meters
+  easting:
+    description: Easting in meters
+    examples:
+    - 305294
+    title: Easting
+    type: number
+    units: m
+  elevation_end:
+    description: Elevation end in meters
+    examples:
+    - 673.5
+    - -4520
+    title: Elevation end
+    type: number
+    units: m
+  elevation_start:
+    description: Elevation start in meters
+    examples:
+    - 678.5
+    - -4536
+    title: Elevation start
+    type: number
+    units: m
+  elevation_unit:
+    title: Elevation Unit
+    description: Unit in which elevation start and/or end are provided in.
+    examples:
+      - meters
+      - feet
+      - miles
+      - kilometers
+    type: string
+  material:
+    description: Material that the sample consists of using SESAR vocabulary.
+    enum:
+    - Biology
+    - Gas
+    - Ice
+    - Liquid>aqueous
+    - Liquid>organic
+    - Mineral
+    - NotApplicable
+    - Other
+    - Particulate
+    - Rock
+    - Sediment
+    - Soil
+    - Synthetic
+    examples:
+    - Rock
+    - Liquid>Aqueous
+    title: Material (SESAR)
+    type: string
+  navigation_type:
+    description: Navigation type
+    enum:
+    - ACOUSTIC_RANGING/GPS
+    - DGPS
+    - DVL
+    - DVL:Renav
+    - DVL:Renav:Confirmed
+    - DVL/LBL
+    - DVL/LBL:Renav
+    - DVL/LBL:Renav:Confirmed
+    - DVL/LBL/INS
+    - DVL/USBL
+    - DVL/USBL:Renav
+    - GLONASS
+    - GPS
+    - GPS:Assumed
+    - GPS/WireOut
+    - LAYBACK
+    - LAYBACK/LBL
+    - LBL
+    - Locale
+    - LORAN
+    - NotApplicable
+    - NotProvided
+    - RTK GPS
+    - USBL
+    examples:
+    - GPS
+    title: Navigation type
+    type: string
+  northing:
+    description: Northing in meters
+    examples:
+    - 4111279
+    title: Northing
+    type: number
+    units: m
+  sub-object_type:
+    description: More descriptive Object Type. This applies only to samples with Object
+      Type set to Individual Sample.
+    examples:
+    - Thin section
+    - Powder
+    title: Sub-object type
+    type: string
+

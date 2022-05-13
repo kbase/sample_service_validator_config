@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "constant": "number"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+          "type": "number"
+        }
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "maximum": {
+      "type": "number"
+    },
+    "minimum": {
+      "type": "number"
+    },
+    "exclusiveMaximum": {
+      "type": "number"
+    },
+    "exclusiveMinimum": {
+      "type": "number"
+    },
+    "units": {
+      "type": "string"
+    },
+    "formatting": {
+      "type": "object",
+      "properties": {
+        "useGrouping": {
+          "type": "boolean"
+        },
+        "minimumFractionDigits": {
+          "type": "number"
+        },
+        "maximumFractionDigits": {
+          "type": "number"
+
+        }
+      }
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "examples",
+    "type",
+    "units"
+  ],
+  "additionalProperties": false
+}

@@ -1,43 +1,66 @@
-VALIDATION_FILE=metadata_validation.yml
-ONTOLOGY_FILE=ontology_validators.yml
-TEMP_FILE=temp_file.yml
-TEMP_FILE_2=temp_file2.yml
-SAMPLE_SERVICE_SCHEMA = test_data/validator_schema.json
-MACRO_SCHEMA = test_data/validator_macro_schema.json
-VOCAB_SCHEMA = test_data/vocabulary_schema.json
-TEMPLATES_DIR = 'templates'
+.PHONY: script-runner validate-specs clean validate-dist legacy-files
 
-.PHONY: templates test update copy-misc
+all: clean script-runner validate-specs dist validate-dist
 
-all: test prepare-dist update templates copy-to-dist
+script-runner:
+	@docker build -t cli .
 
-templates:
-	python3 ./gen_template_yaml.py sesar_template.yml sesar.tsv
-	python3 ./gen_template_yaml.py enigma_template.yml enigma.tsv
+validate-specs:
+	@printf "Validating source specs..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_source_specs.sh
+	@printf "done.\n"
+	@printf "Validating source spec units..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_vocabulary_units.sh
+	@printf "done.\n"
 
-test:
-	python3 -c "import yaml, sys; yaml.safe_load(sys.stdin)" < sample_uploader_mappings.yml
-	python3 scripts/validate_schemas.py $(SAMPLE_SERVICE_SCHEMA) $(VALIDATION_FILE)
-	python3 scripts/validate_schemas.py $(MACRO_SCHEMA) vocabularies/*yml
-	python3 scripts/merge_validators.py $(TEMP_FILE) $(TEMP_FILE_2)
-	python3 scripts/check_if_updated.py $(VALIDATION_FILE) $(TEMP_FILE)
-	python3 scripts/check_if_updated.py $(ONTOLOGY_FILE) $(TEMP_FILE_2)
-	rm $(TEMP_FILE)
-	rm $(TEMP_FILE_2)
-	python3 scripts/validate_templates.py $(TEMPLATES_DIR)/*yml
+clean:
+	@printf "Removing dist directory..."
+	@rm -rf dist
+	@printf "done.\n"
+	@printf "Removing the dist archive..."
+	@rm -f dist.zip
+	@printf "done.\n"
 
-update:
-	python3 scripts/merge_validators.py $(VALIDATION_FILE) $(ONTOLOGY_FILE)
-	python3 scripts/create_tsv.py $(VALIDATION_FILE)
-	
+dist:
+	@printf "Building UI exports in 'dist' directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/ui_export.sh
+	@printf "done.\n"
+	@printf "Building validators config in 'dist' directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators.sh
+	@printf "done.\n"
+	@printf "Building validators documentation table in 'dist' directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/create_fields_table.sh
+	@printf "done.\n"
+	@printf "Building templates in "dist" directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates.sh
+	@printf "done.\n"
+	@printf "Adding a 'readme' file to the dist directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/copy_other_files.sh
+	@printf "done.\n"
+	@printf "Adding a 'manifest' file to the dist directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/create_manifest.sh
+	@printf "Zip the dist directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/zip_dist.sh
+	@printf "done.\n"
 
-copy-to-dist:
-	cp -pr templates dist
-	cp $(VALIDATION_FILE) dist
-	cp ontology_validators.yml dist
-	cp sample_uploader_mappings.yml dist
-	cp assets/dist-README.md dist/README.md
-	zip -r dist.zip dist
+validate-dist:
+	@printf "Validating the generated validator files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_generated_validators.sh
+	@printf "done.\n"
+	@printf "Validating the generated ui spec files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_ui_export.sh
+	@printf "done.\n"
 
-prepare-dist:
-	mkdir -p dist
+legacy-files: script-runner
+	@printf "Building validators config in root directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/merge_validators_legacy.sh
+	@printf "done.\n"
+	@printf "Building templates in "dist" directory..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_templates_legacy.sh
+	@printf "done.\n"
+	@printf "Build the ontology validators file..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/build_ontology_validators.sh
+	@printf "done.\n"
+	@printf "Validate the generated validator files..."
+	@docker run --rm -v ${PWD}:/kb/module cli scripts/automation/validate_validators_legacy.sh
+	@printf "done.\n"

@@ -1,0 +1,1 @@
+python3 scripts/export/service/merge_validators.py dist/metadata_validation.yml 
