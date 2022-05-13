@@ -6,8 +6,9 @@ terms:
     - ENVO:01001831
     type: string
     format: ontology-term
-    ancestorTerm: ENVO:00000428
-    namespace: envo_ontology
+    ontology:
+      ancestor_term: ENVO:00000428
+      ns: envo_ontology
   city_township:
     # Perhaps the canonical name should be just  "city"?
     # I think people are accustomed to interpreting city as
@@ -101,8 +102,9 @@ terms:
     - ENVO:00000314
     type: string
     format: ontology-term
-    ancestorTerm: ENVO:01000813
-    namespace: envo_ontology
+    ontology:
+      ancestor_term: ENVO:01000813
+      ns: envo_ontology
   latitude:
     title: Latitude
     description: Latitude of the location where the sample was collected in WGS 84
@@ -188,8 +190,9 @@ terms:
     - ENVO:01001614
     type: string
     format: ontology-term
-    ancestorTerm: ENVO:00010483
-    namespace: envo_ontology
+    ontology:
+      ancestor_term: ENVO:00010483
+      ns: envo_ontology
   modification_date:
     title: Modification Date
     description: Modification date

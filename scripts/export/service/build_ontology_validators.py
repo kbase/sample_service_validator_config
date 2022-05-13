@@ -30,11 +30,11 @@ def build_validator_file(source_file, output_file):
 
         ontology_validators[key] = [
             {
-                "ancestor_term": validator["key_metadata"]["ancestorTerm"],
+                "ancestor_term": validator["key_metadata"]["ontology"]["ancestor_term"],
                 "display_name": validator["key_metadata"]["title"],
-                "ontology": validator["key_metadata"]["namespace"],
+                "ontology": validator["key_metadata"]["ontology"]["ns"],
                 "ontology_collection": NAMESPACE_TO_COLLECTION[
-                    validator["key_metadata"]["namespace"]
+                    validator["key_metadata"]["ontology"]["ns"]
                 ],
                 "validator_type": extract_ontology_callable_builder(validator),
             }

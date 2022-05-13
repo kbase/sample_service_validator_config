@@ -46,8 +46,8 @@ def expand_validators(val):
         if field_format == "ontology-term":
             v["callable_builder"] = "ontology_has_ancestor"
             v["parameters"] = {
-                "ontology": val["namespace"],
-                "ancestor_term": val["ancestorTerm"],
+                "ontology": val["ontology"]["ns"],
+                "ancestor_term": val["ontology"]["ancestor_term"],
             }
         else:
             return deepcopy(_NOOP)

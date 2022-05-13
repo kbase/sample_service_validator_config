@@ -46,9 +46,12 @@ def transform_validator(key, validator):
         schema = copy_if(validator, "format", schema)
         schema = copy_if(validator, "minLength", schema)
         schema = copy_if(validator, "maxLength", schema)
-        schema = copy_if(validator, "ancestorTerm", schema)
-        schema = copy_if(validator, "namespace", schema)
-        copy_if(validator, "enum", schema, "enum")
+        schema = copy_if(validator, "enum", schema, "enum")
+
+        if "format" in validator and validator["format"] == "ontology-term":
+            schema["ancestorTerm"] = validator["ontology"]["ancestor_term"]
+            schema["namespace"] = validator["ontology"]["ns"]
+
     elif validator["type"] == "number":
         schema["type"] = "number"
         schema = copy_if(validator, "minimum", schema)

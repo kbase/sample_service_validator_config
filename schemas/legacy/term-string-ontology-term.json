@@ -26,11 +26,17 @@
         "type": "string"
       }
     },
-    "ancestorTerm": {
-      "type": "string"
-    },
-    "namespace": {
-      "type": "string"
+    "ontology": {
+      "type": "object",
+      "required": ["ancestor_term", "ns"],
+      "properties": {
+        "ancestor_term": {
+          "type": "string"
+        },
+        "ns": {
+          "type": "string"
+        }
+      }
     },
     "formatting": {
       "type": "object"
@@ -41,8 +47,7 @@
     "description",
     "examples",
     "type",
-    "namespace",
-    "ancestorTerm"
+    "ontology"
   ],
   "additionalProperties": false
 }
