@@ -9,7 +9,7 @@ def generate_manifest(output_filename):
     committer_time = datetime.datetime.fromtimestamp(commit.committer.time) + datetime.timedelta(minutes=commit.committer.offset)
     author_time = datetime.datetime.fromtimestamp(commit.author.time) + datetime.timedelta(minutes=commit.author.offset)
     manifest = {
-        "source": {
+        "git": {
             "commit_hash": commit.hex,
             "commit_message": commit.message.strip("\n"),
             "committer": {
@@ -22,10 +22,26 @@ def generate_manifest(output_filename):
                 "email": commit.author.email,
             },
             "authored_at": author_time.isoformat(),
+        },
+        "files": {
+            "groups.json": None,
+            "manifest.json": None,
+            "metadata_validation.yml": None,
+            "ontology_validators.yml": None,
+            "pint_unit_definitions.txt": None,
+            "README.md": None,
+            "sample_fields.html": None,
+            "sample_uploader_mappings.yml": None,
+            "schemas.json": None,
+            "templates": {
+                "enigma_template.yml": None,
+                "sesar_template.yml": None
+            }
         }
     }
     with open(output_filename, "w") as f:
         json.dump(manifest, f, indent=4)
+
 
 
 def main():
