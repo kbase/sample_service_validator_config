@@ -2,8 +2,9 @@ name: Sample Service Validator Config Build and Update Release
 on:
   release:
     branches: 
-      -master
-    types: [published]
+      - master
+    types:
+      - published
 jobs:
   build-dist:
     runs-on: ubuntu-latest

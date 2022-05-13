@@ -1,11 +1,12 @@
 name: Sample Service Validator Config Build and Test
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
+    types:
+      - opened
+      - reopened
+      - synchronize
   workflow_dispatch:
 jobs:
   build-dist:
