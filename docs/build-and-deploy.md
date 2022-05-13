@@ -22,14 +22,14 @@ These files are used by the [Sample Service](https://github.com/kbase/sample_ser
 
 In addition `metadata_validation.tsv` is generated but does not appear to be used.
 
-Until those services are updated to use the new config distribution scheme (described below), they are also left in their "legacy" location. The legacy locations are require that the developer generate the files locally and commit them with their changes.
+Until those services are updated to use the new config distribution scheme (described below), they will also be left in their "legacy" location in the root of the rpo. The legacy locations require that the developer generate the files locally and then commit them. This is because the Sample Service and Sample Uploader fetch these files directly from the master branch at GitHub.
 
-The second set are composed of JSON files, one of which is in JSON-Schema format.
+The second set of generated config files are in JSON format.
 
 - `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field
 - `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
 
-These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Sample Set Viewer.
+These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Narrative Sample Set Viewer.
 
 ## Prerequisites
 
@@ -50,7 +50,7 @@ pip install -r requirements.txt -r requirements-dev.txt
 
 The Sample Service and Sample Uploader currently expect to find configuration files in specific locations in the "master" branch of this repo. In this document, these are called "legacy" config files.
 
-At some future time these services will be refactored to pick up the same files from a distribution branch, as is described in sections below.
+At some future time these services will be refactored to pick up the same files from a release, as is described in sections below.
 
 The legacy configuration files are created locally by a developer after making changes to the sources, and then pushed up to the canonical repo along with the source changes, and ultimately made available by merging a Pull Request to the master branch.
 
@@ -91,11 +91,11 @@ Sample import is conducted by the `import_samples` method of the `sample_uploade
 
 ## Generating Config Distribution
 
-A new generation process has been designed to replace the legacy process described above. Rather than generate the configs and include them in the repo directly, they are generated in the GitHub repository through a GitHub Action workflow, `.github/build-dist.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
+A new process has been designed to replace the legacy process described above. Rather than generate the configs and include them in the repo directly, they are generated in the GitHub repository through a GitHub Action workflow, `.github/build-update-release.yml`. We refer to the set of generated files intended for external usage as the "distribution", or "dist" for short.
 
-The generated files are made available in special distribution branches, which are either created or updated by the workflow itself. This process is described in more detail below.
+The generated files are made available as an asset in a GitHub release. 
 
-You may generate the distribution locally with just Docker.
+You may also generate the distribution locally with just Docker.
 
 The following command
 
@@ -103,7 +103,7 @@ The following command
 make
 ```
 
-will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts via the container to build and validate the source files, build the distribution, and validate the distribution.
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts via the container to validate the source files, build the generated files, validate the generated files, and create the distribution.
 
 > The `dist` directory is excluded from `git`, so you may generate them locally in order to inspect and validate them without worrying about affecting the repo.
 
@@ -120,13 +120,16 @@ dist
 ├── groups.json
 ├── manifest.json
 ├── metadata_validation.yml
+├── ontology_validators.yml
+├── pint_unit_definitions.txt
 ├── sample_fields.html
+├── sample_uploader_mappings.yml
 ├── schemas.json
 └── templates
     ├── enigma_template.yml
     └── sesar_template.yml
 
-1 directory, 8 files
+1 directory, 11 files
 ```
 
 Let's itemize those files
@@ -135,6 +138,10 @@ Let's itemize those files
 - `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
 - `manifest.json` - information about the distribution build
 - `metadata_validation.yml` - field definitions for services
+- `ontology_validators.yml` - subset of metadata_validation.yml utilized by the sample_uploader app 
+- `pint_unit_definitions.txt` - custom unit definitions
+- `sample_fields.html` - a report of all sample fields, grouped and ordered, copied into docs.kbase.us
+- `sample_uploader_mappings.yml` - manually curated file used by the sample_uploader app
 - `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field, for user interfaces
 - `templates` - upload templates
   - `sesar_template.yml` - upload template for SESAR samples
@@ -142,13 +149,11 @@ Let's itemize those files
 
 ## GitHub Action Workflow Process
 
-The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
-
-An additional small workflow deletes distribution branches created for pull requests after the PR is merged.
+The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also archives the distribution and attaches it to a GitHub release.
 
 ### Build and Validate
 
-The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
+The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-test.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
 
 The generation and validation of config files is conducted via the Makefile as a sequence of scripts run inside a docker container. This workflow step is the same one utilized in the local build procedure described above.
 
@@ -160,38 +165,23 @@ The final preparation step is to create the script-runner image, which is tagged
 
 #### Validation and Build Steps
 
-Following the preparation steps is the validation and build step. A repo directory (i.e. in the GHA runner itself) is volume mounted into the container at `/kb/module`. This allows the files generated within the container to be available in the GHA host for later steps.
+Following the preparation steps is the validation and build step. The repo directory (i.e. in the GHA runner itself) is volume mounted into the container at `/kb/module`. This allows the files generated within the container to be available in the GHA host for later steps.
 
 These steps carry out the following tasks:
 
 - validate source spec files
 - generate files for distribution into `dist`
 - validate generated files 
-- copies a special `README.md` into the `dist` directory
+- copies generated and other files into `dist` directory if they were not generated there 
 - creates a special `manifest.json` file in `dist`, containing information about the build itself
 
-#### Create distribution branch steps
+#### Publish a release
 
-After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on which trigger invoked the workflow.
+When a release is created, the workflow `build-update-release.yml` is triggered. This workflow generates the files and builds the distribution as described above, and also makes the distribution available in the release.
 
-The following trigger and branch naming conventions are used:
-
-| trigger                             | description                                                                                                                                               | branch name           | tag name              |
-|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------|
-| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number                                                    | `dist-pull_request-#` | n/a                   |
-| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
-| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release | `dist-release`        | `dist-release-v#.#.#` |
-
-The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
-
-Note that releases create or update an evergreen branch `dist-release` as well as creating a per-release
-tag `dist-release-v#.#.#` on the `dist-release` branch.
-
-### Remove pull request branches
-
-As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further use.
-
-The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
+This is conducted by:
+- archiving the distribution found in the `dist` directory into a single zip file `dist.zip`
+- uploads `dist.zip` to the release assets
 
 ### GHA Token
 
