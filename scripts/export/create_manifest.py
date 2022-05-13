@@ -1,24 +1,27 @@
 import sys
 import json
-from git import Repo
-
+import pygit2
+import datetime
 
 def generate_manifest(output_filename):
-    repo = Repo(".")
+    repo = pygit2.Repository('.')
+    commit = repo.revparse_single('HEAD')
+    committer_time = datetime.datetime.fromtimestamp(commit.committer.time) + datetime.timedelta(minutes=commit.committer.offset)
+    author_time = datetime.datetime.fromtimestamp(commit.author.time) + datetime.timedelta(minutes=commit.author.offset)
     manifest = {
         "source": {
-            "commit_hash": repo.head.object.hexsha,
-            "commit_message": repo.head.object.message.strip("\n"),
+            "commit_hash": commit.hex,
+            "commit_message": commit.message.strip("\n"),
             "committer": {
-                "name": repo.head.object.committer.name,
-                "email": repo.head.object.committer.email,
+                "name": commit.committer.name,
+                "email": commit.committer.email,
             },
-            "committed_at": repo.head.object.committed_datetime.isoformat(),
+            "committed_at": committer_time.isoformat(),
             "author": {
-                "name": repo.head.object.author.name,
-                "email": repo.head.object.author.email,
+                "name": commit.author.name,
+                "email": commit.author.email,
             },
-            "authored_at": repo.head.object.authored_datetime.isoformat(),
+            "authored_at": author_time.isoformat(),
         }
     }
     with open(output_filename, "w") as f:
