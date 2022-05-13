@@ -22,7 +22,7 @@ These files are used by the [Sample Service](https://github.com/kbase/sample_ser
 
 In addition `metadata_validation.tsv` is generated but does not appear to be used.
 
-Until those services are updated to use the new config distribution scheme (described below), they will also be left in their "legacy" location in the root of the rpo. The legacy locations require that the developer generate the files locally and then commit them. This is because the Sample Service and Sample Uploader fetch these files directly from the master branch at GitHub.
+Until those services are updated to use the new config distribution scheme (described below), they will also be left in their "legacy" location in the root of the repo. The legacy locations require that the developer generate the files locally and then commit them. This is because the Sample Service and Sample Uploader fetch these files directly from the master branch at GitHub.
 
 The second set of generated config files are in JSON format.
 
