@@ -2,15 +2,15 @@
 
 The Sample Specifications are maintained in an idiosyncratic YAML format. The YAML files are located in the `specs` directory:
 
-- `vocabularies/*.yml` - define sample fields
-- `sesar.tsv` - SESAR template field definitions
-- `enigma.tsv` - ENIGMA template field definitions
-- `templates/*.yml` - both template definition source and generated template
-- `ordered.yml` - defines sample field grouping and ordering
+- `specs/vocabularies/*.yml` - define sample fields
+- `specs/templates/*.yml` - define upload templates
+- `specs/ordered.yml` - defines sample field grouping and ordering
 
-These files are transformed into an additional set of files for usage by the Sample Service and Sample Uploader. The process of transforming the source specifications to generate an additional set of files for usage is the subject of this document.
+These files are transformed into an additional set of files for usage by the Sample Service, Sample Uploader, and sample user interfaces. The process of transforming the source specifications to generate an additional set of files for usage is the subject of this document.
 
-From the set of files above, additional files are generated:
+There are two sets of generated files.
+
+One set is composed of yaml files in a proprietary format:
 
 - `metadata_validation.yml` - field definitions
 - `ontology_validators.yml` - ontology term field definitions extracted and transformed
@@ -18,15 +18,24 @@ From the set of files above, additional files are generated:
 - `templates/sesar_template.yml` - upload template for SESAR samples
 - `templates/enigma_template.yml` - upload template for ENIGMA samples
 
-These files are used by the [Sample Service](https://github.com/kbase/sample_service) and [Sample Uploader](https://github.com/kbaseapps/sample_uploader). The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, `ontology_validators.yml` to validate ontology sample fields, and `sample_uploader_mappings.yml` `templates/*.yml` to construct and validate samples of type SESAR or ENIGMA.
+These files are used by the [Sample Service](https://github.com/kbase/sample_service) and [Sample Uploader](https://github.com/kbaseapps/sample_uploader). The Sample Service uses `metadata_validation.yml` to validate individual sample fields. The Sample Uploader uses `metadata_validation.yml` to validate sample fields, `ontology_validators.yml` to validate ontology sample fields, and the templates to validate sample sets of type SESAR or ENIGMA.
+
+In addition `metadata_validation.tsv` is generated but does not appear to be used.
 
 Until those services are updated to use the new config distribution scheme (described below), they are also left in their "legacy" location. The legacy locations are require that the developer generate the files locally and commit them with their changes.
 
+The second set are composed of JSON files, one of which is in JSON-Schema format.
+
+- `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field
+- `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
+
+These files are utilized by user interfaces, including the Sample Landing Page, Sample Set Landing Page, and the Sample Set Viewer.
+
 ## Prerequisites
 
-In order to build and test the specs, you just need `make`, `python`, and a `bash` compatible shell.
+In order to build and test the specs, you just need `make`, `docker`, and a `bash` compatible shell.
 
-For editing the files, you will also need to have Python 3.7 available. A `requirements.txt` is available, and shared with the build image.
+For editing the files, you will also need to have Python 3.7 available. A `requirements.txt` is available, and shared with the build image, and `requirements-dev.txt` provides additional developer support.
 
 E.g. to set up a virtual environment suitable for development:
 
@@ -34,7 +43,7 @@ E.g. to set up a virtual environment suitable for development:
 python -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install -r requirements.txt
+pip install -r requirements.txt -r requirements-dev.txt
 ```
 
 ## Legacy Config Generation
@@ -48,7 +57,7 @@ The legacy configuration files are created locally by a developer after making c
 In order to generate these files, issue the following command:
 
 ```bash
-make
+make legacy-files
 ```
 
 This will result in the following files being created or replaced:
@@ -63,13 +72,10 @@ This will result in the following files being created or replaced:
 ```
 
 - `metadata_validation.yml` - KBase-formatted validation configuration for each defined metadata field
+- `metadata_validation.tsv` - Alternative format of the above; usage unknown
 - `ontology_validators.yml` - KBase-formatted validation configuration for ontology fields (different format than in metadata_validation.yml)
 - `templates/enigma_template.yml` - Metadata fields defined for the ENIGMA sample type, utilized by the importer
 - `templates/sesar_template.yml` - Metadata fields defined for the SESAR sample type, utilized by the importer
-
-Note that `metadata_validation.tsv` is generated, but does not appear to be used.
-
-In addition, the file `samples_uploader_mappings.yml` is utilized by the sample uploader, but is maintained by hand.
 
 ### Consumption by Services
 
@@ -89,7 +95,7 @@ A new generation process has been designed to replace the legacy process describ
 
 The generated files are made available in special distribution branches, which are either created or updated by the workflow itself. This process is described in more detail below.
 
-You may generate the distribution locally.
+You may generate the distribution locally with just Docker.
 
 The following command
 
@@ -97,43 +103,99 @@ The following command
 make
 ```
 
-will run a set of scripts via the container to build and validate the source files and then build the distribution. The "build" of the distribution consists of just copying the files to the `dist` directory.
+will build a Docker image with Python and all dependencies installed, and then proceed to run a set of scripts via the container to build and validate the source files, build the distribution, and validate the distribution.
 
 > The `dist` directory is excluded from `git`, so you may generate them locally in order to inspect and validate them without worrying about affecting the repo.
 
+ If you peek into the Makefile, you'll see that each step actually runs one or more shell scripts. The default entry point for the image is `bash`, and the command is expected to be a script. All the scripts run within the workflow are located in `scripts/automation`.
+
+Each automation shell script in turn calls a Python script to conduct the actual work. These scripts are located in `scripts/export` and `scripts/validate`. This double-step process is used because each Python script expects certain parameters. This facilitates re-usage and testability. It also insulates the build process from the details of script execution, other than the very simple shell scripts.
+
+After running `make`, you should see a `dist` directory, with the following contents:
+
+```bash
+% tree dist
+dist
+├── README.md
+├── groups.json
+├── manifest.json
+├── metadata_validation.yml
+├── sample_fields.html
+├── schemas.json
+└── templates
+    ├── enigma_template.yml
+    └── sesar_template.yml
+
+1 directory, 8 files
+```
+
+Let's itemize those files
+
+- `README.me` - short doc describing the directory
+- `groups.json` - field grouping and ordering, covering all fields defined in `schemas.json`.
+- `manifest.json` - information about the distribution build
+- `metadata_validation.yml` - field definitions for services
+- `schemas.json` - field definitions provided as an array of JSON-Schema specs, one per field, for user interfaces
+- `templates` - upload templates
+  - `sesar_template.yml` - upload template for SESAR samples
+  - `enigma_template.yml` - upload template for ENIGMA samples
+
 ## GitHub Action Workflow Process
 
-The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files for releases (including pre-releases.)
+The heart of the GitHub Action build workflow invokes the makefile as described above. In addition to the build and validation steps, it also takes care to capture the generated files in distribution branches. More on that later.
 
+An additional small workflow deletes distribution branches created for pull requests after the PR is merged.
 
 ### Build and Validate
 
 The "Sample Service Validator Config Distribution Builder" workflow, `.github/build-dist.yml`, is responsible for validating the source specs, creating the generated files, and validating the generated files.
 
-The generation and validation of config files is conducted via the Makefile as a sequence of scripts. This workflow step is the same one utilized in the local build procedure described above.
+The generation and validation of config files is conducted via the Makefile as a sequence of scripts run inside a docker container. This workflow step is the same one utilized in the local build procedure described above.
 
 #### Preparation Steps
 
-The workflow first takes care of boilerplate operations, like cloning the repo.
+The workflow first takes care of boilerplate operations, like cloning the repo and preparing some environment variables.
+
+The final preparation step is to create the script-runner image, which is tagged `cli`, since it is used for running commands.
 
 #### Validation and Build Steps
 
-Following the preparation steps is the validation and build step.
+Following the preparation steps is the validation and build step. A repo directory (i.e. in the GHA runner itself) is volume mounted into the container at `/kb/module`. This allows the files generated within the container to be available in the GHA host for later steps.
 
 These steps carry out the following tasks:
 
 - validate source spec files
 - generate files for distribution into `dist`
+- validate generated files 
 - copies a special `README.md` into the `dist` directory
-- archives the directory as `dist.zip`
+- creates a special `manifest.json` file in `dist`, containing information about the build itself
 
-#### Create release asset
+#### Create distribution branch steps
 
-After the `dist.zip` archive is created it is uploaded to the release. Since this workflow is only triggered by the publication of a release (including pre-releases), this is safe to do.
+After the `dist` directory is populated and verified, it is copied into a special `dist-*` branch. Which branch it is copied into depends on which trigger invoked the workflow.
+
+The following trigger and branch naming conventions are used:
+
+| trigger                             | description                                                                                                                                               | branch name           | tag name              |
+|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|-----------------------|
+| `pull_request` to `master`          | Default triggers (`opened`, `synchronize`, `reopened`) for a PR against `master`; `#` is the PR number                                                    | `dist-pull_request-#` | n/a                   |
+| `push` to `master`                  | Captures primarily PR merging into the master branch, but also other commits; creates                                                                     | `dist-master`         | n/a                   |
+| `release` `published` from `master` | Captures the state of a `release` against the `master` branch when it is `published`; `v*.*.*` is the semantic-version-formatted tag used for the release | `dist-release`        | `dist-release-v#.#.#` |
+
+The resulting branch is created or updated with just the contents of the `dist` directory; all other content in the repo is absent. This makes these branches suitable for consumption by downstream services or clients.
+
+Note that releases create or update an evergreen branch `dist-release` as well as creating a per-release
+tag `dist-release-v#.#.#` on the `dist-release` branch.
+
+### Remove pull request branches
+
+As you, astute reader, may have recognized, creating a distribution branch per pull request would result in many extant `dist-pull_request-#` branches. When a PR is active, the pull request branches can be useful for testing and evaluation. However, once a PR is closed (whether merged or abandoned), the associated `dist` branch has no further use.
+
+The workflow verbosely named `delete-closed-pr-dist-branch.yml` takes care of that by triggering the deletion of a PR's `dist` branch when the PR is closed, using the trigger `pull_request` for `master` branch when `closed`.
 
 ### GHA Token
 
-The GHA workflow requires a token named `KBASE_BOT_TOKEN`. This token requires  `repo:public_repo` access.
+The GHA workflow requires a token named `KBASE_BOT_TOKEN`. This token requires just `repo:public_repo` access.
 
 - create a PAT or other token with `repo:public_repo` access
 - create a secret named `KBASE_BOT_TOKEN` with the value set to the token
