@@ -1,20 +1,20 @@
 namespace: sesar
 terms:
   age_max:
+    title: Age (max)
     description: Maximum geological age in years
     examples:
     - 4.6
-    minimum: 0.0
-    title: Age (max)
     type: number
+    minimum: 0.0
     units: years
   age_min:
+    title: Age (min)
     description: minimum geological age in years
     examples:
     - 4.2
-    minimum: 0.0
-    title: Age (min)
     type: number
+    minimum: 0.0
     units: years
   age_unit:
     title: Age Unit
@@ -24,49 +24,49 @@ terms:
       - years
     type: string
   classification:
+    title: Classification
     description: Taxonomy (formal classification) Formal categorization of sample.
     examples:
     - Igneous>Plutonic>Felsic
     - Plagioclase
-    title: Classification
     type: string
   depth_in_core_max:
+    title: Depth in Core (max)
     description: maximum depth in core in meters
     examples:
     - 0.003
     required: true
-    title: Depth in Core (max)
     type: number
     units: meters
   depth_in_core_min:
+    title: Depth in Core (min)
     description: Minimum depth in core in meters
     examples:
     - 0.001
     required: true
-    title: Depth in Core (min)
     type: number
     units: meters
   easting:
+    title: Easting
     description: Easting in meters
     examples:
     - 305294
-    title: Easting
     type: number
     units: m
   elevation_end:
+    title: Elevation end
     description: Elevation end in meters
     examples:
     - 673.5
     - -4520
-    title: Elevation end
     type: number
     units: m
   elevation_start:
+    title: Elevation start
     description: Elevation start in meters
     examples:
     - 678.5
     - -4536
-    title: Elevation start
     type: number
     units: m
   elevation_unit:
@@ -79,6 +79,7 @@ terms:
       - kilometers
     type: string
   material:
+    title: Material (SESAR)
     description: Material that the sample consists of using SESAR vocabulary.
     enum:
     - Biology
@@ -97,9 +98,9 @@ terms:
     examples:
     - Rock
     - Liquid>Aqueous
-    title: Material (SESAR)
     type: string
   navigation_type:
+    title: Navigation type
     description: Navigation type
     enum:
     - ACOUSTIC_RANGING/GPS
@@ -128,21 +129,20 @@ terms:
     - USBL
     examples:
     - GPS
-    title: Navigation type
     type: string
   northing:
+    title: Northing
     description: Northing in meters
     examples:
     - 4111279
-    title: Northing
     type: number
     units: m
   sub-object_type:
+    title: Sub-object type
     description: More descriptive Object Type. This applies only to samples with Object
       Type set to Individual Sample.
     examples:
     - Thin section
     - Powder
-    title: Sub-object type
     type: string
 
