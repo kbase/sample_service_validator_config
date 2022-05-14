@@ -6,7 +6,7 @@ on:
     types:
       - published
 jobs:
-  build-update-release:
+  build-update-release-assets:
     runs-on: ubuntu-latest
     steps:
       - name: Check out GitHub Repo
