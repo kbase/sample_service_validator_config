@@ -1,0 +1,15 @@
+terms:
+  ncbi:taxonomy_name:
+    title: NCBI taxonomy name
+    description: NCBI Taxonomy Name
+    examples:
+    - soil metagenome
+    type: string
+  nmdc:omics_type:
+    title: NMDC OMICS type
+    description: NMDC OMICS Type
+    examples:
+    - Metagenome
+    - Metatranscriptome
+    type: string
+

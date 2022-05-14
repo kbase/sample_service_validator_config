@@ -1,0 +1,279 @@
+namespace: sesar
+terms:
+  archive_contact_current:
+    title: Current archive contact
+    description: Address and/or email of the person who should be contacted for information
+      about or access to the sample.
+    examples:
+    - curator@ldeo.columbia.edu
+    type: string
+  archive_contact_original:
+    title: Original archive contact
+    description: Address and/or email of the person who should be contacted for information
+      about the sample's original archive.
+    examples:
+    - curator@ldeo.columbia.edu
+    type: string
+  archive_current:
+    title: Current archive
+    description: Name of institution, museum, or repository where the sample is currently
+      stored.
+    examples:
+    - Lamont Deep Sea Core Repository
+    - Palisades, NY
+    type: string
+  archive_original:
+    title: Original archive
+    description: Name of institution, museum, or repository where the sample is originally
+      stored.
+    examples:
+    - Lamont Deep Sea Core Repository
+    - Palisades, NY
+    type: string
+  collection_date:
+    title: Collection date
+    description: Date when the sample was collected.
+    examples:
+    - '2015-03-31'
+    type: string
+  collection_date_end:
+    title: Collection date (end)
+    description: Date when the sample collection was finished (if a date range is
+      provided).
+    examples:
+    - '2015-03-31'
+    type: string
+  collection_date_precision:
+    title: Collection date precision
+    description: Precision to display the collection date and time.
+    examples:
+    - year
+    - month
+    - day
+    - time
+    type: string
+  collection_method:
+    title: Collection method
+    description: Method by which a sample was collected
+    examples:
+    - Dredging
+    - Manual
+    type: string
+  collection_method_description:
+    title: Collection method description
+    description: Additional information about the collection method
+    examples:
+    - Hand sample collected from the top part of a large boulder
+    type: string
+  collection_time:
+    title: Collection time
+    description: Time when the sample was collected.
+    examples:
+    - 12:05:03Z
+    type: string
+  collection_time_end:
+    title: Collection time (end)
+    description: End time when the sample was collected.
+    examples:
+    - 13:05:01Z
+    type: string
+  collector_chief_scientist:
+    title: Collector/Chief Scientist name
+    description: Name of the person who collected the sample. In case of larger field
+      programs, name of chief scientist responsible for sample collection.
+    examples:
+    - Jane Smith
+    type: string
+  collector_chief_scientist_address:
+    title: Collector/Chief Scientist address
+    description: Institution, address, & email of the collector or chief scientist.
+    examples:
+    - Woods Hole Oceanographic Institution, Woods Hole, MA
+    type: string
+  depth_scale:
+    title: Depth scale
+    description: Unit in which the depth is provided
+    examples:
+    - MBSF
+    - cm
+    type: string
+  field_name:
+    title: Field name (informal classification)
+    description: Taxonomy (field name) Informal classification of sample.
+    examples:
+    - basalt
+    - amphibole
+    - sea water
+    type: string
+  field_program_cruise:
+    title: Field program/cruise
+    description: Name or identifier of the field program (cruise or expedition), during
+      which the sample was collected.
+    examples:
+    - TN182
+    type: string
+  geological_age:
+    title: Geological Age
+    description: Age of a sample as described by the stratigraphic era, period, state,
+      etc.
+    examples:
+    - Cretaceous
+    type: string
+  geological_unit:
+    title: Geological Unit
+    description: A body of rock established as a distinct entity in the classification
+      of the Earth's rocks, e.g. Supergroup, Group, Formation, or Flow
+    examples:
+    - Coconino Sandstone
+    - Fig Tree Formation
+    type: string
+  igsn:
+    title: IGSN
+    description: IGSN assigned by SESAR
+    examples:
+    - IEMEG0001
+    type: string
+  is_archived:
+    title: Is Archived
+    description: Is Archived
+    comments:
+    - Not in current SESAR format
+    examples:
+    - Y
+    - N
+    type: string
+  launch_id:
+    title: Launch ID
+    description: Further identifying information about the launch
+    examples:
+    - '3969'
+    - J2-434
+    type: string
+  launch_platform_name:
+    title: Launch platform name
+    description: The name of the launch used to collect the sample.
+    examples:
+    - Alvin
+    - Jason II
+    type: string
+  launch_type:
+    title: Launch type
+    description: The type of launch used to collect the sample.
+    examples:
+    - HOV
+    type: string
+  parent_igsn:
+    title: Parent IGSN
+    description: IGSN of Parent Sample
+    examples:
+    - IEMEG0002
+    type: string
+  physiographic_feature_name:
+    title: Name of physiographic feature
+    description: Name of the physiographic feature that you entered
+    examples:
+    - East Pacific Rise
+    - Dead Sea
+    type: string
+  physiographic_feature_primary:
+    title: Primary physiographic feature
+    description: Type of physical feature that your sample was collected from (see
+      suggested list)
+    examples:
+    - volcano
+    - mid-ocean ridge
+    type: string
+  platform_description:
+    title: Platform description
+    description: Description of platform for the cruise.
+    examples:
+    - TODO
+    type: string
+  platform_name:
+    title: Platform name
+    description: Name of platform for the cruise.
+    examples:
+    - R/V Roger Revelle
+    type: string
+  related_identifiers:
+    title: Related Identifiers
+    description: IGSN of Related Samples
+    comments:
+    - Not in current SESAR field dictionary
+    examples:
+    - IEMEG0003
+    type: string
+  relation_type:
+    title: Relation Type
+    description: Relation Type
+    comments:
+    - Not in current SESAR field dictionary
+    examples:
+    - TODO
+    type: string
+  platform_type:
+    title: Platform type
+    description: Type of platform for the cruise.
+    examples:
+    - Ship
+    type: string
+  release_date:
+    title: Release date
+    description: Date when sample metadata is publicly accessible and searchable.
+      If null, defaults to date of registration (recommended).
+    examples:
+    - '2018-03-15'
+    type: string
+  sample_type:
+    title: Sample Type
+    description: Sample Type
+    examples:
+    - Core, Core Section
+    type: string
+  size:
+    title: Size
+    description: Size of the registered object, such as the dimension of a specimen,
+      the length of a core, or the weight of a dredge
+    examples:
+    - 2x4
+    - '45'
+    type: string
+  size_unit:
+    title: Size unit
+    description: Unit for the numerical value provided for 'size'.
+    examples:
+    - cm
+    - kg
+    type: string
+  vertical_datum:
+    title: Vertical Datum
+    description: Vertical datum used to calculate the elevation
+    examples:
+    - NAVD88
+    - MSL
+    type: string
+  zone:
+    title: Zone
+    description: Zone for the geographic Cartesian coordinate "11R"
+    examples:
+    - 11R
+    type: string
+  related_url:
+    title: Related URL
+    description: Related URL associated with the samples
+    examples:
+      - https://doi.org/10.1594/IEDA/999999
+    format: url
+    type: string
+  related_url_type:
+    title: Related URL Type
+    description: Related URL type. Either DOI or Regular URL
+    examples:
+      - DOI
+    type: string
+  related_url_description:
+    title: Related URL Description
+    description: Free text description of the related URL
+    examples:
+      - DOI for related published data
+    type: string

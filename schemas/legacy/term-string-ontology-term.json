@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "constant": "string"
+    },
+    "format": {
+      "constant": "ontology-term"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ontology": {
+      "type": "object",
+      "required": ["ancestor_term", "ns"],
+      "properties": {
+        "ancestor_term": {
+          "type": "string"
+        },
+        "ns": {
+          "type": "string"
+        }
+      }
+    },
+    "formatting": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "examples",
+    "type",
+    "ontology"
+  ],
+  "additionalProperties": false
+}

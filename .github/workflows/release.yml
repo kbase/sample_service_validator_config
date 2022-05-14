@@ -1,0 +1,29 @@
+name: Build, Validate, and Upload upon Release
+on:
+  release:
+    branches: 
+      - master
+    types:
+      - published
+jobs:
+  build-update-release-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out GitHub Repo
+        uses: actions/checkout@v2
+
+      #
+      # Generate the config files
+      #
+      - name: Validate sources, generate configs, and verify generated configs
+        run: make
+
+      #
+      # Add the built assets to the release
+      #
+      - name: Upload specs to release
+        uses: alexellis/upload-assets@0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.KBASE_BOT_TOKEN }}
+        with:
+          asset_paths: '["dist.zip"]'

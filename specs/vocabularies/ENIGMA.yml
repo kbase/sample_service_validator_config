@@ -1,0 +1,352 @@
+namespace: enigma
+terms:
+  aodc:
+    title: AODC
+    description: units in cells per gram
+    examples:
+    - 200456.8368
+    type: number
+    minimum: 0.0
+    units: cells/g
+  average_water_level:
+    title: Average Water Level
+    description: units in ft above mean sea level (ft AMSL)
+    examples:
+    - 1006.01
+    type: number
+    units: ft
+  biomass_carbon:
+    title: Biomass Carbon
+    description: units in milligrams per gram
+    examples:
+    - 0.98
+    type: number
+    minimum: 0.0
+    units: mg/g
+  boncat_activity:
+    title: BONCAT Activity
+    description: units in cells per gram
+    examples:
+    - 1270000.0
+    type: number
+    minimum: 0.0
+    units: cells/g
+  boring:
+    title: Boring depth
+    description: boring depth in ft below groud surface (ft BGS)
+    examples:
+    - 50.25
+    type: number
+    minimum: 0.0
+    units: ft
+  boring_diameter:
+    title: Boring Diameter
+    description: boring diameter in inches
+    examples:
+    - 8
+    type: number
+    minimum: 0.0
+    units: in
+  conductivity:
+    title: Conductivity
+    description: conductivity in millisiemens per centimeter
+    examples:
+    - 802.65
+    type: number
+    units: mS/cm
+  dna_picogreen_total:
+    title: DNA Picogreen Total
+    description: units in nanograms
+    examples:
+    - 228.6658163
+    type: number
+    units: ng
+  drive_casing_end_depth:
+    title: Drive Casing End Depth
+    description: drive casing end depth in ft below ground surface (ft BGS)
+    examples:
+    - 27
+    type: number
+    units: ft
+  drive_casing_id:
+    title: Drive Casing ID
+    description: drive casing inner diameter in inches
+    examples:
+    - 2.625
+    type: number
+    minimum: 0.0
+    units: in
+  drive_casing_od:
+    title: Drive Casing OD
+    description: drive casing outer diameter in inches
+    examples:
+    - 3.25
+    type: number
+    minimum: 0.0
+    units: in
+  drive_casing_start_depth:
+    title: Drive Casing Start Depth
+    description: units in ft below ground surface (ft BGS)
+    examples:
+    - 10
+    type: number
+    units: ft
+  filter:
+    title: Filter
+    description: Filter pore size in microns
+    examples:
+    - 2
+    - 10
+    type: number
+    minimum: 0.0
+    units: microns
+  ground_elevation:
+    title: Ground Elevation
+    description: ground elevation in ft above mean sea level (ft AMSL)
+    examples:
+    - 1004.62
+    type: number
+    units: ft
+  lower_seal_end_depth:
+    title: Lower Seal End Depth
+    description: Lower seal end depth in ft below ground surface (ft BGS)
+    examples:
+    - 22.1
+    type: number
+    units: ft
+  lower_seal_start_depth:
+    title: Lower Seal Start Depth
+    description: Lower seal start depth in ft below ground surface (ft BGS)
+    examples:
+    - 20.25
+    type: number
+    units: ft
+  max_water_level:
+    title: Max Water Level
+    description: Maximum water level in ft above mean sea level (ft AMSL)
+    examples:
+    - 1008.41
+    type: number
+    units: ft
+  min_water_level:
+    title: Min Water Level
+    description: Minimum water level in ft above mean sea level (ft AMSL)
+    examples:
+    - 1002.99
+    type: number
+    units: ft
+  moisture:
+    title: Moisture
+    description: percent moisture
+    examples:
+    - 11.26
+    type: number
+    maximum: 100.0
+    minimum: 0.0
+    units: percent
+  open_casing_depth:
+    title: Open Casing Depth
+    description: Open casing depth in ft below ground surface (ft BGS)
+    examples:
+    - 92
+    type: number
+    units: ft
+  open_casing_id:
+    title: Open Casing ID
+    description: open casing inner diameter in inches (in)
+    examples:
+    - 6.12
+    type: number
+    minimum: 0.0
+    units: in
+  open_casing_od:
+    title: Open Casing OD
+    description: open casing outer diameter in inches (in)
+    examples:
+    - 6.62
+    type: number
+    minimum: 0.0
+    units: in
+  open_hole_depth:
+    title: Open Hole Depth
+    description: Open hole depth in ft below ground surface (ft BGS)
+    examples:
+    - 92
+    type: number
+    units: ft
+  open_hole_diameter:
+    title: Open Hole Diameter
+    description: Open hole diameter in inches
+    examples:
+    - 10
+    type: number
+    minimum: 0.0
+    units: in
+  open_interval_diameter:
+    title: Open Interval Diameter
+    description: Open interval diameter in inches
+    examples:
+    - 6
+    type: number
+    minimum: 0.0
+    units: in
+  open_interval_end_depth:
+    title: Open Interval End Depth
+    description: Open interval end depth in ft below ground surface (ft BGS)
+    examples:
+    - 125
+    type: number
+    units: ft
+  open_interval_start_depth:
+    title: Open Interval Start Depth
+    description: Open interval start depth in ft below ground surface (ft BGS)
+    examples:
+    - 92
+    type: number
+    units: ft
+  organic_carbon:
+    title: Organic Carbon
+    description: Organic carbon in milligrams per gram dry weight
+    examples:
+    - 0.532
+    type: number
+    minimum: 0.0
+    units: mg/g
+  packing_depth_end:
+    title: Packing Depth End
+    description: Packing depth end in ft below ground surface (ft BGS)
+    examples:
+    - 17.5
+    type: number
+    units: ft
+  packing_depth_start:
+    title: Packing Depth Start
+    description: Packing depth start in ft below ground surface (ft BGS)
+    examples:
+    - 15.08
+    type: number
+    units: ft
+  pore_water_extraction:
+    title: Pore Water Extraction
+    description: Pore water extraction in microliters
+    examples:
+    - 200
+    type: number
+    units: microliters
+  screen_bottom_elevation:
+    title: Screen Bottom Elevation
+    description: Screen bottom elevation in ft above mean sea level (ft AMSL)
+    examples:
+    - 985.27
+    type: number
+    units: ft
+  screen_end_depth:
+    title: Screen End Depth
+    description: Screen end depth in ft below ground surface (ft BGS)
+    examples:
+    - 14.39
+    type: number
+    units: ft
+  screen_start_depth:
+    title: Screen Start Depth
+    description: Screen start depth in ft below ground surface (ft BGS)
+    examples:
+    - 14.14
+    type: number
+    units: ft
+  screen_top_elevation:
+    title: Screen Top Elevation
+    description: Screen top elevation in ft above mean sea level (ft AMSL)
+    examples:
+    - 985.52
+    type: number
+    units: ft
+  screened_interval:
+    title: Screened Interval
+    description: Screened interval in ft
+    examples:
+    - 0.25
+    type: number
+    units: ft
+  top_of_casing_elevation:
+    title: Top of Casing Elevation
+    description: Top of casing elevation in ft above mean sea level (ft AMSL)
+    examples:
+    - 1000.9076
+    type: number
+    units: ft
+  top_of_casing_stickup:
+    title: Top of Casing Stickup
+    description: Top of casing stickup in ft
+    examples:
+    - 1.84
+    type: number
+    units: ft
+  top_of_fresh_bedrock:
+    title: Top of Fresh Bedrock
+    description: Top of fresh bedrock in ft below ground surface (ft BGS)
+    examples:
+    - 6.4
+    type: number
+    units: ft
+  top_of_weathered_bedrock:
+    title: Top of Weathered Bedrock
+    description: Top of weathered bedrock in ft below ground surface (ft BGS)
+    examples:
+    - 8
+    type: number
+    units: ft
+  total_carbon:
+    title: Total Carbon
+    description: Total carbon in milligrams per gram dry weight
+    examples:
+    - 0.3689
+    type: number
+    minimum: 0.0
+    units: mg/g
+  total_nitrogen:
+    title: Total Nitrogen
+    description: Total nitrogen in milligrams per gram dry weight
+    examples:
+    - 0.0572
+    type: number
+    minimum: 0.0
+    units: mg/g
+  upper_seal_end_depth:
+    title: Upper Seal End Depth
+    description: Upper seal end depth in ft below ground surface (ft BGS)
+    examples:
+    - 12
+    type: number
+    units: ft
+  upper_seal_start_depth:
+    title: Upper Seal Start Depth
+    description: Upper seal start depth in ft below ground surface (ft BGS)
+    examples:
+    - 10
+    type: number
+    units: ft
+  well_casing_depth:
+    title: Well Casing Depth
+    description: Well casing depth in ft below ground surface (ft BGS)
+    examples:
+    - 45.25
+    type: number
+    units: ft
+  well_casing_id:
+    title: Well Casing ID
+    description: Well casing inner diameter. units in inches
+    examples:
+    - 3.975
+    type: number
+    minimum: 0.0
+    units: in
+  well_casing_od:
+    title: Well Casing OD
+    description: Well casing outer diameter. units in inches
+    examples:
+    - 4.5
+    type: number
+    minimum: 0.0
+    units: in
+

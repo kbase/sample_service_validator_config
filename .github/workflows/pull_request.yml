@@ -1,0 +1,22 @@
+name: Build and Validate on Pull Request
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - reopened
+      - synchronize
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out GitHub Repo
+        uses: actions/checkout@v2
+
+      #
+      # Generate the config files
+      #
+      - name: Validate sources, generate configs, and verify generated configs
+        run: make

@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Config": {
+      "type": "object",
+      "properties": {
+        "skipLines": {
+          "type": "string"
+        }
+      }
+    },
+    "Aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "Transformation": {
+      "type": "object",
+      "properties": {
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transform": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "parameters",
+        "transform"
+      ]
+    },
+    "Column": {
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "$ref": "#definitions/Aliases"
+        },
+        "category": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "transformations": {
+          "type": "array",
+          "items": [
+            {
+              "$ref": "#definitions/Transformation"
+            }
+          ]
+        }
+      },
+      "required": [
+        "definition",
+        "example",
+        "transformations"
+      ]
+    },
+    "ColumnWithAPI": {
+      "type": "object",
+      "properties": {
+        "aliases": {
+          "$ref": "#definitions/Aliases"
+        },
+        "apiKey": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "example": {
+          "type": "string"
+        },
+        "instructions": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "transformations": {
+          "type": "array",
+          "items": [
+            {
+              "$ref": "#definitions/Transformation"
+            }
+          ]
+        }
+      },
+      "required": [
+        "apiKey",
+        "definition",
+        "example",
+        "transformations"
+      ]
+    },
+    "validator_set": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#definitions/validator"
+      }
+    },
+    "validator": {
+      "type": "object",
+      "properties": {
+        "key_metadata": {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "display_name": {
+              "type": "string"
+            },
+            "example": {
+              "type": [
+                "string",
+                "number",
+                "boolean"
+              ]
+            }
+          },
+          "additionalProperties": {
+            "type": [
+              "array",
+              "object",
+              "number",
+              "boolean",
+              "string",
+              "null"
+            ]
+          }
+        },
+        "validators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "module": {
+                "type": "string"
+              },
+              "callable_builder": {
+                "type": "string"
+              },
+              "parameters": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "module",
+              "callable_builder"
+            ]
+          }
+        }
+      },
+      "required": [
+        "validators",
+        "key_metadata"
+      ]
+    },
+    "ontology_validator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ancestor_term",
+        "display_name",
+        "ontology",
+        "ontology_collection",
+        "validator_type"
+      ],
+      "properties": {
+        "ancestor_term": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "ontology": {
+          "type": "string"
+        },
+        "ontology_collection": {
+          "type": "string"
+        },
+        "validator_type": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

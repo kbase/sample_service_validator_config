@@ -1,0 +1,247 @@
+namespace: enigma
+terms:
+  aquifer:
+    title: Aquifer
+    description: Aquifer
+    examples:
+    - B
+    - wB
+    - U/wB
+    - wB
+    type: string
+  area_name:
+    title: Area Name
+    description: Area Name
+    examples:
+    - Area 2
+    - Background A
+    - Area 4
+    type: string
+  boring_refusal:
+    title: Boring Refusal
+    description: Boring Refusal (Y/N)
+    examples:
+    - Y
+    - N
+    type: string
+  collection_time:
+    title: Collection time
+    description: Collection Time
+    examples:
+    - 9:39:00 AM
+    type: string
+  condition:
+    title: Condition
+    description: Condition
+    examples:
+    - Open
+    type: string
+  dapi_cell_count:
+    title: DAPI Cell Count
+    description: DAPI cell count in cells per gram
+    examples:
+    - 9690000.0
+    type: number
+    units: cells/g
+  date:
+    title: Date
+    description: Date (YYYY-MM-DD)
+    examples:
+    - '2019-06-18'
+    type: string
+  drive_casing_type:
+    title: Drive Casing Type
+    description: Drive Casing Type
+    examples:
+    - GP DT-32
+    type: string
+  experiment_name:
+    title: Experiment Name
+    description: Experiment Name
+    examples:
+    - 100 Well
+    type: string
+  fraction:
+    title: Fraction
+    description: Fraction
+    examples:
+    - Spin Down
+    - Total Cells
+    - .2um
+    type: string
+  fractures_cavities_waterbreaks:
+    title: Fractures/Cavities/WaterBreaks
+    description: Fractures/Cavities/WaterBreaks
+    examples:
+    - WB @ 14, 41
+    type: string
+  functional_area:
+    title: Functional Area
+    description: Functional Area
+    examples:
+    - S-3 Site
+    - New Hope Pond
+    type: string
+  geological_zone:
+    title: Geological Zone
+    description: Geological Zone
+    examples:
+    - Saturated
+    - Vadose
+    type: string
+  installation_method:
+    title: Installation Method
+    description: Method of installation
+    examples:
+    - CORE
+    - AUGER
+    - MANUAL
+    type: string
+  leucine_activity:
+    type: number
+    description: units in ngC/day cell
+    examples:
+    - 0.000576856
+    title: Leucine Activity (ngC/day cell)
+    units: ng Carbon / day / cell
+  lower_seal_type:
+    title: Lower Seal Type
+    description: Lower Seal Type (BENT; BENT-PEL)
+    examples:
+    - BENT-PEL
+    - BENT
+    type: string
+  maturation_time:
+    title: Maturation Time
+    description: Maturation Time
+    examples:
+    - 24hr
+    - 72hr
+    type: string
+  method:
+    title: Method
+    description: Method
+    examples:
+    - BONCAT
+    - PMA
+    - No PMA
+    type: string
+  open:
+    title: Open
+    description: Open (yes/no)
+    examples:
+    - 'yes'
+    - 'no'
+    type: string
+  open_casing_type:
+    title: Open Casing Type
+    description: Open Casing Type (SF25; STL)
+    examples:
+    - SF25
+    - STL
+    type: string
+  origination_or_plug_abandon:
+    title: Origination or Plug/Abandon
+    description: Origination or Plug/Abandon (Date)
+    examples:
+    - 02/06/92
+    type: string
+  packing_type:
+    title: Packing Type
+    description: Packing Type (e.g. SAND; SAND-2)
+    examples:
+    - SAND
+    - SAND-2
+    type: string
+  recovery_factor:
+    title: Recovery Factor
+    description: Recovery Factor
+    examples:
+    - 1.57
+    type: number
+    units: dimensionless
+  redox_potential:
+    title: Redox Potential
+    description: Redox Potential
+    examples:
+    - 421.5
+    type: number
+    units: mV
+  replicate:
+    title: Replicate
+    description: Replicate
+    examples:
+    - A1
+    - A2
+    - B1
+    - C
+    type: string
+  rock_formation:
+    title: Rock Formation
+    description: Rock Formation
+    examples:
+    - Conasauga/Maynardville Limestone
+    - Conasauga/Nolichucky Shale
+    type: string
+  screen_type:
+    title: Screen Type
+    description: Screen Type
+    examples:
+    - PP/.02
+    type: string
+  screened:
+    title: Screened
+    description: Screened (yes/no)
+    examples:
+    - 'yes'
+    - 'no'
+    type: string
+  time_zone:
+    title: Time Zone
+    description: Time Zone (relative to UTC)
+    examples:
+    - UTC-4
+    type: string
+  treatment:
+    title: Treatment
+    description: Treatment
+    examples:
+    - HPG
+    - No HPG
+    type: string
+  upper_seal_type:
+    title: Upper Seal Type
+    description: Upper Seal Type
+    examples:
+    - BENT
+    - BENT-PEL
+    type: string
+  well_casing_type:
+    title: Well Casing Type
+    description: Well Casing Type
+    examples:
+    - SP
+    - MP
+    type: string
+  well_name:
+    title: Well Name
+    description: Well Name (ID)
+    examples:
+    - GW085
+    - GW098
+    type: string
+  well_status:
+    title: Well Status
+    description: Status of Well
+    examples:
+    - Active
+    - Inactive
+    type: string
+  well_type:
+    title: Type of Well
+    description: Type of Welll (SP; MP)
+    examples:
+    - SP
+    - MP
+    type: string
+

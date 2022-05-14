@@ -3,12 +3,13 @@ validators:
     key_metadata:
       description: Biome from ENVO (child of ENVO:00000428)
       examples:
-      - FENVO:01001831
+      - ENVO:01001831
+      format: ontology-term
       ontology:
         ancestor_term: ENVO:00000428
         ns: envo_ontology
       title: Biome
-      type: ontology
+      type: string
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
@@ -30,7 +31,7 @@ validators:
       description: Date amd time when the sample was collected in ISO 8601 format
       examples:
       - '2021-04-28T09:10:23-07:00'
-      title: Collection date
+      title: Collection time
       type: string
     validators:
     - callable_builder: noop
@@ -112,9 +113,17 @@ validators:
       examples:
       - 678.5
       - -4536
+      formatting:
+        useGrouping: true
       title: Elevation
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -127,9 +136,17 @@ validators:
       examples:
       - 673.5
       - -4520
+      formatting:
+        useGrouping: true
       title: Elevation End
       type: number
+      units: m
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: m
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -315,13 +332,13 @@ validators:
       - 802.65
       title: Conductivity
       type: number
-      units: ms/cm
+      units: mS/cm
     validators:
     - callable_builder: units
       module: SampleService.core.validator.builtin
       parameters:
         key: units
-        units: ms/cm
+        units: mS/cm
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -333,7 +350,13 @@ validators:
       - 9690000.0
       title: DAPI Cell Count
       type: number
+      units: cells/g
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: cells/g
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -466,8 +489,8 @@ validators:
     key_metadata:
       description: Filter pore size in microns
       examples:
-      - '2'
-      - '10'
+      - 2
+      - 10
       minimum: 0.0
       title: Filter
       type: number
@@ -564,7 +587,13 @@ validators:
       - 0.000576856
       title: Leucine Activity (ngC/day cell)
       type: number
+      units: ng Carbon / day / cell
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: ng Carbon / day / cell
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -903,7 +932,7 @@ validators:
       module: SampleService.core.validator.builtin
   enigma:packing_depth_end:
     key_metadata:
-      description: Packind depth end in ft below ground surface (ft BGS)
+      description: Packing depth end in ft below ground surface (ft BGS)
       examples:
       - 17.5
       title: Packing Depth End
@@ -921,7 +950,7 @@ validators:
         keys: value
   enigma:packing_depth_start:
     key_metadata:
-      description: Packind depth start in ft below ground surface (ft BGS)
+      description: Packing depth start in ft below ground surface (ft BGS)
       examples:
       - 15.08
       title: Packing Depth Start
@@ -973,7 +1002,13 @@ validators:
       - 1.57
       title: Recovery Factor
       type: number
+      units: dimensionless
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: dimensionless
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -985,7 +1020,13 @@ validators:
       - 421.5
       title: Redox Potential
       type: number
+      units: mV
     validators:
+    - callable_builder: units
+      module: SampleService.core.validator.builtin
+      parameters:
+        key: units
+        units: mV
     - callable_builder: number
       module: SampleService.core.validator.builtin
       parameters:
@@ -1072,7 +1113,7 @@ validators:
     key_metadata:
       description: Screen top elevation in ft above mean sea level (ft AMSL)
       examples:
-      - 985.52:was
+      - 985.52
       title: Screen Top Elevation
       type: number
       units: ft
@@ -1423,11 +1464,12 @@ validators:
       description: Feature from ENVO (child of ENVO:01000813)
       examples:
       - ENVO:00000314
+      format: ontology-term
       ontology:
         ancestor_term: ENVO:01000813
         ns: envo_ontology
       title: Feature
-      type: ontology
+      type: string
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
@@ -1478,7 +1520,7 @@ validators:
     key_metadata:
       description: Ecosystem Path ID (GOLD)
       examples:
-      - 3948
+      - '3948'
       title: Ecosystem Path ID
       type: string
     validators:
@@ -1542,6 +1584,9 @@ validators:
         latitudes.
       examples:
       - 5.89634
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 90.0
       minimum: -90.0
       title: Latitude
@@ -1567,6 +1612,9 @@ validators:
         latitudes.
       examples:
       - 5.89634
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 90.0
       minimum: -90.0
       title: Latitude End
@@ -1620,11 +1668,14 @@ validators:
   longitude:
     key_metadata:
       description: Longitude of the location where the sample was collected in WGS
-        84 cooridinate system. ('Start longitude' for linear sampling features such
+        84 coordinate system. ('Start longitude' for linear sampling features such
         as dredges.) Needs to be entered in decimal degrees. Negative values for 'West'
         longitudes.
       examples:
       - -103.785
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 180.0
       minimum: -180.0
       title: Longitude
@@ -1645,10 +1696,13 @@ validators:
   longitude_end:
     key_metadata:
       description: End longitude of the location where the sample was collected in
-        WGS 84 cooridinate system. Needs to be entered in decimal degrees. Negative
+        WGS 84 coordinate system. Needs to be entered in decimal degrees. Negative
         values for 'West' longitudes.
       examples:
       - -103.285
+      formatting:
+        maximumFractionDigits: 3
+        minimumFractionDigits: 3
       maximum: 180.0
       minimum: -180.0
       title: Longitude End
@@ -1671,11 +1725,12 @@ validators:
       description: Material from ENVO (child of ENVO:00010483)
       examples:
       - ENVO:01001614
+      format: ontology-term
       ontology:
         ancestor_term: ENVO:00010483
         ns: envo_ontology
       title: Material
-      type: ontology
+      type: string
     validators:
     - callable_builder: ontology_has_ancestor
       module: SampleService.core.validator.builtin
@@ -1698,14 +1753,12 @@ validators:
       examples:
       - SAM1234
       - IEMEG0001
-      max-len: 240
+      maxLength: 240
       title: Sample Name
       type: string
     validators:
-    - callable_builder: string
+    - callable_builder: noop
       module: SampleService.core.validator.builtin
-      parameters:
-        max-len: 240
   ncbi:taxonomy_name:
     key_metadata:
       description: NCBI Taxonomy Name
@@ -1831,6 +1884,17 @@ validators:
       parameters:
         gte: 0.0
         keys: value
+  sesar:age_unit:
+    key_metadata:
+      description: Unit for the age provided
+      examples:
+      - Ma
+      - years
+      title: Age Unit
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:archive_contact_current:
     key_metadata:
       description: Address and/or email of the person who should be contacted for
@@ -1884,16 +1948,6 @@ validators:
       - Igneous>Plutonic>Felsic
       - Plagioclase
       title: Classification
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:classification_comment:
-    key_metadata:
-      description: Classification Comment
-      examples:
-      - TODO
-      title: Classification Comment
       type: string
     validators:
     - callable_builder: noop
@@ -2067,9 +2121,8 @@ validators:
     key_metadata:
       description: Elevation end in meters
       examples:
-      - '673.5'
-      - '-4520'
-      required: true
+      - 673.5
+      - -4520
       title: Elevation end
       type: number
       units: m
@@ -2083,14 +2136,12 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-        required: true
   sesar:elevation_start:
     key_metadata:
       description: Elevation start in meters
       examples:
-      - '678.5'
-      - '-4536'
-      required: true
+      - 678.5
+      - -4536
       title: Elevation start
       type: number
       units: m
@@ -2104,7 +2155,19 @@ validators:
       module: SampleService.core.validator.builtin
       parameters:
         keys: value
-        required: true
+  sesar:elevation_unit:
+    key_metadata:
+      description: Unit in which elevation start and/or end are provided in.
+      examples:
+      - meters
+      - feet
+      - miles
+      - kilometers
+      title: Elevation Unit
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:field_name:
     key_metadata:
       description: Taxonomy (field name) Informal classification of sample.
@@ -2163,6 +2226,8 @@ validators:
       module: SampleService.core.validator.builtin
   sesar:is_archived:
     key_metadata:
+      comments:
+      - Not in current SESAR format
       description: Is Archived
       examples:
       - Y
@@ -2386,28 +2451,10 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
-  sesar:registrant_current:
-    key_metadata:
-      description: Registrant of the sample in SESAR
-      examples:
-      - Jane Smith
-      title: Current Registrant Name
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:registrant_org:
-    key_metadata:
-      description: Registrant organization of the sample in SESAR
-      examples:
-      - Jane Smith
-      title: Organization Registrant Name
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
   sesar:related_identifiers:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: IGSN of Related Samples
       examples:
       - IEMEG0003
@@ -2416,8 +2463,41 @@ validators:
     validators:
     - callable_builder: noop
       module: SampleService.core.validator.builtin
+  sesar:related_url:
+    key_metadata:
+      description: Related URL associated with the samples
+      examples:
+      - https://doi.org/10.1594/IEDA/999999
+      format: url
+      title: Related URL
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:related_url_description:
+    key_metadata:
+      description: Free text description of the related URL
+      examples:
+      - DOI for related published data
+      title: Related URL Description
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
+  sesar:related_url_type:
+    key_metadata:
+      description: Related URL type. Either DOI or Regular URL
+      examples:
+      - DOI
+      title: Related URL Type
+      type: string
+    validators:
+    - callable_builder: noop
+      module: SampleService.core.validator.builtin
   sesar:relation_type:
     key_metadata:
+      comments:
+      - Not in current SESAR field dictionary
       description: Relation Type
       examples:
       - TODO
@@ -2466,16 +2546,6 @@ validators:
       - cm
       - kg
       title: Size unit
-      type: string
-    validators:
-    - callable_builder: noop
-      module: SampleService.core.validator.builtin
-  sesar:state_province:
-    key_metadata:
-      description: State or Province where the sample was collected
-      examples:
-      - Alaska
-      title: State/Province
       type: string
     validators:
     - callable_builder: noop
@@ -2586,6 +2656,7 @@ validators:
       description: URL for Sample
       examples:
       - http://igsn.org/IEBWE0001
+      format: url
       title: URL
       type: string
     validators:
